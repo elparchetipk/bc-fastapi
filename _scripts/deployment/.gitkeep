@@ -1,0 +1,11 @@
+# Deployment Scripts
+
+Scripts para despliegue y deployment automation.
+
+Incluye:
+
+- Docker deployment
+- CI/CD pipelines
+- Environment provisioning
+- Production setup
+- Rollback procedures

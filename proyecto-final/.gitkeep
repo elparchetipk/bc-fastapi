@@ -1,0 +1,35 @@
+# Proyecto Final - E-Commerce API Platform
+
+## Descripción
+
+Proyecto integrador que demuestra dominio completo del stack tecnológico del bootcamp.
+
+## Características Requeridas
+
+- Microservices architecture completa
+- Frontend React + Backend FastAPI
+- Authentication/Authorization robusta
+- Payment processing integration
+- Inventory management system
+- Clean Architecture implementation
+- Comprehensive testing suite
+- Performance optimization
+- Security best practices
+- Complete documentation
+- CI/CD pipeline
+- Monitoring y logging
+
+## Estructura
+
+- `backend/` - APIs y servicios backend
+- `frontend/` - Aplicación React
+- `docs/` - Documentación del proyecto
+- `deployment/` - Configuración de despliegue
+- `tests/` - Suite completa de tests
+
+## Criterios de Evaluación Final
+
+1. **Functionality (25%)** - Feature completeness, reliability, performance
+2. **Code Quality (25%)** - Clean code, naming conventions, documentation
+3. **Architecture (25%)** - Design patterns, scalability, security
+4. **Best Practices (25%)** - Testing, CI/CD, DevOps practices

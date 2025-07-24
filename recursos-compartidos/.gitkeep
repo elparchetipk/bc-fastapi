@@ -1,0 +1,14 @@
+# Recursos Compartidos
+
+Recursos que se utilizan a lo largo de todo el bootcamp.
+
+## Estructura
+
+- `templates/` - Templates de código y configuración
+- `configs/` - Archivos de configuración compartidos
+- `databases/` - Scripts y schemas de base de datos
+- `tools/` - Herramientas y utilidades
+
+## Uso
+
+Estos recursos están disponibles para todas las semanas del bootcamp y pueden ser referenciados desde cualquier proyecto.

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/OWNER/REPO/discussions
+    about: Para preguntas generales, ideas y discusiones de la comunidad
+  - name: 📚 Documentación
+    url: https://github.com/OWNER/REPO/tree/main/_docs
+    about: Consulta la documentación completa del bootcamp
+  - name: 🎓 Canal del Instructor
+    url: mailto:instructor@bootcamp.com
+    about: Para consultas académicas directas del bootcamp

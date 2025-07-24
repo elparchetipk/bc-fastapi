@@ -1,0 +1,11 @@
+# Setup Scripts
+
+Scripts para configuración inicial del entorno de desarrollo.
+
+Incluye:
+
+- Environment setup
+- Dependencies installation
+- Database initialization
+- Docker configuration
+- IDE setup

@@ -1,0 +1,16 @@
+# Scripts de Automatización
+
+Esta carpeta contiene todos los scripts de automatización del bootcamp bc-fastapi.
+
+## Estructura:
+
+- `setup/` - Scripts de configuración inicial
+- `deployment/` - Scripts de despliegue
+- `testing/` - Scripts de testing automatizado
+- `utilities/` - Utilidades y herramientas
+
+## Convenciones:
+
+- Todos los scripts deben ser ejecutables
+- Documentación clara en cada script
+- Nombres descriptivos en inglés

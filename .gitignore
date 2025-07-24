@@ -1,0 +1,474 @@
+# Bootcamp bc-fastapi - Complete .gitignore
+# Created for FastAPI + React + Docker + PostgreSQL project
+
+# ===== PYTHON =====
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff (if needed):
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff (if needed):
+instance/
+.webassets-cache
+
+# Scrapy stuff (if needed):
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+.idea/
+
+# ===== FASTAPI SPECIFIC =====
+# FastAPI instance files
+*.db
+*.sqlite
+*.sqlite3
+
+# Alembic
+alembic/versions/__pycache__/
+alembic/__pycache__/
+
+# ===== NODE.JS / REACT =====
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist/
+
+# Gatsby files
+.cache/
+public
+
+# Vite build output
+dist/
+dist-ssr/
+
+# Rollup.js default build output
+dist/
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# ===== DOCKER =====
+# Docker compose override files
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Docker volumes
+docker-volumes/
+volumes/
+
+# ===== DATABASE =====
+# PostgreSQL
+*.dump
+*.sql
+*.backup
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps
+dumps/
+backups/
+
+# ===== LOGS =====
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===== OPERATING SYSTEM =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===== EDITORS / IDEs =====
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*~
+*.swp
+*.swo
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===== TESTING =====
+# Test reports
+test-results/
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.cache
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+# ===== SECURITY =====
+# Secret files
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# API keys and tokens
+.env.secret
+.env.local
+config/secrets.json
+
+# ===== DEPLOYMENT =====
+# Build artifacts
+build/
+dist/
+*.tar.gz
+*.zip
+
+# Deployment configs (keep templates)
+deploy/
+!deploy/*.template.*
+!deploy/README.md
+
+# ===== DOCUMENTATION =====
+# Generated docs (keep source)
+docs/build/
+docs/_build/
+
+# ===== MONITORING =====
+# Logs and monitoring
+monitoring/logs/
+*.log
+
+# ===== TEMPORARY FILES =====
+# Temporary directories
+tmp/
+temp/
+.tmp/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# ===== PROJECT SPECIFIC =====
+# Bootcamp specific ignores
+uploads/
+media/
+static/collected/
+
+# Development files
+dev-data/
+test-data/
+sample-data/
+
+# Local configuration overrides
+local_config.py
+local_settings.py
+
+# Performance test results
+performance-results/
+load-test-results/
+
+# Certificates for development
+certs/
+ssl/
+
+# Cache directories
+.cache/
+cache/
+
+# ===== KEEP IMPORTANT FILES =====
+# Force include important config templates
+!docker-compose.template.yml
+!.env.template
+!config.template.json
+!README.md
+!requirements.txt
+!package.json
+!Dockerfile
+!.copilot-instructions.md
+!.gitignore

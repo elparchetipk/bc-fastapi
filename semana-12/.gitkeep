@@ -1,0 +1,25 @@
+# Semana 12 - Proyecto Final - Presentación
+
+## Objetivos de la Semana
+Desarrollo de competencias en Proyecto Final - Presentación aplicando mejores prácticas de desarrollo.
+
+## Estructura
+- `teoria/` - Material teórico y conceptos fundamentales
+- `practica/` - Ejercicios prácticos guiados paso a paso
+- `ejercicios/` - Ejercicios individuales para resolver
+- `proyecto/` - Proyecto completo
+- `recursos/` - Recursos adicionales, referencias y enlaces
+
+## Tecnologías Principales
+Evaluación y Cierre
+
+## Entregables
+- Código funcional siguiendo convenciones
+- Tests implementados y pasando
+- Documentación actualizada
+- README específico del proyecto de semana
+
+## Criterios de Evaluación
+- Funcionamiento correcto (70%)
+- Calidad del código y mejores prácticas (20%)
+- Documentación y presentación (10%)
