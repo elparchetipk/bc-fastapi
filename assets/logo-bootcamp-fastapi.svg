@@ -1,0 +1,102 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradientes modernos -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00C896;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#009688;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005571;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7931E;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8F5E8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Sombras -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo con gradiente -->
+  <rect width="400" height="200" fill="url(#primaryGradient)" rx="15"/>
+  
+  <!-- Elementos decorativos geométricos -->
+  <circle cx="350" cy="50" r="30" fill="url(#accentGradient)" opacity="0.2"/>
+  <circle cx="50" cy="150" r="20" fill="#FFFFFF" opacity="0.1"/>
+  <polygon points="30,30 50,10 70,30 50,50" fill="url(#accentGradient)" opacity="0.3"/>
+  
+  <!-- Líneas dinámicas -->
+  <path d="M 0,100 Q 100,80 200,100 T 400,100" stroke="url(#accentGradient)" stroke-width="2" fill="none" opacity="0.4"/>
+  <path d="M 0,120 Q 150,140 300,120 T 400,120" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3"/>
+  
+  <!-- Icono FastAPI moderno -->
+  <g transform="translate(40, 40)" filter="url(#glow)">
+    <!-- Base del rayo/velocidad -->
+    <path d="M 0,30 L 20,0 L 15,15 L 30,15 L 10,45 L 15,30 Z" fill="url(#accentGradient)" stroke="#FFFFFF" stroke-width="1"/>
+    <!-- Círculo contenedor -->
+    <circle cx="15" cy="22.5" r="25" fill="none" stroke="url(#accentGradient)" stroke-width="2" opacity="0.6"/>
+  </g>
+  
+  <!-- Texto principal: BOOTCAMP -->
+  <text x="100" y="65" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" 
+        fill="url(#textGradient)" filter="url(#shadow)">BOOTCAMP</text>
+  
+  <!-- Texto secundario: FastAPI -->
+  <text x="100" y="95" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" 
+        fill="url(#accentGradient)" filter="url(#shadow)">FastAPI</text>
+  
+  <!-- Subtítulo motivacional -->
+  <text x="100" y="115" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" 
+        fill="#FFFFFF" opacity="0.9">Desarrolla APIs REST de Calidad Total</text>
+  
+  <!-- Badge/Etiqueta llamativa -->
+  <g transform="translate(100, 130)">
+    <rect x="0" y="0" width="120" height="25" rx="12" fill="url(#accentGradient)" filter="url(#shadow)"/>
+    <text x="60" y="17" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" 
+          fill="#FFFFFF" text-anchor="middle">12 SEMANAS INTENSIVAS</text>
+  </g>
+  
+  <!-- Call to action -->
+  <g transform="translate(250, 130)">
+    <rect x="0" y="0" width="80" height="25" rx="12" fill="#FFFFFF" opacity="0.9" filter="url(#shadow)"/>
+    <text x="40" y="17" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" 
+          fill="url(#primaryGradient)" text-anchor="middle">¡COMIENZA YA!</text>
+  </g>
+  
+  <!-- Elementos de código decorativos -->
+  <g transform="translate(280, 40)" opacity="0.4">
+    <text font-family="Courier, monospace" font-size="8" fill="#FFFFFF">
+      <tspan x="0" dy="0">@app.get("/api")</tspan>
+      <tspan x="0" dy="12">def hello():</tspan>
+      <tspan x="0" dy="12">  return {"msg": "pro"}</tspan>
+    </text>
+  </g>
+  
+  <!-- Puntos de conexión modernos -->
+  <circle cx="370" cy="120" r="3" fill="url(#accentGradient)"/>
+  <circle cx="380" cy="130" r="2" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="360" cy="140" r="2" fill="url(#accentGradient)" opacity="0.7"/>
+  
+  <!-- Línea de progreso -->
+  <rect x="100" y="175" width="200" height="4" rx="2" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="100" y="175" width="60" height="4" rx="2" fill="url(#accentGradient)"/>
+  
+  <!-- Indicador de nivel -->
+  <text x="100" y="190" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#FFFFFF" opacity="0.8">
+    NIVEL: PROFESIONAL
+  </text>
+</svg>
