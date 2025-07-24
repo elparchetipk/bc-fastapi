@@ -228,3 +228,20 @@ Antes de comenzar la Semana 2, verifica:
 - [ ] ✅ FastAPI y dependencias actualizadas
 
 **¡Listo para llevar tu API al siguiente nivel! 🚀**
+
+## 📚 Contenido de la Semana
+
+### **📋 Navegación Ordenada (Seguir este orden)**
+
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
+2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo y práctica
+4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
+5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+
+### 🛠️ **Prácticas Principales**
+
+1. **[03-python-fundamentals.md](./2-practica/03-python-fundamentals.md)** - Python moderno (120 min)
+2. **[05-pydantic-essentials.md](./2-practica/05-pydantic-essentials.md)** - Validación de datos (120 min)
+3. **[04-fastapi-intermedio.md](./2-practica/04-fastapi-intermedio.md)** - APIs avanzadas (90 min)
+4. **[06-async-basics.md](./2-practica/06-async-basics.md)** - Async/await básico (90 min)

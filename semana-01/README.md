@@ -53,10 +53,18 @@ Al finalizar esta semana de 6 horas, los estudiantes:
 
 ## 📚 Contenido de la Semana (Solo lo Esencial)
 
-### 🛠️ **Prácticas (Núcleo de la semana)**
+### **� Navegación Ordenada (Seguir este orden)**
 
-1. **01-environment-setup.md** - Configuración mínima esencial
-2. **02-hello-world-api.md** - Primera API funcional
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
+2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo y práctica
+4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
+5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+
+### �🛠️ **Prácticas (Núcleo de la semana)**
+
+1. **[01-environment-setup.md](./2-practica/01-environment-setup.md)** - Configuración mínima esencial
+2. **[02-hello-world-api.md](./2-practica/02-hello-world-api.md)** - Primera API funcional
 
 ### 📖 **Teoría (Básica)**
 

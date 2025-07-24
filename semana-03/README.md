@@ -21,28 +21,36 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ## 📚 Contenido de la Semana
 
+### **📋 Navegación Ordenada (Seguir este orden)**
+
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
+2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo y práctica
+4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
+5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+
 ### **🧭 Teoría**
 
-- [📖 Conceptos REST y HTTP](./teoria/rest-http-concepts.md)
+- [📖 Conceptos REST y HTTP](./1-teoria/rest-http-concepts.md)
 
 ### **💻 Prácticas**
 
-1. [🔧 Endpoints HTTP Completos](./practica/07-endpoints-http-completos.md) _(90 min)_
-2. [✅ Validación Avanzada](./practica/08-validacion-avanzada.md) _(90 min)_
-3. [⚠️ Manejo de Errores](./practica/09-manejo-errores.md) _(90 min)_
-4. [🏗️ Estructura REST](./practica/10-estructura-rest.md) _(90 min)_
+1. [🔧 Endpoints HTTP Completos](./2-practica/07-endpoints-http-completos.md) _(90 min)_
+2. [✅ Validación Avanzada](./2-practica/08-validacion-avanzada.md) _(90 min)_
+3. [⚠️ Manejo de Errores](./2-practica/09-manejo-errores.md) _(90 min)_
+4. [🏗️ Estructura REST](./2-practica/10-estructura-rest.md) _(90 min)_
 
 ### **💪 Ejercicios**
 
-- [🎯 Ejercicios de Refuerzo](./ejercicios/ejercicios-practica.md)
+- [🎯 Ejercicios de Refuerzo](./3-ejercicios/ejercicios-practica.md)
 
 ### **🚀 Proyecto**
 
-- [📋 API de Inventario Simple](./proyecto/especificacion-proyecto.md)
+- [📋 API de Inventario Simple](./4-proyecto/especificacion-proyecto.md)
 
 ### **📚 Recursos**
 
-- [🔗 Enlaces y Referencias](./recursos/recursos-apoyo.md)
+- [🔗 Enlaces y Referencias](./5-recursos/recursos-apoyo.md)
 
 ## 🎯 Objetivos Específicos
 
