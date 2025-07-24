@@ -1,0 +1,110 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo oscuro -->
+  <rect width="800" height="600" fill="#1a1a1a"/>
+  
+  <!-- Título -->
+  <text x="400" y="30" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="24" font-weight="bold">
+    Arquitectura FastAPI - Flujo de Request/Response
+  </text>
+  
+  <!-- Client -->
+  <rect x="50" y="70" width="120" height="60" rx="10" fill="#2d2d2d" stroke="#00d4aa" stroke-width="2"/>
+  <text x="110" y="95" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Cliente</text>
+  <text x="110" y="115" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">Web/Mobile/API</text>
+  
+  <!-- FastAPI Application -->
+  <rect x="250" y="70" width="300" height="460" rx="15" fill="#2d2d2d" stroke="#00d4aa" stroke-width="3"/>
+  <text x="400" y="95" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="16" font-weight="bold">FastAPI Application</text>
+  
+  <!-- Router Layer -->
+  <rect x="270" y="110" width="260" height="70" rx="8" fill="#3d3d3d" stroke="#4a9eff" stroke-width="2"/>
+  <text x="400" y="135" text-anchor="middle" fill="#4a9eff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Router Layer</text>
+  <text x="400" y="155" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">Routing • Path Operations • HTTP Methods</text>
+  <text x="400" y="170" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">@app.get() • @app.post() • @app.put()</text>
+  
+  <!-- Middleware Layer -->
+  <rect x="270" y="200" width="260" height="60" rx="8" fill="#3d3d3d" stroke="#ff6b6b" stroke-width="2"/>
+  <text x="400" y="225" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Middleware Layer</text>
+  <text x="400" y="245" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">CORS • Auth • Logging • Custom Middleware</text>
+  
+  <!-- Dependency Injection -->
+  <rect x="270" y="280" width="260" height="60" rx="8" fill="#3d3d3d" stroke="#ffd93d" stroke-width="2"/>
+  <text x="400" y="305" text-anchor="middle" fill="#ffd93d" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Dependency Injection</text>
+  <text x="400" y="325" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">Database • Auth • Services • Configuration</text>
+  
+  <!-- Pydantic Validation -->
+  <rect x="270" y="360" width="260" height="70" rx="8" fill="#3d3d3d" stroke="#a855f7" stroke-width="2"/>
+  <text x="400" y="385" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Pydantic Validation</text>
+  <text x="400" y="405" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">Request Models • Response Models</text>
+  <text x="400" y="420" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">Type Validation • Serialization</text>
+  
+  <!-- Business Logic -->
+  <rect x="270" y="450" width="260" height="60" rx="8" fill="#3d3d3d" stroke="#10b981" stroke-width="2"/>
+  <text x="400" y="475" text-anchor="middle" fill="#10b981" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Business Logic</text>
+  <text x="400" y="495" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="11">Services • Repositories • Domain Logic</text>
+  
+  <!-- Database -->
+  <rect x="630" y="200" width="120" height="180" rx="10" fill="#2d2d2d" stroke="#00d4aa" stroke-width="2"/>
+  <text x="690" y="225" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Database</text>
+  <text x="690" y="250" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">PostgreSQL</text>
+  <text x="690" y="270" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">MongoDB</text>
+  <text x="690" y="290" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">SQLite</text>
+  <text x="690" y="320" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">SQLAlchemy</text>
+  <text x="690" y="340" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">Async Support</text>
+  <text x="690" y="360" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">Connection Pool</text>
+  
+  <!-- External APIs -->
+  <rect x="630" y="420" width="120" height="100" rx="10" fill="#2d2d2d" stroke="#00d4aa" stroke-width="2"/>
+  <text x="690" y="445" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="14" font-weight="bold">External APIs</text>
+  <text x="690" y="465" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">REST APIs</text>
+  <text x="690" y="485" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">GraphQL</text>
+  <text x="690" y="505" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">aiohttp client</text>
+  
+  <!-- Request Flow (arrows pointing right) -->
+  <defs>
+    <marker id="arrowheadRight" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4aa"/>
+    </marker>
+    <marker id="arrowheadLeft" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#ff6b6b"/>
+    </marker>
+  </defs>
+  
+  <!-- Request arrows -->
+  <line x1="170" y1="100" x2="250" y2="100" stroke="#00d4aa" stroke-width="2" marker-end="url(#arrowheadRight)"/>
+  <text x="210" y="95" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="10">HTTP Request</text>
+  
+  <line x1="550" y1="290" x2="630" y2="290" stroke="#00d4aa" stroke-width="2" marker-end="url(#arrowheadRight)"/>
+  <text x="590" y="285" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="10">Query</text>
+  
+  <line x1="550" y1="470" x2="630" y2="470" stroke="#00d4aa" stroke-width="2" marker-end="url(#arrowheadRight)"/>
+  <text x="590" y="465" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="10">API Call</text>
+  
+  <!-- Response arrows -->
+  <line x1="250" y1="120" x2="170" y2="120" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowheadLeft)"/>
+  <text x="210" y="135" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="10">HTTP Response</text>
+  
+  <line x1="630" y1="310" x2="550" y2="310" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowheadLeft)"/>
+  <text x="590" y="325" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="10">Data</text>
+  
+  <line x1="630" y1="490" x2="550" y2="490" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowheadLeft)"/>
+  <text x="590" y="505" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="10">Response</text>
+  
+  <!-- Flow steps -->
+  <text x="50" y="570" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Flujo del Request:</text>
+  <text x="200" y="570" fill="#00d4aa" font-family="Arial, sans-serif" font-size="11">1. Router → 2. Middleware → 3. Dependencies → 4. Validation → 5. Business Logic → 6. Response</text>
+  
+  <!-- OpenAPI/Swagger -->
+  <rect x="50" y="400" width="120" height="80" rx="10" fill="#2d2d2d" stroke="#ffd93d" stroke-width="2"/>
+  <text x="110" y="425" text-anchor="middle" fill="#ffd93d" font-family="Arial, sans-serif" font-size="14" font-weight="bold">OpenAPI</text>
+  <text x="110" y="445" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">Swagger UI</text>
+  <text x="110" y="465" text-anchor="middle" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="12">Auto Docs</text>
+  
+  <!-- Connection to OpenAPI -->
+  <line x1="170" y1="440" x2="250" y2="440" stroke="#ffd93d" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="210" y="435" text-anchor="middle" fill="#ffd93d" font-family="Arial, sans-serif" font-size="9">Auto Generated</text>
+  
+  <!-- ASGI/Uvicorn base -->
+  <rect x="250" y="545" width="300" height="35" rx="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+  <text x="400" y="565" text-anchor="middle" fill="#666" font-family="Arial, sans-serif" font-size="12">Starlette (ASGI) + Uvicorn Server</text>
+</svg>
