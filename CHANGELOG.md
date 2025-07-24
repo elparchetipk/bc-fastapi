@@ -5,6 +5,69 @@ Todos los cambios notables en este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025-07-24] - Semana 2: Python Moderno para APIs Implementada
+
+### 🚀 Nueva Semana Completa Desarrollada
+
+- **Semana 2 completamente estructurada** para 6 horas semanales
+- **Integración del contenido** movido desde Semana 1 original
+- **Progresión natural** desde API básica hacia características profesionales
+- **4 bloques de práctica** distribuidos en 360 minutos exactos
+
+### 📚 Contenido Nuevo Creado
+
+#### **Estructura Principal:**
+
+- ✅ `semana-02/README.md` - Guía completa de la semana
+- ✅ `semana-02/RUBRICA_SEMANA_2.md` - Evaluación ajustada a 6 horas
+- ✅ Distribución: 120+120+90+90 minutos
+
+#### **Prácticas Desarrolladas:**
+
+- ✅ `05-pydantic-essentials.md` - Fundamentos Pydantic (120 min)
+  - Modelos básicos y avanzados
+  - Validación automática y custom
+  - Response models y enums
+  - Testing de modelos
+- ✅ `06-async-basics.md` - Async/Await Básico (90 min)
+  - Conceptos sync vs async
+  - Operaciones en paralelo con asyncio.gather()
+  - APIs externas con httpx
+  - Patrones de timeout y concurrencia
+- ✅ `04-fastapi-intermedio.md` - FastAPI Intermedio (90 min)
+  - CRUD completo con todos los métodos HTTP
+  - Parámetros de consulta avanzados
+  - Paginación y búsqueda
+  - Middleware y headers custom
+
+#### **Contenido Reutilizado:**
+
+- ✅ `03-python-fundamentals.md` - Movido de Semana 1 (120 min)
+- ✅ Adaptado al contexto de APIs y Semana 2
+
+### 🎯 Objetivos de Aprendizaje Definidos
+
+- **Type hints esenciales** para APIs robustas
+- **Fundamentos Pydantic** para validación de datos
+- **Conceptos básicos async/await** en FastAPI
+- **Validación avanzada** y response models
+- **API más robusta** construyendo sobre Semana 1
+
+### 📊 Evaluación Estructurada
+
+- **Peso**: 12% del curso (incremento desde 8% de Semana 1)
+- **Enfoque**: Evolución desde API básica, no perfección
+- **Criterios**: 5 áreas con puntajes específicos
+- **Bonus**: Oportunidades adicionales para destacar
+- **Expectativas realistas** para 6 horas de clase
+
+### 🔄 Continuidad con Semana 1
+
+- **Construye sobre** la API existente (no reescribe)
+- **Evolución gradual** de funcionalidad básica a intermedia
+- **Preserva aprendizajes** previos mientras añade complejidad
+- **Progresión documentada** en Git commits
+
 ## [2025-07-24] - Adaptación Crítica a 6 Horas Semanales
 
 ### 🚨 Cambios Críticos para Viabilidad del Bootcamp
