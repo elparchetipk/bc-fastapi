@@ -381,8 +381,24 @@ Para más detalles, ver `_docs/setup/git-github-strategy.md` y `CONTRIBUTING.md`
 
 ### 📞 Contacto
 
-- **Instructor**: [Información de contacto]
-- **Repositorio**: [URL del repositorio]
+#### 👨‍🏫 Instructor Principal
+
+- **Nombre**: Erick Granados Torres
+- **Experiencia**: 18+ años en SENA - Instructor Especializado
+- **Institución**: CGMLTI Regional Distrito Capital
+- **GitHub**: @elparchetipk
+- **LinkedIn**: [linkedin.com/in/erickgranadostorres](https://linkedin.com/in/erickgranadostorres)
+
+#### 📋 Canales de Soporte (Orden de Prioridad)
+
+1. **GitHub Issues** (Principal): [Issues del Repositorio](https://github.com/elparchetipk/bc-fastapi/issues)
+   - ✅ Siempre disponible
+   - ✅ Historial permanente
+   - ✅ Colaboración comunitaria
+2. **Presencial**: Durante horarios de clase y asesorías programadas
+
+
+- **Repositorio**: https://github.com/elparchetipk/bc-fastapi.git
 - **Documentación**: `/bc-fastapi/_docs/`
 
 ## 📄 Licencia
