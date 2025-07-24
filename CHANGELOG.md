@@ -5,6 +5,51 @@ Todos los cambios notables en este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025-07-24] - Adaptación Crítica a 6 Horas Semanales
+
+### 🚨 Cambios Críticos para Viabilidad del Bootcamp
+
+- **REQUERIMIENTO INTOCABLE**: Sesiones limitadas a 6 horas semanales exactas
+- **AJUSTE MAYOR**: Contenido Semana 1 reducido en 60% para ser realista
+- **RELOCACIÓN**: Material avanzado movido a semanas posteriores
+- **RECALIBRACIÓN**: Expectativas documentadas claramente para evitar frustración
+
+### ✂️ Contenido Reestructurado
+
+- **Semana 1 Simplificada**:
+  - `01-environment-setup.md` optimizado a 90 min (incluye buffer para problemas)
+  - `02-hello-world-api.md` reemplazado por versión de 150 min (vs 1187 líneas original)
+  - `03-python-fundamentals.md` → Movido a Semana 2
+  - `04-fastapi-basics.md` → Movido a Semana 2
+- **Distribución Realista**: 90+150+120+60 minutos = 6 horas exactas
+- **Alcance Ajustado**: De 12-15 horas estimadas a 6 horas ejecutables
+
+### 📋 Documentación de la Restricción
+
+- **Archivos Creados**:
+  - `ANALISIS_TIEMPOS.md` - Análisis detallado del problema original
+  - `PROPUESTA_OPTIMIZACION.md` - Opciones de solución evaluadas
+  - `PLAN_ACCION_6H.md` - Plan específico de implementación
+  - `CONFIRMACION_ADAPTACION_6H.md` - Verificación final de cambios
+- **Archivos Actualizados**:
+  - `README.md` principal - Restricción de 6h/semana claramente comunicada
+  - `plan-trabajo-ajustado-6h.md` - Nueva distribución para 12 semanas
+  - `semana-01/README.md` - Estructura y expectativas realistas
+  - `semana-01/RUBRICA_SEMANA_1.md` - Criterios ajustados a experiencia exitosa
+
+### 🎯 Objetivos Recalibrados
+
+- **Antes**: Dominio completo de FastAPI en Semana 1
+- **Después**: Experiencia exitosa con primera API funcionando
+- **Enfoque**: Motivación y base sólida vs perfección técnica
+- **Entregables**: API básica + documentación automática vs proyecto complejo
+
+### 🔄 Impacto en Semanas Posteriores
+
+- **Semana 2**: Recibirá contenido Python/FastAPI avanzado de Semana 1
+- **Semana 3-4**: Conceptos de Pydantic y CRUD completo
+- **Progresión**: Más gradual y sostenible para estudiantes con conocimiento básico de Python
+
 ## [Sin Publicar]
 
 ### 🚀 Nuevas Características
