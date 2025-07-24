@@ -1,52 +1,103 @@
-# Semana 1: Fundamentos de FastAPI y Python Moderno
+# Semana 1: Introducción a FastAPI
 
-## 🎯 Objetivos Generales
+⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
+📚 **NIVEL: Introductorio (asume conocimiento básico de Python)**
 
-Al finalizar esta semana, los estudiantes serán capaces de:
+## 🚨 **IMPORTANTE: Expectativas Realistas**
 
-- Configurar un entorno de desarrollo profesional con Python 3.11+, Git y herramientas modernas
-- Dominar los fundamentos de Python necesarios para desarrollo web con FastAPI
-- Crear APIs REST funcionales utilizando FastAPI, Pydantic y Uvicorn
-- Implementar validación de datos, manejo de errores y documentación automática
-- Aplicar mejores prácticas de desarrollo desde el primer día
-- Estructurar proyectos siguiendo estándares de la industria
+Esta semana está diseñada para **6 horas de clase** únicamente. El alcance ha sido cuidadosamente ajustado para ser:
 
-## 📚 Contenido de la Semana
+- ✅ **Completamente realizable en 6 horas**
+- ✅ **Enfocado en experiencia exitosa desde día 1**
+- ✅ **Base sólida para acelerar en semanas siguientes**
 
-### 📖 Teoría
+**NO esperes dominio completo de FastAPI en una semana. El progreso es incremental y sostenible.**
 
-- **01-conceptos-fundamentales.md**: Base teórica de FastAPI, Python moderno y REST APIs
+## 🎯 Objetivos de la Semana (Realistas)
 
-### 🛠️ Prácticas
+Al finalizar esta semana de 6 horas, los estudiantes:
 
-1. **01-environment-setup.md**: Configuración completa del entorno de desarrollo
-2. **02-hello-world-api.md**: Primera API con FastAPI y conceptos básicos
-3. **03-python-fundamentals.md**: Type hints, Pydantic, decoradores y async/await
-4. **04-fastapi-basics.md**: Endpoints, parámetros, validación y documentación automática
+1. ✅ **Tendrán un entorno de desarrollo funcional** para FastAPI
+2. ✅ **Habrán creado y ejecutado su primera API REST**
+3. ✅ **Comprenderán los conceptos básicos de FastAPI**
+4. ✅ **Podrán acceder a documentación automática (Swagger)**
+5. ✅ **Estarán motivados y preparados para la Semana 2**
 
-### 🏋️ Ejercicios
+## ⏱️ **Estructura de 6 Horas**
 
-- **instrucciones.md**: Ejercicios progresivos con niveles básico, intermedio y avanzado
+### **Bloque 1: Setup Esencial (90 min)**
 
-### 🚀 Proyecto de la Semana
+- **01-environment-setup.md** (simplificado)
+- Solo lo mínimo indispensable para empezar
+- FastAPI + Uvicorn + editor configurado
 
-- **especificaciones.md**: Sistema completo de gestión de tareas personales
+### **Bloque 2: Primera API (150 min)**
 
-### 📊 Recursos
+- **02-hello-world-api.md** (versión simplificada)
+- API funcional con endpoints básicos
+- Introducción a Pydantic
+- Documentación automática
+- Manejo de errores básico
 
-- **referencias.md**: Documentación, herramientas y recursos adicionales
-- **Diagramas SVG**: Visualizaciones de arquitectura y configuración
+### **Bloque 3: Práctica Consolidada (120 min)**
 
-## 🎯 Objetivos Específicos por Día
+- Ejercicios guiados simples
+- Resolución de problemas comunes
+- Verificación de funcionamiento
 
-### Día 1-2: Configuración y Fundamentos
+### **Bloque 4: Cierre y Preparación (60 min)**
 
-- [ ] Configurar entorno de desarrollo profesional
-- [ ] Dominar conceptos de Python moderno (type hints, async/await)
-- [ ] Crear primera API funcional con FastAPI
-- [ ] Implementar modelos Pydantic básicos
+- Repaso de conceptos clave
+- Q&A y resolución de dudas
+- Vista previa Semana 2
 
-### Día 3-4: Desarrollo de APIs
+## 📚 Contenido de la Semana (Solo lo Esencial)
+
+### 🛠️ **Prácticas (Núcleo de la semana)**
+
+1. **01-environment-setup.md** - Configuración mínima esencial
+2. **02-hello-world-api.md** - Primera API funcional
+
+### 📖 **Teoría (Básica)**
+
+- Conceptos fundamentales de APIs REST
+- Introducción a FastAPI vs otros frameworks
+
+### 🏋️ **Ejercicios (Simples)**
+
+- 2-3 ejercicios básicos guiados
+- Enfoque en comprensión, no complejidad
+
+## ❌ **LO QUE NO ESTÁ EN ESTA SEMANA**
+
+Para mantener expectativas realistas, los siguientes temas se han **movido a semanas posteriores**:
+
+- ❌ **Python fundamentals avanzados** → Semana 2
+- ❌ **Pydantic modelos complejos** → Semana 3
+- ❌ **Múltiples endpoints complejos** → Semana 4
+- ❌ **Proyecto de gestión completo** → Semanas 6-8
+- ❌ **Validación avanzada** → Semana 5
+- ❌ **Base de datos** → Semana 4+
+
+## 🎯 Criterios de Éxito de la Semana
+
+### ✅ **Mínimo Viable (Aprobatorio)**
+
+- [ ] Entorno FastAPI funcionando
+- [ ] API Hello World ejecutándose
+- [ ] Acceso a documentación automática (http://localhost:8000/docs)
+
+### 🌟 **Deseable (Excelente)**
+
+- [ ] Comprensión clara de conceptos básicos
+- [ ] Capacidad de explicar qué es una API REST
+- [ ] Modificación simple de endpoints
+
+### 🚀 **Excepcional (Destacado)**
+
+- [ ] Creación de endpoint personalizado
+- [ ] Experimentación con diferentes respuestas
+- [ ] Preparación mental para Semana 2
 
 - [ ] Implementar CRUD completo
 - [ ] Manejar parámetros de ruta, query y body
@@ -55,56 +106,43 @@ Al finalizar esta semana, los estudiantes serán capaces de:
 
 ### Día 5-6: Proyecto Práctico
 
-- [ ] Desarrollar sistema de gestión de tareas
-- [ ] Implementar filtros y búsqueda
-- [ ] Agregar estadísticas básicas
-- [ ] Aplicar mejores prácticas de estructura
+## 📋 Entregables de la Semana (Simplificados)
 
-### Día 7: Consolidación y Entrega
+### 🔧 **Entregable Principal (Obligatorio)**
 
-- [ ] Completar documentación del proyecto
-- [ ] Realizar testing manual
-- [ ] Preparar entrega final
-- [ ] Autoevaluación con rúbrica
+**API Hello World Funcionando**
 
-## 📋 Entregables de la Semana
+- ✅ Entorno FastAPI configurado
+- ✅ Aplicación ejecutándose en http://localhost:8000
+- ✅ Endpoint básico respondiendo JSON
+- ✅ Documentación automática accesible en /docs
+- ✅ Código subido a repositorio GitHub
 
-### 🔧 Entregables Técnicos (Obligatorios)
+### 📄 **Entregable de Documentación (Sencillo)**
 
-1. **Entorno de Desarrollo Configurado**
+**README.md Básico**
 
-   - Python 3.11+ instalado y funcionando
-   - Git configurado con SSH keys
-   - IDE con extensiones necesarias
-   - Repositorio de trabajo inicializado
+- ✅ Instrucciones para ejecutar la aplicación
+- ✅ Screenshot de la API funcionando
+- ✅ Screenshot de la documentación automática
+- ✅ Reflexión de 1 párrafo sobre lo aprendido
 
-2. **Ejercicios Completados**
+### 🎯 **Formato de Entrega**
 
-   - 03-python-fundamentals: Ejercicios 1, 2 y 3 resueltos
-   - 04-fastapi-basics: Ejemplos ejecutándose correctamente
-   - Código subido a repositorio personal
+1. **Repositorio GitHub** con:
 
-3. **Proyecto Principal: Sistema de Gestión de Tareas**
-   - API completa con endpoints CRUD
-   - Modelos Pydantic para User, Task, Category
-   - Validación de datos implementada
-   - Filtros y búsqueda funcionales
-   - Documentación automática generada
-   - README con instrucciones de uso
+   - Código de la API
+   - README.md con instrucciones
+   - Requirements.txt (dependencias)
 
-### 📄 Entregables de Documentación
+2. **Video corto** (2-3 minutos):
+   - Demostración de la API funcionando
+   - Explicación básica de lo implementado
 
-4. **Documentación del Proyecto**
+### ⏰ **Fecha de Entrega**
 
-   - README.md completo con instrucciones de instalación
-   - Ejemplos de uso de la API
-   - Screenshots de la documentación automática
-   - Descripción de decisiones técnicas
-
-5. **Reflexión Personal**
-   - Documento de 1-2 páginas sobre aprendizajes
-   - Desafíos encontrados y cómo se resolvieron
-   - Conceptos que requieren más práctica
+- **Al final de la sesión de 6 horas**
+- **Sin extensiones** (alcance realista)
 
 ### 🎥 Entregables de Demostración
 

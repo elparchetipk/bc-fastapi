@@ -1,90 +1,215 @@
-# Rúbrica de Evaluación - Semana 1: Fundamentos de FastAPI
+# Rúbrica de Evaluación - Semana 1: Introducción a FastAPI
 
 ## 📋 Información General
 
-**Modalidad**: Evaluación integral por proyecto  
-**Peso en el curso**: 15% de la nota final  
-**Método de evaluación**: Automatizada + Revisión por IA  
+⏰ **AJUSTADA PARA 6 HORAS DE CLASE**  
+**Modalidad**: Evaluación básica de primera experiencia  
+**Peso en el curso**: 8% de la nota final (reducido)  
+**Método de evaluación**: Revisión práctica simple  
 **Escala**: 0-100 puntos
+
+## 🚨 **EXPECTATIVAS AJUSTADAS**
+
+Esta rúbrica refleja lo que es **realista lograr en 6 horas** con estudiantes con conocimiento básico de Python. Se enfoca en **experiencia exitosa** más que en dominio completo.
 
 ---
 
-## 🎯 Criterios de Evaluación y Ponderación
+## 🎯 Criterios de Evaluación Simplificados
 
-### 1. Funcionalidad de la API (40 puntos)
+### 1. **Configuración del Entorno (30 puntos)**
 
-#### 1.1 Endpoints Básicos (15 puntos)
+#### **Excelente (26-30 puntos)**
 
-**Excelente (13-15 puntos)**
+- ✅ FastAPI + Uvicorn instalado y funcionando
+- ✅ Aplicación ejecutándose sin errores
+- ✅ Documentación automática accesible
+- ✅ Repositorio Git configurado correctamente
 
-- ✅ Todos los endpoints CRUD funcionan correctamente
-- ✅ Respuestas HTTP con status codes apropiados
-- ✅ Manejo de errores 404, 400, 500 implementado
-- ✅ Endpoints adicionales (estadísticas, filtros) funcionando
+#### **Competente (20-25 puntos)**
 
-**Competente (10-12 puntos)**
+- ✅ FastAPI instalado y básicamente funcionando
+- ✅ Aplicación ejecutándose con ayuda
+- ✅ Documentación accesible
+- ⚠️ Configuración Git básica
 
-- ✅ Endpoints CRUD básicos funcionando
-- ✅ Status codes correctos en casos exitosos
-- ✅ Manejo básico de errores 404
-- ⚠️ Algunos endpoints avanzados con problemas menores
+#### **En Desarrollo (15-19 puntos)**
 
-**En Desarrollo (7-9 puntos)**
+- ✅ Instalación parcial exitosa
+- ⚠️ Aplicación ejecutándose con problemas menores
+- ⚠️ Algunos componentes faltantes
 
-- ✅ GET y POST funcionando
-- ⚠️ PUT/DELETE con problemas ocasionales
-- ⚠️ Status codes inconsistentes
-- ❌ Manejo de errores limitado
+#### **Insuficiente (0-14 puntos)**
 
-**Insuficiente (0-6 puntos)**
+- ❌ No logra configurar el entorno
+- ❌ Aplicación no ejecuta
 
-- ❌ Endpoints principales no funcionan
-- ❌ Status codes incorrectos
-- ❌ Sin manejo de errores
+### 2. **API Hello World Funcionando (40 puntos)**
 
-#### 1.2 Validación de Datos (15 puntos)
+#### **Excelente (35-40 puntos)**
 
-**Excelente (13-15 puntos)**
+- ✅ API respondiendo en http://localhost:8000
+- ✅ Endpoint básico devolviendo JSON válido
+- ✅ Estructura de código clara y organizada
+- ✅ Modificación exitosa de respuestas
 
-- ✅ Modelos Pydantic completos con validadores personalizados
-- ✅ Validación de tipos, rangos y formatos
-- ✅ Mensajes de error descriptivos y útiles
-- ✅ Validación tanto en request como response models
+#### **Competente (28-34 puntos)**
 
-**Competente (10-12 puntos)**
+- ✅ API funcionando básicamente
+- ✅ Endpoint respondiendo JSON
+- ✅ Código funcional aunque básico
+- ⚠️ Estructura mejorable
 
-- ✅ Modelos Pydantic básicos implementados
-- ✅ Validación de tipos funcionando
-- ✅ Algunos validadores personalizados
-- ⚠️ Mensajes de error básicos
+#### **En Desarrollo (20-27 puntos)**
 
-**En Desarrollo (7-9 puntos)**
+- ✅ API ejecutándose pero con problemas
+- ⚠️ Respuestas inconsistentes
+- ⚠️ Código desorganizado
 
-- ✅ Modelos Pydantic básicos
-- ⚠️ Validación limitada a tipos básicos
-- ❌ Sin validadores personalizados
-- ❌ Mensajes de error genéricos
+# Rúbrica de Evaluación - Semana 1: Introducción a FastAPI
 
-**Insuficiente (0-6 puntos)**
+## 📋 Información General
 
-- ❌ Sin modelos Pydantic o incorrectos
-- ❌ Sin validación de datos
-- ❌ Acepta cualquier input sin validar
+⏰ **AJUSTADA PARA 6 HORAS DE CLASE**  
+**Modalidad**: Evaluación básica de primera experiencia  
+**Peso en el curso**: 8% de la nota final (reducido)  
+**Método de evaluación**: Revisión práctica simple  
+**Escala**: 0-100 puntos
 
-#### 1.3 Filtros y Búsqueda (10 puntos)
+## 🚨 **EXPECTATIVAS AJUSTADAS**
 
-**Excelente (9-10 puntos)**
+Esta rúbrica refleja lo que es **realista lograr en 6 horas** con estudiantes con conocimiento básico de Python. Se enfoca en **experiencia exitosa** más que en dominio completo.
 
-- ✅ Múltiples filtros funcionando (categoría, fecha, estado, etc.)
-- ✅ Búsqueda por texto en múltiples campos
-- ✅ Combinación de filtros funcional
-- ✅ Paginación implementada correctamente
+---
 
-**Competente (7-8 puntos)**
+## 🎯 Criterios de Evaluación Simplificados
 
-- ✅ Filtros básicos funcionando
-- ✅ Búsqueda por texto simple
-- ✅ Paginación básica
+### 1. **Configuración del Entorno (30 puntos)**
+
+#### **Excelente (26-30 puntos)**
+
+- ✅ FastAPI + Uvicorn instalado y funcionando
+- ✅ Aplicación ejecutándose sin errores
+- ✅ Documentación automática accesible
+- ✅ Repositorio Git configurado correctamente
+
+#### **Competente (20-25 puntos)**
+
+- ✅ FastAPI instalado y básicamente funcionando
+- ✅ Aplicación ejecutándose con ayuda
+- ✅ Documentación accesible
+- ⚠️ Configuración Git básica
+
+#### **En Desarrollo (15-19 puntos)**
+
+- ✅ Instalación parcial exitosa
+- ⚠️ Aplicación ejecutándose con problemas menores
+- ⚠️ Algunos componentes faltantes
+
+#### **Insuficiente (0-14 puntos)**
+
+- ❌ No logra configurar el entorno
+- ❌ Aplicación no ejecuta
+
+### 2. **API Hello World Funcionando (40 puntos)**
+
+#### **Excelente (35-40 puntos)**
+
+- ✅ API respondiendo en http://localhost:8000
+- ✅ Endpoint básico devolviendo JSON válido
+- ✅ Estructura de código clara y organizada
+- ✅ Modificación exitosa de respuestas
+
+#### **Competente (28-34 puntos)**
+
+- ✅ API funcionando básicamente
+- ✅ Endpoint respondiendo JSON
+- ✅ Código funcional aunque básico
+- ⚠️ Estructura mejorable
+
+#### **En Desarrollo (20-27 puntos)**
+
+- ✅ API ejecutándose pero con problemas
+- ⚠️ Respuestas inconsistentes
+- ⚠️ Código desorganizado
+
+#### **Insuficiente (0-19 puntos)**
+
+- ❌ API no funciona
+- ❌ No hay respuestas válidas
+
+### 3. **Documentación y Entregables (30 puntos)**
+
+#### **Excelente (26-30 puntos)**
+
+- ✅ README.md claro con instrucciones de ejecución
+- ✅ Screenshots de la API funcionando
+- ✅ Código subido a repositorio GitHub
+- ✅ Reflexión personal sobre aprendizajes
+
+#### **Competente (20-25 puntos)**
+
+- ✅ README básico con instrucciones
+- ✅ Evidencia de funcionamiento
+- ✅ Código en repositorio
+- ⚠️ Documentación mejorable
+
+#### **En Desarrollo (15-19 puntos)**
+
+- ✅ Documentación mínima presente
+- ⚠️ Evidencias parciales
+- ⚠️ Repositorio desorganizado
+
+#### **Insuficiente (0-14 puntos)**
+
+- ❌ Sin documentación
+- ❌ Sin evidencias de funcionamiento
+
+---
+
+## 🎯 **Notas Importantes**
+
+### ✅ **Aprobación Mínima (60 puntos)**
+
+- Entorno configurado y funcionando
+- API Hello World respondiendo
+- Documentación básica presente
+
+### 🌟 **Lo que NO se evalúa (movido a semanas posteriores)**
+
+- ❌ Modelos Pydantic complejos
+- ❌ Múltiples endpoints CRUD
+- ❌ Validación avanzada de datos
+- ❌ Manejo sofisticado de errores
+- ❌ Proyectos complejos
+
+### 🎯 **Enfoque de Evaluación**
+
+- **80%** Funcionamiento básico
+- **20%** Documentación y organización
+- **0%** Complejidad avanzada (prematura para 6 horas)
+
+### 📝 **Criterios de Retroalimentación**
+
+- ✅ **Enfoque positivo**: Reconocer lo logrado
+- ✅ **Sugerencias constructivas**: Para próximas semanas
+- ✅ **Motivación**: Preparar para acelerar en Semana 2
+
+---
+
+## 📊 **Escala de Calificación Final**
+
+| Rango  | Calificación      | Descripción                                        |
+| ------ | ----------------- | -------------------------------------------------- |
+| 90-100 | **Excelente**     | Dominio completo del alcance básico                |
+| 80-89  | **Competente**    | Logros satisfactorios con pequeñas áreas de mejora |
+| 70-79  | **En Desarrollo** | Logros parciales, necesita refuerzo                |
+| 60-69  | **Aprobatorio**   | Mínimo viable alcanzado                            |
+| 0-59   | **Insuficiente**  | No alcanza mínimo viable, necesita recuperación    |
+
+## 🚀 **Mensaje Final**
+
+Esta evaluación está diseñada para **generar confianza y motivación**, no para filtrar estudiantes. El objetivo es que todos tengan una **experiencia exitosa** que los prepare para acelerar en las semanas siguientes.
+
 - ⚠️ Algunos filtros avanzados faltantes
 
 **En Desarrollo (5-6 puntos)**

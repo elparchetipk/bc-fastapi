@@ -14,15 +14,30 @@
 
 ## 📋 Descripción del Proyecto
 
-Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendices de Tecnólogo en Desarrollo de Software (III trimestre). El programa tiene una duración de **12 semanas** con sesiones semanales de 6 horas, enfocado en la aplicación de mejores prácticas y desarrollo de software de **calidad total**.
+Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendices de Tecnólogo en Desarrollo de Software (III trimestre). El programa tiene una duración de **12 semanas** con sesiones semanales de **6 horas exactas**, enfocado en la aplicación de mejores prácticas y desarrollo de software de **calidad total**.
 
-### 🎯 Objetivos del Bootcamp
+## 🚨 **IMPORTANTE: Restricciones y Expectativas**
 
-- Desarrollar APIs REST robustas y escalables con FastAPI
-- Implementar arquitectura limpia y patrones de microservicios
-- Aplicar mejores prácticas de desarrollo profesional
-- Dominar el stack tecnológico moderno para backend
-- Crear aplicaciones con estándares de calidad industrial
+### ⏰ **Limitación de Tiempo (CRÍTICA)**
+
+- **6 horas semanales exactas** - No modificable
+- **Aprendices con conocimiento básico de Python**
+- **Contenido ajustado para ser 100% realizable**
+
+### 🎯 **Expectativas Realistas**
+
+- ✅ **Progreso constante y sostenible** cada semana
+- ✅ **Experiencias de aprendizaje exitosas** desde día 1
+- ✅ **Enfoque en calidad** más que cantidad
+- ❌ **NO se espera dominio exhaustivo** en una sola semana
+
+### 🎯 Objetivos del Bootcamp (Ajustados)
+
+- Desarrollar APIs REST **funcionales y bien estructuradas** con FastAPI
+- Implementar **patrones básicos a intermedios** de arquitectura
+- Aplicar **mejores prácticas fundamentales** de desarrollo
+- Dominar **herramientas esenciales** del stack moderno
+- Crear aplicaciones con **estándares profesionales básicos**
 
 ## 🛠️ Stack Tecnológico
 
@@ -396,7 +411,6 @@ Para más detalles, ver `_docs/setup/git-github-strategy.md` y `CONTRIBUTING.md`
    - ✅ Historial permanente
    - ✅ Colaboración comunitaria
 2. **Presencial**: Durante horarios de clase y asesorías programadas
-
 
 - **Repositorio**: https://github.com/elparchetipk/bc-fastapi.git
 - **Documentación**: `/bc-fastapi/_docs/`

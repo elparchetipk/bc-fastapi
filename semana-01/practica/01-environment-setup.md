@@ -1,56 +1,213 @@
-# Práctica 1: Configuración del Entorno de Desarrollo
+# Práctica 1: Configuración Rápida del Entorno
 
 ## 🎯 Objetivo
 
-Configurar un entorno de desarrollo profesional que será la base para todo el bootcamp, aplicando mejores prácticas desde el primer momento.
+Configurar el entorno mínimo necesario para desarrollar con FastAPI en solo 90 minutos, enfocándonos en lo esencial.
 
-## ⏱️ Tiempo Estimado: 60 minutos
+## ⏱️ Tiempo Estimado: 90 minutos (incluye buffer para problemas)
 
 ## 📋 Pre-requisitos
 
-- Sistema operativo: Linux (Ubuntu 20+), macOS (11+), o Windows con WSL2
+- Python 3.8+ ya instalado (verificar con `python3 --version`)
 - Conexión a internet estable
 - Cuenta de GitHub activa
+- Editor de código (VS Code recomendado)
 
-## 🛠️ Herramientas a Configurar
+## 🚀 Setup Rápido (3 pasos esenciales)
 
-### 1. Python 3.11+ con pyenv (Recomendado)
-
-#### ¿Por qué pyenv?
-
-- Gestión de múltiples versiones de Python
-- Aislamiento entre proyectos
-- Estándar en la industria para desarrollo Python profesional
-
-#### Instalación paso a paso
-
-**Linux/macOS:**
+### Paso 1: Verificar Python (5 min)
 
 ```bash
-# Instalar dependencias del sistema
-sudo apt update && sudo apt install -y make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
-libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+# Verificar versión de Python
+python3 --version
+# Debe mostrar Python 3.8 o superior
 
-# Instalar pyenv
-curl https://pyenv.run | bash
+# Verificar pip
+python3 -m pip --version
 
-# Agregar a ~/.bashrc o ~/.zshrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+# Si no tienes Python 3.8+, usar versión del sistema
+# NOTA: Para Semana 2 configuraremos pyenv profesional
+```
 
-# Reiniciar shell
-exec "$SHELL"
+### Paso 2: Crear Proyecto FastAPI (15 min)
 
-# Instalar Python 3.11.4
-pyenv install 3.11.4
-pyenv global 3.11.4
+```bash
+# Crear directorio del proyecto
+mkdir mi-primera-api
+cd mi-primera-api
+
+# Crear entorno virtual
+python3 -m venv venv
+
+# Activar entorno virtual
+# Linux/macOS:
+source venv/bin/activate
+# Windows:
+# venv\Scripts\activate
+
+# Actualizar pip
+pip install --upgrade pip
+
+# Instalar FastAPI y Uvicorn
+pip install "fastapi[all]" uvicorn
 
 # Verificar instalación
-python --version  # Debe mostrar Python 3.11.4
-which python      # Debe mostrar ruta de pyenv
+pip list | grep fastapi
+pip list | grep uvicorn
 ```
+
+### Paso 3: Configuración Git Básica (10 min)
+
+```bash
+# Configurar Git globalmente (solo primera vez)
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
+
+# Inicializar repositorio
+git init
+
+# Crear .gitignore básico
+cat > .gitignore << EOF
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
+
+# Primer commit
+git add .gitignore
+git commit -m "feat: configuración inicial del proyecto"
+```
+
+## ✅ Verificación del Setup (5 min)
+
+Crear un archivo de prueba para verificar que todo funciona:
+
+```bash
+# Crear archivo de prueba
+cat > test_setup.py << EOF
+#!/usr/bin/env python3
+"""
+Verificación rápida del entorno FastAPI
+"""
+
+try:
+    import fastapi
+    import uvicorn
+    print("✅ FastAPI instalado correctamente")
+    print(f"   Versión FastAPI: {fastapi.__version__}")
+    print(f"   Versión Uvicorn: {uvicorn.__version__}")
+
+    # Crear API mínima de prueba
+    from fastapi import FastAPI
+    app = FastAPI()
+
+    @app.get("/")
+    def test():
+        return {"mensaje": "¡Entorno configurado correctamente!"}
+
+    print("✅ Setup completado - API de prueba creada")
+    print("🚀 Para ejecutar: uvicorn test_setup:app --reload")
+
+except ImportError as e:
+    print("❌ Error en la instalación:")
+    print(f"   {e}")
+    print("💡 Intenta reinstalar: pip install 'fastapi[all]' uvicorn")
+
+EOF
+
+# Ejecutar verificación
+python test_setup.py
+```
+
+## 🎯 Objetivos Cumplidos
+
+Al finalizar este setup rápido, deberías tener:
+
+- ✅ **Python 3.8+ funcionando**
+- ✅ **Entorno virtual creado y activado**
+- ✅ **FastAPI y Uvicorn instalados**
+- ✅ **Git configurado básicamente**
+- ✅ **Proyecto inicial listo para desarrollo**
+
+## 🔄 Próximos Pasos
+
+1. **Inmediato**: Proceder a crear tu primera API (Práctica 2)
+2. **Semana 2**: Configuraremos herramientas avanzadas (pyenv, Docker)
+3. **Semana 3**: Setup de testing y CI/CD
+
+## 🆘 Problemas Comunes
+
+### Python no encontrado
+
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install python3 python3-pip python3-venv
+
+# macOS (con Homebrew)
+brew install python3
+
+# Windows
+# Descargar desde python.org
+```
+
+### pip no funciona
+
+```bash
+# Reinstalar pip
+python3 -m ensurepip --upgrade
+python3 -m pip install --upgrade pip
+```
+
+### Entorno virtual no se activa
+
+```bash
+# Verificar que venv existe
+ls -la venv/
+
+# Recrear si es necesario
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+```
+
+## 📝 Notas Importantes
+
+- **Este es un setup mínimo**: En Semana 2 profundizaremos
+- **No te preocupes por perfección**: Busca funcionalidad
+- **Pide ayuda temprano**: No gastes más de 20 min en un problema
+- **Documenta errores**: Ayudarán a mejorar el proceso
+
+## 🎯 Tiempo Target vs Real
+
+- **Setup Python**: 5 min target
+- **Entorno virtual + FastAPI**: 15 min target
+- **Git básico**: 10 min target
+- **Verificación**: 5 min target
+- **Buffer problemas**: 55 min disponibles
+
+**Total: 90 min (realistas con troubleshooting)**
+python --version # Debe mostrar Python 3.11.4
+which python # Debe mostrar ruta de pyenv
+
+````
 
 **Windows (WSL2):**
 
@@ -58,7 +215,7 @@ which python      # Debe mostrar ruta de pyenv
 # En WSL2, seguir los mismos pasos que Linux
 # Asegurarse de que WSL2 esté configurado correctamente
 wsl --version
-```
+````
 
 #### ✅ Checkpoint 1: Verificación de Python
 
