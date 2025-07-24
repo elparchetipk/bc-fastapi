@@ -26,9 +26,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Base de datos simulada
-users_db = []
-articles_db = []
+# Base de datos simulada (con type hints)
+users_db: List[dict] = []
+articles_db: List[dict] = []
 
 # Endpoints de usuario
 @app.post("/users", response_model=UserResponse, status_code=201)
@@ -42,7 +42,7 @@ async def create_user(user: UserCreate):
         "id": len(users_db) + 1,
         "created_at": datetime.now(),
         "is_active": True,
-        **user.dict()
+        **user.model_dump()
     }
     users_db.append(new_user)
     return new_user

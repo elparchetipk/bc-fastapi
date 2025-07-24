@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import Optional, List
 from datetime import datetime
 from enum import Enum
@@ -17,14 +17,39 @@ class TimestampMixin(BaseModel):
 
 # Modelo para usuario
 class UserCreate(BaseModel):
-    name: str = Field(..., min_length=2, max_length=50, example="Juan Pérez")
-    email: EmailStr = Field(..., example="juan@email.com")
-    age: int = Field(..., ge=18, le=120, example=25)
-    interests: Optional[List[Category]] = Field(None, example=["technology", "science"])
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "name": "Juan Pérez",
+                "email": "juan@email.com",
+                "age": 25,
+                "interests": ["technology", "science"]
+            }
+        }
+    )
+    
+    name: str = Field(min_length=2, max_length=50, description="Nombre completo del usuario")
+    email: EmailStr = Field(description="Email válido del usuario")
+    age: int = Field(ge=18, le=120, description="Edad del usuario")
+    interests: Optional[List[Category]] = Field(default=None, description="Intereses del usuario")
 
 class User(UserCreate, TimestampMixin):
-    id: int = Field(..., example=1)
-    is_active: bool = Field(True, example=True)
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "id": 1,
+                "name": "Juan Pérez",
+                "email": "juan@email.com",
+                "age": 25,
+                "interests": ["technology", "science"],
+                "is_active": True,
+                "created_at": "2025-01-01T10:00:00Z"
+            }
+        }
+    )
+    
+    id: int = Field(description="ID único del usuario")
+    is_active: bool = Field(default=True, description="Estado activo del usuario")
 
 class UserResponse(BaseModel):
     id: int
@@ -36,23 +61,49 @@ class UserResponse(BaseModel):
     created_at: datetime
 
 class UserUpdate(BaseModel):
-    name: Optional[str] = Field(None, min_length=2, max_length=50)
+    name: Optional[str] = Field(default=None, min_length=2, max_length=50)
     email: Optional[EmailStr] = None
-    age: Optional[int] = Field(None, ge=18, le=120)
+    age: Optional[int] = Field(default=None, ge=18, le=120)
     interests: Optional[List[Category]] = None
     is_active: Optional[bool] = None
 
 # Modelo para artículos
 class ArticleCreate(BaseModel):
-    title: str = Field(..., min_length=5, max_length=200, example="Introducción a FastAPI")
-    content: str = Field(..., min_length=10, example="FastAPI es un framework moderno...")
-    category: Category = Field(..., example="technology")
-    tags: Optional[List[str]] = Field(None, example=["python", "api", "web"])
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "title": "Introducción a FastAPI",
+                "content": "FastAPI es un framework moderno para crear APIs con Python...",
+                "category": "technology",
+                "tags": ["python", "api", "web"]
+            }
+        }
+    )
+    
+    title: str = Field(min_length=5, max_length=200, description="Título del artículo")
+    content: str = Field(min_length=10, description="Contenido del artículo")
+    category: Category = Field(description="Categoría del artículo")
+    tags: Optional[List[str]] = Field(default=None, description="Tags del artículo")
 
 class Article(ArticleCreate, TimestampMixin):
-    id: int = Field(..., example=1)
-    author_id: int = Field(..., example=1)
-    views: int = Field(0, example=0)
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "id": 1,
+                "title": "Introducción a FastAPI",
+                "content": "FastAPI es un framework moderno...",
+                "category": "technology",
+                "tags": ["python", "api", "web"],
+                "author_id": 1,
+                "views": 0,
+                "created_at": "2025-01-01T10:00:00Z"
+            }
+        }
+    )
+    
+    id: int = Field(description="ID único del artículo")
+    author_id: int = Field(description="ID del autor")
+    views: int = Field(default=0, description="Número de visualizaciones")
 
 class ArticleResponse(BaseModel):
     id: int

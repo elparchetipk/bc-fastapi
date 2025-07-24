@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, validator, Field
+from pydantic import BaseModel, EmailStr, field_validator, Field, ConfigDict
 from typing import Optional, List
 from datetime import datetime
 from enum import Enum
@@ -11,28 +11,9 @@ class UserRole(str, Enum):
 
 # Modelo básico
 class User(BaseModel):
-    id: int
-    name: str = Field(..., min_length=2, max_length=50)
-    email: EmailStr
-    age: int = Field(..., ge=18, le=120)  # ge = greater equal, le = less equal
-    role: UserRole = UserRole.USER
-    is_active: bool = True
-    created_at: datetime = Field(default_factory=datetime.now)
-    tags: Optional[List[str]] = None
-
-    # Validador personalizado
-    @validator('name')
-    def name_must_contain_space(cls, v):
-        if ' ' not in v.strip():
-            raise ValueError('El nombre debe contener al menos un espacio')
-        return v.title()
-
-    # Configuración del modelo
-    class Config:
-        # Permite usar enum values
-        use_enum_values = True
-        # Ejemplo de JSON válido
-        schema_extra = {
+    model_config = ConfigDict(
+        use_enum_values=True,
+        json_schema_extra={
             "example": {
                 "id": 1,
                 "name": "Juan Pérez",
@@ -43,6 +24,24 @@ class User(BaseModel):
                 "tags": ["python", "fastapi"]
             }
         }
+    )
+
+    id: int
+    name: str = Field(..., min_length=2, max_length=50)
+    email: EmailStr
+    age: int = Field(..., ge=18, le=120)  # ge = greater equal, le = less equal
+    role: UserRole = UserRole.USER
+    is_active: bool = True
+    created_at: datetime = Field(default_factory=datetime.now)
+    tags: Optional[List[str]] = None
+
+    # Validador personalizado usando Pydantic v2
+    @field_validator('name')
+    @classmethod
+    def name_must_contain_space(cls, v: str) -> str:
+        if ' ' not in v.strip():
+            raise ValueError('El nombre debe contener al menos un espacio')
+        return v.title()
 
 # Modelo para respuestas (sin campos sensibles)
 class UserResponse(BaseModel):
@@ -64,18 +63,17 @@ class UserUpdate(BaseModel):
 # Ejemplos de uso
 if __name__ == "__main__":
     # Crear usuario válido
-    user_data = {
-        "id": 1,
-        "name": "juan pérez",
-        "email": "juan@email.com",
-        "age": 25,
-        "role": "admin"
-    }
+    user = User(
+        id=1,
+        name="juan pérez",
+        email="juan@email.com",
+        age=25,
+        role=UserRole.ADMIN
+    )
     
-    user = User(**user_data)
     print("Usuario creado:", user)
-    print("JSON:", user.json(indent=2))
-    print("Dict:", user.dict())
+    print("JSON:", user.model_dump_json(indent=2))
+    print("Dict:", user.model_dump())
     
     # Validación de errores
     try:
@@ -84,7 +82,7 @@ if __name__ == "__main__":
             name="Juan",  # Sin espacio - error
             email="invalid-email",  # Email inválido
             age=15,  # Menor de 18 - error
-            role="invalid_role"  # Rol inválido
+            role=UserRole.USER  # Usar enum válido para esta prueba
         )
     except Exception as e:
         print("Errores de validación:", e)

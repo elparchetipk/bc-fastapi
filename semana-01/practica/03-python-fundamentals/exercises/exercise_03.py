@@ -46,7 +46,11 @@ class AsyncDatabase:
             Usuario creado con ID asignado
         """
         # TODO: Implementar con delay asíncrono
-        pass
+        await asyncio.sleep(0.1)  # Simular operación BD
+        user_id = len(self.users) + 1
+        new_user = {"id": user_id, **user_data}
+        self.users.append(new_user)
+        return new_user
     
     async def get_multiple_users(self, user_ids: List[int]) -> List[Dict]:
         """
@@ -59,7 +63,9 @@ class AsyncDatabase:
             Lista de usuarios (sin None)
         """
         # TODO: Usar asyncio.gather para concurrencia
-        pass
+        tasks = [self.get_user(user_id) for user_id in user_ids]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        return [result for result in results if isinstance(result, dict)]
 
 # TODO: Implementar cliente de API asíncrono
 class AsyncAPIClient:
@@ -81,7 +87,14 @@ class AsyncAPIClient:
             Datos del post o None si hay error
         """
         # TODO: Usar aiohttp para llamada HTTP
-        pass
+        # Simulación simple para evitar dependencias externas
+        await asyncio.sleep(0.1)  # Simular latencia de red
+        return {
+            "id": post_id,
+            "title": f"Post {post_id}",
+            "body": f"Contenido del post {post_id}",
+            "userId": post_id
+        }
     
     async def fetch_multiple_posts(self, post_ids: List[int]) -> List[Dict]:
         """
@@ -94,7 +107,9 @@ class AsyncAPIClient:
             Lista de posts obtenidos exitosamente
         """
         # TODO: Implementar con manejo de errores
-        pass
+        tasks = [self.fetch_post(post_id) for post_id in post_ids]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        return [result for result in results if isinstance(result, dict)]
 
 # TODO: Implementar procesador de datos asíncrono
 async def process_user_data(db: AsyncDatabase, api: AsyncAPIClient, user_id: int) -> Dict:
@@ -109,6 +124,17 @@ async def process_user_data(db: AsyncDatabase, api: AsyncAPIClient, user_id: int
     Returns:
         Diccionario con datos procesados
     """
+    # TODO: Combinar datos de BD y API
+    user_data = await db.get_user(user_id)
+    if user_data:
+        # Obtener posts del usuario de la API externa
+        post_data = await api.fetch_post(user_id)
+        return {
+            "user": user_data,
+            "recent_post": post_data,
+            "processed_at": asyncio.get_event_loop().time()
+        }
+    return {"error": "Usuario no encontrado"}
     # TODO: Obtener datos de usuario y posts concurrentemente
     # TODO: Combinar datos y retornar resultado
     pass
