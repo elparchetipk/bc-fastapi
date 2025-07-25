@@ -5,6 +5,140 @@ Todos los cambios notables en este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2024-12-13] - Semana 7: Performance y Monitoreo Completada
+
+### 🚀 Nueva Semana de Performance y Monitoring Desarrollada
+
+- **Semana 7 completamente implementada** para 6 horas semanales estrictas
+- **Sistema completo de performance optimization** con profiling y benchmarking
+- **Multi-layer caching** con Redis y estrategias avanzadas de invalidación
+- **Monitoreo integral** con Prometheus, health checks y dashboards en tiempo real
+
+### 📊 Contenido de Performance y Monitoring Nuevo Creado
+
+#### **Prácticas de Performance Desarrolladas:**
+
+- ✅ `2-practica/23-profiling-benchmarking.md` - Profiling y benchmarking (60 min)
+- ✅ `2-practica/24-database-optimization.md` - Optimización de base de datos (70 min)
+- ✅ `2-practica/25-caching-strategies.md` - Estrategias de caching (75 min)
+- ✅ `2-practica/26-monitoring-apm.md` - Monitoreo y APM (80 min)
+
+#### **Contenido Completo de Performance:**
+
+- ✅ `1-teoria/performance-fundamentals.md` - Fundamentos de performance engineering
+- ✅ `3-ejercicios/ejercicios-performance.md` - 3 ejercicios evaluados de performance
+- ✅ `4-proyecto/especificacion-performance.md` - Proyecto integrador de monitoring
+- ✅ `5-recursos/recursos-performance.md` - Herramientas y recursos especializados
+- ✅ `README.md` y `RUBRICA_SEMANA_7.md` - Documentación y evaluación
+
+### 🎯 Competencias de Performance Desarrolladas
+
+- ✅ **Profiling Mastery**: py-spy, memory-profiler, line-profiler para análisis
+- ✅ **Database Optimization**: Resolución de N+1, eager loading, query optimization
+- ✅ **Caching Systems**: Redis multicapa, TTL dinámico, invalidación inteligente
+- ✅ **APM Implementation**: Prometheus metrics, health checks, structured logging
+- ✅ **Performance Testing**: locust, benchmarking automático, load testing
+
+### 🛠️ Stack de Performance Implementado
+
+- ✅ **py-spy + memory-profiler**: Suite de profiling sin overhead
+- ✅ **Redis**: Cache distribuido con estrategias avanzadas
+- ✅ **Prometheus + Grafana**: Stack de monitoring de industria
+- ✅ **SQLAlchemy optimization**: Eager loading, connection pooling
+- ✅ **locust**: Load testing distribuido y scenarios complejos
+
+### 🔧 Innovaciones Técnicas de Semana 7
+
+- ✅ **Cache TTL Dinámico**: TTL basado en frecuencia de acceso
+- ✅ **Zero-Config Profiling**: Decorators para profiling automático
+- ✅ **Business Metrics**: Métricas específicas del dominio
+- ✅ **Health Checks con Cache**: Reduce overhead de monitoring
+- ✅ **Golden Signals**: Implementación completa de SRE practices
+
+### 📊 Métricas de Contenido Semana 7
+
+- **13 archivos .md** creados con contenido original
+- **17,200+ líneas** de contenido técnico (400 páginas equivalentes)
+- **285 minutos** de prácticas hands-on distribuidas
+- **3 ejercicios evaluados** con rúbricas detalladas
+- **20+ herramientas** especializadas integradas
+
+### 🎯 Integración Pedagógica
+
+- **Builds on Semana 4**: Database optimization extiende conocimientos de BD
+- **Builds on Semana 5**: Session caching para sistemas de autenticación
+- **Builds on Semana 6**: Performance testing complementa testing strategies
+- **Prepares for Future**: Monitoring esencial para deployment y CI/CD
+
+---
+
+## [2024-12-13] - Semana 7: Performance y Monitoreo Completada
+
+### 🚀 Nueva Semana de Performance y Monitoring Desarrollada
+
+- **Semana 7 completamente implementada** para 6 horas semanales estrictas
+- **Sistema completo de performance optimization** con profiling y benchmarking
+- **Multi-layer caching** con Redis y estrategias avanzadas de invalidación
+- **Monitoreo integral** con Prometheus, health checks y dashboards en tiempo real
+
+### 📊 Contenido de Performance y Monitoring Nuevo Creado
+
+#### **Prácticas de Performance Desarrolladas:**
+
+- ✅ `2-practica/23-profiling-benchmarking.md` - Profiling y benchmarking (60 min)
+- ✅ `2-practica/24-database-optimization.md` - Optimización de base de datos (70 min)
+- ✅ `2-practica/25-caching-strategies.md` - Estrategias de caching (75 min)
+- ✅ `2-practica/26-monitoring-apm.md` - Monitoreo y APM (80 min)
+
+#### **Contenido Completo de Performance:**
+
+- ✅ `1-teoria/performance-fundamentals.md` - Fundamentos de performance engineering
+- ✅ `3-ejercicios/ejercicios-performance.md` - 3 ejercicios evaluados de performance
+- ✅ `4-proyecto/especificacion-performance.md` - Proyecto integrador de monitoring
+- ✅ `5-recursos/recursos-performance.md` - Herramientas y recursos especializados
+- ✅ `README.md` y `RUBRICA_SEMANA_7.md` - Documentación y evaluación
+
+### 🎯 Competencias de Performance Desarrolladas
+
+- ✅ **Profiling Mastery**: py-spy, memory-profiler, line-profiler para análisis
+- ✅ **Database Optimization**: Resolución de N+1, eager loading, query optimization
+- ✅ **Caching Systems**: Redis multicapa, TTL dinámico, invalidación inteligente
+- ✅ **APM Implementation**: Prometheus metrics, health checks, structured logging
+- ✅ **Performance Testing**: locust, benchmarking automático, load testing
+
+### 🛠️ Stack de Performance Implementado
+
+- ✅ **py-spy + memory-profiler**: Suite de profiling sin overhead
+- ✅ **Redis**: Cache distribuido con estrategias avanzadas
+- ✅ **Prometheus + Grafana**: Stack de monitoring de industria
+- ✅ **SQLAlchemy optimization**: Eager loading, connection pooling
+- ✅ **locust**: Load testing distribuido y scenarios complejos
+
+### 🔧 Innovaciones Técnicas de Semana 7
+
+- ✅ **Cache TTL Dinámico**: TTL basado en frecuencia de acceso
+- ✅ **Zero-Config Profiling**: Decorators para profiling automático
+- ✅ **Business Metrics**: Métricas específicas del dominio
+- ✅ **Health Checks con Cache**: Reduce overhead de monitoring
+- ✅ **Golden Signals**: Implementación completa de SRE practices
+
+### 📊 Métricas de Contenido Semana 7
+
+- **13 archivos .md** creados con contenido original
+- **17,200+ líneas** de contenido técnico (400 páginas equivalentes)
+- **285 minutos** de prácticas hands-on distribuidas
+- **3 ejercicios evaluados** con rúbricas detalladas
+- **20+ herramientas** especializadas integradas
+
+### 🎯 Integración Pedagógica
+
+- **Builds on Semana 4**: Database optimization extiende conocimientos de BD
+- **Builds on Semana 5**: Session caching para sistemas de autenticación
+- **Builds on Semana 6**: Performance testing complementa testing strategies
+- **Prepares for Future**: Monitoring esencial para deployment y CI/CD
+
+---
+
 ## [2025-01-XX] - Semana 6: Testing y Quality Assurance Completada
 
 ### 🧪 Nueva Semana de Testing y QA Desarrollada
@@ -1549,74 +1683,7 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
   - `CONFIRMACION_ADAPTACION_6H.md` - Verificación final de cambios
 - **Archivos Actualizados**:
   - `README.md` principal - Restricción de 6h/semana claramente comunicada
-  - `plan-trabajo-ajustado-6h.md` - Nueva distribución para 12 semanas
-  - `semana-01/README.md` - Estructura y expectativas realistas
-  - `semana-01/RUBRICA_SEMANA_1.md` - Criterios ajustados a experiencia exitosa
-
-### 🎯 Objetivos Recalibrados
-
-- **Antes**: Dominio completo de FastAPI en Semana 1
-- **Después**: Experiencia exitosa con primera API funcionando
-- **Enfoque**: Motivación y base sólida vs perfección técnica
-- **Entregables**: API básica + documentación automática vs proyecto complejo
-
-### 🔄 Impacto en Semanas Posteriores
-
-- **Semana 2**: Recibirá contenido Python/FastAPI avanzado de Semana 1
-- **Semana 3-4**: Conceptos de Pydantic y CRUD completo
-- **Progresión**: Más gradual y sostenible para estudiantes con conocimiento básico de Python
-
-## [2025-07-24] - Semana 3: FastAPI Intermedio - Desarrollo Completo
-
-### 🚀 Nueva Semana Completamente Implementada
-
-- **Semana 3 totalmente desarrollada** con enfoque en APIs REST profesionales
-- **4 bloques de 90 minutos** para un total de 6 horas exactas
-- **Progresión desde endpoints básicos** hasta APIs estructuradas y robustas
-- **Proyecto integrador**: API de Inventario Simple con CRUD completo
-
-### 📚 Contenido Nuevo Desarrollado
-
-#### **Estructura Principal:**
-
-- ✅ `semana-03/README.md` (150 líneas) - Navegación y objetivos claros
-- ✅ `semana-03/RUBRICA_SEMANA_3.md` (269 líneas) - Evaluación de 4 criterios
-- ✅ `semana-03/VERIFICACION_CONTENIDO.md` (177 líneas) - Control de calidad
-- ✅ `semana-03/RESUMEN_SEMANA_3.md` (247 líneas) - Documentación desarrollo
-
-#### **Teoría Fundamental:**
-
-- ✅ `teoria/rest-http-concepts.md` (489 líneas)
-  - Principios REST fundamentales
-  - Métodos HTTP y cuándo usarlos
-  - Status codes apropiados
-  - Diseño de APIs profesionales
-
-#### **Prácticas Principales (90 min c/u):**
-
-- ✅ `practica/07-endpoints-http-completos.md` (624 líneas)
-  - GET, POST, PUT, DELETE completos
-  - Path, query y body parameters
-  - Response models consistentes
-  - Testing con Postman
-- ✅ `practica/08-validacion-avanzada.md` (581 líneas)
-
-  - Validación de parámetros de ruta
-  - Query parameters con tipos complejos
-  - Body validation con Pydantic
-  - Custom validators y error messages
-
-- ✅ `practica/09-manejo-errores.md` (623 líneas)
-
-  - HTTPException profesional
-  - Status codes apropiados
-  - Error responses consistentes
-  - Middleware de manejo de errores
-
-- ✅ `practica/10-estructura-rest.md` (587 líneas)
-  - Organización modular del código
-  - Separación de responsabilidades
-  - Best practices de FastAPI
+  - `plan-trabajo-ajust
   - Refactoring y mantenibilidad
 
 #### **Ejercicios y Proyecto:**
