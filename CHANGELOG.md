@@ -5,6 +5,56 @@ Todos los cambios notables en este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2025-01-XX] - Semana 6: Testing y Quality Assurance Completada
+
+### 🧪 Nueva Semana de Testing y QA Desarrollada
+
+- **Semana 6 completamente implementada** para 6 horas semanales
+- **Framework completo de testing** con pytest y herramientas profesionales
+- **4 bloques de práctica** con testing unitario, integración, QA y avanzado
+- **Proyecto integral de testing** para API de gestión con CI/CD
+
+### 📚 Contenido de Testing Nuevo Creado
+
+#### **Prácticas de Testing Desarrolladas:**
+
+- ✅ `2-practica/19-pytest-setup.md` - Configuración pytest (90 min)
+- ✅ `2-practica/20-unit-integration-tests.md` - Tests unitarios e integración (90 min)
+- ✅ `2-practica/21-qa-coverage.md` - Quality Assurance y Coverage (90 min)
+- ✅ `2-practica/22-advanced-testing.md` - Testing avanzado y optimización (90 min)
+
+#### **Contenido Completo de Testing:**
+
+- ✅ `1-teoria/testing-fundamentals.md` - Fundamentos de testing y mejores prácticas
+- ✅ `3-ejercicios/ejercicios-testing.md` - 4 ejercicios progresivos de testing
+- ✅ `4-proyecto/especificacion-testing.md` - Proyecto integral de testing
+- ✅ `5-recursos/recursos-testing.md` - Documentación, herramientas y comunidades
+- ✅ `README.md` y `RUBRICA_SEMANA_6.md` - Documentación principal
+
+### 🎯 Competencias de Testing Desarrolladas
+
+- ✅ **pytest Mastery**: Configuración avanzada, fixtures, markers, parametrización
+- ✅ **Quality Assurance**: Black, isort, flake8, mypy integrados en workflow
+- ✅ **Testing Patterns**: Unitarios, integración, mocking, performance testing
+- ✅ **Coverage Analysis**: pytest-cov con objetivos 80%+ y reportes HTML
+- ✅ **CI/CD Integration**: GitHub Actions con testing automatizado
+
+### 🛠️ Stack de Testing Implementado
+
+- ✅ **pytest + pytest-asyncio**: Framework de testing asíncrono
+- ✅ **httpx**: Cliente HTTP para testing de APIs FastAPI
+- ✅ **pytest-cov**: Análisis de cobertura de código
+- ✅ **Black + isort + flake8 + mypy**: Suite completa de QA
+- ✅ **locust**: Load testing básico para performance
+
+### 📊 Métricas de Contenido Semana 6
+
+- **Total de líneas**: 16,668+ líneas de contenido técnico
+- **Archivos creados**: 10 archivos principales
+- **Prácticas**: 4 prácticas de 90 minutos cada una
+- **Ejercicios**: 4 ejercicios progresivos con extensiones avanzadas
+- **Proyecto**: API de gestión con testing completo
+
 ## [2025-01-XX] - Semana 5: Autenticación y Autorización Completada
 
 ### 🔐 Nueva Semana de Seguridad Desarrollada
