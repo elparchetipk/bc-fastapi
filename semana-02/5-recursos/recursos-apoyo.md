@@ -73,27 +73,27 @@ from typing import List, Dict, Optional, Union, Any, Callable
 from datetime import datetime, date
 
 # Tipos básicos
-nombre: str = "Juan"
-edad: int = 25
-precio: float = 29.99
-activo: bool = True
+name: str = "Juan"
+age: int = 25
+price: float = 29.99
+active: bool = True
 
 # Colecciones
-numeros: List[int] = [1, 2, 3]
-configuracion: Dict[str, str] = {"host": "localhost"}
-datos: Dict[str, Any] = {"nombre": "Juan", "edad": 25}
+numbers: List[int] = [1, 2, 3]
+config: Dict[str, str] = {"host": "localhost"}
+data: Dict[str, Any] = {"name": "Juan", "age": 25}
 
 # Opcionales
 email: Optional[str] = None  # Puede ser str o None
-resultado: Union[str, int] = "texto"  # Puede ser str o int
+result: Union[str, int] = "texto"  # Puede ser str o int
 
 # Funciones
-def procesar(datos: List[str]) -> Dict[str, int]:
-    return {"total": len(datos)}
+def process(data: List[str]) -> Dict[str, int]:
+    return {"total": len(data)}
 
 # Async
-async def obtener_datos() -> List[Dict[str, Any]]:
-    return [{"id": 1, "nombre": "test"}]
+async def get_data() -> List[Dict[str, Any]]:
+    return [{"id": 1, "name": "test"}]
 ```
 
 ### **Pydantic Patterns**
@@ -104,32 +104,32 @@ from enum import Enum
 from datetime import datetime
 from typing import Optional
 
-class Estado(str, Enum):
-    activo = "activo"
-    inactivo = "inactivo"
+class Status(str, Enum):
+    active = "active"
+    inactive = "inactive"
 
-class MiModelo(BaseModel):
+class MyModel(BaseModel):
     # Field con validación
-    nombre: str = Field(..., min_length=2, max_length=50, description="Nombre completo")
-    edad: int = Field(..., ge=18, le=120, description="Edad en años")
+    name: str = Field(..., min_length=2, max_length=50, description="Nombre completo")
+    age: int = Field(..., ge=18, le=120, description="Edad en años")
     email: Optional[str] = Field(None, regex=r'^[^@]+@[^@]+\.[^@]+$')
-    estado: Estado = Estado.activo
+    status: Status = Status.active
 
     # Validator simple
-    @validator('nombre')
-    def normalizar_nombre(cls, v):
+    @validator('name')
+    def normalize_name(cls, v):
         return v.strip().title()
 
     # Validator con values
     @validator('email')
-    def validar_email_estado(cls, v, values):
-        if values.get('estado') == Estado.activo and not v:
+    def validate_email_status(cls, v, values):
+        if values.get('status') == Status.active and not v:
             raise ValueError('Email requerido para usuarios activos')
         return v
 
     # Root validator
     @root_validator
-    def validar_modelo_completo(cls, values):
+    def validate_complete_model(cls, values):
         # Validaciones que requieren múltiples campos
         return values
 
@@ -139,10 +139,10 @@ class MiModelo(BaseModel):
         validate_assignment = True  # Validar al asignar
         schema_extra = {
             "example": {
-                "nombre": "Juan Pérez",
-                "edad": 30,
-                "email": "juan@ejemplo.com",
-                "estado": "activo"
+                "name": "Juan Pérez",
+                "age": 30,
+                "email": "juan@example.com",
+                "status": "active"
             }
         }
 ```
@@ -156,40 +156,40 @@ from typing import List, Optional
 app = FastAPI()
 
 # Endpoint básico
-@app.get("/usuarios/{user_id}", response_model=Usuario)
-def obtener_usuario(user_id: int = Path(..., ge=1, description="ID del usuario")):
+@app.get("/users/{user_id}", response_model=User)
+def get_user(user_id: int = Path(..., ge=1, description="ID del usuario")):
     # Lógica aquí
     pass
 
 # Query parameters con validación
-@app.get("/usuarios", response_model=List[Usuario])
-def listar_usuarios(
-    activo: bool = Query(True, description="Filtrar por estado"),
+@app.get("/users", response_model=List[User])
+def list_users(
+    active: bool = Query(True, description="Filtrar por estado"),
     limit: int = Query(10, ge=1, le=100, description="Límite de resultados"),
     offset: int = Query(0, ge=0, description="Offset para paginación")
 ):
     pass
 
 # Request body
-@app.post("/usuarios", response_model=Usuario, status_code=status.HTTP_201_CREATED)
-def crear_usuario(usuario: UsuarioCreate = Body(..., description="Datos del usuario")):
+@app.post("/users", response_model=User, status_code=status.HTTP_201_CREATED)
+def create_user(user: UserCreate = Body(..., description="Datos del usuario")):
     pass
 
 # Múltiples response models
-@app.get("/usuarios/{user_id}",
+@app.get("/users/{user_id}",
          responses={
-             200: {"model": Usuario, "description": "Usuario encontrado"},
+             200: {"model": User, "description": "Usuario encontrado"},
              404: {"model": ErrorModel, "description": "Usuario no encontrado"}
          })
-def obtener_usuario_completo(user_id: int):
+def get_complete_user(user_id: int):
     pass
 
 # Async endpoint
-@app.get("/usuarios/{user_id}/external")
-async def obtener_datos_externos(user_id: int):
+@app.get("/users/{user_id}/external")
+async def get_external_data(user_id: int):
     # Operaciones async aquí
-    resultado = await llamada_externa(user_id)
-    return resultado
+    result = await external_call(user_id)
+    return result
 ```
 
 ### **Async/Await Patterns**
@@ -200,41 +200,41 @@ import httpx
 from typing import List
 
 # Función async básica
-async def operacion_lenta():
+async def slow_operation():
     await asyncio.sleep(1)
-    return "completado"
+    return "completed"
 
 # Multiple operaciones en paralelo
-async def procesar_lote(items: List[str]):
-    tareas = [procesar_item(item) for item in items]
-    resultados = await asyncio.gather(*tareas)
-    return resultados
+async def process_batch(items: List[str]):
+    tasks = [process_item(item) for item in items]
+    results = await asyncio.gather(*tasks)
+    return results
 
 # HTTP client async
-async def llamada_api_externa(url: str):
+async def external_api_call(url: str):
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         response.raise_for_status()
         return response.json()
 
 # Con timeout
-async def operacion_con_timeout():
+async def operation_with_timeout():
     try:
-        resultado = await asyncio.wait_for(
-            operacion_lenta(),
+        result = await asyncio.wait_for(
+            slow_operation(),
             timeout=5.0
         )
-        return resultado
+        return result
     except asyncio.TimeoutError:
         raise HTTPException(status_code=408, detail="Timeout")
 
 # Semáforo para limitar concurrencia
-semaforo = asyncio.Semaphore(3)
+semaphore = asyncio.Semaphore(3)
 
-async def operacion_limitada():
-    async with semaforo:
-        await operacion_lenta()
-        return "completado"
+async def limited_operation():
+    async with semaphore:
+        await slow_operation()
+        return "completed"
 ```
 
 ---
@@ -254,46 +254,46 @@ from datetime import datetime
 
 BASE_URL = "http://localhost:8000"
 
-def test_crud_usuario():
+def test_user_crud():
     """Test completo de CRUD de usuarios"""
     print("🧪 Testing CRUD de usuarios...")
 
     # 1. Crear usuario
-    nuevo_usuario = {
-        "nombre": "Test User",
-        "email": "test@ejemplo.com",
-        "tipo": "developer",
+    new_user = {
+        "name": "Test User",
+        "email": "test@example.com",
+        "type": "developer",
         "password": "12345678"
     }
 
-    response = requests.post(f"{BASE_URL}/usuarios", json=nuevo_usuario)
+    response = requests.post(f"{BASE_URL}/users", json=new_user)
     assert response.status_code == 201, f"Error creando usuario: {response.text}"
-    usuario = response.json()
-    user_id = usuario["id"]
+    user = response.json()
+    user_id = user["id"]
     print(f"✅ Usuario creado con ID {user_id}")
 
     # 2. Obtener usuario
-    response = requests.get(f"{BASE_URL}/usuarios/{user_id}")
+    response = requests.get(f"{BASE_URL}/users/{user_id}")
     assert response.status_code == 200, f"Error obteniendo usuario: {response.text}"
     print("✅ Usuario obtenido correctamente")
 
     # 3. Actualizar usuario
-    update_data = {"nombre": "Test User Updated"}
-    response = requests.patch(f"{BASE_URL}/usuarios/{user_id}", json=update_data)
+    update_data = {"name": "Test User Updated"}
+    response = requests.patch(f"{BASE_URL}/users/{user_id}", json=update_data)
     assert response.status_code == 200, f"Error actualizando usuario: {response.text}"
     print("✅ Usuario actualizado correctamente")
 
     # 4. Listar usuarios
-    response = requests.get(f"{BASE_URL}/usuarios")
+    response = requests.get(f"{BASE_URL}/users")
     assert response.status_code == 200, f"Error listando usuarios: {response.text}"
-    usuarios = response.json()
-    assert len(usuarios) > 0, "No se encontraron usuarios"
-    print(f"✅ Lista de usuarios obtenida: {len(usuarios)} usuarios")
+    users = response.json()
+    assert len(users) > 0, "No se encontraron usuarios"
+    print(f"✅ Lista de usuarios obtenida: {len(users)} usuarios")
 
     print("🎉 Test CRUD usuarios completado!")
 
 if __name__ == "__main__":
-    test_crud_usuario()
+    test_user_crud()
 ```
 
 ### **Script de Población de Datos**
@@ -309,91 +309,91 @@ from datetime import date, timedelta
 
 BASE_URL = "http://localhost:8000"
 
-def poblar_datos():
+def populate_data():
     """Poblar API con datos de ejemplo"""
     print("📊 Poblando datos de ejemplo...")
 
     # Usuarios
-    usuarios = [
-        {"nombre": "Admin User", "email": "admin@empresa.com", "tipo": "admin", "password": "admin123"},
-        {"nombre": "Manager Test", "email": "manager@empresa.com", "tipo": "manager", "password": "manager123"},
-        {"nombre": "Dev Frontend", "email": "frontend@empresa.com", "tipo": "developer", "password": "dev123"},
-        {"nombre": "Dev Backend", "email": "backend@empresa.com", "tipo": "developer", "password": "dev123"},
-        {"nombre": "QA Tester", "email": "qa@empresa.com", "tipo": "viewer", "password": "qa123"},
+    users = [
+        {"name": "Admin User", "email": "admin@company.com", "type": "admin", "password": "admin123"},
+        {"name": "Manager Test", "email": "manager@company.com", "type": "manager", "password": "manager123"},
+        {"name": "Dev Frontend", "email": "frontend@company.com", "type": "developer", "password": "dev123"},
+        {"name": "Dev Backend", "email": "backend@company.com", "type": "developer", "password": "dev123"},
+        {"name": "QA Tester", "email": "qa@company.com", "type": "viewer", "password": "qa123"},
     ]
 
     user_ids = []
-    for usuario in usuarios:
-        response = requests.post(f"{BASE_URL}/usuarios", json=usuario)
+    for user in users:
+        response = requests.post(f"{BASE_URL}/users", json=user)
         if response.status_code == 201:
             user_ids.append(response.json()["id"])
-            print(f"✅ Usuario creado: {usuario['nombre']}")
+            print(f"✅ Usuario creado: {user['name']}")
 
     # Proyectos
-    proyectos = [
+    projects = [
         {
-            "nombre": "Sistema Web",
-            "descripcion": "Desarrollo del sistema web principal",
-            "fecha_inicio": str(date.today()),
-            "fecha_limite": str(date.today() + timedelta(days=90)),
+            "name": "Web System",
+            "description": "Desarrollo del sistema web principal",
+            "start_date": str(date.today()),
+            "due_date": str(date.today() + timedelta(days=90)),
             "manager_id": user_ids[1] if len(user_ids) > 1 else 1
         },
         {
-            "nombre": "App Mobile",
-            "descripcion": "Aplicación móvil complementaria",
-            "fecha_inicio": str(date.today()),
-            "fecha_limite": str(date.today() + timedelta(days=60)),
+            "name": "Mobile App",
+            "description": "Aplicación móvil complementaria",
+            "start_date": str(date.today()),
+            "due_date": str(date.today() + timedelta(days=60)),
             "manager_id": user_ids[1] if len(user_ids) > 1 else 1
         }
     ]
 
-    proyecto_ids = []
-    for proyecto in proyectos:
-        response = requests.post(f"{BASE_URL}/proyectos", json=proyecto)
+    project_ids = []
+    for project in projects:
+        response = requests.post(f"{BASE_URL}/projects", json=project)
         if response.status_code == 201:
-            proyecto_ids.append(response.json()["id"])
-            print(f"✅ Proyecto creado: {proyecto['nombre']}")
+            project_ids.append(response.json()["id"])
+            print(f"✅ Proyecto creado: {project['name']}")
 
     # Tareas
-    tareas = [
+    tasks = [
         {
-            "titulo": "Configurar entorno de desarrollo",
-            "descripcion": "Configurar Docker y dependencias",
-            "estado": "completada",
-            "prioridad": "alta",
-            "proyecto_id": proyecto_ids[0] if proyecto_ids else 1,
-            "asignado_a": user_ids[2] if len(user_ids) > 2 else 1,
-            "estimacion_horas": 8.0
+            "title": "Configure development environment",
+            "description": "Configurar Docker y dependencias",
+            "status": "completed",
+            "priority": "high",
+            "project_id": project_ids[0] if project_ids else 1,
+            "assigned_to": user_ids[2] if len(user_ids) > 2 else 1,
+            "estimated_hours": 8.0
         },
         {
-            "titulo": "Diseñar base de datos",
-            "descripcion": "Crear schema de la base de datos",
-            "estado": "en_progreso",
-            "prioridad": "alta",
-            "proyecto_id": proyecto_ids[0] if proyecto_ids else 1,
-            "asignado_a": user_ids[3] if len(user_ids) > 3 else 1,
-            "estimacion_horas": 16.0
+            "title": "Design database",
+            "description": "Crear schema de la base de datos",
+            "status": "in_progress",
+            "priority": "high",
+            "project_id": project_ids[0] if project_ids else 1,
+            "assigned_to": user_ids[3] if len(user_ids) > 3 else 1,
+            "estimated_hours": 16.0
         },
         {
-            "titulo": "Implementar autenticación",
-            "descripcion": "Sistema de login y registro",
-            "estado": "pendiente",
-            "prioridad": "media",
-            "proyecto_id": proyecto_ids[0] if proyecto_ids else 1,
-            "asignado_a": user_ids[3] if len(user_ids) > 3 else 1,
-            "estimacion_horas": 20.0
+            "title": "Implement authentication",
+            "description": "Sistema de login y registro",
+            "status": "pending",
+            "priority": "medium",
+            "project_id": project_ids[0] if project_ids else 1,
+            "assigned_to": user_ids[3] if len(user_ids) > 3 else 1,
+            "estimated_hours": 20.0
         }
     ]
 
-    for tarea in tareas:
-        response = requests.post(f"{BASE_URL}/tareas", json=tarea)
+    for task in tasks:
+        response = requests.post(f"{BASE_URL}/tasks", json=task)
         if response.status_code == 201:
-            print(f"✅ Tarea creada: {tarea['titulo']}")
+            print(f"✅ Tarea creada: {task['title']}")
 
     print("🎉 Datos de ejemplo creados exitosamente!")
 
 if __name__ == "__main__":
-    poblar_datos()
+    populate_data()
 ```
 
 ---
