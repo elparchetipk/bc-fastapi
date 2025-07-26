@@ -14,15 +14,32 @@
 
 ## 📋 Descripción del Proyecto
 
-Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendices de Tecnólogo en Desarrollo de Software (III trimestre). El programa tiene una duración de **12 semanas** con sesiones semanales de **6 horas exactas**, enfocado en la aplicación de mejores prácticas y desarrollo de software de **calidad total**.
+Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendices de Tecnólogo en Desarrollo de Software (III trimestre). El programa tiene una duración de **11 semanas** con sesiones semanales de **6 horas exactas** (incluyendo break de 30 min), enfocado en la aplicación de mejores prácticas y desarrollo de software de **calidad total** con enfoque en conceptos fundamentales.
+
+## 🚨 **ESTADO ACTUAL DEL BOOTCAMP**
+
+### ✅ **Semanas Publicadas**
+
+- **✅ Semana 1**: Completamente depurada y protegida
+- **✅ Semana 2**: Completamente depurada y protegida
+
+### 🔄 **En Proceso de Depuración**
+
+- **⏳ Semanas 3-11**: En proceso de depuración siguiendo criterios establecidos
+- **📅 Próximas actualizaciones**: Las semanas se irán publicando progresivamente conforme se complete su depuración
+
+### 📢 **Importante**
+
+> La información de este README se irá actualizando conforme se publiquen las nuevas semanas depuradas.
 
 ## 🚨 **IMPORTANTE: Restricciones y Expectativas**
 
 ### ⏰ **Limitación de Tiempo (CRÍTICA)**
 
-- **6 horas semanales exactas** - No modificable
+- **6 horas semanales exactas** - No modificable (incluye break de 30 min)
 - **Aprendices con conocimiento básico de Python**
 - **Contenido ajustado para ser 100% realizable**
+- **Enfoque en fundamentos**: Solo conceptos esenciales y fundamentales
 
 ### 🎯 **Expectativas Realistas**
 
@@ -174,16 +191,19 @@ semana-XX/
 ### Principios Fundamentales
 
 - **Calidad Total**: No hay "errores menores", todo problema es un PROBLEMA
-- **Nomenclatura en Inglés**: Obligatorio para todo código técnico
+- **Enfoque en Fundamentos**: Conceptos esenciales, máximo 6 horas semanales
+- **Nomenclatura en Inglés**: Obligatorio para todo código técnico (functions, variables, endpoints, JSON keys)
 - **Clean Architecture**: Separación clara de responsabilidades
 - **Best Practices**: Aplicación constante de mejores prácticas
+- **Estructura Numerada**: Organización clara y progresiva del contenido
 
 ### Formato Bootcamp
 
-- **12 sesiones semanales** de 6 horas cada una
+- **8 sesiones semanales** de 6 horas cada una (incluye break de 30 min)
 - **Proyectos progresivos** que construyen sobre conocimientos previos
 - **Evaluación continua** con feedback detallado
 - **Proyecto final integrador** que demuestra dominio completo
+- **Contenido estructurado** enfocado en lo esencial
 
 ### Criterios de Evaluación
 
@@ -250,20 +270,21 @@ uvicorn main:app --reload
 
 ## 📋 Cronograma del Bootcamp
 
-| Semana | Tema Principal                | Tecnologías                         |
-| ------ | ----------------------------- | ----------------------------------- |
-| 1      | Fundamentos y Configuración   | Python, FastAPI, Git, Docker        |
-| 2      | FastAPI Fundamentals          | Pydantic, Swagger, Validation       |
-| 3      | Base de Datos y ORM           | SQLAlchemy, Alembic, PostgreSQL     |
-| 4      | Containerización              | Docker, Docker Compose              |
-| 5      | Autenticación y Seguridad     | JWT, OAuth2, Security               |
-| 6      | Testing y Calidad             | pytest, SonarQube, Coverage         |
-| 7      | Optimización y Performance    | Caching, Monitoring, Redis          |
-| 8      | Frontend Integration          | React, Vite, CORS                   |
-| 9      | Microservicios                | Architecture, Service Communication |
-| 10     | DevOps y CI/CD                | GitHub Actions, Deployment          |
-| 11     | Proyecto Final - Desarrollo   | Integración completa                |
-| 12     | Proyecto Final - Presentación | Evaluación y cierre                 |
+| Semana | Estado        | Tema Principal               | Tecnologías                     |
+| ------ | ------------- | ---------------------------- | ------------------------------- |
+| 1      | ✅ Publicada  | Fundamentos y Configuración  | Python, FastAPI, Git, Docker    |
+| 2      | ✅ Publicada  | FastAPI Fundamentals         | Pydantic, Swagger, Validation   |
+| 3      | ⏳ En proceso | Base de Datos y ORM          | SQLAlchemy, Alembic, PostgreSQL |
+| 4      | ⏳ En proceso | Containerización             | Docker, Docker Compose          |
+| 5      | ⏳ En proceso | Autenticación y Seguridad    | JWT, OAuth2, Security           |
+| 6      | ⏳ En proceso | Testing y Calidad            | pytest, SonarQube, Coverage     |
+| 7      | ⏳ En proceso | Optimización y Performance   | Caching, Monitoring, Redis      |
+| 8      | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks    |
+| 9      | ⏳ En proceso | Frontend Integration         | React/Vue, CORS, Static Files   |
+| 10     | ⏳ En proceso | Deployment y DevOps          | CI/CD, Production, Monitoring   |
+| 11     | ⏳ En proceso | Proyecto Final - Integración | Portfolio, Presentación, Demo   |
+
+> **Nota**: Las semanas marcadas como "En proceso" serán publicadas progresivamente conforme se complete su depuración bajo los criterios establecidos.
 
 ## 📚 Documentación Adicional
 
@@ -315,17 +336,22 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`_scripts/testing/`** - Scripts para testing automatizado
 - **`_scripts/deployment/`** - Scripts de deployment
 
-### 🎯 Estado Actual: Semana 1 Completada
+### 🎯 Estado Actual: Semanas 1 y 2 Completadas
 
-La **Semana 1** está completamente implementada con:
+Las **Semanas 1 y 2** están completamente implementadas y publicadas con:
 
-- ✅ **Objetivos y rúbrica definidos** (`README.md`, `RUBRICA_SEMANA_1.md`)
-- ✅ **Tutoriales prácticos completos** (4 tutoriales paso a paso)
+- ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
+- ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
 - ✅ **Teoría fundamental** (conceptos base documentados)
-- ✅ **Proyecto práctico funcional** (API Hello World con estructura profesional)
+- ✅ **Proyectos prácticos funcionales** (APIs con estructura profesional)
 - ✅ **Diagramas visuales** (SVG para reforzar conceptos)
-- ✅ **Ejercicios propuestos** y especificaciones proyecto
+- ✅ **Ejercicios propuestos** y especificaciones de proyecto
 - ✅ **Referencias y recursos** organizados
+- ✅ **Nomenclatura técnica en inglés** (functions, variables, endpoints, JSON keys)
+- ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
+- ✅ **Protección como solo lectura** (chmod -R 555)
+
+**Semanas 3-11**: En proceso de depuración siguiendo los mismos criterios.
 
 ## 🤝 Contribución
 

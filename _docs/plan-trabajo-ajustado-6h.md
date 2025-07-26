@@ -4,7 +4,7 @@
 
 - ⏰ **6 horas semanales exactas** (intocable)
 - 👥 **Aprendices con conocimiento básico de Python**
-- 🎯 **12 semanas totales = 72 horas**
+- 🎯 **11 semanas totales = 66 horas**
 - ✅ **Expectativas realistas y alcanzables**
 
 ---
@@ -81,18 +81,12 @@
 - ✅ Integración simple con frontend
 - _Simplificado de semana 8 original_
 
-### **Semana 11: Proyecto Integrador - Desarrollo (6h)**
+### **Semana 11: Proyecto Final - Desarrollo y Presentación (6h)**
 
-- ✅ Desarrollo proyecto final
-- ✅ Aplicación de conceptos
-- ✅ Integración de componentes
-
-### **Semana 12: Proyecto Integrador - Presentación (6h)**
-
-- ✅ Finalización proyecto
-- ✅ Presentaciones
-- ✅ Evaluación final
-- ✅ Cierre del bootcamp
+- ✅ Finalización del proyecto integrador
+- ✅ Aplicación completa de conceptos aprendidos
+- ✅ Presentaciones técnicas del proyecto
+- ✅ Evaluación final y cierre del bootcamp
 
 ---
 
@@ -176,7 +170,7 @@
 ## 📝 **PRÓXIMOS PASOS**
 
 1. **Actualizar Semana 1** con nuevo alcance
-2. **Crear outline** para semanas 2-12
+2. **Crear outline** para semanas 2-11
 3. **Ajustar rúbricas** de evaluación
 4. **Documentar cambios** en README principal
 5. **Comunicar expectativas** a estudiantes
