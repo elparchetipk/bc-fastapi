@@ -1,23 +1,68 @@
-# Semana 3: FastAPI Intermedio
+# Semana 3: Validación y Estructura REST
 
-## 🎯 Objetivos de la Semana
+⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
+📚 **NIVEL: Intermedio (construye sobre Semanas 1 y 2)**
 
-Al finalizar esta semana, los estudiantes podrán:
+## 🚨 **IMPORTANTE: Aplicando Conceptos Aprendidos**
 
-- **Implementar endpoints HTTP completos** (GET, POST, PUT, DELETE) con FastAPI
-- **Manejar parámetros** de ruta, query y cuerpo de manera profesional
-- **Aplicar validación robusta** en todos los endpoints
-- **Gestionar errores** de manera consistente y profesional
-- **Estructurar APIs** siguiendo mejores prácticas REST
+Esta semana está diseñada para estudiantes que **ya tienen una API funcional con Pydantic** (Semanas 1-2). Aplicaremos validación de datos y estructura REST básica.
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+- ✅ **Completamente realizable en 6 horas**
+- ✅ **Enfoque práctico en validación y errores**
+- ✅ **Preparación para APIs más estructuradas**
 
-| Bloque | Actividad                | Tiempo | Descripción                            |
-| ------ | ------------------------ | ------ | -------------------------------------- |
-| **1**  | Endpoints HTTP Completos | 90 min | GET, POST, PUT, DELETE + parámetros    |
-| **2**  | Validación Avanzada      | 90 min | Path, Query, Body validation           |
-| **3**  | Manejo de Errores        | 90 min | HTTPException, status codes, responses |
-| **4**  | Estructura REST          | 90 min | Best practices, organización código    |
+## 🎯 Objetivos de la Semana (Fundamentales)
+
+Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+
+1. ✅ **Implementarán validación de datos** con Pydantic de forma efectiva
+2. ✅ **Manejarán errores básicos** con HTTPException
+3. ✅ **Crearán endpoints CRUD completos** (GET, POST, PUT, DELETE)
+4. ✅ **Estructurarán código** de manera organizada
+5. ✅ **Aplicarán principios REST básicos**
+
+### ❌ **Lo que NO se espera dominar esta semana**
+
+- Autenticación y autorización
+- Bases de datos complejas
+- Middleware personalizado
+- Testing automatizado avanzado
+- Arquitecturas complejas
+
+## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
+
+### **Bloque 1: Validación con Pydantic (75 min)**
+
+- **08-validacion-avanzada.md**
+- Validadores personalizados básicos
+- Field constraints simples
+- Verificación de funcionamiento
+
+### **☕ BREAK OBLIGATORIO (30 min)**
+
+- Descanso para asimilar validaciones
+- Tiempo para resolver dudas sobre Pydantic
+- Preparación mental para manejo de errores
+
+### **Bloque 2: Manejo de Errores Básico (120 min)**
+
+- **09-manejo-errores.md**
+- HTTPException básica
+- Status codes apropiados
+- Responses de error consistentes
+
+### **Bloque 3: Estructura REST y CRUD (90 min)**
+
+- **10-estructura-rest.md**
+- Endpoints CRUD organizados
+- Principios REST básicos
+- Organización de código
+
+### **Bloque 4: Consolidación y Proyecto (45 min)**
+
+- Integración de conceptos
+- Inicio del proyecto integrador
+- Preparación de entregable
 
 ## 📚 Contenido de la Semana
 
@@ -35,10 +80,9 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ### **💻 Prácticas**
 
-1. [🔧 Endpoints HTTP Completos](./2-practica/07-endpoints-http-completos.md) _(90 min)_
-2. [✅ Validación Avanzada](./2-practica/08-validacion-avanzada.md) _(90 min)_
-3. [⚠️ Manejo de Errores](./2-practica/09-manejo-errores.md) _(90 min)_
-4. [🏗️ Estructura REST](./2-practica/10-estructura-rest.md) _(90 min)_
+1. [✅ Validación con Pydantic](./2-practica/08-validacion-avanzada.md) _(75 min)_
+2. [⚠️ Manejo de Errores Básico](./2-practica/09-manejo-errores.md) _(120 min)_
+3. [🏗️ Estructura REST](./2-practica/10-estructura-rest.md) _(90 min)_
 
 ### **💪 Ejercicios**
 
@@ -56,21 +100,21 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ### **Conocimientos**
 
-- ✅ Métodos HTTP y cuándo usarlos
-- ✅ Tipos de parámetros en FastAPI
+- ✅ Validación básica con Pydantic
+- ✅ Manejo de errores con HTTPException
 - ✅ Status codes HTTP apropiados
 - ✅ Principios REST básicos
 
 ### **Habilidades**
 
-- ✅ Implementar CRUD completo
-- ✅ Validar datos de entrada robustamente
-- ✅ Manejar errores consistentemente
-- ✅ Estructurar código de manera profesional
+- ✅ Implementar validadores personalizados simples
+- ✅ Crear endpoints CRUD organizados
+- ✅ Manejar errores de forma consistente
+- ✅ Estructurar código de API básica
 
 ### **Actitudes**
 
-- ✅ Escritura de código limpio y mantenible
+- ✅ Escritura de código limpio y organizado
 - ✅ Atención al detalle en validación
 - ✅ Responsabilidad en manejo de errores
 
@@ -79,15 +123,15 @@ Al finalizar esta semana, los estudiantes podrán:
 ### **Obligatorios**
 
 - ✅ **Semana 1 completada**: API básica funcionando
-- ✅ **Semana 2 completada**: Modelos Pydantic + async
+- ✅ **Semana 2 completada**: Modelos Pydantic + type hints
 - ✅ Python 3.8+ con entorno virtual
 - ✅ FastAPI, Uvicorn instalados
 
 ### **Recomendados**
 
-- 📖 Conocimiento básico de REST
-- 🌐 Experiencia con APIs web
-- 🧪 Familiaridad con herramientas de testing (Postman, curl)
+- 📖 Comprensión básica de HTTP
+- 🌐 Experiencia con APIs simples
+- 🧪 Familiaridad con herramientas básicas (curl, Postman)
 
 ## 🎯 Entregables de la Semana
 
@@ -97,23 +141,20 @@ Al finalizar esta semana, los estudiantes podrán:
 
 **Componentes obligatorios:**
 
-- ✅ **CRUD completo** para productos
-- ✅ **Validación robusta** en todos endpoints
-- ✅ **Manejo de errores** consistente
+- ✅ **CRUD básico** para productos
+- ✅ **Validación simple** con Pydantic
+- ✅ **Manejo de errores** básico
 - ✅ **Documentación automática** funcional
-- ✅ **Código estructurado** profesionalmente
+- ✅ **Código organizado** y limpio
 
 ### **📁 Estructura de Entrega**
 
-```
+```text
 estudiante-nombre/
 ├── main.py                 # API principal
-├── models/
-│   └── product_models.py   # Modelos Pydantic
-├── routes/
-│   └── product_routes.py   # Endpoints organizados
-├── utils/
-│   └── error_handlers.py   # Manejo de errores
+├── models.py              # Modelos Pydantic
+├── routers/
+│   └── products.py        # Endpoints organizados
 ├── requirements.txt        # Dependencias
 └── README.md              # Documentación
 ```
@@ -122,13 +163,13 @@ estudiante-nombre/
 
 ### **Rúbrica de Evaluación** → [📋 Ver Rúbrica Completa](./RUBRICA_SEMANA_3.md)
 
-| Criterio               | Peso | Descripción                         |
-| ---------------------- | ---- | ----------------------------------- |
-| **Funcionalidad CRUD** | 30%  | Endpoints completos y funcionales   |
-| **Validación**         | 25%  | Validación robusta de datos         |
-| **Manejo Errores**     | 20%  | Responses apropiados y consistentes |
-| **Estructura Código**  | 15%  | Organización y claridad             |
-| **Documentación**      | 10%  | README y comentarios                |
+| Criterio               | Peso | Descripción                     |
+| ---------------------- | ---- | ------------------------------- |
+| **Funcionalidad CRUD** | 30%  | Endpoints básicos y funcionales |
+| **Validación**         | 25%  | Validación simple de datos      |
+| **Manejo Errores**     | 20%  | Responses apropiados y básicos  |
+| **Estructura Código**  | 15%  | Organización y claridad         |
+| **Documentación**      | 10%  | README y comentarios            |
 
 ## 🔄 Continuidad del Aprendizaje
 
@@ -139,8 +180,8 @@ estudiante-nombre/
 
 ### **🚀 Preparación para Semanas Siguientes**
 
-- **Semana 4**: Modelos y validación avanzada
-- **Semana 5**: Integración con base de datos
+- **Semana 4**: Bases de datos y persistencia
+- **Semana 5**: Autenticación básica
 
 ## 🆘 Soporte y Recursos
 
@@ -170,5 +211,5 @@ estudiante-nombre/
 
 ---
 
-_Última actualización: 24 de julio de 2025_  
+_Última actualización: 26 de julio de 2025_  
 _Bootcamp FastAPI - EPTI Development_
