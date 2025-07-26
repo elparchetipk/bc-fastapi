@@ -1,53 +1,45 @@
-# Ejercicios - Semana 3: FastAPI Intermedio
+# Week 3 Practice Exercises
 
-## 🎯 Objetivo
+## Objective
 
-Reforzar los conceptos de FastAPI intermedio con ejercicios prácticos que complementan las prácticas principales de la semana.
+Reinforce CRUD operations and error handling concepts.
 
----
+## Exercise 1: Simple Book API (30 minutes)
 
-## 📋 Ejercicio 1: Endpoints HTTP Básicos (20 min)
-
-### **Contexto**
-
-Crear una mini-API para gestionar una biblioteca de libros aplicando los conceptos REST.
-
-### **Instrucciones**
-
-Implementa los siguientes endpoints:
+Create a basic API to manage books:
 
 ```python
-# Modelo básico
-class Book(BaseModel):
-    title: str = Field(..., min_length=1, max_length=200)
-    author: str = Field(..., min_length=1, max_length=100)
-    isbn: str = Field(..., regex=r'^\d{3}-\d{10}$')
-    pages: int = Field(..., gt=0, le=10000)
-    published_year: int = Field(..., ge=1500, le=2025)
-    genre: str = Field(..., min_length=1, max_length=50)
-    is_available: bool = Field(True)
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
-# Endpoints requeridos:
-# GET /books - Listar todos los libros
-# GET /books/{book_id} - Obtener libro específico
-# POST /books - Crear nuevo libro
-# PUT /books/{book_id} - Actualizar libro
-# DELETE /books/{book_id} - Eliminar libro
+app = FastAPI()
+books = []
+
+class Book(BaseModel):
+    title: str
+    author: str
+
+# Implement these endpoints:
+# GET /books - List all books
+# POST /books - Add a new book
+# DELETE /books/{book_id} - Remove a book
 ```
 
-### **Tareas Específicas**
+**Tasks:**
 
-1. **Crear el modelo Book** con validaciones apropiadas
-2. **Implementar storage en memoria** (lista o diccionario)
-3. **Crear los 5 endpoints** con responses correctos
-4. **Aplicar status codes apropiados** (200, 201, 204, 404)
-5. **Manejar errores básicos** (libro no encontrado, ISBN duplicado)
+1. Create the Book model
+2. Implement the three endpoints
+3. Test with different books
 
-### **Criterios de Evaluación**
+## Exercise 2: Add Error Handling (30 minutes)
 
-- ✅ Todos los endpoints funcionan correctamente
-- ✅ Validación de datos apropiada
-- ✅ Status codes correctos
+Add proper error messages to your endpoints:
+
+- Return 404 when book not found
+- Return 400 for invalid data
+
+**Expected:** All endpoints handle errors gracefully.
+
 - ✅ Manejo básico de errores
 - ✅ Documentación automática funcional
 

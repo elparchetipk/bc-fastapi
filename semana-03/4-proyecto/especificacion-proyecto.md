@@ -1,55 +1,59 @@
-# Proyecto Semana 3: API de Inventario Simple
+# Week 3 Project: Simple Task API
 
-## 🎯 Objetivo del Proyecto
+## Objective
 
-Desarrollar una **API REST completa** que demuestre todos los conceptos aprendidos en la Semana 3: endpoints HTTP, validación avanzada, manejo de errores, y estructura REST profesional.
+Build a complete CRUD API that manages tasks.
 
-## 📋 Especificaciones Funcionales
+## Requirements
 
-### **Dominio del Proyecto: Sistema de Inventario de Tienda**
+### Core Features
 
-Tu API debe gestionar el inventario de una tienda pequeña con los siguientes recursos principales:
+- Create, read, update, and delete tasks
+- Basic error handling
+- Simple task model
 
-- **Productos**: Items en venta
-- **Categorías**: Agrupación de productos
-- **Proveedores**: Empresas que suministran productos
+### Technical Specifications
 
-### **Funcionalidades Core Requeridas**
-
-1. ✅ **CRUD completo** para productos
-2. ✅ **Búsqueda y filtros** avanzados
-3. ✅ **Validación robusta** de todos los datos
-4. ✅ **Manejo de errores** profesional
-5. ✅ **Estadísticas** del inventario
-6. ✅ **Estructura REST** bien organizada
-
-## 🏗️ Especificación Técnica
-
-### **1. Modelos de Datos Requeridos**
-
-#### **Producto (Modelo Principal)**
+#### Task Model
 
 ```python
-class Product(BaseModel):
-    # Información básica
-    name: str = Field(..., min_length=2, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
-    sku: str = Field(..., regex=r'^[A-Z]{3}-\d{4}-[A-Z]{2}$')  # Ej: ELE-1234-AP
+class Task(BaseModel):
+    title: str
+    description: str = ""
+    completed: bool = False
+```
 
-    # Precio y stock
-    price: Decimal = Field(..., gt=0, le=999999.99, decimal_places=2)
-    cost_price: Optional[Decimal] = Field(None, gt=0, decimal_places=2)
-    stock_quantity: int = Field(0, ge=0, le=99999)
-    min_stock_level: int = Field(0, ge=0, le=1000)
+#### Required Endpoints
 
-    # Categorización
-    category_id: int = Field(..., gt=0)
-    supplier_id: Optional[int] = Field(None, gt=0)
-    brand: str = Field(..., min_length=1, max_length=50)
+- `GET /tasks` - List all tasks
+- `GET /tasks/{task_id}` - Get specific task
+- `POST /tasks` - Create new task
+- `PUT /tasks/{task_id}` - Update task
+- `DELETE /tasks/{task_id}` - Delete task
 
-    # Características físicas
-    weight: Optional[float] = Field(None, gt=0, le=1000)  # kg
-    dimensions: Optional[Dict[str, float]] = None  # cm
+### Implementation Guidelines
+
+1. Use in-memory storage (simple list)
+2. Add proper error handling (404, 400)
+3. Include basic validation
+4. Test all endpoints
+
+### Deliverables
+
+- Working API file (`main.py`)
+- Test results (screenshots or documentation)
+- Brief explanation of your implementation
+
+### Evaluation Criteria
+
+- All CRUD operations work correctly
+- Proper error handling
+- Clean, readable code
+- Documentation of testing
+
+**Time Limit:** 3 hours maximum
+weight: Optional[float] = Field(None, gt=0, le=1000) # kg
+dimensions: Optional[Dict[str, float]] = None # cm
 
     # Metadatos
     barcode: Optional[str] = Field(None, min_length=8, max_length=13)
@@ -72,7 +76,8 @@ class Product(BaseModel):
     def validate_cost_vs_price(cls, values):
         # cost_price debe ser menor que price
         pass
-```
+
+````
 
 #### **Categoría**
 
@@ -82,7 +87,7 @@ class Category(BaseModel):
     description: Optional[str] = Field(None, max_length=200)
     parent_id: Optional[int] = Field(None, gt=0)  # Para subcategorías
     is_active: bool = Field(True)
-```
+````
 
 #### **Proveedor**
 

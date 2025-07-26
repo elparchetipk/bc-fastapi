@@ -1,66 +1,92 @@
-# Teoría - Semana 3: REST y HTTP para APIs
+# Week 3 Theory: REST and HTTP Fundamentals
 
-## 📚 Conceptos Fundamentales
+## What is REST?
 
-### 1. ¿Qué es REST?
+REST (Representational State Transfer) is a way to design web APIs that are easy to understand and use.
 
-**REST** (Representational State Transfer) es un **estilo arquitectónico** para diseñar servicios web que define un conjunto de principios para crear APIs escalables y mantenibles.
+### Key REST Principles
 
-#### **Principios Fundamentales de REST:**
+1. **Consistent URLs** - Similar resources use similar URL patterns
+2. **HTTP Methods** - Use the right method for each action
+3. **Status Codes** - Return meaningful response codes
 
-1. **Cliente-Servidor**: Separación clara de responsabilidades
-2. **Stateless**: Cada request contiene toda la información necesaria
-3. **Cacheable**: Las responses pueden ser cacheadas
-4. **Interface Uniforme**: API consistente y predecible
-5. **Sistema por capas**: Arquitectura modular
-6. **Código bajo demanda** (opcional): El servidor puede enviar código ejecutable
+## HTTP Methods
 
-#### **¿Por qué REST es importante?**
+### GET - Read Data
 
 ```python
-# ❌ API No-REST (confusa)
-POST /createUser
-POST /deleteUserById
-GET /getUserInfo?id=123
-
-# ✅ API REST (clara y predecible)
-POST /users          # Crear usuario
-DELETE /users/123    # Eliminar usuario
-GET /users/123       # Obtener usuario
+@app.get("/users")        # Get all users
+@app.get("/users/{id}")   # Get specific user
 ```
 
----
-
-### 2. Métodos HTTP y su Uso
-
-#### **GET - Obtener Recursos**
-
-**Propósito**: Recuperar datos sin modificar el estado del servidor
+### POST - Create Data
 
 ```python
-from fastapi import FastAPI
+@app.post("/users")       # Create new user
+```
 
-app = FastAPI()
+### PUT - Update Data
 
-# ✅ Obtener todos los productos
-@app.get("/products")
-async def get_products():
-    return {"products": [...]}
+```python
+@app.put("/users/{id}")   # Update existing user
+```
 
-# ✅ Obtener un producto específico
-@app.get("/products/{product_id}")
-async def get_product(product_id: int):
-    return {"product": {...}}
+### DELETE - Remove Data
+
+```python
+@app.delete("/users/{id}") # Delete user
+```
+
+## HTTP Status Codes
+
+### Success Codes
+
+- `200 OK` - Request successful
+- `201 Created` - New resource created
+- `204 No Content` - Successful deletion
+
+### Error Codes
+
+- `400 Bad Request` - Invalid data sent
+- `404 Not Found` - Resource doesn't exist
+- `500 Internal Server Error` - Server problem
+
+## Error Handling in FastAPI
+
+```python
+from fastapi import HTTPException
+
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    if user_id not in users:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
+    return users[user_id]
+```
+
+## Best Practices
+
+1. **Use clear URL patterns**: `/users/{id}` not `/getUserById`
+2. **Return appropriate status codes**: 404 for not found, 400 for bad data
+3. **Handle errors gracefully**: Always return meaningful error messages
+4. **Keep it simple**: Don't overcomplicate your API design
+   @app.get("/products/{product_id}")
+   async def get_product(product_id: int):
+   return {"product": {...}}
 
 # ✅ Búsqueda con parámetros
+
 @app.get("/products")
 async def search_products(
-    category: str = None,
-    min_price: float = None,
-    max_price: float = None
+category: str = None,
+min_price: float = None,
+max_price: float = None
 ):
-    return {"products": [...]}
-```
+return {"products": [...]}
+
+````
 
 **Características importantes:**
 
@@ -91,7 +117,7 @@ async def create_product(product: ProductCreate):
         "created_at": "2025-07-24T10:00:00"
     }
     return new_product
-```
+````
 
 **Características importantes:**
 

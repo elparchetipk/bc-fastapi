@@ -1,33 +1,55 @@
-# Recursos de Apoyo - Semana 3: FastAPI Intermedio
+# Week 3 Support Resources
 
-## 📚 Documentación Oficial
+## Essential Documentation
 
-### **FastAPI Core**
+### FastAPI
 
-- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Documentación oficial completa
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/) - Tutorial paso a paso
-- [FastAPI Advanced User Guide](https://fastapi.tiangolo.com/advanced/) - Guías avanzadas
-- [FastAPI GitHub Repository](https://github.com/tiangolo/fastapi) - Código fuente y ejemplos
+- [Official FastAPI Documentation](https://fastapi.tiangolo.com/) - Main reference
+- [HTTP Status Codes Reference](https://httpstatuses.com/) - Status code guide
 
-### **Pydantic (Validación)**
+### Python
 
-- [Pydantic Documentation](https://docs.pydantic.dev/) - Documentación v2
-- [Pydantic Validators](https://docs.pydantic.dev/latest/concepts/validators/) - Validadores custom
-- [Pydantic Field Types](https://docs.pydantic.dev/latest/concepts/types/) - Tipos de campos
-- [Pydantic Migration Guide](https://docs.pydantic.dev/latest/migration/) - Migración v1 a v2
+- [Pydantic Models](https://docs.pydantic.dev/) - For data validation
+- [Python Exception Handling](https://docs.python.org/3/tutorial/errors.html) - Error handling basics
 
-### **HTTP y REST**
+## Testing Tools
 
-- [HTTP Status Codes](https://httpstatuses.com/) - Referencia completa de códigos
-- [REST API Design](https://restfulapi.net/) - Mejores prácticas REST
-- [HTTP Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) - MDN Web Docs
-- [API Design Patterns](https://microservices.io/patterns/data/api-composition.html) - Patrones de diseño
+- **Postman** - API testing tool
+- **curl** - Command line HTTP client
+- **FastAPI Swagger UI** - Built-in API documentation (available at `/docs`)
 
----
+## Quick Reference
 
-## 🛠️ Herramientas de Desarrollo
+### Common HTTP Status Codes
 
-### **Testing de APIs**
+- `200` - OK (successful GET, PUT)
+- `201` - Created (successful POST)
+- `204` - No Content (successful DELETE)
+- `400` - Bad Request (validation error)
+- `404` - Not Found (resource doesn't exist)
+- `500` - Internal Server Error (server problem)
+
+### Basic CRUD Pattern
+
+```python
+# GET - Read
+@app.get("/items/{item_id}")
+
+# POST - Create
+@app.post("/items")
+
+# PUT - Update
+@app.put("/items/{item_id}")
+
+# DELETE - Delete
+@app.delete("/items/{item_id}")
+```
+
+## Need Help?
+
+1. Check the FastAPI documentation
+2. Use the Swagger UI at `/docs` to test your API
+3. Review the week's practice files for examples
 
 #### **Postman**
 

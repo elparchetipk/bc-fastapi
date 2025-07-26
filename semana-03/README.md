@@ -1,174 +1,253 @@
-# Semana 3: FastAPI Intermedio
+# Semana 3: Más Métodos HTTP y Manejo de Errores
 
-## 🎯 Objetivos de la Semana
+⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
+📚 **NIVEL: Intermedio (construye sobre Semana 2)**
 
-Al finalizar esta semana, los estudiantes podrán:
+## 🚨 **IMPORTANTE: Progresión Natural**
 
-- **Implementar endpoints HTTP completos** (GET, POST, PUT, DELETE) con FastAPI
-- **Manejar parámetros** de ruta, query y cuerpo de manera profesional
-- **Aplicar validación robusta** en todos los endpoints
-- **Gestionar errores** de manera consistente y profesional
-- **Estructurar APIs** siguiendo mejores prácticas REST
+Esta semana está diseñada para estudiantes que **ya tienen una API con Pydantic funcionando** (Semana 2). Aprenderemos métodos HTTP adicionales y manejo básico de errores.
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+- ✅ **Completamente realizable en 6 horas**
+- ✅ **Progresión gradual desde Semana 2**
+- ✅ **Enfoque en lo práctico y funcional**
 
-| Bloque | Actividad                | Tiempo | Descripción                            |
-| ------ | ------------------------ | ------ | -------------------------------------- |
-| **1**  | Endpoints HTTP Completos | 90 min | GET, POST, PUT, DELETE + parámetros    |
-| **2**  | Validación Avanzada      | 90 min | Path, Query, Body validation           |
-| **3**  | Manejo de Errores        | 90 min | HTTPException, status codes, responses |
-| **4**  | Estructura REST          | 90 min | Best practices, organización código    |
+## 🎯 Objetivos de la Semana (Fundamentales)
 
-## 📚 Contenido de la Semana
+Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
-### **📋 Navegación Ordenada (Seguir este orden)**
+1. ✅ **Implementarán endpoints PUT y DELETE básicos**
+2. ✅ **Manejarán errores HTTP simples** (404, 400)
+3. ✅ **Comprenderán status codes básicos** (200, 201, 404, 400)
+4. ✅ **Tendrán CRUD básico funcionando** (Create, Read, Update, Delete)
+5. ✅ **Estarán preparados para APIs más robustas**
 
-1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
-2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
-3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo y práctica
-4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
-5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+### ❌ **Lo que NO se espera dominar esta semana**
 
-### **🧭 Teoría**
+- REST avanzado y teoría compleja
+- Múltiples status codes (solo los básicos)
+- Validación compleja con múltiples niveles
+- Estructura de proyecto compleja
+- Middleware o interceptores
 
-- [📖 Conceptos REST y HTTP](./1-teoria/rest-http-concepts.md)
+## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
-### **💻 Prácticas**
+### **Bloque 1: Endpoints PUT (Actualizar) (75 min)**
 
-1. [🔧 Endpoints HTTP Completos](./2-practica/07-endpoints-http-completos.md) _(90 min)_
-2. [✅ Validación Avanzada](./2-practica/08-validacion-avanzada.md) _(90 min)_
-3. [⚠️ Manejo de Errores](./2-practica/09-manejo-errores.md) _(90 min)_
-4. [🏗️ Estructura REST](./2-practica/10-estructura-rest.md) _(90 min)_
+- **06-put-endpoints.md**
+- Actualizar datos existentes
+- Parámetros de ruta + body
+- Verificación básica
 
-### **💪 Ejercicios**
+### **☕ BREAK OBLIGATORIO (30 min)**
 
-- [🎯 Ejercicios de Refuerzo](./3-ejercicios/ejercicios-practica.md)
+- Descanso para asimilar conceptos
+- Tiempo para resolver dudas sobre PUT
+- Preparación mental para DELETE
 
-### **🚀 Proyecto**
+### **Bloque 2: Endpoints DELETE (120 min)**
 
-- [📋 API de Inventario Simple](./4-proyecto/especificacion-proyecto.md)
+- **07-delete-endpoints.md**
+- Eliminar datos
+- Manejo de "no encontrado"
+- CRUD básico completo
 
-### **📚 Recursos**
+### **Bloque 3: Manejo de Errores Básico (90 min)**
 
-- [🔗 Enlaces y Referencias](./5-recursos/recursos-apoyo.md)
+- **08-error-handling.md**
+- HTTPException básica
+- Status codes esenciales (200, 404, 400)
+- Mensajes de error claros
 
-## 🎯 Objetivos Específicos
+### **Bloque 4: Consolidación CRUD (45 min)**
 
-### **Conocimientos**
+- Integración de todos los métodos
+- Verificación completa
+- Preparación de entregable
 
-- ✅ Métodos HTTP y cuándo usarlos
-- ✅ Tipos de parámetros en FastAPI
-- ✅ Status codes HTTP apropiados
-- ✅ Principios REST básicos
+## 📚 Contenido de la Semana (Solo lo Esencial)
 
-### **Habilidades**
+### **🧭 Navegación Ordenada (Seguir este orden)**
 
-- ✅ Implementar CRUD completo
-- ✅ Validar datos de entrada robustamente
-- ✅ Manejar errores consistentemente
-- ✅ Estructurar código de manera profesional
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos HTTP básicos
+2. **[💻 2-practica/](./2-practica/)** - Implementación paso a paso
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo práctico
+4. **[🚀 4-proyecto/](./4-proyecto/)** - CRUD integrado
+5. **[📚 5-recursos/](./5-recursos/)** - Referencias básicas
 
-### **Actitudes**
+### 🛠️ **Prácticas (Núcleo de la semana)**
 
-- ✅ Escritura de código limpio y mantenible
-- ✅ Atención al detalle en validación
-- ✅ Responsabilidad en manejo de errores
+1. **[06-put-endpoints.md](./2-practica/06-put-endpoints.md)** - Actualizar datos
+2. **[07-delete-endpoints.md](./2-practica/07-delete-endpoints.md)** - Eliminar datos
+3. **[08-error-handling.md](./2-practica/08-error-handling.md)** - Errores básicos
 
-## 📋 Prerrequisitos
+### 📖 **Teoría (Mínima)**
 
-### **Obligatorios**
+- Métodos HTTP básicos (GET, POST, PUT, DELETE)
+- Status codes esenciales
+- Conceptos de CRUD
 
-- ✅ **Semana 1 completada**: API básica funcionando
-- ✅ **Semana 2 completada**: Modelos Pydantic + async
-- ✅ Python 3.8+ con entorno virtual
-- ✅ FastAPI, Uvicorn instalados
+### 🏋️ **Ejercicios (Consolidación)**
 
-### **Recomendados**
+- 2 ejercicios de integración CRUD
+- Verificación de funcionamiento
 
-- 📖 Conocimiento básico de REST
-- 🌐 Experiencia con APIs web
-- 🧪 Familiaridad con herramientas de testing (Postman, curl)
+## 🚀 **Prerrequisitos (De Semana 2)**
 
-## 🎯 Entregables de la Semana
+- ✅ API con endpoints POST funcionando
+- ✅ Modelos Pydantic básicos implementados
+- ✅ Type hints en uso
+- ✅ Validación básica funcionando
 
-### **📤 Entrega Principal**
+## 🎯 Criterios de Éxito de la Semana
 
-**API de Inventario Simple** - Due: Final de Semana 3
+### ✅ **Criterios de Éxito (Aprobatorio)**
 
-**Componentes obligatorios:**
+- [ ] Al menos 1 endpoint PUT funcionando
+- [ ] Al menos 1 endpoint DELETE funcionando
+- [ ] Manejo básico de error 404 (no encontrado)
+- [ ] CRUD básico completo (Create, Read, Update, Delete)
 
-- ✅ **CRUD completo** para productos
-- ✅ **Validación robusta** en todos endpoints
-- ✅ **Manejo de errores** consistente
-- ✅ **Documentación automática** funcional
-- ✅ **Código estructurado** profesionalmente
+### 🌟 **Bonus Opcional (Sin presión)**
 
-### **📁 Estructura de Entrega**
-
-```
-estudiante-nombre/
-├── main.py                 # API principal
-├── models/
-│   └── product_models.py   # Modelos Pydantic
-├── routes/
-│   └── product_routes.py   # Endpoints organizados
-├── utils/
-│   └── error_handlers.py   # Manejo de errores
-├── requirements.txt        # Dependencias
-└── README.md              # Documentación
-```
-
-## 📊 Evaluación
-
-### **Rúbrica de Evaluación** → [📋 Ver Rúbrica Completa](./RUBRICA_SEMANA_3.md)
-
-| Criterio               | Peso | Descripción                         |
-| ---------------------- | ---- | ----------------------------------- |
-| **Funcionalidad CRUD** | 30%  | Endpoints completos y funcionales   |
-| **Validación**         | 25%  | Validación robusta de datos         |
-| **Manejo Errores**     | 20%  | Responses apropiados y consistentes |
-| **Estructura Código**  | 15%  | Organización y claridad             |
-| **Documentación**      | 10%  | README y comentarios                |
-
-## 🔄 Continuidad del Aprendizaje
-
-### **🔗 Conexión con Semanas Anteriores**
-
-- **Semana 1**: Usa la API básica como foundation
-- **Semana 2**: Aplica modelos Pydantic y async
-
-### **🚀 Preparación para Semanas Siguientes**
-
-- **Semana 4**: Modelos y validación avanzada
-- **Semana 5**: Integración con base de datos
-
-## 🆘 Soporte y Recursos
-
-### **Durante la Semana**
-
-- 💬 **Foro del curso**: Preguntas y discusiones
-- 🎥 **Office hours**: Martes y jueves 19:00-20:00
-- 📧 **Email instructor**: consultas específicas
-
-### **Recursos Adicionales**
-
-- 📖 [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- 🌐 [HTTP Status Codes Reference](https://httpstatuses.com/)
-- 🔧 [Postman Learning Center](https://learning.postman.com/)
+- [ ] Múltiples entidades con CRUD
+- [ ] Mensajes de error personalizados
+- [ ] Status codes adicionales (201, 400)
 
 ---
 
-## 📝 Notas Importantes
+## 📋 Entregables de la Semana
 
-> ⚠️ **Tiempo límite estricto**: 6 horas de trabajo efectivo
->
-> ✅ **Enfoque en calidad** sobre cantidad
->
-> 🎯 **Cada bloque es independiente** pero se complementan
->
-> 📋 **Entrega obligatoria** para continuar a Semana 4
+### 🔧 **Entregable Principal (Único Obligatorio)**
+
+**API con CRUD Básico Funcionando**
+
+- ✅ API de Semana 2 + mejoras nuevas
+- ✅ Al menos 1 endpoint PUT (actualizar)
+- ✅ Al menos 1 endpoint DELETE (eliminar)
+- ✅ Manejo básico de errores (404 mínimo)
+- ✅ CRUD completo funcionando
+
+### 📄 **Entregable de Documentación (Mínimo)**
+
+**README.md Actualizado**
+
+- ✅ Descripción de todos los endpoints CRUD
+- ✅ Ejemplo de uso de PUT y DELETE
+- ✅ Reflexión de 2-3 oraciones sobre el progreso
+
+### 🎯 **Formato de Entrega**
+
+1. **Repositorio GitHub actualizado** con:
+
+   - main.py con CRUD completo
+   - requirements.txt actualizado
+   - README.md con todos los endpoints
+
+2. **Sin video requerido**
+
+### ⏰ **Fecha de Entrega**
+
+- **Al final de la sesión de 6 horas**
+- **Entrega inmediata, sin trabajo en casa**
+
+## 📊 Evaluación Simplificada
+
+La evaluación se enfoca en **CRUD funcionando**:
+
+- **Funcionalidad CRUD (80%)**: ¿Funcionan todos los métodos HTTP?
+- **Manejo de errores (15%)**: ¿Se maneja al menos el 404?
+- **Entrega (5%)**: ¿Está actualizado en GitHub?
+
+### 🏆 Criterio de Aprobación
+
+- **✅ Aprobado**: CRUD completo funcionando + código en GitHub
+- **❌ Pendiente**: Apoyo adicional en próxima sesión
+
+## 🎁 Oportunidades de Bonus (Solo si hay tiempo extra)
+
+- **CRUD para múltiples entidades**: +5 puntos
+- **Mensajes de error personalizados**: +3 puntos
+- **Status codes adicionales**: +2 puntos
+
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                    | Duración | Acumulado |
+| ----------- | ---------------------------- | -------- | --------- |
+| 9:00-10:15  | Endpoints PUT (actualizar)   | 75 min   | 75 min    |
+| 10:15-10:45 | **☕ BREAK OBLIGATORIO**     | 30 min   | 105 min   |
+| 10:45-12:45 | Endpoints DELETE + CRUD      | 120 min  | 225 min   |
+| 12:45-14:15 | Manejo de errores básico     | 90 min   | 315 min   |
+| 14:15-15:00 | Consolidación CRUD y entrega | 45 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
+## 🔍 Estructura de Entrega
+
+### 📁 Estructura Esperada
+
+```
+apellido-nombre-semana3/
+├── README.md               # Con endpoints CRUD completos
+├── requirements.txt        # FastAPI + pydantic + uvicorn
+└── main.py                # API con CRUD completo
+```
+
+### 🚀 Proceso de Entrega Simple
+
+1. **Evolucionar repositorio existente**
+
+   - Agregar PUT y DELETE a main.py
+   - Actualizar README con nuevos endpoints
+   - Commit con mensaje descriptivo
+
+2. **Demostración en Clase**
+
+   - Mostrar CRUD completo funcionando
+   - Demostrar manejo de error 404
+   - Mostrar documentación /docs actualizada
+
+3. **Fecha Límite**
+   - **Al final de la clase de 6 horas**
+   - **Sin extensiones**
+
+## 🤝 Recursos de Apoyo
+
+### 👥 Ayuda Durante la Clase
+
+- **Instructor**: Disponible durante toda la jornada
+- **Compañeros**: Trabajo colaborativo permitido
+- **Documentación**: FastAPI docs + HTTP status codes
+
+### 🔧 Herramientas Básicas
+
+- **Mismas herramientas de Semana 2**
+- **Postman/Thunder Client**: Para probar PUT y DELETE
+- **Browser**: Para ver /docs actualizado con CRUD
+
+## 🎯 Preparación para Semana 4
+
+Con este CRUD básico funcionando, en la Semana 4 aprenderás:
+
+- **Modelos de datos más complejos**: Relaciones básicas
+- **Validación avanzada**: Campos opcionales y reglas
+- **Filtros y búsquedas**: Query parameters más sofisticados
+
+## 📞 Contacto (Solo Emergencias)
+
+- **Durante la clase**: Levantar la mano o chat
+- **Fuera de horario**: No se requiere, todo se resuelve en clase
 
 ---
 
-_Última actualización: 24 de julio de 2025_  
-_Bootcamp FastAPI - EPTI Development_
+## 🌟 Mensaje de Motivación Final
+
+Esta tercera semana completa tu **conocimiento fundamental de HTTP**. Con CRUD funcionando, tendrás una base sólida para cualquier API más compleja.
+
+**Recuerda**:
+
+- ✅ Construyes sobre el sólido progreso de Semanas 1-2
+- ✅ El break de 30 min es obligatorio para asimilar conceptos
+- ✅ CRUD es el fundamento de la mayoría de APIs
+- ✅ Los conceptos se aplicarán en todas las semanas siguientes
+
+**¡Tu API ya puede hacer todo lo básico! 🚀**

@@ -1,247 +1,253 @@
 # Semana 2: Python Moderno para APIs
 
 ⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
-📚 **NIVEL: Intermedio (construye sobre Semana 1)**  
-🔄 **INCLUYE**: Contenido avanzado movido desde Semana 1
+📚 **NIVEL: Intermedio (construye sobre Semana 1)**
 
-## 🎯 Objetivos de la Semana
+## 🚨 **IMPORTANTE: Construyendo sobre Bases Sólidas**
 
-Con la base sólida de la Semana 1 (API funcionando), ahora profundizaremos en Python moderno y conceptos esenciales para APIs profesionales.
+Esta semana está diseñada para estudiantes que **ya tienen una API funcionando** (Semana 1). Profundizaremos en conceptos de Python moderno esenciales para APIs profesionales.
 
-Al finalizar esta semana de 6 horas, los estudiantes:
+- ✅ **Completamente realizable en 6 horas**
+- ✅ **Enfoque práctico e incremental**
+- ✅ **Preparación para APIs más complejas**
 
-1. ✅ **Dominarán type hints esenciales** para APIs robustas
-2. ✅ **Comprenderán fundamentos de Pydantic** para validación de datos
-3. ✅ **Manejarán conceptos básicos de async/await** en FastAPI
-4. ✅ **Implementarán validación avanzada** en sus APIs
+## 🎯 Objetivos de la Semana (Fundamentales)
+
+Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+
+1. ✅ **Comprenderán type hints básicos** para APIs más claras
+2. ✅ **Usarán Pydantic para validación simple** de datos
+3. ✅ **Manejarán parámetros de ruta y query** correctamente
+4. ✅ **Implementarán endpoints POST básicos** con validación
 5. ✅ **Tendrán una API más robusta y profesional**
 
-## ⏱️ **Estructura de 6 Horas**
+### ❌ **Lo que NO se espera dominar esta semana**
 
-### **Bloque 1: Python Fundamentals Modernos (120 min)**
+- Async/await avanzado
+- Validación compleja con Pydantic
+- Manejo de archivos o uploads
+- Middleware personalizado
+- Autenticación o autorización
 
-- **03-python-fundamentals.md** (movido de Semana 1)
-- Type hints esenciales
-- Funciones avanzadas y decoradores
-- Manejo de errores Python
+## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
-### **Bloque 2: Fundamentos Pydantic (120 min)**
+### **Bloque 1: Python Type Hints Básicos (75 min)**
 
-- **05-pydantic-essentials.md** (nuevo)
-- Modelos de datos básicos
-- Validación automática
-- Serialización/deserialización
+- **03-python-type-hints.md**
+- Type hints esenciales: str, int, List, Dict
+- Funciones con tipos para APIs
+- Verificación de funcionamiento
 
-### **Bloque 3: FastAPI Intermedio (90 min)**
+### **☕ BREAK OBLIGATORIO (30 min)**
 
-- **04-fastapi-basics.md** (movido y adaptado de Semana 1)
-- Múltiples métodos HTTP
-- Parámetros de consulta avanzados
-- Response models
+- Descanso para asimilar conceptos
+- Tiempo para resolver dudas sobre tipos
+- Preparación mental para Pydantic
 
-### **Bloque 4: Async y Consolidación (90 min)**
+### **Bloque 2: Pydantic Básico (120 min)**
 
-- **06-async-basics.md** (nuevo)
-- Conceptos async/await básicos
-- Cuándo usar sync vs async
-- Práctica consolidada
+- **04-pydantic-models.md**
+- Modelos de datos simples
+- Validación automática básica
+- Integración con FastAPI
+
+### **Bloque 3: Endpoints POST y Parámetros (90 min)**
+
+- **05-post-endpoints.md**
+- Manejo de datos POST
+- Parámetros de ruta y query
+- Response models básicos
+
+### **Bloque 4: Consolidación y Práctica (45 min)**
+
+- Integración de conceptos aprendidos
+- Resolución de problemas comunes
+- Preparación de entregable
+
+## 📚 Contenido de la Semana (Solo lo Esencial)
+
+### **🧭 Navegación Ordenada (Seguir este orden)**
+
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos Python moderno
+2. **[💻 2-practica/](./2-practica/)** - Implementación paso a paso
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo práctico
+4. **[🚀 4-proyecto/](./4-proyecto/)** - API mejorada
+5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+
+### 🛠️ **Prácticas (Núcleo de la semana)**
+
+1. **[03-python-type-hints.md](./2-practica/03-python-type-hints.md)** - Tipos básicos
+2. **[04-pydantic-models.md](./2-practica/04-pydantic-models.md)** - Modelos simples
+3. **[05-post-endpoints.md](./2-practica/05-post-endpoints.md)** - Endpoints con datos
+
+### 📖 **Teoría (Práctica)**
+
+- Type hints para principiantes
+- Pydantic modelos básicos
+- HTTP methods esenciales
+
+### 🏋️ **Ejercicios (Consolidación)**
+
+- 2-3 ejercicios de refuerzo
+- Integración de conceptos
 
 ## 🚀 **Prerrequisitos (De Semana 1)**
 
-- ✅ Entorno FastAPI funcionando
-- ✅ API Hello World completada
-- ✅ Familiaridad con endpoints básicos
-- ✅ Git configurado y funcionando
+- ✅ API FastAPI funcionando
+- ✅ Endpoints GET básicos
+- ✅ Documentación /docs accesible
+- ✅ Repositorio GitHub configurado
 
-## 📋 **Entregables de la Semana**
+## 🎯 Criterios de Éxito de la Semana
 
-### **🔧 Entregable Principal: API Mejorada**
+### ✅ **Criterios de Éxito (Aprobatorio)**
 
-**Archivo**: `main.py` (evolución de Semana 1)
+- [ ] API con al menos 1 endpoint POST funcionando
+- [ ] Modelo Pydantic básico implementado
+- [ ] Type hints en funciones principales
+- [ ] Validación de datos funcionando
 
-**Nuevas características esperadas**:
+### 🌟 **Bonus Opcional (Sin presión)**
 
-- ✅ **Modelos Pydantic** para validación de datos
-- ✅ **Type hints** en todas las funciones
-- ✅ **Validación avanzada** con mensajes de error claros
-- ✅ **Al menos 8-10 endpoints** con diferentes métodos HTTP
-- ✅ **Response models** definidos
-- ✅ **Manejo de errores** robusto
-
-### **📄 Entregable de Documentación**
-
-**README.md actualizado** con:
-
-- ✅ Descripción de nuevos endpoints
-- ✅ Ejemplos de uso con curl/requests
-- ✅ Documentación de modelos de datos
-- ✅ Instrucciones de testing
-
-### **🧪 Entregable de Testing (Opcional)**
-
-**tests/test_api.py** básico:
-
-- ✅ Tests para endpoints principales
-- ✅ Validación de modelos Pydantic
-- ✅ Casos de error esperados
-
-## ⏰ **Cronograma Detallado**
-
-| Tiempo      | Actividad                    | Archivo/Recurso                 |
-| ----------- | ---------------------------- | ------------------------------- |
-| 0-120 min   | Python Fundamentals Modernos | `03-python-fundamentals.md`     |
-| 120-240 min | Fundamentos Pydantic         | `05-pydantic-essentials.md`     |
-| 240-330 min | FastAPI Intermedio           | `04-fastapi-basics.md`          |
-| 330-420 min | Async Basics + Consolidación | `06-async-basics.md` + Práctica |
-
-## 🎯 **Criterios de Éxito**
-
-### **Mínimo Aceptable (70/100)**:
-
-- ✅ Al menos 5 modelos Pydantic funcionando
-- ✅ Type hints en 80% de las funciones
-- ✅ API con 8+ endpoints operativos
-- ✅ Validación básica implementada
-
-### **Logro Esperado (85/100)**:
-
-- ✅ Todo lo anterior +
-- ✅ Manejo de errores con mensajes personalizados
-- ✅ Response models bien definidos
-- ✅ Documentación clara y completa
-- ✅ Al menos 1 endpoint async funcionando
-
-### **Excelencia (95/100)**:
-
-- ✅ Todo lo anterior +
-- ✅ Testing básico implementado
-- ✅ Código limpio y bien estructurado
-- ✅ Uso avanzado de Pydantic (validators, aliases)
-- ✅ Performance considerada en endpoints async
-
-## 🚫 **Lo que NO se evalúa esta semana**
-
-Para mantener el enfoque:
-
-- ❌ **Bases de datos** → Semana 5-6
-- ❌ **Autenticación** → Semana 7
-- ❌ **Deployment** → Semana 9-10
-- ❌ **Testing avanzado** → Semana 8
-- ❌ **Middleware personalizado** → Semana 11-12
-
-## 📚 **Recursos de Apoyo**
-
-### **Documentación Esencial**
-
-- [Python Type Hints](https://docs.python.org/3/library/typing.html)
-- [Pydantic Documentation](https://pydantic-docs.helpmanual.io/)
-- [FastAPI Advanced Tutorial](https://fastapi.tiangolo.com/advanced/)
-- [Python Async/Await](https://docs.python.org/3/library/asyncio.html)
-
-### **Comandos de Referencia**
-
-```bash
-# Ejecutar con recarga automática
-uvicorn main:app --reload
-
-# Testing básico (si implementado)
-python -m pytest tests/ -v
-
-# Verificar tipos (si instalado mypy)
-mypy main.py
-
-# Instalar dependencias adicionales
-pip install "pydantic[email]" pytest httpx
-```
-
-## 🔄 **Conexión con Semana 3**
-
-Esta semana prepara el camino para:
-
-- ✅ **Endpoints más complejos** (CRUD completo)
-- ✅ **Integración con bases de datos** (usando modelos Pydantic)
-- ✅ **APIs más robustas** (con validación sólida)
-- ✅ **Mejor arquitectura** (separación de concerns)
-
-## 🆘 **Problemas Comunes y Soluciones**
-
-### **Error: "Type hints not working"**
-
-```bash
-# Verificar versión de Python
-python --version  # Debe ser 3.8+
-
-# Instalar mypy para verificación
-pip install mypy
-mypy main.py
-```
-
-### **Error: "Pydantic validation failing"**
-
-```python
-# Debug de validación
-from pydantic import ValidationError
-
-try:
-    model = MiModelo(**datos)
-except ValidationError as e:
-    print(e.json())
-```
-
-### **Error: "Async function not working"**
-
-```python
-# Verificar que uvicorn soporta async
-# Usar async solo cuando sea necesario
-# Mantener funciones simples como sync
-```
-
-## 📝 **Método de Entrega**
-
-1. **Actualizar repositorio de Semana 1**
-2. **Crear nueva rama**: `semana-2-python-moderno`
-3. **Evolucionar el código existente** (no empezar de cero)
-4. **Documentar los cambios** en commit messages claros
-5. **Crear PR** con descripción de mejoras implementadas
-
-## 🏆 **Celebración del Progreso**
-
-Al final de esta semana, habrás:
-
-- 🎯 **Duplicado la funcionalidad** de tu API
-- 🛡️ **Añadido validación robusta** con Pydantic
-- 🔧 **Implementado mejores prácticas** de Python moderno
-- 🚀 **Preparado la base** para características avanzadas
-
-**¡Estás construyendo una API de calidad profesional paso a paso!**
+- [ ] Múltiples endpoints POST
+- [ ] Manejo básico de errores
+- [ ] Response models simples
 
 ---
 
-## 📋 **Checklist de Preparación**
+## 📋 Entregables de la Semana
 
-Antes de comenzar la Semana 2, verifica:
+### 🔧 **Entregable Principal (Único Obligatorio)**
 
-- [ ] ✅ Semana 1 completada exitosamente
-- [ ] ✅ API básica funcionando desde Semana 1
-- [ ] ✅ Entorno virtual activo y configurado
-- [ ] ✅ Git repository con código de Semana 1
-- [ ] ✅ FastAPI y dependencias actualizadas
+**API Mejorada Funcionando**
 
-**¡Listo para llevar tu API al siguiente nivel! 🚀**
+- ✅ API de Semana 1 + mejoras nuevas
+- ✅ Al menos 1 endpoint POST con Pydantic
+- ✅ Type hints en funciones principales
+- ✅ Validación básica funcionando
+- ✅ Documentación /docs actualizada
 
-## 📚 Contenido de la Semana
+### 📄 **Entregable de Documentación (Mínimo)**
 
-### **📋 Navegación Ordenada (Seguir este orden)**
+**README.md Actualizado**
 
-1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
-2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
-3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Refuerzo y práctica
-4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
-5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
+- ✅ Descripción de nuevos endpoints
+- ✅ Ejemplo de uso de endpoint POST
+- ✅ Reflexión de 2-3 oraciones sobre lo aprendido
 
-### 🛠️ **Prácticas Principales**
+### 🎯 **Formato de Entrega**
 
-1. **[03-python-fundamentals.md](./2-practica/03-python-fundamentals.md)** - Python moderno (120 min)
-2. **[05-pydantic-essentials.md](./2-practica/05-pydantic-essentials.md)** - Validación de datos (120 min)
-3. **[04-fastapi-intermedio.md](./2-practica/04-fastapi-intermedio.md)** - APIs avanzadas (90 min)
-4. **[06-async-basics.md](./2-practica/06-async-basics.md)** - Async/await básico (90 min)
+1. **Repositorio GitHub actualizado** con:
+
+   - main.py mejorado
+   - requirements.txt actualizado
+   - README.md con nuevos endpoints
+
+2. **Sin video requerido**
+
+### ⏰ **Fecha de Entrega**
+
+- **Al final de la sesión de 6 horas**
+- **Entrega inmediata, sin trabajo en casa**
+
+## 📊 Evaluación Simplificada
+
+La evaluación se enfoca en **progreso incremental**:
+
+- **Funcionalidad (70%)**: ¿La API mejorada funciona? ¿Hay endpoint POST?
+- **Implementación (20%)**: ¿Usa Pydantic y type hints básicos?
+- **Entrega (10%)**: ¿Está actualizado en GitHub?
+
+### 🏆 Criterio de Aprobación
+
+- **✅ Aprobado**: API funcionando + endpoint POST + código en GitHub
+- **❌ Pendiente**: Apoyo adicional en próxima sesión
+
+## 🎁 Oportunidades de Bonus (Solo si hay tiempo extra)
+
+- **Múltiples modelos Pydantic**: +5 puntos
+- **Manejo de errores básico**: +3 puntos
+- **Response models**: +3 puntos
+
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                   | Duración | Acumulado |
+| ----------- | --------------------------- | -------- | --------- |
+| 9:00-10:15  | Python Type Hints básicos   | 75 min   | 75 min    |
+| 10:15-10:45 | **☕ BREAK OBLIGATORIO**    | 30 min   | 105 min   |
+| 10:45-12:45 | Pydantic modelos simples    | 120 min  | 225 min   |
+| 12:45-14:15 | Endpoints POST y parámetros | 90 min   | 315 min   |
+| 14:15-15:00 | Consolidación y entrega     | 45 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
+## 🔍 Estructura de Entrega
+
+### 📁 Estructura Esperada
+
+```
+apellido-nombre-semana2/
+├── README.md               # Actualizado con nuevos endpoints
+├── requirements.txt        # FastAPI + pydantic + uvicorn
+└── main.py                # API mejorada con Pydantic
+```
+
+### 🚀 Proceso de Entrega Simple
+
+1. **Actualizar repositorio existente**
+
+   - Evolucionar main.py de Semana 1
+   - Actualizar README con nuevos endpoints
+   - Commit con mensaje descriptivo
+
+2. **Demostración en Clase**
+
+   - Mostrar endpoint POST funcionando
+   - Demostrar validación Pydantic
+   - Mostrar documentación /docs actualizada
+
+3. **Fecha Límite**
+   - **Al final de la clase de 6 horas**
+   - **Sin extensiones**
+
+## 🤝 Recursos de Apoyo
+
+### 👥 Ayuda Durante la Clase
+
+- **Instructor**: Disponible durante toda la jornada
+- **Compañeros**: Trabajo colaborativo permitido
+- **Documentación**: FastAPI + Pydantic docs
+
+### 🔧 Herramientas Básicas
+
+- **Mismas herramientas de Semana 1**
+- **Postman/Thunder Client**: Para probar endpoints POST
+- **Browser**: Para ver /docs actualizado
+
+## 🎯 Preparación para Semana 3
+
+Con estos fundamentos sólidos, en la Semana 3 aprenderás:
+
+- **Múltiples endpoints HTTP**: PUT, DELETE, PATCH
+- **Manejo de errores avanzado**: Status codes y excepciones
+- **Parámetros complejos**: Headers, cookies, forms
+
+## 📞 Contacto (Solo Emergencias)
+
+- **Durante la clase**: Levantar la mano o chat
+- **Fuera de horario**: No se requiere, todo se resuelve en clase
+
+---
+
+## 🌟 Mensaje de Motivación Final
+
+Esta segunda semana te dará las **herramientas fundamentales** para crear APIs más robustas y profesionales. Con type hints y Pydantic, tu código será más claro y confiable.
+
+**Recuerda**:
+
+- ✅ Construyes sobre la base sólida de Semana 1
+- ✅ El break de 30 min es obligatorio para asimilar conceptos
+- ✅ Cada mejora es un paso hacia APIs profesionales
+- ✅ Los conceptos se reforzarán en semanas siguientes
+
+**¡Tu API está evolucionando! 🚀**
