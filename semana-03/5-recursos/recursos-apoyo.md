@@ -1,29 +1,24 @@
-# Recursos de Apoyo - Semana 3: FastAPI Intermedio
+# Recursos de Apoyo - Semana 3
 
-## 📚 Documentación Oficial
+## 📚 Documentación y Referencias
 
-### **FastAPI Core**
+### **FastAPI**
 
-- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Documentación oficial completa
+- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Documentación oficial
 - [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/) - Tutorial paso a paso
-- [FastAPI Advanced User Guide](https://fastapi.tiangolo.com/advanced/) - Guías avanzadas
-- [FastAPI GitHub Repository](https://github.com/tiangolo/fastapi) - Código fuente y ejemplos
+- [Response Status Codes](https://fastapi.tiangolo.com/tutorial/response-status-code/) - Códigos de estado HTTP
 
 ### **Pydantic (Validación)**
 
-- [Pydantic Documentation](https://docs.pydantic.dev/) - Documentación v2
-- [Pydantic Validators](https://docs.pydantic.dev/latest/concepts/validators/) - Validadores custom
-- [Pydantic Field Types](https://docs.pydantic.dev/latest/concepts/types/) - Tipos de campos
-- [Pydantic Migration Guide](https://docs.pydantic.dev/latest/migration/) - Migración v1 a v2
+- [Pydantic Documentation](https://docs.pydantic.dev/) - Documentación oficial
+- [Field Validation](https://docs.pydantic.dev/latest/concepts/validators/) - Validadores básicos
+- [Field Types](https://docs.pydantic.dev/latest/concepts/types/) - Tipos de campos
 
 ### **HTTP y REST**
 
-- [HTTP Status Codes](https://httpstatuses.com/) - Referencia completa de códigos
-- [REST API Design](https://restfulapi.net/) - Mejores prácticas REST
-- [HTTP Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) - MDN Web Docs
-- [API Design Patterns](https://microservices.io/patterns/data/api-composition.html) - Patrones de diseño
-
----
+- [HTTP Status Codes](https://httpstatuses.com/) - Referencia de códigos HTTP
+- [REST API Basics](https://restfulapi.net/) - Principios básicos REST
+- [HTTP Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) - Métodos HTTP
 
 ## 🛠️ Herramientas de Desarrollo
 
@@ -31,462 +26,225 @@
 
 #### **Postman**
 
-- [Postman Download](https://www.postman.com/downloads/) - Cliente gráfico
-- [Postman Learning Center](https://learning.postman.com/) - Tutoriales y documentación
-- [Postman Collections](https://learning.postman.com/docs/collections/intro-to-collections/) - Organizar requests
-
-#### **HTTPie**
-
-```bash
-# Instalación
-pip install httpie
-
-# Ejemplos de uso
-http GET localhost:8000/api/v1/products
-http POST localhost:8000/api/v1/products name="Test Product" price:=99.99
-http PUT localhost:8000/api/v1/products/1 name="Updated Product"
-http DELETE localhost:8000/api/v1/products/1
-```
+- [Postman Download](https://www.postman.com/downloads/) - Cliente para probar APIs
+- [Postman Basics](https://learning.postman.com/docs/getting-started/introduction/) - Guía de inicio
 
 #### **curl (Línea de comandos)**
 
 ```bash
-# GET request
-curl -X GET "http://localhost:8000/api/v1/products"
+# GET - Obtener datos
+curl -X GET "http://localhost:8000/products"
 
-# POST con JSON
-curl -X POST "http://localhost:8000/api/v1/products" \
+# POST - Crear datos
+curl -X POST "http://localhost:8000/products" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Test Product", "price": 99.99}'
+  -d '{"name": "Producto Test", "price": 99.99}'
 
-# PUT con headers
-curl -X PUT "http://localhost:8000/api/v1/products/1" \
+# PUT - Actualizar datos
+curl -X PUT "http://localhost:8000/products/1" \
   -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{"name": "Updated Product", "price": 129.99}'
+  -d '{"name": "Producto Actualizado", "price": 129.99}'
 
-# DELETE
-curl -X DELETE "http://localhost:8000/api/v1/products/1" -v
+# DELETE - Eliminar datos
+curl -X DELETE "http://localhost:8000/products/1"
 ```
 
-### **Editores y IDEs**
-
-#### **VS Code (Recomendado)**
+### **Editor Recomendado: VS Code**
 
 ```bash
-# Extensiones esenciales
+# Extensiones útiles
 code --install-extension ms-python.python
 code --install-extension ms-python.pylint
-code --install-extension ms-python.black-formatter
 code --install-extension humao.rest-client
-code --install-extension ms-python.isort
 ```
 
-**Configuración VS Code para FastAPI:**
-
-```json
-// .vscode/settings.json
-{
-  "python.defaultInterpreterPath": "./venv/bin/python",
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black",
-  "python.sortImports.args": ["--profile", "black"],
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  }
-}
-```
-
-#### **PyCharm**
-
-- [PyCharm Professional](https://www.jetbrains.com/pycharm/) - IDE completo para Python
-- [FastAPI Plugin](https://plugins.jetbrains.com/plugin/14251-fastapi) - Plugin específico para FastAPI
-
-### **Validación y Linting**
-
-#### **Herramientas de Calidad**
+### **Herramientas de Calidad**
 
 ```bash
-# Instalar herramientas de desarrollo
-pip install black isort mypy flake8 pytest
+# Instalar herramientas básicas
+pip install black isort
 
 # Formatear código
 black app/
+
+# Ordenar imports
 isort app/
-
-# Verificar tipos
-mypy app/
-
-# Linting
-flake8 app/
-
-# Testing
-pytest tests/
 ```
 
----
+## 📖 Ejemplos de Código Útiles
 
-## 📖 Guías y Tutoriales
-
-### **FastAPI Específico**
-
-- [FastAPI Best Practices](https://github.com/zhanymkanov/fastapi-best-practices) - Mejores prácticas comunitarias
-- [Full Stack FastAPI Template](https://github.com/tiangolo/full-stack-fastapi-postgresql) - Template completo oficial
-- [FastAPI Users](https://fastapi-users.github.io/fastapi-users/) - Autenticación y usuarios
-- [FastAPI SQL Databases](https://fastapi.tiangolo.com/tutorial/sql-databases/) - Integración con bases de datos
-
-### **Patrones de Arquitectura**
-
-- [Repository Pattern](https://deviq.com/design-patterns/repository-pattern) - Patrón de acceso a datos
-- [Service Layer Pattern](https://martinfowler.com/eaaCatalog/serviceLayer.html) - Capa de servicios
-- [Dependency Injection](https://fastapi.tiangolo.com/tutorial/dependencies/) - Inyección de dependencias
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Arquitectura limpia
-
-### **Validación Avanzada**
-
-- [Pydantic Custom Validators](https://docs.pydantic.dev/latest/concepts/validators/) - Validadores personalizados
-- [Field Validation](https://docs.pydantic.dev/latest/concepts/field_validator/) - Validación de campos
-- [Model Validation](https://docs.pydantic.dev/latest/concepts/model_validator/) - Validación de modelos
-- [Custom Types](https://docs.pydantic.dev/latest/concepts/types/) - Tipos personalizados
-
----
-
-## 🔧 Snippets de Código Útiles
-
-### **Estructura Base de Endpoint**
-
-```python
-from fastapi import APIRouter, Depends, HTTPException, status, Query, Path
-from typing import List, Optional
-
-router = APIRouter()
-
-@router.get(
-    "/",
-    response_model=List[ItemResponse],
-    summary="Listar items",
-    description="Obtiene una lista paginada de items con filtros opcionales"
-)
-async def list_items(
-    # Query parameters
-    page: int = Query(1, ge=1, description="Número de página"),
-    page_size: int = Query(10, ge=1, le=100, description="Items por página"),
-    search: Optional[str] = Query(None, min_length=2, description="Término de búsqueda"),
-
-    # Dependency injection
-    service: ItemService = Depends(get_item_service)
-) -> List[ItemResponse]:
-    """Listar items con paginación y filtros"""
-    return await service.list_items(page, page_size, search)
-```
-
-### **Validador Custom Típico**
+### **Validador Pydantic Básico**
 
 ```python
 from pydantic import BaseModel, Field, validator
-import re
 
 class Product(BaseModel):
     name: str = Field(..., min_length=2, max_length=100)
-    sku: str = Field(..., min_length=6, max_length=20)
     price: float = Field(..., gt=0)
+    stock: int = Field(0, ge=0)
 
     @validator('name')
     def validate_name(cls, v):
         # Limpiar espacios y capitalizar
-        v = ' '.join(v.split()).title()
+        return v.strip().title()
 
-        # Validaciones específicas
-        if v.isdigit():
-            raise ValueError('El nombre no puede ser solo números')
-
-        forbidden_chars = ['<', '>', '"', "'"]
-        if any(char in v for char in forbidden_chars):
-            raise ValueError(f'El nombre no puede contener: {", ".join(forbidden_chars)}')
-
-        return v
-
-    @validator('sku')
-    def validate_sku(cls, v):
-        pattern = r'^[A-Z]{3}-\d{4}-[A-Z]{2}$'
-        v = v.upper().strip()
-
-        if not re.match(pattern, v):
-            raise ValueError('SKU debe tener formato ABC-1234-XY')
-
-        return v
+    @validator('price')
+    def validate_price(cls, v):
+        # Redondear a 2 decimales
+        return round(v, 2)
 ```
 
-### **Exception Handler Básico**
+### **Manejo Básico de Errores**
 
 ```python
-from fastapi import Request, HTTPException
-from fastapi.responses import JSONResponse
-from datetime import datetime
+from fastapi import HTTPException
 
-@app.exception_handler(CustomException)
-async def custom_exception_handler(request: Request, exc: CustomException):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "success": False,
-            "error_code": exc.error_code,
-            "message": exc.message,
-            "details": exc.details,
-            "timestamp": datetime.now().isoformat(),
-            "path": str(request.url.path),
-            "method": request.method
-        }
+# Función para manejar errores comunes
+def product_not_found(product_id: int):
+    raise HTTPException(
+        status_code=404,
+        detail=f"Producto con ID {product_id} no encontrado"
     )
+
+# Uso en endpoint
+@app.get("/products/{product_id}")
+async def get_product(product_id: int):
+    product = database.get(product_id)
+    if not product:
+        product_not_found(product_id)
+    return product
 ```
 
-### **Service Layer Pattern**
+### **Filtros de Búsqueda Básicos**
 
 ```python
-from typing import List, Optional
-from repositories.item_repository import ItemRepository
-from schemas.item import ItemCreate, ItemUpdate, ItemResponse
+from typing import Optional
+from fastapi import Query
 
-class ItemService:
-    def __init__(self, repository: ItemRepository):
-        self.repository = repository
-
-    async def create_item(self, item_data: ItemCreate) -> ItemResponse:
-        # Validaciones de negocio
-        if await self.repository.exists_by_field("name", item_data.name):
-            raise ConflictError("Item with this name already exists")
-
-        # Crear item
-        created_item = await self.repository.create(item_data.dict())
-        return ItemResponse(**created_item)
-
-    async def get_item(self, item_id: int) -> ItemResponse:
-        item = await self.repository.get_by_id(item_id)
-        if not item:
-            raise NotFoundError(f"Item {item_id} not found")
-        return ItemResponse(**item)
+@app.get("/products")
+async def list_products(
+    name: Optional[str] = Query(None, description="Filtrar por nombre"),
+    min_price: Optional[float] = Query(None, ge=0, description="Precio mínimo"),
+    max_price: Optional[float] = Query(None, ge=0, description="Precio máximo"),
+    category_id: Optional[int] = Query(None, gt=0, description="ID de categoría")
+):
+    # Lógica de filtrado básica
+    products = database.filter_products(
+        name=name,
+        min_price=min_price,
+        max_price=max_price,
+        category_id=category_id
+    )
+    return products
 ```
 
----
+## 🧪 Testing Básico
 
-## 🧪 Templates de Testing
+### **Probar API con curl**
 
-### **Testing con pytest**
+```bash
+# 1. Listar productos
+curl -X GET "http://localhost:8000/products"
 
-```python
-# conftest.py
-import pytest
-from fastapi.testclient import TestClient
-from app.main import app
+# 2. Crear producto
+curl -X POST "http://localhost:8000/products" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Laptop HP", "price": 799.99, "category_id": 1}'
 
-@pytest.fixture
-def client():
-    return TestClient(app)
+# 3. Obtener producto específico
+curl -X GET "http://localhost:8000/products/1"
 
-@pytest.fixture
-def sample_product():
-    return {
-        "name": "Test Product",
-        "sku": "TST-1234-XX",
-        "price": 99.99,
-        "category_id": 1
-    }
+# 4. Buscar con filtros
+curl -X GET "http://localhost:8000/products?min_price=100&max_price=500"
 
-# test_products.py
-def test_create_product_success(client, sample_product):
-    response = client.post("/api/v1/products", json=sample_product)
-    assert response.status_code == 201
-    assert response.json()["name"] == sample_product["name"]
-
-def test_get_product_not_found(client):
-    response = client.get("/api/v1/products/999")
-    assert response.status_code == 404
-    assert response.json()["error_code"] == "RESOURCE_NOT_FOUND"
-
-def test_create_product_duplicate_sku(client, sample_product):
-    # Crear primer producto
-    client.post("/api/v1/products", json=sample_product)
-
-    # Intentar crear con mismo SKU
-    response = client.post("/api/v1/products", json=sample_product)
-    assert response.status_code == 409
-    assert "duplicate" in response.json()["message"].lower()
+# 5. Eliminar producto
+curl -X DELETE "http://localhost:8000/products/1"
 ```
 
-### **Collection de Postman**
+### **Casos de Prueba Básicos**
 
-```json
-{
-  "info": {
-    "name": "FastAPI Inventory API",
-    "description": "Collection para testing de API de inventario"
-  },
-  "item": [
-    {
-      "name": "Create Product",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"name\": \"Test Product\",\n  \"sku\": \"TST-1234-XX\",\n  \"price\": 99.99,\n  \"category_id\": 1\n}"
-        },
-        "url": {
-          "raw": "{{base_url}}/api/v1/products",
-          "host": ["{{base_url}}"],
-          "path": ["api", "v1", "products"]
-        }
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "base_url",
-      "value": "http://localhost:8000"
-    }
-  ]
-}
+```bash
+# Probar validaciones
+curl -X POST "http://localhost:8000/products" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "", "price": -10}'  # Debería dar error 422
+
+# Probar producto no encontrado
+curl -X GET "http://localhost:8000/products/999"  # Debería dar error 404
 ```
-
----
 
 ## 📚 Recursos Adicionales
 
-### **Blogs y Artículos**
+### **Tutoriales Recomendados**
 
 - [Real Python - FastAPI Tutorial](https://realpython.com/fastapi-python-web-apis/) - Tutorial completo
-- [TestDriven.io FastAPI](https://testdriven.io/blog/fastapi-crud/) - Series de FastAPI
-- [FastAPI Tips and Tricks](https://christophergs.com/tutorials/ultimate-fastapi-tutorial-pt-1-hello-world/) - Tutorial avanzado
+- [FastAPI Official Tutorial](https://fastapi.tiangolo.com/tutorial/) - Tutorial oficial paso a paso
 
-### **Videos y Cursos**
+### **Videos Útiles**
 
-- [FastAPI Official YouTube](https://www.youtube.com/c/tiangolo) - Canal oficial del creador
-- [Python API Development](https://www.youtube.com/watch?v=0sOvCWFmrtA) - Curso completo gratuito
 - [FastAPI Crash Course](https://www.youtube.com/watch?v=7t2alSnE2-I) - Introducción rápida
+- [Python API Development](https://www.youtube.com/watch?v=0sOvCWFmrtA) - Curso básico
 
-### **Libros y Referencias**
+### **Comunidad y Ayuda**
 
-- [Building Python Web APIs with FastAPI](https://www.amazon.com/Building-Python-Web-APIs-FastAPI/dp/1801077540) - Libro completo
-- [FastAPI Modern Python Web Development](https://www.amazon.com/FastAPI-Modern-Python-Web-Development/dp/1098135507) - Libro reciente
-- [Effective Python](https://effectivepython.com/) - Mejores prácticas de Python
-
-### **Comunidad y Soporte**
-
-- [FastAPI GitHub Discussions](https://github.com/tiangolo/fastapi/discussions) - Discusiones oficiales
-- [FastAPI Reddit](https://www.reddit.com/r/FastAPI/) - Comunidad Reddit
+- [FastAPI GitHub Discussions](https://github.com/tiangolo/fastapi/discussions) - Preguntas oficiales
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/fastapi) - Preguntas y respuestas
-- [Discord FastAPI](https://discord.gg/VQjSZaeJmf) - Chat en tiempo real
 
----
+## 🔍 Problemas Comunes
 
-## 🔍 Debugging y Troubleshooting
-
-### **Problemas Comunes**
-
-#### **Error: "422 Unprocessable Entity"**
+### **Error 422: Unprocessable Entity**
 
 ```python
-# Problema: Validación Pydantic falla
-# Solución: Verificar tipos de datos y validaciones
-
+# Problema: Tipo de dato incorrecto
 # ❌ Incorrecto
-{"price": "99.99"}  # String en lugar de number
+{"price": "99.99"}  # String en lugar de número
 
 # ✅ Correcto
-{"price": 99.99}    # Number
+{"price": 99.99}    # Número
 ```
 
-#### **Error: "404 Not Found" en endpoints**
+### **Error 404: Not Found**
 
 ```python
-# Problema: Orden de rutas incorrecta
-# ❌ Incorrecto
-@router.get("/products/{product_id}")
-@router.get("/products/stats")  # Nunca se alcanza
-
-# ✅ Correcto
-@router.get("/products/stats")   # Ruta específica primero
-@router.get("/products/{product_id}")  # Ruta genérica después
+# Problema: Recurso no existe
+# Verificar que el ID sea correcto y que el recurso exista en la base de datos
 ```
 
-#### **Error: "500 Internal Server Error"**
+### **Error 500: Internal Server Error**
 
 ```python
-# Problema: Exception no manejada
-# Solución: Usar try-catch o exception handlers
-
-@app.exception_handler(Exception)
-async def general_exception_handler(request, exc):
-    logger.error(f"Unhandled exception: {exc}")
-    return JSONResponse(
-        status_code=500,
-        content={"error": "Internal server error"}
-    )
+# Problema: Error en el código
+# Revisar logs del servidor para ver el error específico
+uvicorn app.main:app --reload --log-level debug
 ```
 
-### **Comandos de Diagnóstico**
+## 💡 Consejos Útiles
+
+### **Comandos Frecuentes**
 
 ```bash
-# Verificar sintaxis Python
+# Ejecutar servidor de desarrollo
+uvicorn app.main:app --reload
+
+# Verificar sintaxis
 python -m py_compile app/main.py
 
-# Verificar importaciones
-python -c "from app.main import app; print('OK')"
+# Formatear código
+black app/
+```
 
-# Ejecutar con logs detallados
-uvicorn app.main:app --reload --log-level debug
+### **Organización del Código**
 
-# Verificar puertos ocupados
-lsof -i :8000  # macOS/Linux
-netstat -ano | findstr :8000  # Windows
+```text
+app/
+├── main.py          # Aplicación principal
+├── models.py        # Modelos Pydantic
+├── database.py      # Conexión a datos
+└── routers/         # Rutas organizadas
+    ├── products.py
+    └── categories.py
 ```
 
 ---
 
-## 💡 Tips de Productividad
-
-### **Shortcuts VS Code**
-
-- `Ctrl+Shift+P`: Command palette
-- `Ctrl+Click`: Ir a definición
-- `F12`: Ir a definición
-- `Shift+F12`: Encontrar referencias
-- `Ctrl+.`: Quick fix/refactor
-- `F2`: Rename symbol
-
-### **Aliases Útiles**
-
-```bash
-# .bashrc o .zshrc
-alias fapi="uvicorn app.main:app --reload"
-alias fapitest="pytest tests/ -v"
-alias fapilint="black app/ && isort app/ && flake8 app/"
-```
-
-### **Configuración Git**
-
-```bash
-# .gitignore para FastAPI
-__pycache__/
-*.py[cod]
-*$py.class
-.env
-.venv/
-venv/
-logs/
-.pytest_cache/
-.coverage
-htmlcov/
-```
-
----
-
-_Recursos compilados para Semana 3 - Bootcamp FastAPI_  
-_Última actualización: 24 de julio de 2025_
+_Recursos de Apoyo - Semana 3 - Bootcamp FastAPI - EPTI Development_
