@@ -8,10 +8,10 @@ Desarrollar una **API de gestión de tareas** que demuestre todos los conceptos 
 
 ### **Entidades del Sistema:**
 
-1. **Usuario**: Gestión de usuarios del sistema
-2. **Proyecto**: Agrupación de tareas relacionadas
-3. **Tarea**: Elementos de trabajo individuales
-4. **Comentario**: Notas y actualizaciones en tareas
+1. **User**: Gestión de usuarios del sistema
+2. **Project**: Agrupación de tareas relacionadas
+3. **Task**: Elementos de trabajo individuales
+4. **Comment**: Notas y actualizaciones en tareas
 
 ### **Funcionalidades Requeridas:**
 
@@ -31,158 +31,158 @@ from datetime import datetime, date
 from enum import Enum
 from typing import Optional, List
 
-class EstadoTarea(str, Enum):
-    pendiente = "pendiente"
-    en_progreso = "en_progreso"
-    completada = "completada"
-    cancelada = "cancelada"
+class TaskStatus(str, Enum):
+    pending = "pending"
+    in_progress = "in_progress"
+    completed = "completed"
+    cancelled = "cancelled"
 
-class PrioridadTarea(str, Enum):
-    baja = "baja"
-    media = "media"
-    alta = "alta"
-    critica = "critica"
+class TaskPriority(str, Enum):
+    low = "low"
+    medium = "medium"
+    high = "high"
+    critical = "critical"
 
-class TipoUsuario(str, Enum):
+class UserType(str, Enum):
     admin = "admin"
     manager = "manager"
     developer = "developer"
     viewer = "viewer"
 
-# Modelo base para Usuario
-class UsuarioBase(BaseModel):
-    nombre: str = Field(..., min_length=2, max_length=100)
+# Modelo base para User
+class UserBase(BaseModel):
+    name: str = Field(..., min_length=2, max_length=100)
     email: EmailStr
-    tipo: TipoUsuario
-    activo: bool = True
+    type: UserType
+    active: bool = True
 
-class UsuarioCreate(UsuarioBase):
+class UserCreate(UserBase):
     password: str = Field(..., min_length=8, description="Mínimo 8 caracteres")
 
-class UsuarioResponse(UsuarioBase):
+class UserResponse(UserBase):
     id: int
-    fecha_registro: datetime
-    ultimo_acceso: Optional[datetime] = None
+    registration_date: datetime
+    last_access: Optional[datetime] = None
 
-# Modelo base para Proyecto
-class ProyectoBase(BaseModel):
-    nombre: str = Field(..., min_length=3, max_length=100)
-    descripcion: Optional[str] = Field(None, max_length=500)
-    fecha_inicio: date
-    fecha_limite: Optional[date] = None
+# Modelo base para Project
+class ProjectBase(BaseModel):
+    name: str = Field(..., min_length=3, max_length=100)
+    description: Optional[str] = Field(None, max_length=500)
+    start_date: date
+    due_date: Optional[date] = None
     manager_id: int = Field(..., ge=1)
 
-    @validator('fecha_limite')
-    def validar_fecha_limite(cls, v, values):
-        if v and values.get('fecha_inicio'):
-            if v <= values['fecha_inicio']:
-                raise ValueError('Fecha límite debe ser posterior a fecha de inicio')
+    @validator('due_date')
+    def validate_due_date(cls, v, values):
+        if v and values.get('start_date'):
+            if v <= values['start_date']:
+                raise ValueError('Due date must be after start date')
         return v
 
-class ProyectoCreate(ProyectoBase):
+class ProjectCreate(ProjectBase):
     pass
 
-class ProyectoResponse(ProyectoBase):
+class ProjectResponse(ProjectBase):
     id: int
-    fecha_creacion: datetime
-    total_tareas: int = 0
-    tareas_completadas: int = 0
+    creation_date: datetime
+    total_tasks: int = 0
+    completed_tasks: int = 0
 
-# Modelo base para Tarea
-class TareaBase(BaseModel):
-    titulo: str = Field(..., min_length=5, max_length=200)
-    descripcion: Optional[str] = Field(None, max_length=1000)
-    estado: EstadoTarea = EstadoTarea.pendiente
-    prioridad: PrioridadTarea = PrioridadTarea.media
-    fecha_limite: Optional[date] = None
-    proyecto_id: int = Field(..., ge=1)
-    asignado_a: Optional[int] = Field(None, ge=1)
-    estimacion_horas: Optional[float] = Field(None, ge=0.1, le=1000)
+# Modelo base para Task
+class TaskBase(BaseModel):
+    title: str = Field(..., min_length=5, max_length=200)
+    description: Optional[str] = Field(None, max_length=1000)
+    status: TaskStatus = TaskStatus.pending
+    priority: TaskPriority = TaskPriority.medium
+    due_date: Optional[date] = None
+    project_id: int = Field(..., ge=1)
+    assigned_to: Optional[int] = Field(None, ge=1)
+    estimated_hours: Optional[float] = Field(None, ge=0.1, le=1000)
 
-class TareaCreate(TareaBase):
+class TaskCreate(TaskBase):
     pass
 
-class TareaResponse(TareaBase):
+class TaskResponse(TaskBase):
     id: int
-    fecha_creacion: datetime
-    fecha_actualizacion: datetime
-    creado_por: int
+    creation_date: datetime
+    update_date: datetime
+    created_by: int
 
-# Modelo para Comentario
-class ComentarioBase(BaseModel):
-    contenido: str = Field(..., min_length=1, max_length=1000)
-    tarea_id: int = Field(..., ge=1)
+# Modelo para Comment
+class CommentBase(BaseModel):
+    content: str = Field(..., min_length=1, max_length=1000)
+    task_id: int = Field(..., ge=1)
 
-class ComentarioCreate(ComentarioBase):
+class CommentCreate(CommentBase):
     pass
 
-class ComentarioResponse(ComentarioBase):
+class CommentResponse(CommentBase):
     id: int
-    fecha_creacion: datetime
-    autor_id: int
-    autor_nombre: str
+    creation_date: datetime
+    author_id: int
+    author_name: str
 ```
 
 ### **2. Endpoints Requeridos**
 
-#### **Usuarios (`/usuarios`)**
+#### **Users (`/users`)**
 
 ```python
 # CRUD básico
-POST   /usuarios                    # Crear usuario
-GET    /usuarios                    # Listar usuarios
-GET    /usuarios/{user_id}          # Obtener usuario específico
-PUT    /usuarios/{user_id}          # Actualizar usuario completo
-PATCH  /usuarios/{user_id}          # Actualizar usuario parcial
-DELETE /usuarios/{user_id}          # Desactivar usuario (soft delete)
+POST   /users                    # Crear usuario
+GET    /users                    # Listar usuarios
+GET    /users/{user_id}          # Obtener usuario específico
+PUT    /users/{user_id}          # Actualizar usuario completo
+PATCH  /users/{user_id}          # Actualizar usuario parcial
+DELETE /users/{user_id}          # Desactivar usuario (soft delete)
 
 # Endpoints adicionales
-GET    /usuarios/buscar            # Buscar por nombre/email
-GET    /usuarios/{user_id}/tareas  # Tareas asignadas al usuario
-PATCH  /usuarios/{user_id}/ultimo-acceso  # Actualizar último acceso
+GET    /users/search            # Buscar por nombre/email
+GET    /users/{user_id}/tasks  # Tareas asignadas al usuario
+PATCH  /users/{user_id}/last-access  # Actualizar último acceso
 ```
 
-#### **Proyectos (`/proyectos`)**
+#### **Projects (`/projects`)**
 
 ```python
 # CRUD básico
-POST   /proyectos                  # Crear proyecto
-GET    /proyectos                  # Listar proyectos
-GET    /proyectos/{proyecto_id}    # Obtener proyecto específico
-PUT    /proyectos/{proyecto_id}    # Actualizar proyecto completo
-DELETE /proyectos/{proyecto_id}    # Eliminar proyecto
+POST   /projects                  # Crear proyecto
+GET    /projects                  # Listar proyectos
+GET    /projects/{project_id}    # Obtener proyecto específico
+PUT    /projects/{project_id}    # Actualizar proyecto completo
+DELETE /projects/{project_id}    # Eliminar proyecto
 
 # Endpoints adicionales
-GET    /proyectos/buscar          # Buscar proyectos
-GET    /proyectos/{proyecto_id}/tareas    # Tareas del proyecto
-GET    /proyectos/{proyecto_id}/estadisticas  # Stats del proyecto
+GET    /projects/search          # Buscar proyectos
+GET    /projects/{project_id}/tasks    # Tareas del proyecto
+GET    /projects/{project_id}/statistics  # Stats del proyecto
 ```
 
-#### **Tareas (`/tareas`)**
+#### **Tasks (`/tasks`)**
 
 ```python
 # CRUD básico
-POST   /tareas                     # Crear tarea
-GET    /tareas                     # Listar tareas con filtros
-GET    /tareas/{tarea_id}          # Obtener tarea específica
-PUT    /tareas/{tarea_id}          # Actualizar tarea completa
-PATCH  /tareas/{tarea_id}          # Actualizar tarea parcial
-DELETE /tareas/{tarea_id}          # Eliminar tarea
+POST   /tasks                     # Crear tarea
+GET    /tasks                     # Listar tareas con filtros
+GET    /tasks/{task_id}          # Obtener tarea específica
+PUT    /tasks/{task_id}          # Actualizar tarea completa
+PATCH  /tasks/{task_id}          # Actualizar tarea parcial
+DELETE /tasks/{task_id}          # Eliminar tarea
 
 # Endpoints adicionales
-GET    /tareas/buscar             # Búsqueda avanzada
-PATCH  /tareas/{tarea_id}/estado  # Cambiar solo estado
-PATCH  /tareas/{tarea_id}/asignar # Asignar/reasignar tarea
-GET    /tareas/estadisticas       # Estadísticas generales
+GET    /tasks/search             # Búsqueda avanzada
+PATCH  /tasks/{task_id}/status  # Cambiar solo estado
+PATCH  /tasks/{task_id}/assign # Asignar/reasignar tarea
+GET    /tasks/statistics       # Estadísticas generales
 ```
 
-#### **Comentarios (`/comentarios`)**
+#### **Comments (`/comments`)**
 
 ```python
-POST   /comentarios               # Crear comentario
-GET    /comentarios/tarea/{tarea_id}  # Comentarios de una tarea
-PUT    /comentarios/{comentario_id}   # Actualizar comentario
-DELETE /comentarios/{comentario_id}   # Eliminar comentario
+POST   /comments               # Crear comentario
+GET    /comments/task/{task_id}  # Comentarios de una tarea
+PUT    /comments/{comment_id}   # Actualizar comentario
+DELETE /comments/{comment_id}   # Eliminar comentario
 ```
 
 ### **3. Funcionalidades Async Requeridas**
@@ -191,35 +191,35 @@ Implementar estos endpoints como **async** para simular operaciones lentas:
 
 ```python
 # Simular validación externa de email
-async def validar_email_externo(email: str) -> bool:
+async def validate_external_email(email: str) -> bool:
     await asyncio.sleep(0.5)  # Simular latencia API externa
     return "@" in email and "." in email
 
 # Simular notificación por email
-async def enviar_notificacion(usuario_id: int, mensaje: str) -> bool:
+async def send_notification(user_id: int, message: str) -> bool:
     await asyncio.sleep(0.3)  # Simular envío
     return True
 
 # Simular backup de datos
-async def backup_proyecto(proyecto_id: int) -> dict:
+async def backup_project(project_id: int) -> dict:
     await asyncio.sleep(1)  # Simular proceso de backup
-    return {"backup_id": f"bk_{proyecto_id}_{datetime.now().timestamp()}"}
+    return {"backup_id": f"bk_{project_id}_{datetime.now().timestamp()}"}
 
 # Endpoints async requeridos:
-@app.post("/usuarios", response_model=UsuarioResponse)
-async def crear_usuario_async(usuario: UsuarioCreate):
+@app.post("/users", response_model=UserResponse)
+async def create_user_async(user: UserCreate):
     # Validar email externamente
-    email_valido = await validar_email_externo(usuario.email)
+    email_valid = await validate_external_email(user.email)
     # Crear usuario y enviar notificación en paralelo
     pass
 
-@app.patch("/tareas/{tarea_id}/estado")
-async def cambiar_estado_tarea_async(tarea_id: int, nuevo_estado: EstadoTarea):
+@app.patch("/tasks/{task_id}/status")
+async def change_task_status_async(task_id: int, new_status: TaskStatus):
     # Cambiar estado y notificar a usuarios relevantes en paralelo
     pass
 
-@app.delete("/proyectos/{proyecto_id}")
-async def eliminar_proyecto_async(proyecto_id: int):
+@app.delete("/projects/{project_id}")
+async def delete_project_async(project_id: int):
     # Hacer backup antes de eliminar
     pass
 ```
@@ -227,21 +227,21 @@ async def eliminar_proyecto_async(proyecto_id: int):
 ### **4. Filtros y Búsquedas Avanzadas**
 
 ```python
-# Ejemplo para tareas
-@app.get("/tareas/buscar", response_model=List[TareaResponse])
-async def buscar_tareas(
-    titulo: Optional[str] = Query(None, min_length=1),
-    estado: Optional[EstadoTarea] = None,
-    prioridad: Optional[PrioridadTarea] = None,
-    proyecto_id: Optional[int] = Query(None, ge=1),
-    asignado_a: Optional[int] = Query(None, ge=1),
-    fecha_limite_desde: Optional[date] = None,
-    fecha_limite_hasta: Optional[date] = None,
+# Ejemplo para tasks
+@app.get("/tasks/search", response_model=List[TaskResponse])
+async def search_tasks(
+    title: Optional[str] = Query(None, min_length=1),
+    status: Optional[TaskStatus] = None,
+    priority: Optional[TaskPriority] = None,
+    project_id: Optional[int] = Query(None, ge=1),
+    assigned_to: Optional[int] = Query(None, ge=1),
+    due_date_from: Optional[date] = None,
+    due_date_to: Optional[date] = None,
     # Paginación
     page: int = Query(1, ge=1),
     size: int = Query(10, ge=1, le=100),
     # Ordenamiento
-    order_by: str = Query("fecha_creacion", regex="^(titulo|fecha_creacion|fecha_limite|prioridad)$"),
+    order_by: str = Query("creation_date", regex="^(title|creation_date|due_date|priority)$"),
     order_dir: str = Query("desc", regex="^(asc|desc)$")
 ):
     # Implementar lógica de filtrado, ordenamiento y paginación
@@ -284,8 +284,8 @@ async def buscar_tareas(
 
 ```bash
 # Crear estructura
-mkdir proyecto-tareas-semana2
-cd proyecto-tareas-semana2
+mkdir task-management-week2
+cd task-management-week2
 
 # Crear entorno virtual
 python -m venv venv
@@ -307,9 +307,9 @@ touch main.py models.py README.md
 
 ### **Paso 3: Endpoints Básicos (60 min)**
 
-- Implementar CRUD para usuarios
-- Implementar CRUD para proyectos
-- Implementar CRUD para tareas
+- Implementar CRUD para users
+- Implementar CRUD para projects
+- Implementar CRUD para tasks
 - Probar con datos básicos
 
 ### **Paso 4: Funcionalidades Avanzadas (45 min)**
@@ -366,9 +366,9 @@ uvicorn main:app --reload
 
 ## Endpoints Principales
 
-- GET /usuarios - Listar usuarios
-- POST /tareas - Crear tarea
-- GET /tareas/buscar - Búsqueda avanzada
+- GET /users - Listar usuarios
+- POST /tasks - Crear tarea
+- GET /tasks/search - Búsqueda avanzada
 
 ## Ejemplos de Uso
 
@@ -376,9 +376,9 @@ uvicorn main:app --reload
 
 # Crear usuario
 
-curl -X POST "http://localhost:8000/usuarios" \
+curl -X POST "http://localhost:8000/users" \
  -H "Content-Type: application/json" \
- -d '{"nombre": "Juan", "email": "juan@ejemplo.com", "tipo": "developer", "password": "12345678"}'
+ -d '{"name": "Juan", "email": "juan@example.com", "type": "developer", "password": "12345678"}'
 \`\`\`
 
 ## Decisiones Técnicas
