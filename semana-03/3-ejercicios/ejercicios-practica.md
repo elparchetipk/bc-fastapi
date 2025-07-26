@@ -1,105 +1,225 @@
-# Ejercicios - Semana 3: FastAPI Intermedio
+# Ejercicios Prácticos - Semana 3 (Consolidación)
 
-## 🎯 Objetivo
+## 🎯 Objetivo Básico
 
-Reforzar los conceptos de FastAPI intermedio con ejercicios prácticos que complementan las prácticas principales de la semana.
+Consolidar conceptos de **validación avanzada + manejo de errores + estructura del proyecto** en el Bloque 4 (45 minutos) a través de ejercicios simples.
+
+## ⏱️ Tiempo: 45 minutos (Bloque 4 - Consolidación)
+
+## 📋 Pre-requisitos
+
+- ✅ API de los Bloques 1-3 funcionando
+- ✅ Validación avanzada implementada
+- ✅ Manejo de errores básico funcionando
+- ✅ Estructura de proyecto organizada
 
 ---
 
-## 📋 Ejercicio 1: Endpoints HTTP Básicos (20 min)
+## 🏋️ Ejercicio 1: Verificación Completa (20 min)
 
-### **Contexto**
+**Objetivo**: Asegurar que todo lo aprendido funciona
 
-Crear una mini-API para gestionar una biblioteca de libros aplicando los conceptos REST.
+### 📝 Checklist de Verificación
 
-### **Instrucciones**
+**Revisa tu proyecto actual y marca:**
 
-Implementa los siguientes endpoints:
+- [ ] **Validación avanzada**: ¿Tienes validadores custom con `@validator`?
+- [ ] **Manejo de errores**: ¿Tus endpoints manejan errores con `HTTPException`?
+- [ ] **Estructura organizada**: ¿Tienes archivos separados (models, routers, services)?
+- [ ] **API funcionando**: ¿Todos los endpoints CRUD funcionan correctamente?
+- [ ] **Logs básicos**: ¿Se registran errores en la consola?
+- [ ] **Documentación**: ¿Se ve bien en http://127.0.0.1:8000/docs?
+
+### 🔧 **Si algo no funciona**:
+
+1. **Problema con validadores**:
+
+   ```python
+   from pydantic import BaseModel, validator
+
+   class Product(BaseModel):
+       name: str
+       price: float
+
+       @validator('name')
+       def validate_name(cls, v):
+           if not v.strip():
+               raise ValueError('El nombre no puede estar vacío')
+           return v.title()
+   ```
+
+2. **Problema con errores**: Usa el patrón más simple:
+
+   ```python
+   from fastapi import HTTPException, status
+
+   @app.get("/products/{product_id}")
+   def get_product(product_id: int):
+       if product_id not in products_db:
+           raise HTTPException(
+               status_code=status.HTTP_404_NOT_FOUND,
+               detail="Producto no encontrado"
+           )
+       return products_db[product_id]
+   ```
+
+3. **Problema con estructura**: Verifica que tienes:
+
+   ```
+   mi-proyecto/
+   ├── main.py
+   ├── models/
+   │   └── product.py
+   ├── routers/
+   │   └── products.py
+   └── services/
+       └── product_service.py
+   ```
+
+### ✅ Criterio de Éxito
+
+- Todos los checkboxes marcados
+- API ejecutándose sin errores
+- Documentación automática funcional
+
+---
+
+## 🏋️ Ejercicio 2: Endpoint de Búsqueda Simple (25 min)
+
+**Objetivo**: Agregar un endpoint de búsqueda básico que use todo lo aprendido
+
+### 📝 Instrucciones
+
+1. **Abrir tu archivo de productos** (donde tienes los endpoints)
+
+2. **Agregar este endpoint de búsqueda**:
 
 ```python
-# Modelo básico
-class Book(BaseModel):
-    title: str = Field(..., min_length=1, max_length=200)
-    author: str = Field(..., min_length=1, max_length=100)
-    isbn: str = Field(..., regex=r'^\d{3}-\d{10}$')
-    pages: int = Field(..., gt=0, le=10000)
-    published_year: int = Field(..., ge=1500, le=2025)
-    genre: str = Field(..., min_length=1, max_length=50)
-    is_available: bool = Field(True)
+from typing import List, Optional
 
-# Endpoints requeridos:
-# GET /books - Listar todos los libros
-# GET /books/{book_id} - Obtener libro específico
-# POST /books - Crear nuevo libro
-# PUT /books/{book_id} - Actualizar libro
-# DELETE /books/{book_id} - Eliminar libro
+@app.get("/products/search")
+def search_products(
+    name: Optional[str] = None,
+    min_price: Optional[float] = None,
+    max_price: Optional[float] = None
+) -> List[dict]:
+    """Buscar productos por nombre y rango de precio"""
+    try:
+        # Obtener todos los productos
+        results = products_db.copy()
+
+        # Filtrar por nombre si se proporciona
+        if name:
+            name_lower = name.lower().strip()
+            if len(name_lower) < 2:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="El término de búsqueda debe tener al menos 2 caracteres"
+                )
+            results = [p for p in results if name_lower in p["name"].lower()]
+
+        # Filtrar por precio mínimo
+        if min_price is not None:
+            if min_price < 0:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="El precio mínimo no puede ser negativo"
+                )
+            results = [p for p in results if p["price"] >= min_price]
+
+        # Filtrar por precio máximo
+        if max_price is not None:
+            if max_price < 0:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="El precio máximo no puede ser negativo"
+                )
+            results = [p for p in results if p["price"] <= max_price]
+
+        # Validar rango de precios
+        if min_price is not None and max_price is not None:
+            if min_price > max_price:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="El precio mínimo no puede ser mayor al máximo"
+                )
+
+        return results
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        # Log del error (opcional)
+        print(f"Error en búsqueda: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Error interno del servidor"
+        )
 ```
 
-### **Tareas Específicas**
-
-1. **Crear el modelo Book** con validaciones apropiadas
-2. **Implementar storage en memoria** (lista o diccionario)
-3. **Crear los 5 endpoints** con responses correctos
-4. **Aplicar status codes apropiados** (200, 201, 204, 404)
-5. **Manejar errores básicos** (libro no encontrado, ISBN duplicado)
-
-### **Criterios de Evaluación**
-
-- ✅ Todos los endpoints funcionan correctamente
-- ✅ Validación de datos apropiada
-- ✅ Status codes correctos
-- ✅ Manejo básico de errores
-- ✅ Documentación automática funcional
-
-### **Testing Sugerido**
+3. **Probar el endpoint**:
 
 ```bash
-# Crear libro
-curl -X POST "http://localhost:8000/books" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "FastAPI for Beginners",
-    "author": "Tech Writer",
-    "isbn": "978-1234567890",
-    "pages": 350,
-    "published_year": 2024,
-    "genre": "Technology",
-    "is_available": true
-  }'
+# Buscar por nombre
+curl "http://localhost:8000/products/search?name=laptop"
 
-# Listar libros
-curl -X GET "http://localhost:8000/books"
+# Buscar por rango de precio
+curl "http://localhost:8000/products/search?min_price=100&max_price=500"
 
-# Obtener libro específico
-curl -X GET "http://localhost:8000/books/1"
+# Buscar combinando filtros
+curl "http://localhost:8000/products/search?name=mouse&min_price=20&max_price=100"
+
+# Probar errores
+curl "http://localhost:8000/products/search?name=a"  # Error: muy corto
+curl "http://localhost:8000/products/search?min_price=500&max_price=100"  # Error: rango inválido
 ```
+
+4. **Verificar en documentación**:
+   - Ve a http://127.0.0.1:8000/docs
+   - Busca el endpoint `/products/search`
+   - Prueba los filtros desde la interfaz
+
+### ✅ Criterio de Éxito
+
+- Endpoint de búsqueda funciona con todos los filtros
+- Maneja errores apropiadamente
+- Valida datos correctamente
+- Aparece en documentación automática
 
 ---
 
-## 📋 Ejercicio 2: Validación Avanzada con Pydantic (25 min)
+## 💻 Ejemplos de Testing
 
-### **Contexto**
+### **Testing manual rápido**:
 
-Expandir el modelo Book con validadores custom y lógica de negocio compleja.
+```bash
+# 1. Verificar que la API funciona
+curl http://localhost:8000/products/
 
-### **Instrucciones**
+# 2. Probar búsqueda básica
+curl "http://localhost:8000/products/search?name=laptop"
 
-Modifica el modelo Book para incluir:
+# 3. Probar validación de errores
+curl "http://localhost:8000/products/search?name=x"
 
-```python
-class BookAdvanced(BaseModel):
-    title: str = Field(..., min_length=1, max_length=200)
-    author: str = Field(..., min_length=1, max_length=100)
-    isbn: str = Field(..., regex=r'^\d{3}-\d{10}$')
-    pages: int = Field(..., gt=0, le=10000)
-    published_year: int = Field(..., ge=1500, le=2025)
-    genre: Literal["Fiction", "Non-Fiction", "Technology", "Science", "Biography"]
-    language: str = Field(..., min_length=2, max_length=3)  # Código de idioma
-    price: Decimal = Field(..., gt=0, le=9999.99, decimal_places=2)
-    rating: Optional[float] = Field(None, ge=1.0, le=5.0)
-    tags: Optional[List[str]] = Field(None, max_items=5)
-    is_available: bool = Field(True)
-    is_bestseller: bool = Field(False)
+# 4. Verificar documentación
+# Ir a http://localhost:8000/docs
+```
+
+### **¿Qué has logrado?**
+
+✅ **Validación robusta**: Tu API valida datos y maneja errores  
+✅ **Búsqueda funcional**: Los usuarios pueden filtrar productos  
+✅ **Código organizado**: Tienes una estructura profesional  
+✅ **Manejo de errores**: Tu API es resiliente  
+✅ **Documentación**: Todo está auto-documentado
+
+---
+
+_Ejercicios diseñados para Semana 3 - Bootcamp FastAPI_  
+_Tiempo total: 45 minutos de consolidación práctica_
+is_available: bool = Field(True)
+is_bestseller: bool = Field(False)
 
     # Validadores custom requeridos:
     # 1. El título debe capitalizar correctamente
@@ -107,7 +227,8 @@ class BookAdvanced(BaseModel):
     # 3. Los libros bestseller deben tener rating >= 4.0
     # 4. Los tags no pueden tener duplicados
     # 5. Los libros muy antiguos (< 1900) deben tener precio especial
-```
+
+````
 
 ### **Tareas Específicas**
 
@@ -143,7 +264,7 @@ class BookAdvanced(BaseModel):
     "is_bestseller": true,  # Debe fallar (rating < 4.0)
     # ... resto de campos
 }
-```
+````
 
 ---
 
