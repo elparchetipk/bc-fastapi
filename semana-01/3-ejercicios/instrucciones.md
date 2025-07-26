@@ -4,8 +4,6 @@
 
 Reforzar conceptos de tu primera API mediante **1-2 ejercicios súper simples** en el Bloque 3 (90 minutos).
 
-> **🔄 AJUSTE APLICADO**: Ejercicios reducidos al mínimo para garantizar éxito y no sobrecargar.
-
 ## ⏱️ Tiempo: 90 minutos (Bloque 3)
 
 ## 📋 Pre-requisitos
@@ -85,7 +83,7 @@ uvicorn main:app --reload
 
 - `/`: Mensaje de bienvenida
 - `/info`: Información de la API
-- `/mi-perfil`: Mi perfil personal
+- `/my-profile`: Mi perfil personal
 
 ## Documentación
 
