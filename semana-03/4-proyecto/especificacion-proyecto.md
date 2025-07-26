@@ -2,205 +2,129 @@
 
 ## 🎯 Objetivo del Proyecto
 
-Desarrollar una **API REST completa** que demuestre todos los conceptos aprendidos en la Semana 3: endpoints HTTP, validación avanzada, manejo de errores, y estructura REST profesional.
+Desarrollar una **API REST** que demuestre los conceptos aprendidos en la Semana 3: validación de datos, manejo de errores, y estructura REST básica.
 
 ## 📋 Especificaciones Funcionales
 
-### **Dominio del Proyecto: Sistema de Inventario de Tienda**
+### **Entidades del Sistema:**
 
-Tu API debe gestionar el inventario de una tienda pequeña con los siguientes recursos principales:
+1. **Product**: Productos del inventario
+2. **Category**: Categorías de productos
 
-- **Productos**: Items en venta
-- **Categorías**: Agrupación de productos
-- **Proveedores**: Empresas que suministran productos
+### **Funcionalidades Requeridas:**
 
-### **Funcionalidades Core Requeridas**
-
-1. ✅ **CRUD completo** para productos
-2. ✅ **Búsqueda y filtros** avanzados
-3. ✅ **Validación robusta** de todos los datos
-4. ✅ **Manejo de errores** profesional
-5. ✅ **Estadísticas** del inventario
-6. ✅ **Estructura REST** bien organizada
+- ✅ CRUD completo para productos
+- ✅ Gestión básica de categorías
+- ✅ Validación de datos con Pydantic
+- ✅ Manejo básico de errores
+- ✅ Filtros de búsqueda simple
 
 ## 🏗️ Especificación Técnica
 
-### **1. Modelos de Datos Requeridos**
-
-#### **Producto (Modelo Principal)**
+### **1. Modelos Pydantic Requeridos**
 
 ```python
-class Product(BaseModel):
-    # Información básica
-    name: str = Field(..., min_length=2, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
-    sku: str = Field(..., regex=r'^[A-Z]{3}-\d{4}-[A-Z]{2}$')  # Ej: ELE-1234-AP
+from pydantic import BaseModel, Field, validator
+from datetime import datetime
+from typing import Optional
+from enum import Enum
 
-    # Precio y stock
-    price: Decimal = Field(..., gt=0, le=999999.99, decimal_places=2)
-    cost_price: Optional[Decimal] = Field(None, gt=0, decimal_places=2)
-    stock_quantity: int = Field(0, ge=0, le=99999)
-    min_stock_level: int = Field(0, ge=0, le=1000)
-
-    # Categorización
-    category_id: int = Field(..., gt=0)
-    supplier_id: Optional[int] = Field(None, gt=0)
-    brand: str = Field(..., min_length=1, max_length=50)
-
-    # Características físicas
-    weight: Optional[float] = Field(None, gt=0, le=1000)  # kg
-    dimensions: Optional[Dict[str, float]] = None  # cm
-
-    # Metadatos
-    barcode: Optional[str] = Field(None, min_length=8, max_length=13)
-    tags: Optional[List[str]] = Field(None, max_items=10)
-    is_active: bool = Field(True)
-    is_featured: bool = Field(False)
-
-    # Validadores custom requeridos
-    @validator('name')
-    def validate_name(cls, v):
-        # Capitalizar y limpiar espacios
-        pass
-
-    @validator('sku')
-    def validate_sku_format(cls, v):
-        # Validar formato específico
-        pass
-
-    @root_validator
-    def validate_cost_vs_price(cls, values):
-        # cost_price debe ser menor que price
-        pass
-```
-
-#### **Categoría**
-
-```python
-class Category(BaseModel):
+# Modelo para Categoría
+class CategoryBase(BaseModel):
     name: str = Field(..., min_length=2, max_length=50)
     description: Optional[str] = Field(None, max_length=200)
-    parent_id: Optional[int] = Field(None, gt=0)  # Para subcategorías
-    is_active: bool = Field(True)
-```
 
-#### **Proveedor**
+class CategoryCreate(CategoryBase):
+    pass
 
-```python
-class Supplier(BaseModel):
+class CategoryResponse(CategoryBase):
+    id: int
+    created_at: datetime
+
+# Modelo para Producto
+class ProductBase(BaseModel):
     name: str = Field(..., min_length=2, max_length=100)
-    contact_email: str = Field(..., regex=r'^[^@]+@[^@]+\.[^@]+$')
-    contact_phone: Optional[str] = Field(None, min_length=10, max_length=15)
-    address: Optional[str] = Field(None, max_length=200)
-    is_active: bool = Field(True)
+    description: Optional[str] = Field(None, max_length=300)
+    price: float = Field(..., gt=0)
+    stock: int = Field(0, ge=0)
+    category_id: int = Field(..., gt=0)
+
+    @validator('name')
+    def validate_name(cls, v):
+        return v.strip().title()
+
+class ProductCreate(ProductBase):
+    pass
+
+class ProductUpdate(BaseModel):
+    name: Optional[str] = Field(None, min_length=2, max_length=100)
+    description: Optional[str] = Field(None, max_length=300)
+    price: Optional[float] = Field(None, gt=0)
+    stock: Optional[int] = Field(None, ge=0)
+    category_id: Optional[int] = Field(None, gt=0)
+
+class ProductResponse(ProductBase):
+    id: int
+    created_at: datetime
+    category_name: Optional[str] = None
 ```
 
-### **2. Endpoints Obligatorios**
+### **2. Endpoints Requeridos**
 
-#### **Productos (Recurso Principal)**
+#### **Productos**
 
-| Método | Endpoint                | Descripción                  | Status Code   |
-| ------ | ----------------------- | ---------------------------- | ------------- |
-| GET    | `/api/v1/products`      | Listar productos con filtros | 200           |
-| GET    | `/api/v1/products/{id}` | Obtener producto específico  | 200, 404      |
-| POST   | `/api/v1/products`      | Crear nuevo producto         | 201, 422, 409 |
-| PUT    | `/api/v1/products/{id}` | Actualizar producto completo | 200, 404, 422 |
-| PATCH  | `/api/v1/products/{id}` | Actualización parcial        | 200, 404, 422 |
-| DELETE | `/api/v1/products/{id}` | Eliminar producto            | 204, 404, 400 |
+| Método | Endpoint         | Descripción         |
+| ------ | ---------------- | ------------------- |
+| GET    | `/products`      | Listar productos    |
+| GET    | `/products/{id}` | Obtener producto    |
+| POST   | `/products`      | Crear producto      |
+| PUT    | `/products/{id}` | Actualizar producto |
+| DELETE | `/products/{id}` | Eliminar producto   |
 
-#### **Búsqueda y Filtros Avanzados**
+#### **Categorías**
+
+| Método | Endpoint                    | Descripción             |
+| ------ | --------------------------- | ----------------------- |
+| GET    | `/categories`               | Listar categorías       |
+| POST   | `/categories`               | Crear categoría         |
+| GET    | `/categories/{id}/products` | Productos por categoría |
+
+#### **Búsqueda y Filtros**
 
 ```python
-GET /api/v1/products?
-    category_id=1&
-    min_price=10.00&
-    max_price=100.00&
-    in_stock=true&
-    brand=Apple&
-    search=laptop&
-    tags=gaming&
-    is_featured=true&
-    page=1&
-    page_size=20&
-    sort_by=price&
-    sort_order=asc
+GET /products?name=laptop&min_price=100&max_price=500&category_id=1
 ```
 
-#### **Endpoints Adicionales Obligatorios**
+### **3. Validaciones Básicas**
+
+#### **Reglas de Negocio**
+
+1. **Nombre único**: No puede haber productos con el mismo nombre en la misma categoría
+2. **Stock válido**: El stock no puede ser negativo
+3. **Precio válido**: El precio debe ser mayor que 0
+4. **Categoría válida**: El producto debe tener una categoría existente
+
+### **4. Manejo de Errores**
+
+#### **Excepciones Custom**
 
 ```python
-# Estadísticas
-GET /api/v1/products/stats
-GET /api/v1/products/low-stock          # Productos con stock bajo
-GET /api/v1/products/featured           # Productos destacados
+class ProductNotFound(HTTPException):
+    def __init__(self, product_id: int):
+        super().__init__(
+            status_code=404,
+            detail=f"Producto con ID {product_id} no encontrado"
+        )
 
-# Operaciones especiales
-POST /api/v1/products/{id}/stock        # Ajustar stock
-POST /api/v1/products/bulk-update       # Actualización masiva
-
-# Categorías (mínimo)
-GET /api/v1/categories
-POST /api/v1/categories
-GET /api/v1/categories/{id}/products
-
-# Proveedores (mínimo)
-GET /api/v1/suppliers
-POST /api/v1/suppliers
-
-# Health check
-GET /health
-GET /health/detailed
+class CategoryNotFound(HTTPException):
+    def __init__(self, category_id: int):
+        super().__init__(
+            status_code=404,
+            detail=f"Categoría con ID {category_id} no encontrada"
+        )
 ```
 
-### **3. Validaciones de Negocio Obligatorias**
-
-#### **Reglas de Productos**
-
-1. **SKU único**: No puede haber productos con el mismo SKU
-2. **Nombre único por categoría**: Productos en la misma categoría no pueden tener el mismo nombre
-3. **Stock coherente**: Si `stock_quantity = 0`, automáticamente debería marcar el producto como no disponible
-4. **Precio vs costo**: `cost_price` debe ser menor que `price`
-5. **Stock mínimo**: Si `stock_quantity < min_stock_level`, generar alerta
-6. **Productos destacados**: Máximo 10 productos pueden ser destacados simultáneamente
-
-#### **Reglas de Eliminación**
-
-1. **Categorías con productos**: No se pueden eliminar categorías que tengan productos activos
-2. **Proveedores con productos**: No se pueden eliminar proveedores con productos asociados
-3. **Productos destacados**: Antes de eliminar, debe removerse el estado destacado
-
-### **4. Sistema de Errores Obligatorio**
-
-#### **Excepciones Custom Requeridas**
-
-```python
-class ProductNotFoundError(BaseAPIException)
-class DuplicateSKUError(BaseAPIException)
-class InvalidStockOperation(BaseAPIException)
-class MaxFeaturedProductsExceeded(BaseAPIException)
-class CategoryHasProductsError(BaseAPIException)
-class SupplierHasProductsError(BaseAPIException)
-```
-
-#### **Responses de Error Consistentes**
-
-```python
-{
-    "success": false,
-    "error_code": "PRODUCT_NOT_FOUND",
-    "message": "Producto con ID 123 no encontrado",
-    "details": {
-        "resource_type": "Product",
-        "resource_id": 123,
-        "suggestions": ["Verificar que el ID sea correcto"]
-    },
-    "timestamp": "2025-07-24T10:30:00.123456",
-    "path": "/api/v1/products/123",
-    "method": "GET"
-}
-```
-
-## 📊 Datos de Prueba Requeridos
+## 📊 Datos de Ejemplo
 
 ### **Categorías Iniciales**
 
@@ -208,254 +132,136 @@ class SupplierHasProductsError(BaseAPIException)
 categories = [
     {"id": 1, "name": "Electrónicos", "description": "Dispositivos electrónicos"},
     {"id": 2, "name": "Ropa", "description": "Vestimenta y accesorios"},
-    {"id": 3, "name": "Hogar", "description": "Artículos para el hogar"},
-    {"id": 4, "name": "Deportes", "description": "Equipamiento deportivo"},
-    {"id": 5, "name": "Libros", "description": "Literatura y textos educativos"}
+    {"id": 3, "name": "Libros", "description": "Literatura y textos"},
 ]
 ```
 
-### **Proveedores Iniciales**
-
-```python
-suppliers = [
-    {"id": 1, "name": "Tech Distributor", "contact_email": "sales@techdist.com"},
-    {"id": 2, "name": "Fashion Wholesale", "contact_email": "orders@fashionwh.com"},
-    {"id": 3, "name": "Home & Living", "contact_email": "contact@homeliving.com"}
-]
-```
-
-### **Productos de Ejemplo (Mínimo 15)**
+### **Productos de Ejemplo**
 
 ```python
 products = [
     {
-        "name": "iPhone 15 Pro",
-        "sku": "ELE-1001-AP",
-        "price": 1199.99,
-        "cost_price": 899.99,
-        "stock_quantity": 25,
-        "min_stock_level": 5,
-        "category_id": 1,
-        "supplier_id": 1,
-        "brand": "Apple",
-        "is_featured": True
+        "id": 1,
+        "name": "Laptop HP",
+        "description": "Laptop para oficina",
+        "price": 799.99,
+        "stock": 10,
+        "category_id": 1
     },
     {
-        "name": "Camiseta Deportiva",
-        "sku": "ROO-2001-NK",
-        "price": 29.99,
-        "cost_price": 15.00,
-        "stock_quantity": 100,
-        "min_stock_level": 20,
-        "category_id": 2,
-        "supplier_id": 2,
-        "brand": "Nike"
-    },
-    # ... 13 productos más
+        "id": 2,
+        "name": "Camiseta Polo",
+        "description": "Camiseta casual",
+        "price": 25.99,
+        "stock": 50,
+        "category_id": 2
+    }
 ]
 ```
 
-## 🛠️ Arquitectura y Estructura
+## 🛠️ Estructura del Proyecto
 
-### **Estructura de Proyecto Obligatoria**
+### **Estructura Recomendada**
 
 ```text
 inventory-api/
 ├── app/
-│   ├── __init__.py
 │   ├── main.py
-│   ├── config/
-│   │   ├── settings.py
-│   │   └── database.py
-│   ├── models/
-│   │   ├── product.py
-│   │   ├── category.py
-│   │   └── supplier.py
-│   ├── schemas/
-│   │   ├── product.py
-│   │   ├── category.py
-│   │   └── supplier.py
-│   ├── api/
-│   │   └── v1/
-│   │       ├── api.py
-│   │       └── endpoints/
-│   │           ├── products.py
-│   │           ├── categories.py
-│   │           └── suppliers.py
-│   ├── core/
-│   │   ├── exceptions.py
-│   │   ├── handlers.py
-│   │   └── logging.py
-│   ├── services/
-│   │   ├── product_service.py
-│   │   ├── category_service.py
-│   │   └── supplier_service.py
-│   └── repositories/
-│       ├── product_repository.py
-│       ├── category_repository.py
-│       └── supplier_repository.py
-├── tests/
-│   ├── test_products.py
-│   ├── test_categories.py
-│   └── conftest.py
+│   ├── models.py
+│   ├── database.py
+│   └── routers/
+│       ├── products.py
+│       └── categories.py
 ├── requirements.txt
-├── .env.example
 └── README.md
 ```
 
-### **Patrones de Diseño Obligatorios**
-
-1. ✅ **Repository Pattern**: Para acceso a datos
-2. ✅ **Service Layer**: Para lógica de negocio
-3. ✅ **Dependency Injection**: Para manejo de dependencias
-4. ✅ **Exception Handling**: Para manejo centralizado de errores
-5. ✅ **Configuration Management**: Para settings centralizados
-
 ## 📋 Criterios de Entrega
 
-### **Funcionalidades Mínimas (Obligatorias)**
+### **Funcionalidades Mínimas**
 
-- ✅ **15+ endpoints** funcionando correctamente
-- ✅ **CRUD completo** para productos (mínimo)
-- ✅ **Validación robusta** en todos los endpoints
-- ✅ **Manejo de errores** profesional
-- ✅ **Filtros y búsqueda** avanzados
-- ✅ **Paginación** implementada
-- ✅ **Datos de prueba** cargados automáticamente
+- ✅ **CRUD completo** para productos
+- ✅ **Gestión básica** de categorías
+- ✅ **Validación** con Pydantic
+- ✅ **Manejo de errores** básico
+- ✅ **Filtros** de búsqueda simple
 
-### **Estructura y Calidad**
+### **Requisitos Técnicos**
 
-- ✅ **Arquitectura organizada** según especificación
-- ✅ **Código limpio** y bien comentado
-- ✅ **Documentación automática** FastAPI completa
-- ✅ **README** con instrucciones claras
-- ✅ **Requirements.txt** actualizado
+- ✅ **API ejecutable** con `uvicorn`
+- ✅ **Documentación** automática en `/docs`
+- ✅ **Código organizado** y limpio
+- ✅ **README** con instrucciones
 
-### **Testing y Validación**
-
-- ✅ **API ejecutable** con `uvicorn app.main:app --reload`
-- ✅ **Documentación accesible** en `/docs`
-- ✅ **Todos los endpoints** testeables con curl/Postman
-- ✅ **Casos de error** manejados apropiadamente
-
-## 🎯 Casos de Testing Obligatorios
+## 🎯 Casos de Prueba
 
 ### **Casos de Éxito**
 
 ```bash
-# 1. Crear producto válido
-curl -X POST "http://localhost:8000/api/v1/products" \
+# 1. Crear producto
+curl -X POST "http://localhost:8000/products" \
   -H "Content-Type: application/json" \
-  -d '{...producto válido...}'
+  -d '{"name": "Laptop", "price": 799.99, "stock": 10, "category_id": 1}'
 
-# 2. Buscar productos con filtros
-curl -X GET "http://localhost:8000/api/v1/products?category_id=1&min_price=100"
+# 2. Buscar productos
+curl -X GET "http://localhost:8000/products?min_price=100&max_price=500"
 
-# 3. Obtener estadísticas
-curl -X GET "http://localhost:8000/api/v1/products/stats"
-
-# 4. Operación de stock
-curl -X POST "http://localhost:8000/api/v1/products/1/stock" \
-  -H "Content-Type: application/json" \
-  -d '{"quantity": 10, "operation": "add"}'
+# 3. Obtener producto por ID
+curl -X GET "http://localhost:8000/products/1"
 ```
 
-### **Casos de Error (Obligatorios)**
+### **Casos de Error**
 
 ```bash
 # 1. Producto no encontrado
-curl -X GET "http://localhost:8000/api/v1/products/999"
+curl -X GET "http://localhost:8000/products/999"
 
-# 2. SKU duplicado
-curl -X POST "http://localhost:8000/api/v1/products" \
-  -d '{"sku": "ELE-1001-AP", ...}'  # SKU ya existe
-
-# 3. Validación fallida
-curl -X POST "http://localhost:8000/api/v1/products" \
-  -d '{"price": -10, ...}'  # Precio inválido
-
-# 4. Eliminar categoría con productos
-curl -X DELETE "http://localhost:8000/api/v1/categories/1"
+# 2. Precio inválido
+curl -X POST "http://localhost:8000/products" \
+  -d '{"name": "Test", "price": -10, "category_id": 1}'
 ```
 
-## 📊 Evaluación del Proyecto
+## 📊 Evaluación
 
-| Criterio                 | Peso | Descripción                   |
-| ------------------------ | ---- | ----------------------------- |
-| **Funcionalidad CRUD**   | 25%  | Operaciones básicas completas |
-| **Validación y Errores** | 25%  | Sistema robusto implementado  |
-| **Estructura REST**      | 20%  | Arquitectura profesional      |
-| **Filtros y Búsqueda**   | 15%  | Funcionalidades avanzadas     |
-| **Documentación**        | 10%  | README y docs automáticas     |
-| **Calidad del Código**   | 5%   | Organización y claridad       |
+| Criterio               | Peso | Descripción                   |
+| ---------------------- | ---- | ----------------------------- |
+| **Funcionalidad CRUD** | 40%  | Operaciones básicas completas |
+| **Validación**         | 25%  | Validaciones con Pydantic     |
+| **Manejo de Errores**  | 20%  | Excepciones básicas           |
+| **Documentación**      | 15%  | README y docs automáticas     |
 
-### **Escala de Calificación**
+## ⏰ Tiempo Estimado
 
-- **90-100**: Implementación completa y profesional
-- **80-89**: Funcionalidad completa con mejoras menores
-- **70-79**: Funcionalidad básica con algunas limitaciones
-- **60-69**: Implementación parcial, necesita trabajo
-- **< 60**: No cumple requisitos mínimos
+### Total: 4-6 horas
 
-## ⏰ Cronograma Sugerido
+### **Día 1 (2-3h)**: Estructura y Modelos
 
-### **Día 1-2: Estructura y Modelos (2h)**
+- Configurar proyecto
+- Crear modelos Pydantic
+- Implementar endpoints básicos
 
-- Configurar proyecto base
-- Crear modelos y schemas
-- Implementar validaciones
+### **Día 2 (2-3h)**: Validación y Errores
 
-### **Día 3-4: CRUD y Endpoints (2h)**
+- Agregar validaciones
+- Implementar manejo de errores
+- Crear filtros básicos
+- Testing y documentación
 
-- Implementar repositories
-- Crear services básicos
-- Desarrollar endpoints principales
+## 📝 Entregables
 
-### **Día 5-6: Funcionalidades Avanzadas (1.5h)**
-
-- Filtros y búsqueda
-- Manejo de errores
-- Operaciones especiales
-
-### **Día 7: Testing y Documentación (0.5h)**
-
-- Validar funcionalidad
-- Completar README
-- Testing final
-
-## 📝 Entregables Finales
-
-1. **Código fuente** completo en repositorio
-2. **API funcionando** en puerto 8000
-3. **README.md** con instrucciones completas
-4. **Documentación** Swagger/ReDoc accesible
-5. **Collection Postman** (opcional, bonus)
+1. **Código fuente** completo
+2. **API funcionando**
+3. **README.md** con instrucciones
+4. **Documentación** automática accesible
 
 ---
 
-## 💡 Consejos para el Éxito
+## 💡 Consejos
 
-### **Gestión del Tiempo**
-
-- ⏰ **Prioriza funcionalidad core** antes que características avanzadas
-- 🔄 **Desarrolla incrementalmente** y prueba frecuentemente
-- 📝 **Documenta mientras desarrollas**
-
-### **Calidad del Código**
-
-- 📖 **Sigue las prácticas** de las sesiones
-- 🧪 **Prueba cada endpoint** antes de continuar
-- 🔍 **Usa herramientas** de desarrollo (Postman, curl)
-
-### **Antes de Entregar**
-
-- ✅ **Ejecuta la API** desde cero
-- ✅ **Verifica documentación** automática
-- ✅ **Prueba casos de error** principales
-- ✅ **README** con instrucciones claras
+- ⏰ **Enfócate en lo básico** antes que en características avanzadas
+- 🔄 **Prueba cada endpoint** mientras desarrollas
+- 📝 **Documenta el proceso** en el README
 
 ---
 
-_Especificación del Proyecto - Semana 3_  
-_Bootcamp FastAPI - EPTI Development_  
-_Fecha límite: Final de Semana 3_
+_Proyecto Semana 3 - Bootcamp FastAPI - EPTI Development_
