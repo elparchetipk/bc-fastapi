@@ -66,7 +66,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ## 📚 Contenido de la Semana (Solo lo Esencial)
 
-### **🧭 Navegación Ordenada (Seguir este orden)**
+### **� Navegación Ordenada (Seguir este orden)**
 
 1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos fundamentales
 2. **[💻 2-practica/](./2-practica/)** - Implementación guiada
@@ -74,7 +74,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 4. **[🚀 4-proyecto/](./4-proyecto/)** - Aplicación integradora
 5. **[📚 5-recursos/](./5-recursos/)** - Referencias y apoyo
 
-### 🛠️ **Prácticas (Núcleo de la semana)**
+### �🛠️ **Prácticas (Núcleo de la semana)**
 
 1. **[01-environment-setup.md](./2-practica/01-environment-setup.md)** - Configuración mínima esencial
 2. **[02-hello-world-api.md](./2-practica/02-hello-world-api.md)** - Primera API funcional
@@ -86,8 +86,8 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ### 🏋️ **Ejercicios (Simples)**
 
-- 2 ejercicios básicos guiados
-- Enfoque en comprensión y consolidación
+- 2-3 ejercicios básicos guiados
+- Enfoque en comprensión, no complejidad
 
 ## ❌ **LO QUE NO ESTÁ EN ESTA SEMANA**
 
@@ -99,6 +99,8 @@ Para mantener expectativas realistas, los siguientes temas se han **movido a sem
 - ❌ **Proyecto de gestión completo** → Semanas 6-8
 - ❌ **Validación avanzada** → Semana 5
 - ❌ **Base de datos** → Semana 4+
+
+## 🎯 Criterios de Éxito de la Semana
 
 ## 🎯 Criterios de Éxito de la Semana
 
@@ -116,7 +118,50 @@ Para mantener expectativas realistas, los siguientes temas se han **movido a sem
 
 ---
 
-## 📋 Entregables de la Semana
+## � Entregables de la Semana
+
+- ❌ **Pydantic modelos** → Movido a Semana 4
+- ❌ **Validación avanzada** → Movido a Semana 5
+- ❌ **Video de demostración** → Eliminado para reducir carga
+- ❌ **Ejercicios complejos** → Simplificados a lo básico
+
+#### ⏰ **Nuevo Formato de Jornada**
+
+- **� Bloque 1**: 75 min (Setup esencial)
+- **☕ BREAK**: 30 min (obligatorio)
+- **🕐 Bloque 2**: 120 min (Primera API)
+- **🕐 Bloque 3**: 90 min (Práctica)
+- **🕐 Bloque 4**: 45 min (Consolidación)
+- **Total**: 6 horas exactas
+
+#### 🎯 **Principios del Ajuste**
+
+1. **Fundamentals First**: Solo conceptos esenciales
+2. **Break Obligatorio**: 30 min para asimilación
+3. **Éxito Garantizado**: Alcance ultra-realista
+4. **Sin Trabajo en Casa**: Todo se completa en clase
+5. **Bases Sólidas**: Preparación para semanas siguientes
+
+#### 📊 **Impacto del Ajuste**
+
+- ✅ **Reducción de estrés** por objetivos más realistas
+- ✅ **Mayor retención** por inclusión de break
+- ✅ **Éxito más probable** por enfoque en lo fundamental
+- ✅ **Mejor preparación** para semanas siguientes
+- ✅ **Experiencia más satisfactoria** de aprendizaje
+
+### 🔄 **Aplicación a Todas las Semanas**
+
+Este mismo patrón de ajuste se aplicará a todas las semanas 1-8:
+
+- Break obligatorio de 30 minutos por jornada
+- Reducción de contenido a lo fundamental
+- Entregables ultra-simplificados
+- Sin trabajo fuera del horario de clase
+
+## 📋 Entregables de la Semana (Ultra-Simplificados)
+
+> **🔄 AJUSTE**: Entregables reducidos al mínimo viable para evitar sobrecarga y garantizar calidad.
 
 ### 🔧 **Entregable Principal (Único Obligatorio)**
 
@@ -136,7 +181,7 @@ Para mantener expectativas realistas, los siguientes temas se han **movido a sem
 - ✅ 1 screenshot de la API funcionando
 - ✅ 1 reflexión de 2-3 oraciones sobre lo aprendido
 
-### 🎯 **Formato de Entrega**
+### 🎯 **Formato de Entrega (Simplificado)**
 
 1. **Repositorio GitHub** con:
 
@@ -144,7 +189,7 @@ Para mantener expectativas realistas, los siguientes temas se han **movido a sem
    - requirements.txt (solo FastAPI + uvicorn)
    - README.md básico
 
-2. **Sin video requerido**
+2. **Sin video** (eliminado para reducir carga)
 
 ### ⏰ **Fecha de Entrega**
 

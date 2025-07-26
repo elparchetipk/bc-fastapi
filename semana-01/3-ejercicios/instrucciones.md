@@ -1,180 +1,174 @@
-# Ejercicios Prácticos - Semana 1
+# Ejercicios Prácticos - Semana 1 (Simplificados)
 
-## 🎯 Objetivos
+## 🎯 Objetivo Ultra-Básico
 
-Aplicar todos los conceptos aprendidos en la Semana 1 mediante ejercicios prácticos progresivos.
+Reforzar conceptos de tu primera API mediante **1-2 ejercicios súper simples** en el Bloque 3 (90 minutos).
 
-## 📋 Requisitos Previos
+> **🔄 AJUSTE APLICADO**: Ejercicios reducidos al mínimo para garantizar éxito y no sobrecargar.
 
-- Haber completado todos los tutoriales de práctica (01-04)
-- Entorno de desarrollo configurado
-- FastAPI y dependencias instaladas
+## ⏱️ Tiempo: 90 minutos (Bloque 3)
 
-## 🏋️ Ejercicios
+## 📋 Pre-requisitos
 
-### Ejercicio 1: API de Biblioteca (Básico)
+- ✅ API de la Práctica 2 funcionando
+- ✅ main.py creado y ejecutándose
+- ✅ Documentación /docs accesible
 
-**Objetivo**: Crear una API para gestionar una biblioteca de libros.
+---
 
-**Requerimientos**:
+## 🏋️ Ejercicio 1: Añadir Endpoint Personal (45 min)
 
-- Modelo `Book` con: id, title, author, isbn, year, available
-- Endpoints CRUD completos
-- Validación de datos con Pydantic
-- Documentación automática
+**Objetivo**: Crear UN endpoint personalizado para tu API
 
-**Estructura esperada**:
+### 📝 Instrucciones
 
+1. **Abrir tu main.py** (del Bloque 2)
+
+2. **Agregar este endpoint**:
+
+```python
+# Agregar al final de tu main.py existente
+
+@app.get("/mi-perfil")
+def mi_perfil():
+    return {
+        "nombre": "Tu Nombre Aquí",           # Cambiar por tu nombre
+        "bootcamp": "FastAPI",
+        "semana": 1,
+        "fecha": "2024",
+        "me_gusta_fastapi": True              # ¿Te gustó FastAPI?
+    }
 ```
-ejercicios/
-├── ejercicio_01/
-│   ├── main.py
-│   ├── models.py
-│   └── requirements.txt
-```
 
-**Criterios de evaluación**:
+3. **Probar el endpoint**:
+   - http://127.0.0.1:8000/mi-perfil
+   - Verificar en /docs que aparece el nuevo endpoint
 
-- ✅ Modelo Pydantic bien definido
-- ✅ Endpoints funcionando correctamente
-- ✅ Validación de datos
-- ✅ Manejo de errores HTTP
-- ✅ Documentación clara
+### ✅ Criterio de Éxito
 
-### Ejercicio 2: API de Tareas con Filtros (Intermedio)
+- Endpoint responde con tus datos personales
+- Aparece en la documentación automática
 
-**Objetivo**: Sistema de gestión de tareas con filtros avanzados.
+---
 
-**Requerimientos**:
+## 🏋️ Ejercicio 2: GitHub y README (45 min)
 
-- Modelo `Task` con: id, title, description, priority, status, due_date, tags
-- Endpoints con filtros por: prioridad, estado, fecha, tags
-- Paginación
-- Búsqueda por texto
-- Ordenamiento múltiple
+**Objetivo**: Subir tu API a GitHub con README básico
 
-**Funcionalidades adicionales**:
+### 📝 Instrucciones
 
-- Estadísticas de tareas
-- Bulk operations (crear/actualizar múltiples)
-- Validaciones personalizadas
-
-### Ejercicio 3: API de E-commerce (Avanzado)
-
-**Objetivo**: API completa de e-commerce con múltiples entidades relacionadas.
-
-**Requerimientos**:
-
-- Modelos: `User`, `Product`, `Category`, `Order`, `OrderItem`
-- Relaciones entre entidades
-- Sistema de autenticación básico
-- Carrito de compras
-- Gestión de inventario
-
-**Funcionalidades avanzadas**:
-
-- Cálculo de precios y descuentos
-- Validaciones de negocio complejas
-- Endpoints de reportes
-- Middleware personalizado
-
-## 📝 Instrucciones de Entrega
-
-1. **Crear branch específico**:
+1. **Crear requirements.txt**:
 
 ```bash
-git checkout -b semana-01-ejercicios
+# En tu terminal (donde está main.py)
+pip freeze > requirements.txt
 ```
 
-2. **Estructura de entrega**:
+2. **Crear README.md básico**:
 
-```
-semana-01/
-├── ejercicios/
-│   ├── ejercicio_01_biblioteca/
-│   ├── ejercicio_02_tareas/
-│   └── ejercicio_03_ecommerce/
-```
+````markdown
+# Mi Primera API FastAPI
 
-3. **Cada ejercicio debe incluir**:
+## ¿Qué hace?
 
-- Código fuente completo
-- README.md con instrucciones
-- requirements.txt
-- Ejemplos de uso (curl o requests)
-- Tests básicos (opcional pero recomendado)
+Una API básica creada en el Bootcamp FastAPI Semana 1.
 
-4. **Commit y push**:
+## ¿Cómo ejecutar?
 
 ```bash
-git add .
-git commit -m "feat: ejercicios semana 1 - APIs con FastAPI"
-git push origin semana-01-ejercicios
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+````
+
+## Endpoints
+
+- `/`: Mensaje de bienvenida
+- `/info`: Información de la API
+- `/mi-perfil`: Mi perfil personal
+
+## Documentación
+
+http://127.0.0.1:8000/docs
+
+## Reflexión
+
+[Escribe 2-3 oraciones sobre qué aprendiste]
+
 ```
 
-5. **Pull Request**:
+3. **Subir a GitHub** (paso a paso con instructor):
+   - Crear repositorio: `tu-apellido-primera-api`
+   - `git init`
+   - `git add .`
+   - `git commit -m "Mi primera API FastAPI"`
+   - `git push`
 
-- Título: "Entrega Semana 1: Ejercicios FastAPI Básico"
-- Descripción detallada de lo implementado
-- Screenshots de documentación
-- Mencionar cualquier desafío encontrado
+### ✅ Criterio de Éxito
+- Repositorio en GitHub con 3 archivos mínimos
+- README se ve bien en GitHub
 
-## 🔍 Criterios de Evaluación
+---
 
-### Código (40%)
+## 🚨 Si tienes problemas
 
-- Estructura del proyecto
-- Calidad del código
-- Uso correcto de FastAPI
-- Modelos Pydantic bien definidos
+**NO te compliques**. Este bloque es para consolidar, no para frustrarse.
 
-### Funcionalidad (30%)
+### Problemas comunes:
+- **Git no funciona**: El instructor te ayudará
+- **Endpoint no responde**: Revisar sintaxis del código
+- **No sale en /docs**: Reiniciar uvicorn
 
-- Endpoints funcionando
-- Validaciones implementadas
-- Manejo de errores
-- Casos edge cubiertos
+### Solución rápida:
+- Levanta la mano
+- Pide ayuda a un compañero
+- Enfócate en lo que SÍ funciona
 
-### Documentación (20%)
+---
 
-- README claro
-- Documentación automática
-- Ejemplos de uso
-- Comentarios en código
+## 🎯 Resultado Final (Lo que deberías tener)
 
-### Mejores Prácticas (10%)
+Al final del Bloque 3:
 
-- Nombres descriptivos
-- Separación de responsabilidades
-- Principios SOLID básicos
-- Git workflow apropiado
+1. **✅ API con 3-4 endpoints funcionando**
+2. **✅ Código en GitHub**
+3. **✅ README básico**
+4. **✅ Sensación de logro**
 
-## 🎁 Bonus Points
+### 📁 Estructura Final Mínima
 
-- **Tests automatizados** (+10 puntos)
-- **Docker setup** (+5 puntos)
-- **Middleware personalizado** (+5 puntos)
-- **Logging configurado** (+5 puntos)
-- **Variables de entorno** (+5 puntos)
-- **CI/CD básico** (+10 puntos)
+```
 
-## 📚 Recursos de Apoyo
+tu-repositorio/
+├── main.py # Tu API
+├── requirements.txt # Dependencias
+└── README.md # Documentación básica
 
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [Pydantic Documentation](https://pydantic-docs.helpmanual.io/)
-- [HTTP Status Codes](https://httpstatuses.com/)
-- Tutoriales completados en práctica/
+```
 
-## ⏰ Plazos
+---
 
-- **Fecha límite**: Viernes de la Semana 1, 23:59
-- **Revisión por pares**: Lunes de la Semana 2
-- **Feedback del instructor**: Miércoles de la Semana 2
+## 📊 Auto-evaluación (1 minuto)
 
-## 🤝 Ayuda y Soporte
+**¿Lograste crear tu primera API?** ✅ Sí / ❌ No
 
-- **Canal Discord**: #semana-01-ayuda
-- **Office Hours**: Martes y Jueves 19:00-20:00
-- **FAQ**: Revisar issues del repositorio
+**¿Está funcionando /docs?** ✅ Sí / ❌ No
 
-¡Éxito en tus ejercicios! 💪🚀
+**¿Está en GitHub?** ✅ Sí / ❌ No
+
+**Si respondiste 2/3 "Sí": ¡EXCELENTE!**
+**Si respondiste 1/3 "Sí": ¡MUY BIEN!**
+**Si respondiste 0/3 "Sí": ¡El instructor te ayudará!**
+
+---
+
+## 🚀 Preparación para Semana 2
+
+Con estos ejercicios básicos completados, en la Semana 2 estarás listo para:
+
+- **Python Type Hints** (conceptos que ya usaste sin saberlo)
+- **Pydantic Models** (para datos más estructurados)
+- **Más tipos de endpoints** (POST, PUT, DELETE básicos)
+
+**¡Felicidades por completar tu primera semana! 🎉**
+```
