@@ -10,12 +10,12 @@ Los **type hints** son anotaciones que indican qué tipo de datos espera o retor
 
 ```python
 # Sin type hints
-def saludar(nombre):
-    return f"Hola {nombre}"
+def greet(name):
+    return f"Hello {name}"
 
 # Con type hints
-def saludar(nombre: str) -> str:
-    return f"Hola {nombre}"
+def greet(name: str) -> str:
+    return f"Hello {name}"
 ```
 
 #### Beneficios:
@@ -30,10 +30,10 @@ def saludar(nombre: str) -> str:
 ```python
 from typing import List, Dict, Optional, Union
 
-def procesar_datos(
-    numeros: List[int],
-    configuracion: Dict[str, str],
-    opcional: Optional[str] = None
+def process_data(
+    numbers: List[int],
+    config: Dict[str, str],
+    optional: Optional[str] = None
 ) -> Union[str, int]:
     pass
 ```
@@ -52,29 +52,29 @@ Pydantic sigue el principio **"Parse, don't validate"**:
 ```python
 from pydantic import BaseModel, EmailStr, Field
 
-class Usuario(BaseModel):
-    nombre: str = Field(..., min_length=2, max_length=50)
-    edad: int = Field(..., ge=18, le=120)
+class User(BaseModel):
+    name: str = Field(..., min_length=2, max_length=50)
+    age: int = Field(..., ge=18, le=120)
     email: EmailStr
-    activo: bool = True
+    active: bool = True
 ```
 
 #### Validación Automática:
 
 ```python
 # Datos válidos
-usuario = Usuario(
-    nombre="Ana",
-    edad=25,
-    email="ana@ejemplo.com"
+user = User(
+    name="Ana",
+    age=25,
+    email="ana@example.com"
 )
 
 # Datos inválidos - lanza ValidationError
 try:
-    usuario_malo = Usuario(
-        nombre="A",  # Muy corto
-        edad=15,     # Menor a 18
-        email="email-malo"  # Email inválido
+    bad_user = User(
+        name="A",  # Muy corto
+        age=15,     # Menor a 18
+        email="invalid-email"  # Email inválido
     )
 except ValidationError as e:
     print(e.json())
@@ -96,32 +96,32 @@ import asyncio
 import time
 
 # Función síncrona - bloquea
-def tarea_lenta_sync():
+def slow_task_sync():
     time.sleep(2)
-    return "Completado"
+    return "Completed"
 
 # Función asíncrona - no bloquea
-async def tarea_lenta_async():
+async def slow_task_async():
     await asyncio.sleep(2)
-    return "Completado"
+    return "Completed"
 
 # Ejecutar múltiples tareas
 async def main():
     # Secuencial (6 segundos total)
-    inicio = time.time()
-    resultado1 = await tarea_lenta_async()
-    resultado2 = await tarea_lenta_async()
-    resultado3 = await tarea_lenta_async()
-    print(f"Secuencial: {time.time() - inicio:.2f}s")
+    start = time.time()
+    result1 = await slow_task_async()
+    result2 = await slow_task_async()
+    result3 = await slow_task_async()
+    print(f"Secuencial: {time.time() - start:.2f}s")
 
     # Paralelo (2 segundos total)
-    inicio = time.time()
-    resultados = await asyncio.gather(
-        tarea_lenta_async(),
-        tarea_lenta_async(),
-        tarea_lenta_async()
+    start = time.time()
+    results = await asyncio.gather(
+        slow_task_async(),
+        slow_task_async(),
+        slow_task_async()
     )
-    print(f"Paralelo: {time.time() - inicio:.2f}s")
+    print(f"Paralelo: {time.time() - start:.2f}s")
 ```
 
 #### Cuándo Usar Async:
@@ -142,13 +142,13 @@ async def main():
 
 #### Métodos HTTP y sus Propósitos:
 
-| Método     | Propósito           | Idempotente | Ejemplo            |
-| ---------- | ------------------- | ----------- | ------------------ |
-| **GET**    | Obtener datos       | ✅          | Listar usuarios    |
-| **POST**   | Crear recurso       | ❌          | Crear usuario      |
-| **PUT**    | Actualizar completo | ✅          | Reemplazar usuario |
-| **PATCH**  | Actualizar parcial  | ❌          | Cambiar email      |
-| **DELETE** | Eliminar recurso    | ✅          | Eliminar usuario   |
+| Método     | Propósito           | Idempotente | Ejemplo      |
+| ---------- | ------------------- | ----------- | ------------ |
+| **GET**    | Obtener datos       | ✅          | List users   |
+| **POST**   | Crear recurso       | ❌          | Create user  |
+| **PUT**    | Actualizar completo | ✅          | Replace user |
+| **PATCH**  | Actualizar parcial  | ❌          | Change email |
+| **DELETE** | Eliminar recurso    | ✅          | Delete user  |
 
 #### Status Codes Importantes:
 
@@ -177,17 +177,17 @@ status.HTTP_500_INTERNAL_SERVER_ERROR  # Error interno
 
 ```python
 # ✅ Buenas prácticas
-GET    /usuarios          # Listar usuarios
-GET    /usuarios/123      # Obtener usuario específico
-POST   /usuarios          # Crear nuevo usuario
-PUT    /usuarios/123      # Actualizar usuario completo
-PATCH  /usuarios/123      # Actualizar usuario parcial
-DELETE /usuarios/123      # Eliminar usuario
+GET    /users          # List users
+GET    /users/123      # Get specific user
+POST   /users          # Create new user
+PUT    /users/123      # Update complete user
+PATCH  /users/123      # Update partial user
+DELETE /users/123      # Delete user
 
 # ❌ Malas prácticas
-GET    /getUsuarios       # Verbo en URL
-POST   /usuarios/create   # Acción innecesaria
-GET    /usuarios/123/delete  # Acción incorrecta
+GET    /getUsers       # Verbo en URL
+POST   /users/create   # Acción innecesaria
+GET    /users/123/delete  # Acción incorrecta
 ```
 
 #### Consistencia en Respuestas:
@@ -196,7 +196,7 @@ GET    /usuarios/123/delete  # Acción incorrecta
 # Estructura consistente para errores
 {
     "error": "ValidationError",
-    "message": "Email ya existe",
+    "message": "Email already exists",
     "details": {...},
     "timestamp": "2025-07-24T10:30:00Z"
 }
@@ -204,7 +204,7 @@ GET    /usuarios/123/delete  # Acción incorrecta
 # Estructura para éxito
 {
     "data": {...},
-    "message": "Usuario creado exitosamente",
+    "message": "User created successfully",
     "timestamp": "2025-07-24T10:30:00Z"
 }
 ```
@@ -216,32 +216,32 @@ GET    /usuarios/123/delete  # Acción incorrecta
 ```python
 from pydantic import BaseModel, validator
 
-class Producto(BaseModel):
-    nombre: str
-    precio: float
-    categoria: str
+class Product(BaseModel):
+    name: str
+    price: float
+    category: str
 
     # Validator que transforma
-    @validator('nombre')
-    def normalizar_nombre(cls, v):
+    @validator('name')
+    def normalize_name(cls, v):
         return v.strip().title()
 
     # Validator que valida
-    @validator('precio')
-    def validar_precio(cls, v):
+    @validator('price')
+    def validate_price(cls, v):
         if v <= 0:
-            raise ValueError('Precio debe ser positivo')
+            raise ValueError('Price must be positive')
         return v
 
     # Root validator para validaciones complejas
     @root_validator
-    def validar_producto_completo(cls, values):
-        nombre = values.get('nombre')
-        precio = values.get('precio')
+    def validate_complete_product(cls, values):
+        name = values.get('name')
+        price = values.get('price')
 
         # Productos premium deben tener nombre largo
-        if precio > 1000 and len(nombre) < 10:
-            raise ValueError('Productos caros necesitan nombres descriptivos')
+        if price > 1000 and len(name) < 10:
+            raise ValueError('Expensive products need descriptive names')
 
         return values
 ```
