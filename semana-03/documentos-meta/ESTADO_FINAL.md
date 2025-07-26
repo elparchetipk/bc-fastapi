@@ -21,7 +21,7 @@ semana-03/
 │   └── rest-http-concepts.md          # Conceptos REST/HTTP básicos
 ├── 2-practica/
 │   ├── 06-put-endpoints.md            # PUT básico (60 min)
-│   ├── 07-delete-endpoints.md         # DELETE básico (60 min) 
+│   ├── 07-delete-endpoints.md         # DELETE básico (60 min)
 │   ├── 08-error-handling.md           # HTTPException básico (60 min)
 │   └── 09-complete-crud.md            # CRUD consolidado (60 min)
 ├── 3-ejercicios/
@@ -39,39 +39,44 @@ semana-03/
 ### ✅ Contenido Ultra-Simplificado
 
 **Teoría (60 min):**
+
 - Conceptos REST básicos
 - HTTP methods fundamentales
 - Status codes esenciales
 
 **Prácticas (240 min):**
+
 - PUT endpoints básicos
-- DELETE endpoints básicos  
+- DELETE endpoints básicos
 - Error handling con HTTPException
 - CRUD completo consolidado
 
 **Ejercicios (60 min):**
+
 - Book API simple
 - Error handling básico
 
 **Proyecto (180 min):**
+
 - Task API con CRUD completo
 - Sin validaciones complejas
 - Enfoque en funcionalidad básica
 
 ### ✅ Cronograma Exacto de 6 Horas
 
-| Tiempo      | Actividad                    | Duración |
-|-------------|------------------------------|----------|
-| 9:00-10:15  | PUT endpoints                | 75 min   |
-| 10:15-10:45 | **BREAK OBLIGATORIO**        | 30 min   |
-| 10:45-12:45 | DELETE + CRUD consolidación  | 120 min  |
-| 12:45-14:15 | Error handling               | 90 min   |
-| 14:15-15:00 | Proyecto + entrega           | 45 min   |
-| **TOTAL**   | **6 horas exactas**          | **360 min** |
+| Tiempo      | Actividad                   | Duración    |
+| ----------- | --------------------------- | ----------- |
+| 9:00-10:15  | PUT endpoints               | 75 min      |
+| 10:15-10:45 | **BREAK OBLIGATORIO**       | 30 min      |
+| 10:45-12:45 | DELETE + CRUD consolidación | 120 min     |
+| 12:45-14:15 | Error handling              | 90 min      |
+| 14:15-15:00 | Proyecto + entrega          | 45 min      |
+| **TOTAL**   | **6 horas exactas**         | **360 min** |
 
 ### ✅ Eliminaciones Importantes
 
 **Archivos Complejos Removidos:**
+
 - `07-endpoints-http-completos.md` (624 líneas → eliminado)
 - `08-validacion-avanzada.md` (complejo → eliminado)
 - `09-manejo-errores.md` (943 líneas → eliminado)
@@ -80,6 +85,7 @@ semana-03/
 - `RUBRICA_SEMANA_3.md` (eliminado)
 
 **Complejidad Removida:**
+
 - Validación avanzada con Field()
 - Custom exception handlers
 - Logging systems
@@ -89,7 +95,7 @@ semana-03/
 ### ✅ Verificación de Calidad
 
 - ✅ Sin referencias a "ajustes" o "versiones previas"
-- ✅ Contenido 100% en inglés para estudiantes  
+- ✅ Contenido 100% en inglés para estudiantes
 - ✅ Tiempo total exactamente 6 horas incluido break
 - ✅ Estructura numerada y consistente
 - ✅ Complejidad mínima viable para CRUD básico
@@ -101,7 +107,7 @@ semana-03/
 La Semana 3 está **completamente optimizada** y cumple todos los criterios:
 
 - **Estudiantes**: Recibirán contenido limpio, progresivo y alcanzable
-- **Instructores**: Tendrán cronograma claro y contenido balanceado  
+- **Instructores**: Tendrán cronograma claro y contenido balanceado
 - **Gestión**: Cumple exactamente con especificaciones de 6h + break
 
 **ESTADO**: ✅ **COMPLETADO Y APROBADO PARA IMPLEMENTACIÓN**
