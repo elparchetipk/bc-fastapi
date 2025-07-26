@@ -315,7 +315,7 @@ def home():
         "message": "¡Setup completado correctamente!",
         "project": "FastAPI Bootcamp - Semana 1",
         "timestamp": datetime.now().isoformat(),
-        "status": "✅ Funcionando perfectamente"
+        "status": "✅ Working perfectly"
     }
 
 @app.get("/info/setup")
@@ -335,7 +335,7 @@ def health_check():
     """Endpoint de verificación de salud"""
     return {
         "status": "healthy",
-        "message": "API funcionando correctamente",
+        "message": "API running correctly",
         "environment": "development"
     }
 

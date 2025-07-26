@@ -30,13 +30,13 @@ app = FastAPI(title="Mi Primera API")
 
 # Endpoint 1: Hello World (OBLIGATORIO)
 @app.get("/")
-def hola_mundo():
-    return {"mensaje": "¡Mi primera API FastAPI!"}
+def hello_world():
+    return {"message": "¡Mi primera API FastAPI!"}
 
 # Endpoint 2: Info básica (OBLIGATORIO)
 @app.get("/info")
 def info():
-    return {"api": "FastAPI", "semana": 1, "status": "funcionando"}
+    return {"api": "FastAPI", "week": 1, "status": "running"}
 EOF
 
 # Ejecutar la API (comando simple)
@@ -77,17 +77,17 @@ from fastapi import FastAPI
 app = FastAPI(title="Mi Primera API")
 
 @app.get("/")
-def hola_mundo():
-    return {"mensaje": "¡Mi primera API FastAPI!"}
+def hello_world():
+    return {"message": "¡Mi primera API FastAPI!"}
 
 @app.get("/info")
 def info():
-    return {"api": "FastAPI", "semana": 1, "status": "funcionando"}
+    return {"api": "FastAPI", "week": 1, "status": "running"}
 
 # NUEVO: Endpoint personalizado (solo si hay tiempo)
-@app.get("/saludo/{nombre}")
-def saludar(nombre: str):
-    return {"saludo": f"¡Hola {nombre}!"}
+@app.get("/greeting/{name}")
+def greet_user(name: str):
+    return {"greeting": f"¡Hola {name}!"}
 ```
 
 **🔍 Verificación**: http://127.0.0.1:8000/saludo/TuNombre

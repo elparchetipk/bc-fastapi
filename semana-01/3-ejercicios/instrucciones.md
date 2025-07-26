@@ -29,19 +29,19 @@ Reforzar conceptos de tu primera API mediante **1-2 ejercicios súper simples** 
 ```python
 # Agregar al final de tu main.py existente
 
-@app.get("/mi-perfil")
-def mi_perfil():
+@app.get("/my-profile")
+def my_profile():
     return {
-        "nombre": "Tu Nombre Aquí",           # Cambiar por tu nombre
+        "name": "Tu Nombre Aquí",           # Cambiar por tu nombre
         "bootcamp": "FastAPI",
-        "semana": 1,
-        "fecha": "2024",
-        "me_gusta_fastapi": True              # ¿Te gustó FastAPI?
+        "week": 1,
+        "date": "2024",
+        "likes_fastapi": True              # ¿Te gustó FastAPI?
     }
 ```
 
 3. **Probar el endpoint**:
-   - http://127.0.0.1:8000/mi-perfil
+   - http://127.0.0.1:8000/my-profile
    - Verificar en /docs que aparece el nuevo endpoint
 
 ### ✅ Criterio de Éxito
