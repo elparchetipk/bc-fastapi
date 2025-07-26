@@ -23,11 +23,11 @@ Aprender **Pydantic básico** para validación automática de datos en 120 minut
 ```python
 # Alguien envía datos incorrectos a tu API
 # Tu API se rompe o da resultados raros
-@app.post("/usuarios")
-def crear_usuario(datos):
-    # ¿Qué pasa si datos no tiene 'nombre'?
-    # ¿Qué pasa si 'edad' es texto en lugar de número?
-    return {"usuario": datos}
+@app.post("/users")
+def create_user(data):
+    # ¿Qué pasa si data no tiene 'name'?
+    # ¿Qué pasa si 'age' es texto en lugar de número?
+    return {"user": data}
 ```
 
 **Solución con Pydantic:**
@@ -36,15 +36,15 @@ def crear_usuario(datos):
 from pydantic import BaseModel
 
 # Definir QUÉ datos esperas
-class Usuario(BaseModel):
-    nombre: str
-    edad: int
+class User(BaseModel):
+    name: str
+    age: int
     email: str
 
-@app.post("/usuarios")
-def crear_usuario(usuario: Usuario):
+@app.post("/users")
+def create_user(user: User):
     # Pydantic garantiza que los datos son correctos
-    return {"usuario": usuario.dict()}
+    return {"user": user.dict()}
 ```
 
 **Instalar Pydantic** (si no está):
@@ -61,48 +61,48 @@ pip install pydantic
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI(title="Mi API con Pydantic")
+app = FastAPI(title="My API with Pydantic")
 
 # Tu primer modelo de datos
-class Producto(BaseModel):
-    nombre: str
-    precio: int  # en centavos para evitar decimales
-    disponible: bool = True  # valor por defecto
+class Product(BaseModel):
+    name: str
+    price: int  # en centavos para evitar decimales
+    available: bool = True  # valor por defecto
 
 # Lista temporal para guardar productos
-productos = []
+products = []
 
 # Endpoint GET (como antes)
 @app.get("/")
-def hola_mundo() -> dict:
-    return {"mensaje": "¡API con Pydantic!"}
+def hello_world() -> dict:
+    return {"message": "API with Pydantic!"}
 
 # NUEVO: Endpoint POST con Pydantic
-@app.post("/productos")
-def crear_producto(producto: Producto) -> dict:
-    producto_dict = producto.dict()
-    producto_dict["id"] = len(productos) + 1
-    productos.append(producto_dict)
-    return {"mensaje": "Producto creado", "producto": producto_dict}
+@app.post("/products")
+def create_product(product: Product) -> dict:
+    product_dict = product.dict()
+    product_dict["id"] = len(products) + 1
+    products.append(product_dict)
+    return {"message": "Product created", "product": product_dict}
 
 # Endpoint para ver todos los productos
-@app.get("/productos")
-def obtener_productos() -> dict:
-    return {"productos": productos, "total": len(productos)}
+@app.get("/products")
+def get_products() -> dict:
+    return {"products": products, "total": len(products)}
 ```
 
 **🔍 Verificación (10 min):**
 
 1. Ejecuta `uvicorn main:app --reload`
 2. Ve a http://127.0.0.1:8000/docs
-3. Busca el endpoint POST /productos
+3. Busca el endpoint POST /products
 4. Pruébalo con estos datos:
 
 ```json
 {
-  "nombre": "Laptop",
-  "precio": 150000,
-  "disponible": true
+  "name": "Laptop",
+  "price": 150000,
+  "available": true
 }
 ```
 
@@ -113,21 +113,21 @@ def obtener_productos() -> dict:
 ```json
 // Datos correctos ✅
 {
-  "nombre": "Mouse",
-  "precio": 2500,
-  "disponible": false
+  "name": "Mouse",
+  "price": 2500,
+  "available": false
 }
 
-// Datos incorrectos ❌ (precio como texto)
+// Datos incorrectos ❌ (price como texto)
 {
-  "nombre": "Teclado",
-  "precio": "muy caro",
-  "disponible": true
+  "name": "Keyboard",
+  "price": "very expensive",
+  "available": true
 }
 
-// Datos incompletos ❌ (falta precio)
+// Datos incompletos ❌ (falta price)
 {
-  "nombre": "Monitor"
+  "name": "Monitor"
 }
 ```
 
@@ -136,16 +136,16 @@ def obtener_productos() -> dict:
 ```python
 from typing import Optional
 
-class UsuarioCompleto(BaseModel):
-    nombre: str
-    edad: int
+class CompleteUser(BaseModel):
+    name: str
+    age: int
     email: str
-    telefono: Optional[str] = None  # campo opcional
-    activo: bool = True
+    phone: Optional[str] = None  # campo opcional
+    active: bool = True
 
-@app.post("/usuarios")
-def crear_usuario(usuario: UsuarioCompleto) -> dict:
-    return {"usuario": usuario.dict(), "valido": True}
+@app.post("/users")
+def create_user(user: CompleteUser) -> dict:
+    return {"user": user.dict(), "valid": True}
 ```
 
 **🔍 Entender los errores** (10 min):

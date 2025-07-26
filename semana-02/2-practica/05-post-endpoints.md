@@ -22,20 +22,20 @@ Dominar **endpoints POST y parámetros** básicos en 90 minutos (Bloque 3), cons
 # Agregar a tu main.py existente
 
 # Parámetro de ruta simple
-@app.get("/productos/{producto_id}")
-def obtener_producto(producto_id: int) -> dict:
-    for producto in productos:
-        if producto["id"] == producto_id:
-            return {"producto": producto}
-    return {"error": "Producto no encontrado"}
+@app.get("/products/{product_id}")
+def get_product(product_id: int) -> dict:
+    for product in products:
+        if product["id"] == product_id:
+            return {"product": product}
+    return {"error": "Product not found"}
 
 # Múltiples parámetros de ruta
-@app.get("/categorias/{categoria}/productos/{producto_id}")
-def producto_por_categoria(categoria: str, producto_id: int) -> dict:
+@app.get("/categories/{category}/products/{product_id}")
+def product_by_category(category: str, product_id: int) -> dict:
     return {
-        "categoria": categoria,
-        "producto_id": producto_id,
-        "mensaje": f"Buscando producto {producto_id} en {categoria}"
+        "category": category,
+        "product_id": product_id,
+        "message": f"Searching product {product_id} in {category}"
     }
 ```
 
@@ -45,69 +45,69 @@ def producto_por_categoria(categoria: str, producto_id: int) -> dict:
 from typing import Optional
 
 # Query parameters opcionales
-@app.get("/buscar")
-def buscar_productos(
-    nombre: Optional[str] = None,
-    precio_max: Optional[int] = None,
-    disponible: Optional[bool] = None
+@app.get("/search")
+def search_products(
+    name: Optional[str] = None,
+    max_price: Optional[int] = None,
+    available: Optional[bool] = None
 ) -> dict:
-    resultados = productos.copy()
+    results = products.copy()
 
-    if nombre:
-        resultados = [p for p in resultados if nombre.lower() in p["nombre"].lower()]
-    if precio_max:
-        resultados = [p for p in resultados if p["precio"] <= precio_max]
-    if disponible is not None:
-        resultados = [p for p in resultados if p["disponible"] == disponible]
+    if name:
+        results = [p for p in results if name.lower() in p["name"].lower()]
+    if max_price:
+        results = [p for p in results if p["price"] <= max_price]
+    if available is not None:
+        results = [p for p in results if p["available"] == available]
 
-    return {"resultados": resultados, "total": len(resultados)}
+    return {"results": results, "total": len(results)}
 ```
 
 **🔍 Probar** (5 min):
 
-- http://127.0.0.1:8000/productos/1
-- http://127.0.0.1:8000/buscar?nombre=laptop
-- http://127.0.0.1:8000/buscar?precio_max=50000&disponible=true
+- http://127.0.0.1:8000/products/1
+- http://127.0.0.1:8000/search?name=laptop
+- http://127.0.0.1:8000/search?max_price=50000&available=true
 
 ### Paso 2: Response Models con Pydantic (30 min)
 
 **Definir respuestas consistentes:**
 
 ```python
-# Agregar estos modelos después de tu modelo Producto
+# Agregar estos modelos después de tu modelo Product
 
-class ProductoResponse(BaseModel):
+class ProductResponse(BaseModel):
     id: int
-    nombre: str
-    precio: int
-    disponible: bool
-    mensaje: str = "Producto obtenido exitosamente"
+    name: str
+    price: int
+    available: bool
+    message: str = "Product retrieved successfully"
 
-class ListaProductosResponse(BaseModel):
-    productos: list
+class ProductListResponse(BaseModel):
+    products: list
     total: int
-    mensaje: str = "Lista obtenida exitosamente"
+    message: str = "List retrieved successfully"
 
 # Actualizar endpoints para usar response models
-@app.get("/productos", response_model=ListaProductosResponse)
-def obtener_productos() -> ListaProductosResponse:
-    return ListaProductosResponse(
-        productos=productos,
-        total=len(productos)
+@app.get("/products", response_model=ProductListResponse)
+def get_products() -> ProductListResponse:
+    return ProductListResponse(
+        products=products,
+        total=len(products)
     )
 
-@app.post("/productos", response_model=ProductoResponse)
-def crear_producto(producto: Producto) -> ProductoResponse:
-    producto_dict = producto.dict()
-    producto_dict["id"] = len(productos) + 1
-    productos.append(producto_dict)
+@app.post("/products", response_model=ProductResponse)
+def create_product(product: Product) -> ProductResponse:
+    product_dict = product.dict()
+    product_dict["id"] = len(products) + 1
+    products.append(product_dict)
 
-    return ProductoResponse(
-        id=producto_dict["id"],
-        nombre=producto_dict["nombre"],
-        precio=producto_dict["precio"],
-        disponible=producto_dict["disponible"],
-        mensaje="Producto creado exitosamente"
+    return ProductResponse(
+        id=product_dict["id"],
+        name=product_dict["name"],
+        price=product_dict["price"],
+        available=product_dict["available"],
+        message="Product created successfully"
     )
 ```
 
@@ -120,69 +120,69 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
 
-app = FastAPI(title="Mi API Mejorada - Semana 2")
+app = FastAPI(title="My Enhanced API - Week 2")
 
 # Modelos de datos
-class Producto(BaseModel):
-    nombre: str
-    precio: int
-    disponible: bool = True
+class Product(BaseModel):
+    name: str
+    price: int
+    available: bool = True
 
-class ProductoResponse(BaseModel):
+class ProductResponse(BaseModel):
     id: int
-    nombre: str
-    precio: int
-    disponible: bool
-    mensaje: str = "Operación exitosa"
+    name: str
+    price: int
+    available: bool
+    message: str = "Successful operation"
 
-class ListaProductosResponse(BaseModel):
-    productos: List[dict]
+class ProductListResponse(BaseModel):
+    products: List[dict]
     total: int
-    mensaje: str = "Lista obtenida"
+    message: str = "List retrieved"
 
 # Almacenamiento temporal
-productos = []
+products = []
 
 # Endpoints básicos
 @app.get("/")
-def hola_mundo() -> dict:
-    return {"mensaje": "¡API Semana 2 con Pydantic y Type Hints!"}
+def hello_world() -> dict:
+    return {"message": "Week 2 API with Pydantic and Type Hints!"}
 
-@app.get("/productos", response_model=ListaProductosResponse)
-def obtener_productos() -> ListaProductosResponse:
-    return ListaProductosResponse(
-        productos=productos,
-        total=len(productos)
+@app.get("/products", response_model=ProductListResponse)
+def get_products() -> ProductListResponse:
+    return ProductListResponse(
+        products=products,
+        total=len(products)
     )
 
-@app.post("/productos", response_model=ProductoResponse)
-def crear_producto(producto: Producto) -> ProductoResponse:
-    producto_dict = producto.dict()
-    producto_dict["id"] = len(productos) + 1
-    productos.append(producto_dict)
+@app.post("/products", response_model=ProductResponse)
+def create_product(product: Product) -> ProductResponse:
+    product_dict = product.dict()
+    product_dict["id"] = len(products) + 1
+    products.append(product_dict)
 
-    return ProductoResponse(**producto_dict, mensaje="Producto creado")
+    return ProductResponse(**product_dict, message="Product created")
 
-@app.get("/productos/{producto_id}")
-def obtener_producto(producto_id: int) -> dict:
-    for producto in productos:
-        if producto["id"] == producto_id:
-            return {"producto": producto}
-    raise HTTPException(status_code=404, detail="Producto no encontrado")
+@app.get("/products/{product_id}")
+def get_product(product_id: int) -> dict:
+    for product in products:
+        if product["id"] == product_id:
+            return {"product": product}
+    raise HTTPException(status_code=404, detail="Product not found")
 
-@app.get("/buscar")
-def buscar_productos(
-    nombre: Optional[str] = None,
-    precio_max: Optional[int] = None
+@app.get("/search")
+def search_products(
+    name: Optional[str] = None,
+    max_price: Optional[int] = None
 ) -> dict:
-    resultados = productos.copy()
+    results = products.copy()
 
-    if nombre:
-        resultados = [p for p in resultados if nombre.lower() in p["nombre"].lower()]
-    if precio_max:
-        resultados = [p for p in resultados if p["precio"] <= precio_max]
+    if name:
+        results = [p for p in results if name.lower() in p["name"].lower()]
+    if max_price:
+        results = [p for p in results if p["price"] <= max_price]
 
-    return {"resultados": resultados, "total": len(resultados)}
+    return {"results": results, "total": len(results)}
 ```
 
 **🔍 Verificación Final** (15 min):
