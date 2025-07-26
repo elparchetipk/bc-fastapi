@@ -1,53 +1,77 @@
-# Teoría - Semana 4: Bases de Datos y ORMs para APIs
+# Week 4 Theory: Data Validation and Query Parameters
 
-## 📚 Conceptos Fundamentales
+## Query Parameters
 
-### 1. ¿Qué son las Bases de Datos en APIs?
+Query parameters let you filter and search your API data.
 
-Una **base de datos** es un sistema organizado para almacenar, gestionar y recuperar información de manera persistente. En el contexto de APIs REST, las bases de datos proporcionan **persistencia** - los datos sobreviven al reinicio de la aplicación.
+### What are Query Parameters?
 
-#### **Sin Base de Datos (Semanas anteriores)**
+Query parameters are the part after `?` in a URL:
 
-```python
-# ❌ Datos en memoria - se pierden al reiniciar
-productos = [
-    {"id": 1, "nombre": "Laptop", "precio": 999.99},
-    {"id": 2, "nombre": "Mouse", "precio": 25.99}
-]
-
-@app.post("/productos")
-def crear_producto(producto: Producto):
-    productos.append(producto.dict())  # Se pierde al reiniciar
-    return producto
+```
+GET /users?name=john&age=25
 ```
 
-#### **Con Base de Datos (Esta semana)**
+### How to Use Them in FastAPI
 
 ```python
-# ✅ Datos persistentes - sobreviven al reiniciar
-@app.post("/productos")
-def crear_producto(producto: ProductoCreate, db: Session = Depends(get_db)):
-    db_producto = Producto(**producto.dict())
-    db.add(db_producto)
-    db.commit()  # Guardado permanente
-    db.refresh(db_producto)
-    return db_producto
+@app.get("/users")
+def get_users(name: str = None, age: int = None):
+    filtered_users = users.copy()
+
+    if name:
+        filtered_users = [u for u in filtered_users if name.lower() in u["name"].lower()]
+
+    if age:
+        filtered_users = [u for u in filtered_users if u["age"] == age]
+
+    return filtered_users
 ```
 
----
+## Advanced Pydantic Validation
 
-### 2. Tipos de Bases de Datos
+### Optional Fields
 
-#### **📊 Bases de Datos Relacionales (SQL)**
+```python
+from typing import Optional
 
-**Características:**
+class User(BaseModel):
+    name: str
+    email: str
+    age: Optional[int] = None  # This field is optional
+```
 
-- **Estructuradas** en tablas con filas y columnas
-- **Relaciones** entre tablas (Foreign Keys)
-- **ACID** (Atomicidad, Consistencia, Aislamiento, Durabilidad)
-- **SQL** como lenguaje de consulta
+### Field Validation
 
-**Ejemplos:**
+```python
+from pydantic import Field
+
+class User(BaseModel):
+    name: str = Field(..., min_length=2, max_length=50)
+    age: int = Field(..., ge=0, le=120)  # Between 0 and 120
+    email: str = Field(..., regex=r'^[^@]+@[^@]+\.[^@]+$')
+```
+
+## File Handling
+
+### File Uploads
+
+FastAPI can handle file uploads easily:
+
+```python
+from fastapi import File, UploadFile
+
+@app.post("/upload/")
+async def upload_file(file: UploadFile = File(...)):
+    return {"filename": file.filename}
+```
+
+## Best Practices
+
+1. **Always validate input data** - Use Pydantic models
+2. **Use query parameters for filtering** - Keep URLs clean
+3. **Handle optional fields properly** - Use Optional and default values
+4. **Keep validations simple** - Don't overcomplicate rules
 
 - **SQLite** - Archivo local, perfecta para desarrollo
 - **PostgreSQL** - Robusta, escalable, open source

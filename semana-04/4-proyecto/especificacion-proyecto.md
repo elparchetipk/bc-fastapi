@@ -1,109 +1,139 @@
-# Proyecto Final Semana 4: API E-commerce con Base de Datos
+# Week 4 Project: Advanced API with Search and Validation
 
-## 🎯 Objetivo del Proyecto
+## Objective
 
-Crear una API REST completa para un sistema de e-commerce que integre todos los conceptos aprendidos en la Semana 4: bases de datos, relaciones, migraciones y testing.
+Build an enhanced API with search functionality, advanced validation, and file handling.
 
-**⏱️ Tiempo estimado:** 4-6 horas  
-**📅 Fecha de entrega:** Final de la Semana 4  
-**🏆 Peso en la evaluación:** 40% de la calificación semanal
+## Requirements
 
----
+### Core Features
 
-## 📋 Descripción del Proyecto
+- Product API with search and filtering
+- User management with validation
+- File upload/download functionality
+- Advanced query parameters
 
-### Contexto del Negocio
+### Technical Specifications
 
-Desarrollar el backend para una plataforma de e-commerce que permita:
+#### Product Model with Validation
 
-- Gestión de productos con categorías
-- Sistema de usuarios y autenticación básica
-- Carrito de compras y órdenes
-- Sistema de reseñas y calificaciones
-- Reportes de ventas y estadísticas
+```python
+from pydantic import BaseModel, Field
+from typing import Optional
 
-### Tecnologías Requeridas
+class Product(BaseModel):
+    name: str = Field(..., min_length=2, max_length=100)
+    description: str = Field(..., max_length=500)
+    price: float = Field(..., gt=0, le=999999)
+    category: str = Field(..., min_length=1)
+    in_stock: bool = True
+    tags: Optional[list] = []
+```
 
-- **Framework:** FastAPI
-- **Base de Datos:** SQLite con SQLAlchemy ORM
-- **Migraciones:** Alembic
-- **Testing:** pytest
-- **Validación:** Pydantic v2
+#### Required Endpoints
 
----
+1. **Product Management**
 
-## 🏗️ Arquitectura del Sistema
+   - `GET /products` - List with search/filter
+   - `GET /products/{id}` - Get specific product
+   - `POST /products` - Create with validation
+   - `PUT /products/{id}` - Update with validation
+   - `DELETE /products/{id}` - Delete product
 
-### Estructura del Proyecto
+2. **Search and Filtering**
 
-```text
-ecommerce_api/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                 # Aplicación principal
-│   ├── database.py             # Configuración BD
-│   ├── dependencies.py         # Dependencias compartidas
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── crud/
-│   │   ├── __init__.py
-│   │   ├── base.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── endpoints/
-│   │   │   ├── users.py
-│   │   │   ├── categories.py
-│   │   │   ├── products.py
-│   │   │   ├── cart.py
-│   │   │   ├── orders.py
-│   │   │   ├── reviews.py
-│   │   │   └── reports.py
-│   │   └── api.py              # Router principal
-│   └── core/
-│       ├── __init__.py
-│       ├── config.py
-│       └── security.py         # Hash de passwords
+   - `GET /products/search?category=electronics&min_price=100&max_price=500`
+   - `GET /products/search?name=laptop&in_stock=true`
+
+3. **User Management**
+
+   - `POST /users` - Register with email validation
+   - `GET /users/{id}` - Get user profile
+
+4. **File Operations**
+   - `POST /upload` - Upload product images
+   - `GET /files` - List uploaded files
+
+### Implementation Guidelines
+
+1. Use in-memory storage (simple lists/dictionaries)
+2. Implement comprehensive input validation
+3. Add proper error handling for all endpoints
+4. Include query parameter filtering
+5. Test all functionality thoroughly
+
+### Deliverables
+
+- Complete API file (`main.py`)
+- Sample data for testing
+- Documentation of all endpoints
+- Test results and examples
+
+### Evaluation Criteria
+
+- All endpoints work correctly (60%)
+- Proper validation and error handling (25%)
+- Search/filtering functionality (10%)
+- Code quality and documentation (5%)
+
+**Time Limit:** 3 hours maximum
+│ │ ├── cart.py
+│ │ ├── order.py
+│ │ └── review.py
+│ ├── schemas/
+│ │ ├── **init**.py
+│ │ ├── user.py
+│ │ ├── category.py
+│ │ ├── product.py
+│ │ ├── cart.py
+│ │ ├── order.py
+│ │ └── review.py
+│ ├── crud/
+│ │ ├── **init**.py
+│ │ ├── base.py
+│ │ ├── user.py
+│ │ ├── category.py
+│ │ ├── product.py
+│ │ ├── cart.py
+│ │ ├── order.py
+│ │ └── review.py
+│ ├── api/
+│ │ ├── **init**.py
+│ │ ├── endpoints/
+│ │ │ ├── users.py
+│ │ │ ├── categories.py
+│ │ │ ├── products.py
+│ │ │ ├── cart.py
+│ │ │ ├── orders.py
+│ │ │ ├── reviews.py
+│ │ │ └── reports.py
+│ │ └── api.py # Router principal
+│ └── core/
+│ ├── **init**.py
+│ ├── config.py
+│ └── security.py # Hash de passwords
 ├── alembic/
-│   ├── versions/
-│   ├── env.py
-│   └── script.py.mako
+│ ├── versions/
+│ ├── env.py
+│ └── script.py.mako
 ├── tests/
-│   ├── __init__.py
-│   ├── conftest.py
-│   ├── test_users.py
-│   ├── test_products.py
-│   ├── test_orders.py
-│   ├── test_cart.py
-│   └── test_integration.py
+│ ├── **init**.py
+│ ├── conftest.py
+│ ├── test_users.py
+│ ├── test_products.py
+│ ├── test_orders.py
+│ ├── test_cart.py
+│ └── test_integration.py
 ├── scripts/
-│   ├── init_db.py
-│   ├── seed_data.py
-│   └── migrate.py
+│ ├── init_db.py
+│ ├── seed_data.py
+│ └── migrate.py
 ├── alembic.ini
 ├── requirements.txt
 ├── README.md
 └── .env.example
-```
+
+````
 
 ### Modelo de Datos
 
@@ -178,7 +208,7 @@ GET    /api/v1/users/{user_id}           # Obtener usuario
 PUT    /api/v1/users/{user_id}           # Actualizar usuario
 DELETE /api/v1/users/{user_id}           # Eliminar usuario
 POST   /api/v1/users/login               # Login (retorna token simple)
-```
+````
 
 #### Validaciones
 

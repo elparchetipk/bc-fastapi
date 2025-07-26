@@ -1,57 +1,87 @@
-# Recursos de Apoyo - Semana 4
+# Week 4 Support Resources
 
-## 📚 Documentación Oficial y Referencias
+## Official Documentation
 
-### SQLAlchemy
+### FastAPI
 
-- **[SQLAlchemy 2.0 Documentation](https://docs.sqlalchemy.org/en/20/)** - Documentación oficial completa
-- **[SQLAlchemy ORM Tutorial](https://docs.sqlalchemy.org/en/20/orm/tutorial.html)** - Tutorial paso a paso
-- **[SQLAlchemy Relationships](https://docs.sqlalchemy.org/en/20/orm/relationships.html)** - Guía de relaciones
-- **[SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide.html)** - Consultas avanzadas
+- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Complete official docs
+- [Query Parameters](https://fastapi.tiangolo.com/tutorial/query-params/) - Query parameter tutorial
+- [Request Body](https://fastapi.tiangolo.com/tutorial/body/) - Request body handling
+- [File Uploads](https://fastapi.tiangolo.com/tutorial/request-files/) - File handling guide
 
-### Alembic
+### Pydantic Validation
 
-- **[Alembic Documentation](https://alembic.sqlalchemy.org/en/latest/)** - Documentación oficial
-- **[Alembic Tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html)** - Tutorial básico
-- **[Migration Environment](https://alembic.sqlalchemy.org/en/latest/tutorial.html#the-migration-environment)** - Configuración del entorno
+- [Pydantic Documentation](https://docs.pydantic.dev/) - Validation library docs
+- [Field Types](https://docs.pydantic.dev/latest/concepts/types/) - Available field types
+- [Validators](https://docs.pydantic.dev/latest/concepts/validators/) - Custom validation
+- [Field Validation](https://docs.pydantic.dev/latest/concepts/fields/) - Field-level validation
 
-### FastAPI y Bases de Datos
+### Python Type Hints
 
-- **[FastAPI SQL Databases](https://fastapi.tiangolo.com/tutorial/sql-databases/)** - Tutorial oficial
-- **[FastAPI Testing](https://fastapi.tiangolo.com/tutorial/testing/)** - Testing con FastAPI
-- **[Dependency Injection](https://fastapi.tiangolo.com/tutorial/dependencies/)** - Inyección de dependencias
+- [Python Typing](https://docs.python.org/3/library/typing.html) - Type hints reference
+- [Optional Types](https://docs.python.org/3/library/typing.html#typing.Optional) - Optional field types
 
-### Pydantic
+## Tools and Utilities
 
-- **[Pydantic v2 Documentation](https://docs.pydantic.dev/latest/)** - Documentación v2
-- **[Data Validation](https://docs.pydantic.dev/latest/concepts/validators/)** - Validadores personalizados
-- **[Field Types](https://docs.pydantic.dev/latest/api/fields/)** - Tipos de campo disponibles
+### API Testing
 
-### Testing
+- [Postman](https://www.postman.com/) - API testing tool
+- [Thunder Client](https://www.thunderclient.com/) - VS Code extension
+- [HTTPie](https://httpie.io/) - Command line HTTP client
 
-- **[pytest Documentation](https://docs.pytest.org/)** - Framework de testing
-- **[pytest-asyncio](https://pytest-asyncio.readthedocs.io/)** - Testing asíncrono
-- **[HTTPX](https://www.python-httpx.org/)** - Cliente HTTP para testing
+### Development
 
----
+- [Python](https://www.python.org/) - Python official site
+- [pip](https://pip.pypa.io/) - Package installer for Python
+- [Virtual Environments](https://docs.python.org/3/tutorial/venv.html) - Environment management
 
-## 🛠️ Herramientas y Utilidades
+## Code Examples
 
-### Desarrollo Local
+### Query Parameter Patterns
 
-#### Base de Datos
+```python
+# Single parameter
+@app.get("/items")
+def get_items(category: str = None):
+    pass
 
-- **[SQLite Browser](https://sqlitebrowser.org/)** - GUI para SQLite
-- **[DBeaver](https://dbeaver.io/)** - Cliente universal de BD
-- **[DB Browser for SQLite](https://sqlitebrowser.org/)** - Herramienta específica SQLite
+# Multiple parameters
+@app.get("/items")
+def get_items(category: str = None, min_price: int = None):
+    pass
 
-#### IDEs y Editores
+# With validation
+@app.get("/items")
+def get_items(limit: int = Query(10, ge=1, le=100)):
+    pass
+```
 
-- **[VS Code Extensions](https://marketplace.visualstudio.com/)**:
-  - Python
-  - SQLite Viewer
-  - REST Client
-  - Thunder Client (Postman alternativo)
+### Validation Examples
+
+```python
+# Email validation
+email: EmailStr
+
+# String length
+name: str = Field(..., min_length=2, max_length=50)
+
+# Number ranges
+age: int = Field(..., ge=0, le=120)
+price: float = Field(..., gt=0)
+```
+
+## Best Practices
+
+1. **Always validate user input** - Use Pydantic models
+2. **Use query parameters for filtering** - Keep URLs clean
+3. **Handle file uploads safely** - Validate file types and sizes
+4. **Return consistent error messages** - Use proper HTTP status codes
+5. **Test your endpoints** - Verify functionality with different inputs
+
+- Python
+- SQLite Viewer
+- REST Client
+- Thunder Client (Postman alternativo)
 
 #### API Testing
 

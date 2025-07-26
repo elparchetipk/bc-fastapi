@@ -1,53 +1,72 @@
-# Ejercicios de Práctica - Semana 4
+# Week 4 Practice Exercises
 
-## 🎯 Objetivo General
+## Objective
 
-Reforzar los conceptos de bases de datos, relaciones, migraciones y testing mediante ejercicios prácticos progresivos.
+Practice query parameters, validation, and search functionality.
 
-**⏱️ Tiempo total:** 60-90 minutos  
-**📊 Nivel de dificultad:** Intermedio-Avanzado
+## Exercise 1: Product Search API (30 minutes)
 
----
-
-## 📋 Ejercicio 1: Extensión del Modelo de Datos (20 min)
-
-### Contexto
-
-Necesitas extender el sistema de e-commerce con nuevas entidades para mejorar la funcionalidad.
-
-### Tareas
-
-1. **Crear modelo Category** con relación One-to-Many a productos:
+Create a product search API with filtering:
 
 ```python
-# app/models/category.py
-class Category(Base):
-    __tablename__ = "categories"
+from fastapi import FastAPI, Query
+from pydantic import BaseModel
+from typing import Optional, List
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    description = Column(Text)
-    is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+app = FastAPI()
 
-    # Relación One-to-Many con productos
-    products = relationship("Product", back_populates="category")
+products = [
+    {"id": 1, "name": "Laptop", "price": 1000, "category": "electronics"},
+    {"id": 2, "name": "Book", "price": 20, "category": "education"},
+    {"id": 3, "name": "Phone", "price": 800, "category": "electronics"},
+]
+
+@app.get("/products/search")
+def search_products(
+    category: Optional[str] = None,
+    min_price: Optional[int] = Query(None, ge=0),
+    max_price: Optional[int] = Query(None, ge=0),
+    name: Optional[str] = None
+):
+    # Implement filtering logic here
+    pass
 ```
 
-2. **Actualizar modelo Product** para incluir la relación:
+**Tasks:**
+
+1. Filter by category if provided
+2. Filter by price range if provided
+3. Filter by name (partial match) if provided
+4. Return filtered results
+
+## Exercise 2: User Registration with Validation (30 minutes)
+
+Create a user registration endpoint with proper validation:
 
 ```python
-# Agregar a Product
-category_id = Column(Integer, ForeignKey("categories.id"))
-category = relationship("Category", back_populates="products")
+from pydantic import BaseModel, Field, EmailStr
+from typing import Optional
+
+class UserCreate(BaseModel):
+    username: str = Field(..., min_length=3, max_length=20)
+    email: EmailStr
+    age: int = Field(..., ge=13, le=120)
+    full_name: Optional[str] = Field(None, max_length=100)
+
+@app.post("/register")
+def register_user(user: UserCreate):
+    # Add validation and user creation logic
+    pass
 ```
 
-3. **Crear modelo Review** con relaciones a User y Product:
+**Tasks:**
 
-```python
-# app/models/review.py
-class Review(Base):
-    __tablename__ = "reviews"
+1. Validate all fields according to rules
+2. Check if username/email already exists
+3. Return appropriate error messages
+4. Return success response if valid
+
+**Expected:** Both exercises working with proper validation and filtering.
 
     id = Column(Integer, primary_key=True, index=True)
     rating = Column(Integer)  # 1-5 estrellas
@@ -60,7 +79,8 @@ class Review(Base):
 
     user = relationship("User")
     product = relationship("Product")
-```
+
+````
 
 ### Verificación
 
@@ -101,7 +121,7 @@ class CategoryCRUD:
             Category,
             func.count(Product.id).label('product_count')
         ).outerjoin(Product).group_by(Category.id).all()
-```
+````
 
 2. **Implementar ReviewCRUD** con lógica de negocio:
 
