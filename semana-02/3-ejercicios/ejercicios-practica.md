@@ -23,10 +23,10 @@ Consolidar conceptos de **Type Hints + Pydantic + Endpoints POST** en el Bloque 
 
 **Revisa tu main.py actual y marca:**
 
-- [ ] **Type hints**: ¿Tus funciones tienen tipos como `-> dict` o `nombre: str`?
+- [ ] **Type hints**: ¿Tus funciones tienen tipos como `-> dict` o `name: str`?
 - [ ] **Modelo Pydantic**: ¿Tienes al menos 1 clase que hereda de `BaseModel`?
 - [ ] **Endpoint POST**: ¿Tienes un POST que recibe un modelo Pydantic?
-- [ ] **Endpoint GET con ID**: ¿Tienes un GET como `/productos/{id}`?
+- [ ] **Endpoint GET con ID**: ¿Tienes un GET como `/products/{id}`?
 - [ ] **API funcionando**: ¿`uvicorn main:app --reload` funciona sin errores?
 - [ ] **Documentación**: ¿Se ve bien en http://127.0.0.1:8000/docs?
 
@@ -44,10 +44,10 @@ Consolidar conceptos de **Type Hints + Pydantic + Endpoints POST** en el Bloque 
 
    ```python
    class Item(BaseModel):
-       nombre: str
+       name: str
 
    @app.post("/items")
-   def crear_item(item: Item) -> dict:
+   def create_item(item: Item) -> dict:
        return {"item": item.dict()}
    ```
 
@@ -55,7 +55,7 @@ Consolidar conceptos de **Type Hints + Pydantic + Endpoints POST** en el Bloque 
    ```python
    @app.get("/")
    def home() -> dict:
-       return {"mensaje": "funciona"}
+       return {"message": "it works"}
    ```
 
 ---
@@ -80,7 +80,7 @@ API mejorada con validación automática de datos y type hints.
 - ✅ Type hints en todas las funciones
 - ✅ Validación automática con Pydantic
 - ✅ Endpoint POST para crear datos
-- ✅ Parámetros de ruta (ejemplo: /productos/{id})
+- ✅ Parámetros de ruta (ejemplo: /products/{id})
 - ✅ Búsqueda con parámetros query
 
 ## ¿Cómo ejecutar?
@@ -94,10 +94,10 @@ uvicorn main:app --reload
 ## Endpoints principales
 
 - `GET /`: Mensaje de bienvenida
-- `POST /productos`: Crear nuevo producto
-- `GET /productos`: Ver todos los productos
-- `GET /productos/{id}`: Ver producto específico
-- `GET /buscar?nombre=...`: Buscar productos
+- `POST /products`: Crear nuevo producto
+- `GET /products`: Ver todos los productos
+- `GET /products/{id}`: Ver producto específico
+- `GET /search?name=...`: Buscar productos
 
 ## Documentación
 
