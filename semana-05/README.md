@@ -1,103 +1,256 @@
-# Semana 5: Autenticación y Autorización
+# Week 5: Basic Security & Simple Authentication
 
-## 🎯 Objetivos de la Semana
+⏰ **TOTAL DURATION: 6 HOURS EXACTLY**  
+📚 **LEVEL: Basic Security Concepts**
 
-Al finalizar esta semana, los estudiantes podrán:
+## 🚨 **IMPORTANT: Gentle Introduction to Security**
 
-- **Implementar autenticación JWT** con FastAPI y SQLAlchemy
-- **Crear sistemas de login/logout** seguros
-- **Proteger endpoints** con middleware de autenticación
-- **Manejar roles y permisos** básicos de autorización
-- **Aplicar buenas prácticas** de seguridad en APIs
+This week provides a **gentle introduction to API security concepts** without complex implementations. Students will learn basic security principles and simple authentication patterns.
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+- ✅ **Completely achievable in 6 hours**
+- ✅ **Builds naturally from Week 4**
+- ✅ **Focus on understanding over complex implementation**
 
-| Bloque | Actividad                    | Tiempo | Descripción                           |
-| ------ | ---------------------------- | ------ | ------------------------------------- |
-| **1**  | Fundamentos de Autenticación | 90 min | JWT, hashing, setup inicial           |
-| **2**  | Sistema de Login/Register    | 90 min | Endpoints de autenticación            |
-| **3**  | Protección de Endpoints      | 90 min | Middleware, dependencies, decoradores |
-| **4**  | Roles y Autorización         | 90 min | Permisos, RBAC básico                 |
+## 🎯 Weekly Objectives (Fundamental)
 
-## 📚 Contenido de la Semana
+After this 6-hour week (includes 30-min break), students will:
 
-### **📋 Navegación Ordenada (Seguir este orden)**
+1. ✅ **Understand basic security concepts** (authentication vs authorization)
+2. ✅ **Implement simple API key authentication**
+3. ✅ **Add basic user validation** to endpoints
+4. ✅ **Understand password security basics** (hashing concepts)
+5. ✅ **Protect endpoints with simple checks**
 
-1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos de seguridad y autenticación
-2. **[💻 2-practica/](./2-practica/)** - Implementación JWT y protección
-3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Ejercicios de seguridad
-4. **[🚀 4-proyecto/](./4-proyecto/)** - Sistema de autenticación completo
-5. **[📚 5-recursos/](./5-recursos/)** - Referencias y herramientas
+### ❌ **What we DON'T expect to master this week**
 
-### **🧭 Teoría**
+- JWT (JSON Web Tokens) - too complex for now
+- OAuth2 implementation
+- Database-based user management
+- Complex role-based systems
+- Production-grade security
 
-- [🔐 Autenticación y Autorización en APIs](./1-teoria/auth-concepts.md)
+## ⏱️ **6-Hour Structure (Includes 30-min Break)**
 
-### **💻 Prácticas**
+### **Block 1: Security Concepts & API Keys (75 min)**
 
-1. [🔧 JWT y Hashing de Passwords](./2-practica/15-jwt-setup.md) _(90 min)_
-2. [🚪 Sistema de Login y Register](./2-practica/16-login-system.md) _(90 min)_
-3. [🛡️ Protección de Endpoints](./2-practica/17-endpoint-protection.md) _(90 min)_
-4. [👥 Roles y Autorización](./2-practica/18-roles-authorization.md) _(90 min)_
+- **14-security-basics.md**
+- Understanding authentication vs authorization
+- Simple API key implementation
+- Basic security headers
 
-### **💪 Ejercicios**
+### **☕ MANDATORY BREAK (30 min)**
 
-- [🔒 Ejercicios de Seguridad](./3-ejercicios/ejercicios-seguridad.md)
+- Rest to absorb security concepts
+- Time to resolve API key doubts
+- Mental preparation for user validation
 
-### **🚀 Proyecto**
+### **Block 2: Simple User Validation (120 min)**
 
-- [🏪 E-commerce con Autenticación](./4-proyecto/especificacion-auth.md)
+- **15-simple-users.md**
+- In-memory user storage
+- Basic password handling (concepts only)
+- Simple login logic
 
-### **📚 Recursos**
+### **Block 3: Endpoint Protection (90 min)**
 
-- [📖 Guías y Referencias](./5-recursos/recursos-seguridad.md)
+- **16-endpoint-protection.md**
+- Protecting endpoints with simple checks
+- User-specific data access
+- Basic authorization patterns
+
+### **Block 4: Integration & Practice (45 min)**
+
+- Consolidating security concepts
+- Testing protected endpoints
+- Preparing deliverable
+
+## 📚 Week Content (Only Essentials)
+
+### **🧭 Ordered Navigation (Follow this order)**
+
+1. **[🧭 1-teoria/](./1-teoria/)** - Basic security concepts
+2. **[💻 2-practica/](./2-practica/)** - Simple implementation
+3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Security practice
+4. **[🚀 4-proyecto/](./4-proyecto/)** - Protected API
+5. **[📚 5-recursos/](./5-recursos/)** - Basic references
+
+### 🛠️ **Practices (Core of the week)**
+
+1. **[14-security-basics.md](./2-practica/14-security-basics.md)** - API keys & concepts
+2. **[15-simple-users.md](./2-practica/15-simple-users.md)** - Basic user handling
+3. **[16-endpoint-protection.md](./2-practica/16-endpoint-protection.md)** - Simple protection
+
+### � **Theory (Minimal)**
+
+- Authentication vs Authorization concepts
+- API key patterns
+- Basic password security awareness
+
+### 🏋️ **Exercises (Consolidation)**
+
+- 2 simple security exercises
+- API key testing
+- Basic protection verification
+
+## 🚀 **Prerequisites (From Week 4)**
+
+- ✅ CRUD API with query parameters working
+- ✅ Pydantic validation implemented
+- ✅ File operations basic understanding
+- ✅ Search endpoints functional
+
+## 🎯 Success Criteria for the Week
+
+### ✅ **Success Criteria (Pass)**
+
+- [ ] At least 1 API key protected endpoint working
+- [ ] Basic user concept implemented (in-memory)
+- [ ] Simple endpoint protection functioning
+- [ ] Understanding of authentication vs authorization concepts
+
+### 🌟 **Optional Bonus (No pressure)**
+
+- [ ] Multiple protected endpoints
+- [ ] Simple user roles (admin/user)
+- [ ] Basic password validation
 
 ---
 
-## 🎓 Competencias que Desarrollarás
+## 📋 Week Deliverables
 
-### **Nivel Principiante → Intermedio**
+### 🔧 **Main Deliverable (Only Required)**
 
-**Al inicio de la semana sabes:**
+**API with Basic Security**
 
-- FastAPI básico y endpoints
-- Bases de datos con SQLAlchemy
-- Modelos Pydantic
-- CRUD operations
+- ✅ Week 4 API + basic security additions
+- ✅ At least 1 API key protected endpoint
+- ✅ Simple user validation implementation
+- ✅ Basic authentication concepts demonstrated
 
-**Al final de la semana dominarás:**
+### 📄 **Documentation Deliverable (Minimum)**
 
-- ✅ **JWT (JSON Web Tokens)** - Creación y validación
-- ✅ **Password Hashing** - Seguridad de contraseñas
-- ✅ **Autenticación Stateless** - Sin sesiones servidor
-- ✅ **Middleware de Seguridad** - Protección automática
-- ✅ **Dependency Injection** - Para autenticación
-- ✅ **RBAC Básico** - Roles y permisos
-- ✅ **Buenas Prácticas** - Seguridad en APIs
+**Updated README.md**
+
+- ✅ Description of security features added
+- ✅ Example of how to use API keys
+- ✅ 2-3 sentence reflection on security learning
+
+### 🎯 **Delivery Format**
+
+1. **Updated GitHub repository** with:
+
+   - main.py with basic security features
+   - requirements.txt updated if needed
+   - README.md with security documentation
+
+2. **No video required**
+
+### ⏰ **Delivery Date**
+
+- **At the end of the 6-hour session**
+- **Immediate delivery, no homework**
+
+## 📊 Simplified Evaluation
+
+Evaluation focuses on **basic security understanding**:
+
+- **Security Implementation (70%)**: Do protected endpoints work?
+- **Conceptual Understanding (20%)**: Clear grasp of auth vs authz?
+- **Delivery (10%)**: Updated in GitHub?
+
+### 🏆 Approval Criteria
+
+- **✅ Approved**: Basic security features working + code in GitHub
+- **❌ Pending**: Additional support in next session
+
+## 🎁 Bonus Opportunities (Only if extra time)
+
+- **Multiple security methods**: +5 points
+- **Simple user roles**: +3 points
+- **Security best practices**: +2 points
+
+## 📅 6-Hour Schedule
+
+| Time        | Activity                     | Duration | Cumulative |
+| ----------- | ---------------------------- | -------- | ---------- |
+| 9:00-10:15  | Security concepts & API keys | 75 min   | 75 min     |
+| 10:15-10:45 | **☕ MANDATORY BREAK**       | 30 min   | 105 min    |
+| 10:45-12:45 | Simple user validation       | 120 min  | 225 min    |
+| 12:45-14:15 | Endpoint protection          | 90 min   | 315 min    |
+| 14:15-15:00 | Integration and delivery     | 45 min   | 360 min    |
+
+**Total**: Exactly 6 hours (360 minutes)
+
+## 🔍 Delivery Structure
+
+### 📁 Expected Structure
+
+```
+lastname-firstname-week5/
+├── README.md               # With basic security documentation
+├── requirements.txt        # Updated if new dependencies
+└── main.py                # API with basic security features
+```
+
+### 🚀 Simple Delivery Process
+
+1. **Evolve existing repository**
+
+   - Add basic security to main.py
+   - Update README with security features
+   - Commit with descriptive message
+
+2. **In-Class Demonstration**
+
+   - Show protected endpoint working
+   - Demonstrate API key usage
+   - Show updated /docs with security
+
+3. **Deadline**
+   - **At the end of 6-hour class**
+   - **No extensions**
+
+## 🤝 Support Resources
+
+### 👥 In-Class Help
+
+- **Instructor**: Available throughout the session
+- **Peers**: Collaborative work allowed
+- **Documentation**: Basic security patterns + HTTP headers
+
+### 🔧 Basic Tools
+
+- **Same tools from Week 4**
+- **Postman/Thunder Client**: For testing API keys
+- **Browser**: For /docs with security features
+
+## 🎯 Preparation for Week 6
+
+With basic security working, in Week 6 you'll learn:
+
+- **Database integration**: Simple user storage
+- **Session management**: Basic state handling
+- **Production basics**: Deployment concepts
+
+## 📞 Contact (Emergencies Only)
+
+- **During class**: Raise hand or chat
+- **Outside hours**: Not required, everything resolved in class
 
 ---
 
-## 🔒 Tecnologías y Librerías
+## 🌟 Final Motivation Message
 
-### **Stack de Seguridad**
+This fifth week introduces you to **essential security concepts**. With basic authentication, your API starts to become a real-world application.
 
-- **JWT**: `python-jose[cryptography]` - Tokens seguros
-- **Hashing**: `passlib[bcrypt]` - Encriptación de passwords
-- **OAuth2**: FastAPI OAuth2PasswordBearer - Estándar de autenticación
-- **Pydantic**: Validación de tokens y usuarios
-- **SQLAlchemy**: Gestión de usuarios en BD
+**Remember**:
 
-### **Herramientas de Testing**
+- ✅ Build on solid progress from Weeks 1-4
+- ✅ The 30-min break is mandatory for concept absorption
+- ✅ Security is fundamental for any real API
+- ✅ Concepts will apply in all following weeks
 
-- **pytest**: Testing de endpoints protegidos
-- **httpx**: Cliente para tests de autenticación
-- **Postman/Thunder Client**: Testing manual de JWT
-
----
-
-## 🗺️ Roadmap de Aprendizaje
-
-### **Bloque 1: Fundamentos (90 min)**
+**Your API is becoming professional! 🔒**
 
 ```mermaid
 graph LR

@@ -1,53 +1,115 @@
-# Conceptos de Autenticación y Autorización en APIs
+# Week 5 Theory: Basic Security Concepts
 
-**⏱️ Tiempo de lectura:** 45-60 minutos  
-**🎯 Objetivo:** Comprender los fundamentos de seguridad en APIs REST
+## What is Security in APIs?
 
-## 📋 En este documento aprenderás
+API security ensures that only authorized users can access your API and that data remains protected.
 
-- Diferencias entre autenticación y autorización
-- Funcionamiento de JWT (JSON Web Tokens)
-- Técnicas de hashing de passwords
-- Principios de OAuth2 y OpenID Connect
-- Mejores prácticas de seguridad en APIs
-- Patrones comunes de implementación
+## Authentication vs Authorization
 
----
+### Authentication: "Who are you?"
 
-## 🔐 Autenticación vs Autorización
+Verifying the identity of a user.
 
-### ¿Qué es la Autenticación?
+**Example**: Login with username and password
 
-**Autenticación** es el proceso de **verificar la identidad** de un usuario.
+### Authorization: "What can you do?"
 
-**Pregunta que responde:** _"¿Quién eres?"_
+Determining what an authenticated user is allowed to access.
 
-#### Métodos Comunes de Autenticación
+**Example**: Only admins can delete users
 
-1. **Username/Password**
+## Common Authentication Methods
 
-   - Más común y tradicional
-   - Requiere almacenamiento seguro de passwords
-   - Vulnerable a ataques de fuerza bruta
+### 1. API Keys
 
-2. **Multi-Factor Authentication (MFA)**
+Simple strings that identify API users.
 
-   - Combina múltiples factores de verificación
-   - Algo que sabes (password) + algo que tienes (phone) + algo que eres (biometrics)
-   - Significativamente más seguro
+```python
+# In request headers:
+X-API-Key: user123
+```
 
-3. **Token-based Authentication**
+**Pros**: Simple to implement  
+**Cons**: Not very secure for sensitive data
 
-   - Usa tokens temporales en lugar de credentials
-   - Stateless (sin estado en el servidor)
-   - Escalable y distribuible
+### 2. Username/Password
 
-4. **Social Authentication**
-   - Login con Google, Facebook, GitHub, etc.
-   - Delega autenticación a providers externos
-   - OAuth2/OpenID Connect
+Traditional method with credentials.
 
-### ¿Qué es la Autorización?
+```python
+{
+  "username": "alice",
+  "password": "secret123"
+}
+```
+
+**Pros**: Familiar to users  
+**Cons**: Passwords can be compromised
+
+### 3. Session-Based
+
+Server remembers user after login.
+
+**Pros**: Good for web applications  
+**Cons**: Not scalable for APIs
+
+## Basic Security Principles
+
+### 1. Never Store Plain Passwords
+
+Always hash passwords before storing them.
+
+### 2. Use HTTPS
+
+Encrypt data in transit.
+
+### 3. Validate All Input
+
+Check all data from users.
+
+### 4. Principle of Least Privilege
+
+Give users only the permissions they need.
+
+## Simple Protection Patterns
+
+### Dependency Injection
+
+```python
+def require_auth(api_key: str = Header(...)):
+    if api_key not in valid_keys:
+        raise HTTPException(401, "Invalid API key")
+    return get_user(api_key)
+
+@app.get("/protected")
+def protected_route(user=Depends(require_auth)):
+    return {"user": user}
+```
+
+### Role-Based Access
+
+```python
+def require_admin(user=Depends(require_auth)):
+    if user.role != "admin":
+        raise HTTPException(403, "Admin required")
+    return user
+```
+
+## HTTP Status Codes for Security
+
+- **401 Unauthorized**: Authentication required
+- **403 Forbidden**: Authenticated but not authorized
+- **400 Bad Request**: Invalid credentials format
+
+## Best Practices (Basics)
+
+1. **Always validate input** from users
+2. **Use proper HTTP status codes** for security errors
+3. **Don't expose sensitive information** in error messages
+4. **Keep security simple** when starting out
+5. **Log security events** for monitoring
+
+This foundation prepares you for more advanced security concepts in future projects.
 
 **Autorización** es el proceso de **determinar qué puede hacer** un usuario autenticado.
 

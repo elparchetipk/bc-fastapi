@@ -1,33 +1,76 @@
-# 📚 Recursos de Apoyo - Semana 5: Autenticación y Autorización
+# Week 5 Support Resources
 
-## 🎯 Recursos por Tema
+## Official Documentation
 
-### **🔐 Autenticación JWT**
+### FastAPI Security
 
-#### **Documentación Oficial**
+- [FastAPI Security Tutorial](https://fastapi.tiangolo.com/tutorial/security/) - Basic security concepts
+- [FastAPI Dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/) - Dependency injection for auth
 
-- [PyJWT Documentation](https://pyjwt.readthedocs.io/en/stable/) - Librería JWT para Python
-- [FastAPI Security](https://fastapi.tiangolo.com/tutorial/security/) - Guía oficial de seguridad
-- [JWT.io](https://jwt.io/) - Debugger y guías sobre JWT
-- [RFC 7519 - JWT Standard](https://tools.ietf.org/html/rfc7519) - Especificación completa
+### HTTP Authentication
 
-#### **Artículos y Guías**
+- [HTTP Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) - MDN guide
+- [HTTP Status Codes](https://httpstatuses.com/) - Security-related status codes
 
-- [JWT Best Practices](https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/) - Mejores prácticas oficiales
-- [Stop using JWT for sessions](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/) - Cuándo NO usar JWT
-- [JWT Security Best Practices](https://curity.io/resources/learn/jwt-best-practices/) - Guía de seguridad avanzada
+## Simple Authentication Patterns
 
-#### **Videos Tutoriales**
+### API Key Resources
 
-- [JWT Authentication with FastAPI](https://www.youtube.com/watch?v=0_seNFCtglk) - Tutorial completo (45 min)
-- [Understanding JWT](https://www.youtube.com/watch?v=7Q17ubqLfaM) - Conceptos fundamentales (20 min)
+- [API Key Best Practices](https://cloud.google.com/docs/authentication/api-keys) - Google Cloud guide
+- [HTTP Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) - Header-based auth
 
-### **🔒 Hashing y Passwords**
+### Basic Auth Resources
 
-#### **Documentación**
+- [HTTP Basic Authentication](https://tools.ietf.org/html/rfc7617) - RFC specification
+- [Session Management](https://owasp.org/www-community/controls/Session_Management_Cheat_Sheet) - OWASP guide
 
-- [Passlib Documentation](https://passlib.readthedocs.io/en/stable/) - Librería de hashing
-- [bcrypt Documentation](https://pypi.org/project/bcrypt/) - Algoritmo bcrypt
+## Security Best Practices
+
+### General Security
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Common security vulnerabilities
+- [Security Headers](https://securityheaders.com/) - HTTP security headers
+
+### Password Security
+
+- [Password Storage](https://owasp.org/www-community/password-special-characters) - OWASP guide
+- [Hashing vs Encryption](https://www.ssl2buy.com/wiki/difference-between-hashing-and-encryption) - Understanding the difference
+
+## Testing Tools
+
+### API Testing
+
+- [Postman](https://www.postman.com/) - API testing with authentication
+- [curl Examples](https://curl.se/docs/httpscripting.html) - Command line testing
+
+### Development Tools
+
+- [VSCode REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) - Testing in editor
+- [Thunder Client](https://www.thunderclient.com/) - Lightweight API client
+
+## Useful Examples
+
+### Common Authentication Headers
+
+```
+# API Key in header
+X-API-Key: user123
+
+# Basic Authentication
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+# Custom token
+Authorization: Bearer custom-token-123
+```
+
+### Status Code Reference
+
+- `401 Unauthorized` - Authentication required
+- `403 Forbidden` - Authenticated but not authorized
+- `400 Bad Request` - Invalid credentials format
+
+Remember: Start simple, focus on understanding concepts before complexity.
+
 - [OWASP Password Storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) - Mejores prácticas
 
 #### **Herramientas Online**

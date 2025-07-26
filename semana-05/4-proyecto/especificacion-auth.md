@@ -1,78 +1,110 @@
-# 🏪 Proyecto: E-commerce con Autenticación Completa
+# Week 5 Project: Simple Note-Taking API with Security
 
-## 📝 Información General
+## Objective
 
-**Duración:** 4-6 horas de desarrollo + tiempo adicional para pulir  
-**Tipo:** Proyecto integrador individual  
-**Entrega:** Vía GitHub con CI/CD funcional  
-**Peso:** 15% de la calificación total del bootcamp
+Build a basic note-taking API that demonstrates simple security concepts.
 
----
+## Requirements
 
-## 🎯 Objetivo
+### Core Features
 
-Desarrollar un **sistema de e-commerce básico** que integre todos los conceptos de autenticación y autorización aprendidos en la semana, incluyendo JWT, roles, protección de endpoints y buenas prácticas de seguridad.
+- Create, read, update, and delete notes
+- Simple user authentication
+- User-specific note access
+- Basic role system (user/admin)
 
----
+### Technical Specifications
 
-## 🏗️ Arquitectura del Proyecto
+#### User Model
 
-### **Estructura de Directorios**
+```python
+class User(BaseModel):
+    username: str
+    role: str = "user"  # "user" or "admin"
 
+class Note(BaseModel):
+    title: str
+    content: str
+    owner: str  # username of the owner
 ```
-proyecto-ecommerce-auth/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                 # FastAPI app principal
-│   ├── config.py              # Configuración y settings
-│   ├── database.py            # Conexión a base de datos
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py           # Modelo User
-│   │   ├── product.py        # Modelo Product
-│   │   ├── order.py          # Modelo Order
-│   │   └── audit.py          # Modelo AuditLog
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   ├── user.py           # Pydantic schemas User
-│   │   ├── product.py        # Pydantic schemas Product
-│   │   ├── order.py          # Pydantic schemas Order
-│   │   └── auth.py           # Pydantic schemas Auth
-│   ├── services/
-│   │   ├── __init__.py
-│   │   ├── auth_service.py   # Lógica de autenticación
-│   │   ├── user_service.py   # Lógica de usuarios
-│   │   ├── product_service.py # Lógica de productos
-│   │   └── order_service.py  # Lógica de órdenes
-│   ├── routers/
-│   │   ├── __init__.py
-│   │   ├── auth.py           # Endpoints de auth
-│   │   ├── users.py          # Endpoints de usuarios
-│   │   ├── products.py       # Endpoints de productos
-│   │   └── orders.py         # Endpoints de órdenes
-│   ├── middleware/
-│   │   ├── __init__.py
-│   │   ├── auth_middleware.py # Middleware de auth
-│   │   └── rate_limit.py     # Rate limiting
-│   └── utils/
-│       ├── __init__.py
-│       ├── security.py       # Utilidades de seguridad
-│       ├── dependencies.py   # Dependency injection
-│       └── permissions.py    # Sistema de permisos
+
+#### Required Endpoints
+
+**Authentication:**
+
+- `POST /login` - Simple login (returns user info)
+- `GET /users/me` - Get current user info
+
+**Notes (Protected):**
+
+- `GET /notes` - List user's notes
+- `POST /notes` - Create new note
+- `PUT /notes/{note_id}` - Update own note
+- `DELETE /notes/{note_id}` - Delete own note
+
+**Admin Only:**
+
+- `GET /admin/notes` - List all notes
+- `DELETE /admin/notes/{note_id}` - Delete any note
+
+### Implementation Guidelines
+
+1. Use in-memory storage (simple dictionaries)
+2. Implement API key or simple session authentication
+3. Add role-based access control
+4. Include proper error handling (401, 403, 404)
+5. Test all security scenarios
+
+### Deliverables
+
+- Working API file (`main.py`)
+- Simple documentation in README
+- Test examples showing authentication working
+- Brief explanation of security implementation
+
+### Evaluation Criteria
+
+- All CRUD operations work with proper authorization
+- Role-based access control functions correctly
+- Proper security error handling
+- Clear, readable code
+- Documentation of security features
+
+**Time Limit:** 3 hours maximum
+
+### Bonus Features (Optional)
+
+- Multiple note categories
+- Note sharing between users
+- Basic note search functionality
+
+**Focus**: Understanding security concepts rather than complex implementation.
+│ │ ├── products.py # Endpoints de productos
+│ │ └── orders.py # Endpoints de órdenes
+│ ├── middleware/
+│ │ ├── **init**.py
+│ │ ├── auth_middleware.py # Middleware de auth
+│ │ └── rate_limit.py # Rate limiting
+│ └── utils/
+│ ├── **init**.py
+│ ├── security.py # Utilidades de seguridad
+│ ├── dependencies.py # Dependency injection
+│ └── permissions.py # Sistema de permisos
 ├── tests/
-│   ├── __init__.py
-│   ├── conftest.py           # Configuración pytest
-│   ├── test_auth.py          # Tests de autenticación
-│   ├── test_users.py         # Tests de usuarios
-│   ├── test_products.py      # Tests de productos
-│   └── test_orders.py        # Tests de órdenes
-├── requirements.txt          # Dependencias
-├── .env.example             # Variables de entorno ejemplo
-├── .gitignore               # Git ignore
-├── README.md                # Documentación
-├── docker-compose.yml       # Docker para desarrollo
-└── pytest.ini              # Configuración pytest
-```
+│ ├── **init**.py
+│ ├── conftest.py # Configuración pytest
+│ ├── test_auth.py # Tests de autenticación
+│ ├── test_users.py # Tests de usuarios
+│ ├── test_products.py # Tests de productos
+│ └── test_orders.py # Tests de órdenes
+├── requirements.txt # Dependencias
+├── .env.example # Variables de entorno ejemplo
+├── .gitignore # Git ignore
+├── README.md # Documentación
+├── docker-compose.yml # Docker para desarrollo
+└── pytest.ini # Configuración pytest
+
+````
 
 ---
 
@@ -138,7 +170,7 @@ class User(Base):
     # Relaciones
     orders = relationship("Order", back_populates="customer")
     audit_logs = relationship("AuditLog", back_populates="user")
-```
+````
 
 ### **Product Model**
 

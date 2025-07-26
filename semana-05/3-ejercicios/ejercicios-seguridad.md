@@ -1,53 +1,71 @@
-# 🔒 Ejercicios de Seguridad - Semana 5
+# Week 5 Security Exercises
 
-## 📝 Información General
+## Objective
 
-**Duración estimada:** 90-120 minutos  
-**Nivel:** Intermedio  
-**Prerequisitos:** Completar prácticas 15-18 de autenticación
+Practice basic security concepts and simple authentication patterns.
 
----
+## Exercise 1: API Key Security (30 minutes)
 
-## 🎯 Objetivos
-
-- Reforzar conceptos de autenticación y autorización
-- Practicar implementación de JWT y protección de endpoints
-- Desarrollar habilidades de debugging en seguridad
-- Aplicar buenas prácticas de seguridad en APIs
-
----
-
-## 🔥 Ejercicios Prácticos
-
-### **Ejercicio 1: Debugging JWT (20 minutos)**
-
-Un token JWT no está funcionando correctamente. Identifica y corrige los errores:
+Create a secure library management system:
 
 ```python
-# ❌ Código con errores
-from datetime import datetime, timedelta
-import jwt
+from fastapi import FastAPI, HTTPException, Header, Depends
+from typing import Optional
 
-SECRET_KEY = "mi-secret-super-seguro"  # Error 1
-ALGORITHM = "RS256"  # Error 2
+app = FastAPI()
 
-def create_access_token(data: dict):
-    to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire.timestamp()})  # Error 3
+# Your task: Create a system with:
+# 1. Different API keys for librarians and members
+# 2. Librarians can add/remove books
+# 3. Members can only view books
+# 4. Public endpoint to see library info
 
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+books = [
+    {"id": 1, "title": "Python Basics", "author": "Jane Doe"},
+    {"id": 2, "title": "FastAPI Guide", "author": "John Smith"}
+]
 
-def verify_token(token: str):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload
-    except jwt.PyJWTError:
-        return None
+# Implement the API key system here
 ```
 
-**🎯 Tu tarea:**
+**Requirements:**
+
+- Librarian API key: `librarian_123`
+- Member API key: `member_456`
+- Implement appropriate endpoints
+- Add proper error handling
+
+## Exercise 2: User Role Validation (30 minutes)
+
+Create a simple blog system where:
+
+- Authors can create/edit posts
+- Editors can edit any post
+- Readers can only view posts
+
+```python
+users = {
+    "alice": {"role": "author", "posts": [1, 2]},
+    "bob": {"role": "editor"},
+    "charlie": {"role": "reader"}
+}
+
+posts = {
+    1: {"title": "First Post", "content": "Hello World", "author": "alice"},
+    2: {"title": "Second Post", "content": "FastAPI rocks", "author": "alice"}
+}
+
+# Implement role-based endpoints here
+```
+
+**Expected Endpoints:**
+
+- `GET /posts` - All users can view
+- `POST /posts` - Only authors/editors
+- `PUT /posts/{id}` - Authors (own posts) or editors (any post)
+- `DELETE /posts/{id}` - Only editors
+
+**Expected:** Proper role validation and error messages.
 
 1. Identifica al menos 3 errores en el código
 2. Corrige cada error explicando por qué estaba mal
