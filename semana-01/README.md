@@ -41,7 +41,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ### **☕ BREAK OBLIGATORIO (30 min)**
 
-- Descanso para asimilar conceptos
+- Break de 30 min
 - Tiempo para resolver dudas técnicas menores
 - Preparación mental para el siguiente bloque
 
@@ -60,7 +60,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ### **Bloque 4: Consolidación (45 min)**
 
-- Repaso de conceptos clave
+- Revisión de conceptos clave
 - Q&A enfocado en lo básico
 - Preparación para la siguiente semana
 
@@ -246,7 +246,7 @@ Esta primera semana te dará **confianza y bases sólidas**. El objetivo es que 
 **Recuerda**:
 
 - ✅ Es normal no entender todo la primera vez
-- ✅ El break de 30 min es obligatorio para asimilar conceptos
+- ✅ El break de 30 min es obligatorio
 - ✅ La calidad es más importante que la velocidad
 - ✅ Todos los conceptos se reforzarán en semanas siguientes
 

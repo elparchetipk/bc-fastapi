@@ -1,12 +1,10 @@
-# Práctica 2: Primera API FastAPI - Ultra Simplificada
+# Práctica 2: Primera API FastAPI
 
-## 🎯 Objetivo Ultra-Básico
+## 🎯 Objetivo Básico
 
 Crear tu primera API FastAPI funcional en **120 minutos** (después del break de 30 min), enfocándonos únicamente en que **funcione**.
 
 ## ⏱️ Tiempo: 120 minutos (Bloque 2 post-break)
-
-> **🔄 AJUSTE APLICADO**: Esta práctica ha sido ultra-simplificada para garantizar éxito en el tiempo asignado.
 
 ## 📋 Pre-requisitos
 
