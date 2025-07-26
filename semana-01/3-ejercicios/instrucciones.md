@@ -35,7 +35,7 @@ def my_profile():
         "name": "Tu Nombre Aquí",           # Cambiar por tu nombre
         "bootcamp": "FastAPI",
         "week": 1,
-        "date": "2024",
+        "date": "2025",
         "likes_fastapi": True              # ¿Te gustó FastAPI?
     }
 ```
