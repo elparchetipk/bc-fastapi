@@ -31,5 +31,5 @@
   
   <!-- Badge -->
   <rect x="45" y="70" width="80" height="15" rx="7" fill="url(#accentGradient)" filter="url(#shadow)"/>
-  <text x="85" y="81" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF" text-anchor="middle">12 SEMANAS</text>
+  <text x="85" y="81" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF" text-anchor="middle">11 SEMANAS</text>
 </svg>
