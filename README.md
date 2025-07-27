@@ -22,10 +22,13 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 
 - **✅ Semana 1**: Completamente depurada y protegida
 - **✅ Semana 2**: Completamente depurada y protegida
+- **✅ Semana 3**: Completamente depurada y protegida
+- **✅ Semana 4**: Completamente depurada y protegida
+- **✅ Semana 5**: Completamente depurada y protegida
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semanas 3-11**: En proceso de depuración siguiendo criterios establecidos
+- **⏳ Semanas 6-11**: En proceso de depuración siguiendo criterios establecidos
 - **📅 Próximas actualizaciones**: Las semanas se irán publicando progresivamente conforme se complete su depuración
 
 ### 📢 **Importante**
@@ -274,9 +277,9 @@ uvicorn main:app --reload
 | ------ | ------------- | ---------------------------- | ------------------------------- |
 | 1      | ✅ Publicada  | Fundamentos y Configuración  | Python, FastAPI, Git, Docker    |
 | 2      | ✅ Publicada  | FastAPI Fundamentals         | Pydantic, Swagger, Validation   |
-| 3      | ⏳ En proceso | Base de Datos y ORM          | SQLAlchemy, Alembic, PostgreSQL |
-| 4      | ⏳ En proceso | Containerización             | Docker, Docker Compose          |
-| 5      | ⏳ En proceso | Autenticación y Seguridad    | JWT, OAuth2, Security           |
+| 3      | ✅ Publicada  | Validación y Estructura REST | Pydantic Advanced, HTTP Errors  |
+| 4      | ✅ Publicada  | Bases de Datos con FastAPI   | SQLAlchemy, Alembic, PostgreSQL |
+| 5      | ✅ Publicada  | Autenticación y Autorización | JWT, OAuth2, Security, Roles    |
 | 6      | ⏳ En proceso | Testing y Calidad            | pytest, SonarQube, Coverage     |
 | 7      | ⏳ En proceso | Optimización y Performance   | Caching, Monitoring, Redis      |
 | 8      | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks    |
