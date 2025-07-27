@@ -28,6 +28,7 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - **✅ Semana 6**: CRUD Completo
 - **✅ Semana 7**: Autenticación Básica
 - **✅ Semana 8**: Testing y Calidad
+- **✅ Gamificación**: [Sistema completo de incentivos y logros](./_docs/guides/gamification-strategy.md)
 
 ### 🔄 **En Proceso de Depuración**
 
@@ -138,6 +139,7 @@ bc-fastapi/
 │   │   ├── 📄 deployment-devops.md       # Deployment y DevOps
 │   │   ├── 📄 architecture-patterns.md   # Patrones arquitectura
 │   │   ├── 📄 database-modeling.md       # Modelado de BD
+│   │   ├── 📄 gamification-strategy.md   # Estrategia de gamificación
 │   │   └── 📄 rubricas-evaluacion.md     # Rúbricas evaluación
 │   ├── 📁 api/                           # Documentación API
 │   ├── 📁 architecture/                  # Diagramas arquitectura
@@ -220,6 +222,27 @@ semana-XX/
 - **Técnica (70%)**: Funcionamiento, calidad, best practices
 - **Profesional (20%)**: Nomenclatura, documentación, Git workflow
 - **Actitudinal (10%)**: Participación, growth mindset, colaboración
+
+## 🎮 Sistema de Gamificación
+
+El bootcamp incluye un **sistema completo de gamificación** diseñado para mantener la motivación y fomentar el aprendizaje colaborativo:
+
+### 🏅 Elementos Clave
+
+- **🌟 Badges por Habilidades**: 15+ logros técnicos específicos (FastAPI Novice, Type Master, Security Specialist, etc.)
+- **🏆 Sistema de Puntos**: Recompensas por calidad de código, participación y colaboración
+- **👥 Equipos Colaborativos**: Trabajo en equipos de 3-4 personas con rotación semanal
+- **📈 Leaderboard Constructivo**: Enfoque en progreso personal y colaboración
+- **🎁 Recompensas Tangibles**: Acceso a recursos premium, certificaciones y herramientas
+
+### 🎯 Filosofía
+
+- **Colaboración sobre competencia**: Fomentar ayuda mutua
+- **Calidad sobre cantidad**: Premiar excelencia, no velocidad
+- **Crecimiento personal**: Enfoque en mejora individual
+- **Valores SENA integrados**: Respeto, responsabilidad, calidad y trabajo en equipo
+
+**📋 Documentación completa**: [Estrategia de Gamificación](./_docs/guides/gamification-strategy.md)
 
 ## 🚀 Inicio Rápido
 
@@ -360,6 +383,7 @@ Las **Semanas 1-8** están completamente implementadas y publicadas con:
 - ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
 - ✅ **Protección como solo lectura** (chmod -R 555)
 - 🔄 **Diagramas visuales** (SVG preparados, pendientes de integración)
+- ✅ **Sistema de gamificación** ([Estrategia completa de incentivos](./_docs/guides/gamification-strategy.md))
 
 **Semanas 9-11**: En proceso de depuración siguiendo los mismos criterios.
 
