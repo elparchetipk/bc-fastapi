@@ -68,7 +68,7 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - ✅ **Enfoque en calidad** más que cantidad
 - ❌ **NO se espera dominio exhaustivo** en una sola semana
 
-### 🎯 Objetivos del Bootcamp (Ajustados)
+### 🎯 Objetivos del Bootcamp
 
 - Desarrollar APIs REST **funcionales y bien estructuradas** con FastAPI
 - Implementar **patrones básicos a intermedios** de arquitectura
@@ -100,7 +100,7 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 
 ### Frontend (cuando se requiera)
 
-- **React 18** - Biblioteca de interfaces de usuario
+- **React 19** - Biblioteca de interfaces de usuario
 - **Vite** - Build tool y dev server
 - **Tailwind CSS** - Framework de CSS utility-first
 - **pnpm** - Gestor de paquetes
@@ -414,7 +414,7 @@ Las **Semanas 1-6** están completamente implementadas y publicadas con:
 - **Python**: snake_case para funciones y variables, PascalCase para clases
 - **JavaScript/React**: camelCase para variables, PascalCase para componentes
 - **Documentación**: Español para explicaciones, inglés para código
-- **Commits**: Mensajes descriptivos en inglés, formato present tense
+- **Commits**: Mensajes descriptivos en inglés, formato present tense. https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Flujo de Trabajo Git
 

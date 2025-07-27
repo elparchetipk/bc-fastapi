@@ -4,11 +4,9 @@
 # ===== BOOTCAMP WEEK MANAGEMENT =====
 # Only upload weeks 1-2 (already debugged and protected)
 # Keep weeks 3-12 local until they are properly debugged
-semana-08/
 semana-09/
 semana-10/
 semana-11/
-semana-12/
 
 # ===== PYTHON =====
 # Byte-compiled / optimized / DLL files
