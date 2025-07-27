@@ -28,11 +28,13 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - **✅ Semana 6**: CRUD Completo
 - **✅ Semana 7**: Autenticación Básica
 - **✅ Semana 8**: Testing y Calidad
+- **✅ Semana 9**: Containerización con Docker
 - **✅ Gamificación**: [Sistema completo de incentivos y logros](./_docs/guides/gamification-strategy.md)
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semanas 9-11**: En proceso de depuración siguiendo criterios establecidos
+- **⏳ Semana 10**: API Avanzada (WebSockets, Background Tasks)
+- **⏳ Semana 11**: Proyecto Final Integración (Portfolio, Presentación)
 - **📅 Próximas actualizaciones**: Las semanas se irán publicando conforme se complete su depuración
 
 ### 📢 **Importante**
@@ -69,16 +71,16 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 ### Backend Core
 
 - **FastAPI** - Framework principal para APIs REST
-- **Python 3.11+** - Lenguaje de programación
+- **Python 3.13+** - Lenguaje de programación
 - **Pydantic** - Validación y serialización de datos
 - **SQLAlchemy** - ORM para base de datos
 - **Alembic** - Migraciones de base de datos
 
 ### Base de Datos
 
-- **PostgreSQL** - Base de datos principal
+- **PostgreSQL 15** - Base de datos principal
 - **SQLite** - Base de datos para desarrollo/testing
-- **Redis** - Cache en memoria y almacenamiento de sesiones
+- **Redis 7** - Cache en memoria y almacenamiento de sesiones
 
 ### Containerización y DevOps
 
@@ -174,7 +176,8 @@ bc-fastapi/
 ├── ...                                   # Semanas 4-11
 ├── 📁 semana-07/                         # 🎯 Semana 7: Autenticación Básica
 ├── 📁 semana-08/                         # 🎯 Semana 8: Testing y Calidad
-├── ...                                   # Semanas 9-11
+├── 📁 semana-09/                         # 🎯 Semana 9: Containerización con Docker
+├── ...                                   # Semanas 10-11
 └── 📁 proyecto-final/                    # 🏆 Proyecto integrador
     ├── 📁 backend/                       # Backend FastAPI
     ├── 📁 frontend/                      # Frontend React
@@ -303,21 +306,21 @@ uvicorn main:app --reload
 
 ## 📋 Cronograma del Bootcamp
 
-| Semana | Estado        | Tema Principal               | Tecnologías                     |
-| ------ | ------------- | ---------------------------- | ------------------------------- |
-| 1      | ✅ Publicada  | Fundamentos y Configuración  | Python, FastAPI, Git, Docker    |
-| 2      | ✅ Publicada  | FastAPI Fundamentals         | Pydantic, Swagger, Validation   |
-| 3      | ✅ Publicada  | Validación y Estructura REST | Pydantic Advanced, HTTP Errors  |
-| 4      | ✅ Publicada  | Bases de Datos con FastAPI   | SQLAlchemy, Alembic, PostgreSQL |
-| 5      | ✅ Publicada  | Autenticación y Autorización | JWT, OAuth2, Security, Roles    |
-| 6      | ✅ Publicada  | Testing y Calidad            | pytest, TestClient, Coverage    |
-| 7      | ✅ Publicada  | Optimización y Performance   | Caching, Monitoring, Redis      |
-| 8      | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks    |
-| 9      | ⏳ En proceso | Frontend Integration         | React/Vue, CORS, Static Files   |
-| 10     | ⏳ En proceso | Deployment y DevOps          | CI/CD, Production, Monitoring   |
-| 11     | ⏳ En proceso | Proyecto Final - Integración | Portfolio, Presentación, Demo   |
+| Semana | Estado        | Tema Principal               | Tecnologías                        |
+| ------ | ------------- | ---------------------------- | ---------------------------------- |
+| 1      | ✅ Publicada  | Fundamentos y Configuración  | Python, FastAPI, Git, Docker       |
+| 2      | ✅ Publicada  | FastAPI Fundamentals         | Pydantic, Swagger, Validation      |
+| 3      | ✅ Publicada  | Validación y Estructura REST | Pydantic Advanced, HTTP Errors     |
+| 4      | ✅ Publicada  | Bases de Datos con FastAPI   | SQLAlchemy, Alembic, PostgreSQL    |
+| 5      | ✅ Publicada  | Autenticación y Autorización | JWT, OAuth2, Security, Roles       |
+| 6      | ✅ Publicada  | CRUD Completo                | Advanced SQLAlchemy, Relations     |
+| 7      | ✅ Publicada  | Autenticación Básica         | JWT, Security, Authentication      |
+| 8      | ✅ Publicada  | Testing y Calidad            | pytest, TestClient, Coverage       |
+| 9      | ✅ Publicada  | Containerización con Docker  | Docker, Compose, CI/CD, Monitoring |
+| 10     | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks       |
+| 11     | ⏳ En proceso | Proyecto Final - Integración | Portfolio, Presentación, Demo      |
 
-> **Nota**: Las semanas marcadas como "En proceso" serán publicadas progresivamente conforme se complete su depuración bajo los criterios establecidos.
+> **Nota**: Las semanas 1-9 están completamente depuradas y protegidas. Las semanas 10-11 serán publicadas progresivamente conforme se complete su depuración bajo los criterios establecidos.
 
 ## 📚 Documentación Adicional
 
