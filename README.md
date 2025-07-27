@@ -317,16 +317,6 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`database-modeling.md`** - Modelado de bases de datos
 - **`rubricas-evaluacion.md`** - Sistema de rúbricas y evaluación
 
-### 🚀 Semana 7: Optimización y Performance
-
-La **Semana 7** incluye contenido especializado en:
-
-- **Cache Strategies** - Implementación de Redis y patrones de cache
-- **Database Optimization** - Índices, connection pooling, queries asíncronas
-- **Middleware Development** - Rate limiting adaptativo y logging avanzado
-- **Performance Monitoring** - Dashboards, alertas y profiling automático
-- **Load Testing** - Herramientas y metodologías para testing de carga
-
 ### 📊 Otras Secciones
 
 - **`_docs/api/`** - Documentación específica de APIs
