@@ -8,22 +8,7 @@
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![React](https://img.shields.io/badge/react-%23202### 🎯 Estado Actual: Semanas 1-7 Completadas
-
-Las **Semanas 1-7** están completamente implementadas y publicadas con:
-
-- ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
-- ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
-- ✅ **Teoría fundamental** (conceptos base documentados)
-- ✅ **Proyectos prácticos funcionales** (APIs con estructura profesional)
-- ✅ **Diagramas visuales** (SVG para reforzar conceptos)
-- ✅ **Ejercicios propuestos** y especificaciones de proyecto
-- ✅ **Referencias y recursos** organizados
-- ✅ **Nomenclatura técnica en inglés** (functions, variables, endpoints, JSON keys)
-- ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
-- ✅ **Protección como solo lectura** (chmod -R 555)
-
-**Semanas 8-11**: En proceso de depuración siguiendo los mismos criterios.r-the-badge&logo=react&logoColor=%2361DAFB)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
@@ -33,24 +18,26 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 
 ## 🚨 **ESTADO ACTUAL DEL BOOTCAMP**
 
-### ✅ **Semanas Publicadas**
+### ✅ **Semanas Completamente Depuradas y Protegidas**
 
-- **✅ Semana 1**: Completamente depurada y protegida
-- **✅ Semana 2**: Completamente depurada y protegida
-- **✅ Semana 3**: Completamente depurada y protegida
-- **✅ Semana 4**: Completamente depurada y protegida
-- **✅ Semana 5**: Completamente depurada y protegida
-- **✅ Semana 6**: Completamente depurada y protegida
-- **✅ Semana 7**: Completamente depurada y protegida - **Optimización y Performance**
+- **✅ Semana 1**: Introducción a FastAPI
+- **✅ Semana 2**: Python Moderno para APIs
+- **✅ Semana 3**: FastAPI Intermedio
+- **✅ Semana 4**: Modelos y Validación
+- **✅ Semana 5**: Base de Datos Básica
+- **✅ Semana 6**: CRUD Completo
+- **✅ Semana 7**: Autenticación Básica
+- **✅ Semana 8**: Testing y Calidad
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semanas 8-11**: En proceso de depuración siguiendo criterios establecidos
-- **📅 Próximas actualizaciones**: Las semanas se irán publicando progresivamente conforme se complete su depuración
+- **⏳ Semanas 9-11**: En proceso de depuración siguiendo criterios establecidos
+- **📅 Próximas actualizaciones**: Las semanas se irán publicando conforme se complete su depuración
 
 ### 📢 **Importante**
 
-> La información de este README se irá actualizando conforme se publiquen las nuevas semanas depuradas.
+> Todas las semanas completadas incluyen: teoría, prácticas (90 min c/u), ejercicios, proyecto y recursos.
+> Contenido ajustado a **6 horas semanales exactas** con protección de solo lectura.
 
 ## 🚨 **IMPORTANTE: Restricciones y Expectativas**
 
@@ -183,23 +170,9 @@ bc-fastapi/
 ├── 📁 semana-02/                         # 🎯 Semana 2-12
 ├── 📁 semana-03/                         # (Estructura similar)
 ├── ...                                   # Semanas 4-11
-├── 📁 semana-07/ ⭐                      # 🎯 Semana 7: Optimización y Performance
-│   ├── 📄 README.md                      # Objetivos y actividades
-│   ├── 📄 RUBRICA_EVALUACION.md         # Rúbrica evaluación
-│   ├── 📁 1-teoria/                      # Conceptos de performance
-│   │   └── 📄 performance-concepts.md
-│   ├── 📁 2-practica/                    # Prácticas hands-on
-│   │   ├── 📄 23-redis-caching.md        # Redis y patrones de cache
-│   │   ├── 📄 24-database-optimization.md # Optimización BD
-│   │   ├── 📄 25-middleware-rate-limiting.md # Middleware y rate limiting
-│   │   └── 📄 26-monitoring-profiling.md # Monitoring y profiling
-│   ├── 📁 3-ejercicios/                  # Ejercicios optimización
-│   │   └── 📄 ejercicios-performance.md
-│   ├── 📁 4-proyecto/                    # Proyecto e-commerce optimizado
-│   │   └── 📄 especificacion-performance.md
-│   └── 📁 5-recursos/                    # Referencias y recursos
-│       └── 📄 recursos-apoyo.md
-├── 📁 semana-12/                         # 🎯 Semana 12: Cierre
+├── 📁 semana-07/                         # 🎯 Semana 7: Autenticación Básica
+├── 📁 semana-08/                         # 🎯 Semana 8: Testing y Calidad
+├── ...                                   # Semanas 9-11
 └── 📁 proyecto-final/                    # 🏆 Proyecto integrador
     ├── 📁 backend/                       # Backend FastAPI
     ├── 📁 frontend/                      # Frontend React
@@ -236,7 +209,7 @@ semana-XX/
 
 ### Formato Bootcamp
 
-- **8 sesiones semanales** de 6 horas cada una (incluye break de 30 min)
+- **6 sesiones semanales** de 6 horas cada una (incluye break de 30 min)
 - **Proyectos progresivos** que construyen sobre conocimientos previos
 - **Evaluación continua** con feedback detallado
 - **Proyecto final integrador** que demuestra dominio completo
@@ -414,7 +387,11 @@ Las **Semanas 1-6** están completamente implementadas y publicadas con:
 - **Python**: snake_case para funciones y variables, PascalCase para clases
 - **JavaScript/React**: camelCase para variables, PascalCase para componentes
 - **Documentación**: Español para explicaciones, inglés para código
-- **Commits**: Mensajes descriptivos en inglés, formato present tense. https://www.conventionalcommits.org/en/v1.0.0/
+- **Commits**: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format: `type(scope): description`
+  - `feat: add user authentication endpoint`
+  - `fix: resolve database connection issue`
+  - `docs: update API documentation`
+  - `test: add unit tests for user service`
 
 ### Flujo de Trabajo Git
 
@@ -422,9 +399,9 @@ Las **Semanas 1-6** están completamente implementadas y publicadas con:
 # Crear rama para nueva característica
 git checkout -b feature/descriptive-name
 
-# Commits atómicos y descriptivos
-git commit -m "Add user authentication endpoint"
-git commit -m "Implement JWT token validation"
+# Commits atómicos con conventional commits
+git commit -m "feat(auth): add user authentication endpoint"
+git commit -m "feat(auth): implement JWT token validation"
 
 # Push y pull request
 git push origin feature/descriptive-name
