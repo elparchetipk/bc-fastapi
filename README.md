@@ -346,22 +346,22 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`_scripts/testing/`** - Scripts para testing automatizado
 - **`_scripts/deployment/`** - Scripts de deployment
 
-### 🎯 Estado Actual: Semanas 1-6 Completadas
+### 🎯 Estado Actual: Semanas 1-8 Completadas
 
-Las **Semanas 1-6** están completamente implementadas y publicadas con:
+Las **Semanas 1-8** están completamente implementadas y publicadas con:
 
 - ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
 - ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
 - ✅ **Teoría fundamental** (conceptos base documentados)
 - ✅ **Proyectos prácticos funcionales** (APIs con estructura profesional)
-- ✅ **Diagramas visuales** (SVG para reforzar conceptos)
 - ✅ **Ejercicios propuestos** y especificaciones de proyecto
 - ✅ **Referencias y recursos** organizados
 - ✅ **Nomenclatura técnica en inglés** (functions, variables, endpoints, JSON keys)
 - ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
 - ✅ **Protección como solo lectura** (chmod -R 555)
+- 🔄 **Diagramas visuales** (SVG preparados, pendientes de integración)
 
-**Semanas 7-11**: En proceso de depuración siguiendo los mismos criterios.
+**Semanas 9-11**: En proceso de depuración siguiendo los mismos criterios.
 
 ## 🤝 Contribución
 
