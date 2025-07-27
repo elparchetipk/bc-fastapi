@@ -8,7 +8,22 @@
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React](https://img.shields.io/badge/react-%23202### 🎯 Estado Actual: Semanas 1-7 Completadas
+
+Las **Semanas 1-7** están completamente implementadas y publicadas con:
+
+- ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
+- ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
+- ✅ **Teoría fundamental** (conceptos base documentados)
+- ✅ **Proyectos prácticos funcionales** (APIs con estructura profesional)
+- ✅ **Diagramas visuales** (SVG para reforzar conceptos)
+- ✅ **Ejercicios propuestos** y especificaciones de proyecto
+- ✅ **Referencias y recursos** organizados
+- ✅ **Nomenclatura técnica en inglés** (functions, variables, endpoints, JSON keys)
+- ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
+- ✅ **Protección como solo lectura** (chmod -R 555)
+
+**Semanas 8-11**: En proceso de depuración siguiendo los mismos criterios.r-the-badge&logo=react&logoColor=%2361DAFB)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
@@ -26,10 +41,11 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - **✅ Semana 4**: Completamente depurada y protegida
 - **✅ Semana 5**: Completamente depurada y protegida
 - **✅ Semana 6**: Completamente depurada y protegida
+- **✅ Semana 7**: Completamente depurada y protegida - **Optimización y Performance**
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semanas 7-11**: En proceso de depuración siguiendo criterios establecidos
+- **⏳ Semanas 8-11**: En proceso de depuración siguiendo criterios establecidos
 - **📅 Próximas actualizaciones**: Las semanas se irán publicando progresivamente conforme se complete su depuración
 
 ### 📢 **Importante**
@@ -74,6 +90,7 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 
 - **PostgreSQL** - Base de datos principal
 - **SQLite** - Base de datos para desarrollo/testing
+- **Redis** - Cache en memoria y almacenamiento de sesiones
 
 ### Containerización y DevOps
 
@@ -166,6 +183,22 @@ bc-fastapi/
 ├── 📁 semana-02/                         # 🎯 Semana 2-12
 ├── 📁 semana-03/                         # (Estructura similar)
 ├── ...                                   # Semanas 4-11
+├── 📁 semana-07/ ⭐                      # 🎯 Semana 7: Optimización y Performance
+│   ├── 📄 README.md                      # Objetivos y actividades
+│   ├── 📄 RUBRICA_EVALUACION.md         # Rúbrica evaluación
+│   ├── 📁 1-teoria/                      # Conceptos de performance
+│   │   └── 📄 performance-concepts.md
+│   ├── 📁 2-practica/                    # Prácticas hands-on
+│   │   ├── 📄 23-redis-caching.md        # Redis y patrones de cache
+│   │   ├── 📄 24-database-optimization.md # Optimización BD
+│   │   ├── 📄 25-middleware-rate-limiting.md # Middleware y rate limiting
+│   │   └── 📄 26-monitoring-profiling.md # Monitoring y profiling
+│   ├── 📁 3-ejercicios/                  # Ejercicios optimización
+│   │   └── 📄 ejercicios-performance.md
+│   ├── 📁 4-proyecto/                    # Proyecto e-commerce optimizado
+│   │   └── 📄 especificacion-performance.md
+│   └── 📁 5-recursos/                    # Referencias y recursos
+│       └── 📄 recursos-apoyo.md
 ├── 📁 semana-12/                         # 🎯 Semana 12: Cierre
 └── 📁 proyecto-final/                    # 🏆 Proyecto integrador
     ├── 📁 backend/                       # Backend FastAPI
@@ -282,7 +315,7 @@ uvicorn main:app --reload
 | 4      | ✅ Publicada  | Bases de Datos con FastAPI   | SQLAlchemy, Alembic, PostgreSQL |
 | 5      | ✅ Publicada  | Autenticación y Autorización | JWT, OAuth2, Security, Roles    |
 | 6      | ✅ Publicada  | Testing y Calidad            | pytest, TestClient, Coverage    |
-| 7      | ⏳ En proceso | Optimización y Performance   | Caching, Monitoring, Redis      |
+| 7      | ✅ Publicada  | Optimización y Performance   | Caching, Monitoring, Redis      |
 | 8      | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks    |
 | 9      | ⏳ En proceso | Frontend Integration         | React/Vue, CORS, Static Files   |
 | 10     | ⏳ En proceso | Deployment y DevOps          | CI/CD, Production, Monitoring   |
@@ -310,6 +343,16 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`architecture-patterns.md`** - Patrones de arquitectura
 - **`database-modeling.md`** - Modelado de bases de datos
 - **`rubricas-evaluacion.md`** - Sistema de rúbricas y evaluación
+
+### 🚀 Semana 7: Optimización y Performance
+
+La **Semana 7** incluye contenido especializado en:
+
+- **Cache Strategies** - Implementación de Redis y patrones de cache
+- **Database Optimization** - Índices, connection pooling, queries asíncronas
+- **Middleware Development** - Rate limiting adaptativo y logging avanzado
+- **Performance Monitoring** - Dashboards, alertas y profiling automático
+- **Load Testing** - Herramientas y metodologías para testing de carga
 
 ### 📊 Otras Secciones
 
