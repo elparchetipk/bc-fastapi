@@ -1,29 +1,48 @@
 # Semana 5: Autenticación y Autorización
 
-## 🎯 Objetivos de la Semana
+⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
+📚 **NIVEL: Intermedio (construye sobre Semanas 1-4)**
 
-Al finalizar esta semana, los estudiantes podrán:
+## 🚨 **IMPORTANTE: Aplicando Bases de Datos**
 
-- **Implementar autenticación JWT** con FastAPI y SQLAlchemy
-- **Crear sistemas de login/logout** seguros
-- **Proteger endpoints** con middleware de autenticación
-- **Manejar roles y permisos** básicos de autorización
-- **Aplicar buenas prácticas** de seguridad en APIs
+Esta semana está diseñada para estudiantes que **ya tienen una API completa con SQLAlchemy** (Semanas 1-4). Implementaremos autenticación y autorización básica.
+
+- ✅ **Completamente realizable en 6 horas**
+- ✅ **Enfoque práctico en seguridad básica**
+- ✅ **Preparación para APIs con usuarios**
+
+## 🎯 Objetivos de la Semana (Fundamentales)
+
+Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+
+1. ✅ **Implementarán autenticación JWT básica** con FastAPI
+2. ✅ **Crearán endpoints de login/registro** seguros
+3. ✅ **Protegerán rutas** con dependencias de autenticación
+4. ✅ **Manejarán roles básicos** de usuario
+5. ✅ **Aplicarán buenas prácticas** de seguridad en APIs
+
+### ❌ **Lo que NO se espera dominar esta semana**
+
+- OAuth2 con proveedores externos
+- Sistemas de permisos complejos
+- Refresh tokens avanzados
+- Middleware personalizado complejo
+- Audit logs y monitoring
 
 ## ⏱️ Distribución de Tiempo (6 horas total)
 
-| Bloque | Actividad                    | Tiempo | Descripción                           |
-| ------ | ---------------------------- | ------ | ------------------------------------- |
-| **1**  | Fundamentos de Autenticación | 90 min | JWT, hashing, setup inicial           |
-| **2**  | Sistema de Login/Register    | 90 min | Endpoints de autenticación            |
-| **3**  | Protección de Endpoints      | 90 min | Middleware, dependencies, decoradores |
-| **4**  | Roles y Autorización         | 90 min | Permisos, RBAC básico                 |
+| Bloque | Actividad                   | Tiempo | Descripción                     |
+| ------ | --------------------------- | ------ | ------------------------------- |
+| **1**  | JWT y Hashing Básico        | 90 min | JWT, passwords, setup inicial   |
+| **2**  | Sistema de Login            | 90 min | Endpoints de autenticación      |
+| **3**  | Protección de Endpoints     | 90 min | Dependencies, rutas protegidas  |
+| **4**  | Roles y Autorización Básica | 90 min | Permisos simples, admin vs user |
 
 ## 📚 Contenido de la Semana
 
 ### **📋 Navegación Ordenada (Seguir este orden)**
 
-1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos de seguridad y autenticación
+1. **[🧭 1-teoria/](./1-teoria/)** - Conceptos de autenticación y seguridad
 2. **[💻 2-practica/](./2-practica/)** - Implementación JWT y protección
 3. **[🎯 3-ejercicios/](./3-ejercicios/)** - Ejercicios de seguridad
 4. **[🚀 4-proyecto/](./4-proyecto/)** - Sistema de autenticación completo
@@ -31,12 +50,12 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ### **🧭 Teoría**
 
-- [🔐 Autenticación y Autorización en APIs](./1-teoria/auth-concepts.md)
+- [🔐 Autenticación vs Autorización](./1-teoria/auth-concepts.md)
 
 ### **💻 Prácticas**
 
 1. [🔧 JWT y Hashing de Passwords](./2-practica/15-jwt-setup.md) _(90 min)_
-2. [🚪 Sistema de Login y Register](./2-practica/16-login-system.md) _(90 min)_
+2. [🚪 Sistema de Login y Registro](./2-practica/16-login-system.md) _(90 min)_
 3. [🛡️ Protección de Endpoints](./2-practica/17-endpoint-protection.md) _(90 min)_
 4. [👥 Roles y Autorización](./2-practica/18-roles-authorization.md) _(90 min)_
 
@@ -50,226 +69,166 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ### **📚 Recursos**
 
-- [📖 Guías y Referencias](./5-recursos/recursos-seguridad.md)
+- [📖 Recursos de Apoyo](./5-recursos/recursos-apoyo.md)
 
 ---
 
-## 🎓 Competencias que Desarrollarás
+## 🔐 Tecnologías de la Semana
 
-### **Nivel Principiante → Intermedio**
+### **Stack de Autenticación**
 
-**Al inicio de la semana sabes:**
-
-- FastAPI básico y endpoints
-- Bases de datos con SQLAlchemy
-- Modelos Pydantic
-- CRUD operations
-
-**Al final de la semana dominarás:**
-
-- ✅ **JWT (JSON Web Tokens)** - Creación y validación
-- ✅ **Password Hashing** - Seguridad de contraseñas
-- ✅ **Autenticación Stateless** - Sin sesiones servidor
-- ✅ **Middleware de Seguridad** - Protección automática
-- ✅ **Dependency Injection** - Para autenticación
-- ✅ **RBAC Básico** - Roles y permisos
-- ✅ **Buenas Prácticas** - Seguridad en APIs
-
----
-
-## 🔒 Tecnologías y Librerías
-
-### **Stack de Seguridad**
-
-- **JWT**: `python-jose[cryptography]` - Tokens seguros
+- **JWT**: `python-jose[cryptography]` - Tokens de autenticación
 - **Hashing**: `passlib[bcrypt]` - Encriptación de passwords
 - **OAuth2**: FastAPI OAuth2PasswordBearer - Estándar de autenticación
-- **Pydantic**: Validación de tokens y usuarios
-- **SQLAlchemy**: Gestión de usuarios en BD
+- **SQLAlchemy**: Gestión de usuarios en base de datos
 
 ### **Herramientas de Testing**
 
-- **pytest**: Testing de endpoints protegidos
-- **httpx**: Cliente para tests de autenticación
-- **Postman/Thunder Client**: Testing manual de JWT
+- **Postman/Thunder Client**: Testing manual de endpoints con JWT
+- **pytest**: Testing automatizado de autenticación
+- **httpx**: Cliente HTTP para tests
 
 ---
 
-## 🗺️ Roadmap de Aprendizaje
+## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
-### **Bloque 1: Fundamentos (90 min)**
+### **Bloque 1: JWT y Hashing (75 min)**
 
-```mermaid
-graph LR
-    A[Conceptos JWT] --> B[Setup Librerías]
-    B --> C[Hash Passwords]
-    C --> D[Generar Tokens]
-```
+- **15-jwt-setup.md**
+- Configuración de librerías de autenticación
+- Implementación de hashing de passwords
+- Generación y verificación de tokens JWT
 
-### **Bloque 2: Login System (90 min)**
+### **☕ BREAK OBLIGATORIO (30 min)**
 
-```mermaid
-graph LR
-    A[Modelo User] --> B[Register Endpoint]
-    B --> C[Login Endpoint]
-    C --> D[Token Response]
-```
+- Descanso para asimilar conceptos de seguridad
+- Tiempo para resolver dudas sobre JWT
+- Preparación mental para sistema de login
 
-### **Bloque 3: Protección (90 min)**
+### **Bloque 2: Sistema de Login (120 min)**
 
-```mermaid
-graph LR
-    A[OAuth2 Scheme] --> B[Get Current User]
-    B --> C[Dependency Injection]
-    C --> D[Protected Routes]
-```
+- **16-login-system.md**
+- Endpoints de registro y login
+- Validación de credenciales
+- Respuesta con tokens
 
-### **Bloque 4: Autorización (90 min)**
+### **Bloque 3: Protección de Rutas (90 min)**
 
-```mermaid
-graph LR
-    A[Roles Model] --> B[Permission System]
-    B --> C[Admin Endpoints]
-    C --> D[User Restrictions]
-```
+- **17-endpoint-protection.md**
+- Dependencies de autenticación
+- Protección de endpoints sensibles
+- Manejo de usuarios autenticados
+
+### **Bloque 4: Roles Básicos (45 min)**
+
+- **18-roles-authorization.md**
+- Sistema básico de roles (admin/user)
+- Restricciones por rol
+- Endpoints administrativos
 
 ---
 
-## 🎯 Objetivos de Aprendizaje Detallados
-
-### **🔐 Conceptual (Teoría - 30 min)**
-
-- **Diferencia entre Autenticación vs Autorización**
-- **JWT: estructura, claims, expiración**
-- **Password hashing: bcrypt, salt, rainbow tables**
-- **OAuth2 flow básico**
-- **Principios de seguridad en APIs**
-
-### **💻 Práctico (Implementación - 5.5 horas)**
-
-- **Configurar sistema JWT** completo
-- **Crear endpoints** de registro y login
-- **Implementar middleware** de autenticación
-- **Proteger rutas** sensibles
-- **Gestionar roles** y permisos básicos
-
-### **🧠 Aplicado (Ejercicios y Proyecto)**
-
-- **Ejercicios progresivos** de seguridad
-- **Proyecto integrador** con autenticación completa
-- **Cases studies** de vulnerabilidades comunes
-- **Best practices** aplicadas
-
----
-
-## 📋 Pre-requisitos Verificados
+## 📋 Pre-requisitos Esenciales
 
 ### **✅ Conocimientos Requeridos**
 
 - [x] **FastAPI básico** (Semanas 1-3)
-- [x] **SQLAlchemy y BD** (Semana 4)
+- [x] **SQLAlchemy y bases de datos** (Semana 4)
 - [x] **Pydantic models** (Semanas 2-4)
-- [x] **HTTP methods y status codes** (Semana 3)
-- [x] **Testing básico** (Semana 4)
+- [x] **CRUD operations** (Semana 4)
 
 ### **⚠️ Si no tienes estos conocimientos**
 
-- Revisar semanas anteriores
-- Completar exercises de refuerzo
-- Consultar con instructores
+- Completar semanas anteriores primero
+- Revisar ejercicios de refuerzo
+- Consultar con instructores antes de continuar
 
 ---
 
-## 🚀 Hacia el Futuro
+## 🎯 Competencias que Desarrollarás
 
-### **🔗 Conexión con Semanas Anteriores**
+**Al inicio de la semana ya sabes:**
 
-- **Builds upon**: Toda la base de FastAPI + SQLAlchemy
-- **Integrates**: Usuarios de BD con sistema de autenticación
-- **Extends**: APIs REST con seguridad profesional
+- Crear APIs REST completas
+- Trabajar con bases de datos
+- Implementar CRUD operations
+- Usar Pydantic para validación
 
-### **🎯 Preparación para Siguiente Nivel**
+**Al final de la semana dominarás:**
 
-- **Semana 6**: Testing avanzado y deployment
-- **Semana 7**: Performance y monitoring
-- **Semana 8**: Containerización con Docker
-- **Futuro**: OAuth2 social, microservicios seguros
-
----
-
-## 📊 Evaluación y Entregables
-
-### **🎯 Al Final de la Semana**
-
-**Debes ser capaz de:**
-
-- [x] Explicar diferencia entre autenticación y autorización
-- [x] Implementar sistema JWT completo
-- [x] Crear endpoints de login/register seguros
-- [x] Proteger rutas con middleware
-- [x] Gestionar roles básicos de usuario
-- [x] Aplicar buenas prácticas de seguridad
-
-### **📦 Entregables**
-
-1. **API con autenticación** funcionando
-2. **Sistema de roles** implementado
-3. **Tests de seguridad** pasando
-4. **Documentación** de endpoints protegidos
-5. **Proyecto integrador** con auth completo
+- ✅ **Autenticación JWT** - Login y tokens seguros
+- ✅ **Hashing de passwords** - Almacenamiento seguro
+- ✅ **Protección de rutas** - Endpoints que requieren login
+- ✅ **Roles básicos** - Diferencias entre admin y usuario
+- ✅ **Buenas prácticas** - Seguridad básica en APIs
 
 ---
 
-## ⚡ Quick Start
-
-### **🚀 Setup Rápido (5 min)**
+## 🚀 Quick Start
 
 ```bash
-# 1. Instalar dependencias
-pip install python-jose[cryptography] passlib[bcrypt]
+# 1. Instalar dependencias de autenticación
+pip install python-jose[cryptography] passlib[bcrypt] python-multipart
 
 # 2. Actualizar requirements.txt
-echo "python-jose[cryptography]==3.3.0" >> requirements.txt
-echo "passlib[bcrypt]==1.7.4" >> requirements.txt
+pip freeze > requirements.txt
 
 # 3. Crear variables de entorno
-echo "SECRET_KEY=your-secret-key-here" > .env
+echo "SECRET_KEY=tu-clave-secreta-muy-larga-aqui" > .env
 echo "ALGORITHM=HS256" >> .env
 echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
 
-# 4. Listo para empezar!
+# 4. ¡Listo para empezar con autenticación!
 ```
 
 ### **📖 Orden de Estudio Recomendado**
 
-1. **Leer teoría** (30 min) - Conceptos fundamentales
-2. **Práctica 15** (90 min) - JWT y hashing
-3. **Práctica 16** (90 min) - Login system
-4. **Práctica 17** (90 min) - Protección endpoints
-5. **Práctica 18** (90 min) - Roles y autorización
-6. **Ejercicios** (60 min) - Refuerzo y casos edge
-7. **Proyecto** (4-6 horas) - Integración completa
+1. **Leer teoría** (30 min) - Conceptos de autenticación
+2. **Práctica 15** (75 min) - JWT y hashing
+3. **Break** (30 min) - Descanso obligatorio
+4. **Práctica 16** (120 min) - Sistema de login
+5. **Práctica 17** (90 min) - Protección de endpoints
+6. **Práctica 18** (45 min) - Roles básicos
+7. **Ejercicios y proyecto** - Para reforzar conceptos
 
 ---
 
 ## 💡 Tips para el Éxito
 
-1. **🔒 Seguridad first**: Nunca comprometas la seguridad por simplicidad
-2. **🧪 Test everything**: Especialmente endpoints de autenticación
-3. **📖 Lee la documentación**: JWT y OAuth2 tienen muchos detalles
-4. **🔑 Maneja secretos**: Usa variables de entorno siempre
-5. **⚠️ Error handling**: Mensajes de error seguros y útiles
+1. **🔒 Seguridad primero**: Nunca almacenar passwords en texto plano
+2. **🔑 Variables de entorno**: Usar .env para datos sensibles
+3. **🧪 Testing manual**: Probar login y acceso con Postman
+4. **� Leer errores**: Los mensajes de autenticación son específicos
+5. **⚠️ Manejo de errores**: Respuestas seguras sin revelar información
 
 ---
 
-## 🆘 Soporte y Ayuda
+## 📊 Evaluación Final
 
-- **🎓 Instructor**: Consultas durante office hours
-- **👥 Compañeros**: Pair programming en exercises
+### **Al completar la semana debes poder:**
+
+- [x] Explicar diferencia entre autenticación y autorización
+- [x] Implementar sistema de login con JWT
+- [x] Proteger endpoints que requieren autenticación
+- [x] Manejar roles básicos (admin vs usuario)
+- [x] Testing manual de autenticación con herramientas
+
+### **📦 Entregables**
+
+1. **API con autenticación funcionando**
+2. **Sistema de roles implementado**
+3. **Endpoints protegidos correctamente**
+4. **Testing manual exitoso**
+
+---
+
+## 🆘 Soporte
+
 - **📚 Documentación**: FastAPI Security docs
-- **🌐 Comunidad**: Stack Overflow, Reddit r/FastAPI
-- **📞 Emergencias**: Slack del bootcamp
+- **� Instructor**: Consultas durante clases
+- **� Compañeros**: Colaboración en ejercicios
+- **📞 Slack**: Canal del bootcamp para dudas
 
 ---
 
-**¡Prepárate para crear APIs seguras y profesionales! 🔐✨**
+## 🎉 ¡Prepárate para crear APIs seguras! 🔐✨
