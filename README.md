@@ -25,10 +25,11 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - **✅ Semana 3**: Completamente depurada y protegida
 - **✅ Semana 4**: Completamente depurada y protegida
 - **✅ Semana 5**: Completamente depurada y protegida
+- **✅ Semana 6**: Completamente depurada y protegida
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semanas 6-11**: En proceso de depuración siguiendo criterios establecidos
+- **⏳ Semanas 7-11**: En proceso de depuración siguiendo criterios establecidos
 - **📅 Próximas actualizaciones**: Las semanas se irán publicando progresivamente conforme se complete su depuración
 
 ### 📢 **Importante**
@@ -280,7 +281,7 @@ uvicorn main:app --reload
 | 3      | ✅ Publicada  | Validación y Estructura REST | Pydantic Advanced, HTTP Errors  |
 | 4      | ✅ Publicada  | Bases de Datos con FastAPI   | SQLAlchemy, Alembic, PostgreSQL |
 | 5      | ✅ Publicada  | Autenticación y Autorización | JWT, OAuth2, Security, Roles    |
-| 6      | ⏳ En proceso | Testing y Calidad            | pytest, SonarQube, Coverage     |
+| 6      | ✅ Publicada  | Testing y Calidad            | pytest, TestClient, Coverage    |
 | 7      | ⏳ En proceso | Optimización y Performance   | Caching, Monitoring, Redis      |
 | 8      | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks    |
 | 9      | ⏳ En proceso | Frontend Integration         | React/Vue, CORS, Static Files   |
@@ -339,9 +340,9 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`_scripts/testing/`** - Scripts para testing automatizado
 - **`_scripts/deployment/`** - Scripts de deployment
 
-### 🎯 Estado Actual: Semanas 1 y 2 Completadas
+### 🎯 Estado Actual: Semanas 1-6 Completadas
 
-Las **Semanas 1 y 2** están completamente implementadas y publicadas con:
+Las **Semanas 1-6** están completamente implementadas y publicadas con:
 
 - ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
 - ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
@@ -354,7 +355,7 @@ Las **Semanas 1 y 2** están completamente implementadas y publicadas con:
 - ✅ **Contenido estructurado** (6 horas exactas incluye break 30 min)
 - ✅ **Protección como solo lectura** (chmod -R 555)
 
-**Semanas 3-11**: En proceso de depuración siguiendo los mismos criterios.
+**Semanas 7-11**: En proceso de depuración siguiendo los mismos criterios.
 
 ## 🤝 Contribución
 
