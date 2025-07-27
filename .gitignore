@@ -1,11 +1,6 @@
 # Bootcamp bc-fastapi - Complete .gitignore
 # Created for FastAPI + React + Docker + PostgreSQL project
 
-# ===== BOOTCAMP WEEK MANAGEMENT =====
-# Only upload weeks 1-2 (already debugged and protected)
-# Keep weeks 3-12 local until they are properly debugged
-semana-11/
-
 # ===== PYTHON =====
 # Byte-compiled / optimized / DLL files
 __pycache__/
