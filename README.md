@@ -29,11 +29,11 @@ Bootcamp intensivo de desarrollo de **APIs REST con FastAPI** dirigido a aprendi
 - **✅ Semana 7**: Autenticación Básica
 - **✅ Semana 8**: Testing y Calidad
 - **✅ Semana 9**: Containerización con Docker
+- **✅ Semana 10**: API Avanzada (WebSockets, Background Tasks, SSE)
 - **✅ Gamificación**: [Sistema completo de incentivos y logros](./_docs/guides/gamification-strategy.md)
 
 ### 🔄 **En Proceso de Depuración**
 
-- **⏳ Semana 10**: API Avanzada (WebSockets, Background Tasks)
 - **⏳ Semana 11**: Proyecto Final Integración (Portfolio, Presentación)
 - **📅 Próximas actualizaciones**: Las semanas se irán publicando conforme se complete su depuración
 
@@ -177,7 +177,8 @@ bc-fastapi/
 ├── 📁 semana-07/                         # 🎯 Semana 7: Autenticación Básica
 ├── 📁 semana-08/                         # 🎯 Semana 8: Testing y Calidad
 ├── 📁 semana-09/                         # 🎯 Semana 9: Containerización con Docker
-├── ...                                   # Semanas 10-11
+├── 📁 semana-10/                         # 🎯 Semana 10: API Avanzada (WebSockets, Background Tasks, SSE)
+├── ...                                   # Semana 11
 └── 📁 proyecto-final/                    # 🏆 Proyecto integrador
     ├── 📁 backend/                       # Backend FastAPI
     ├── 📁 frontend/                      # Frontend React
@@ -317,10 +318,10 @@ uvicorn main:app --reload
 | 7      | ✅ Publicada  | Autenticación Básica         | JWT, Security, Authentication      |
 | 8      | ✅ Publicada  | Testing y Calidad            | pytest, TestClient, Coverage       |
 | 9      | ✅ Publicada  | Containerización con Docker  | Docker, Compose, CI/CD, Monitoring |
-| 10     | ⏳ En proceso | API Avanzada                 | WebSockets, Background Tasks       |
+| 10     | ✅ Publicada  | API Avanzada                 | WebSockets, Background Tasks, SSE  |
 | 11     | ⏳ En proceso | Proyecto Final - Integración | Portfolio, Presentación, Demo      |
 
-> **Nota**: Las semanas 1-9 están completamente depuradas y protegidas. Las semanas 10-11 serán publicadas progresivamente conforme se complete su depuración bajo los criterios establecidos.
+> **Nota**: Las semanas 1-10 están completamente depuradas y protegidas. La semana 11 será publicada progresivamente conforme se complete su depuración bajo los criterios establecidos.
 
 ## 📚 Documentación Adicional
 
@@ -372,9 +373,9 @@ La documentación completa está organizada en `_docs/` con las siguientes secci
 - **`_scripts/testing/`** - Scripts para testing automatizado
 - **`_scripts/deployment/`** - Scripts de deployment
 
-### 🎯 Estado Actual: Semanas 1-8 Completadas
+### 🎯 Estado Actual: Semanas 1-10 Completadas
 
-Las **Semanas 1-8** están completamente implementadas y publicadas con:
+Las **Semanas 1-10** están completamente implementadas y publicadas con:
 
 - ✅ **Objetivos y rúbricas definidos** (`README.md`, rúbricas de evaluación)
 - ✅ **Tutoriales prácticos completos** (paso a paso estructurados)
@@ -388,7 +389,7 @@ Las **Semanas 1-8** están completamente implementadas y publicadas con:
 - 🔄 **Diagramas visuales** (SVG preparados, pendientes de integración)
 - ✅ **Sistema de gamificación** ([Estrategia completa de incentivos](./_docs/guides/gamification-strategy.md))
 
-**Semanas 9-11**: En proceso de depuración siguiendo los mismos criterios.
+**Semana 11**: En proceso de depuración siguiendo los mismos criterios.
 
 ## 🤝 Contribución
 
