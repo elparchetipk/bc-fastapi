@@ -103,6 +103,19 @@ semana-10/
 - Dashboard de actividad con SSE
 - Deployment con Docker
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                  | Duración | Acumulado |
+| ----------- | -------------------------- | -------- | --------- |
+| 12:00-13:30 | WebSockets y Tiempo Real   | 90 min   | 90 min    |
+| 13:30-14:00 | Background Tasks (parte 1) | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**   | 30 min   | 150 min   |
+| 14:30-15:30 | Background Tasks (parte 2) | 60 min   | 210 min   |
+| 15:30-17:00 | Server-Sent Events         | 90 min   | 300 min   |
+| 17:00-18:00 | Aplicación Integrada       | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ## 🎯 Ejercicios Prácticos
 
 1. **🔌 WebSocket Chat**: Sistema de mensajería en tiempo real

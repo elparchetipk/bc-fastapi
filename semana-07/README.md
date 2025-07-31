@@ -162,6 +162,19 @@ python -c "import redis; r=redis.Redis(); print('Redis OK:', r.ping())"
 cd 2-practica && cat 23-redis-caching.md
 ```
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                       | Duración | Acumulado |
+| ----------- | ------------------------------- | -------- | --------- |
+| 12:00-13:30 | Redis y Caching                 | 90 min   | 90 min    |
+| 13:30-14:00 | Database Optimization (parte 1) | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**        | 30 min   | 150 min   |
+| 14:30-15:30 | Database Optimization (parte 2) | 60 min   | 210 min   |
+| 15:30-17:00 | Middleware y Rate Limiting      | 90 min   | 300 min   |
+| 17:00-18:00 | Monitoring y Profiling          | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ---
 
 ## 📊 **Métricas de Éxito**

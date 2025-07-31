@@ -173,11 +173,11 @@ La evaluación se enfoca en **progreso incremental**:
 
 | Tiempo      | Actividad                   | Duración | Acumulado |
 | ----------- | --------------------------- | -------- | --------- |
-| 9:00-10:15  | Python Type Hints básicos   | 75 min   | 75 min    |
-| 10:15-10:45 | **☕ BREAK OBLIGATORIO**    | 30 min   | 105 min   |
-| 10:45-12:45 | Pydantic modelos simples    | 120 min  | 225 min   |
-| 12:45-14:15 | Endpoints POST y parámetros | 90 min   | 315 min   |
-| 14:15-15:00 | Consolidación y entrega     | 45 min   | 360 min   |
+| 12:00-14:00 | Python Type Hints básicos   | 120 min  | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**    | 30 min   | 150 min   |
+| 14:30-16:15 | Pydantic modelos simples    | 105 min  | 255 min   |
+| 16:15-17:30 | Endpoints POST y parámetros | 75 min   | 330 min   |
+| 17:30-18:00 | Consolidación y entrega     | 30 min   | 360 min   |
 
 **Total**: Exactamente 6 horas (360 minutos)
 

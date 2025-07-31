@@ -181,15 +181,26 @@ echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
 # 4. ¡Listo para empezar con autenticación!
 ```
 
+## � Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                     | Duración | Acumulado |
+| ----------- | ----------------------------- | -------- | --------- |
+| 12:00-13:15 | JWT y Hashing                 | 75 min   | 75 min    |
+| 13:15-14:00 | Sistema de Login (parte 1)    | 45 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**      | 30 min   | 150 min   |
+| 14:30-15:45 | Sistema de Login (parte 2)    | 75 min   | 225 min   |
+| 15:45-17:15 | Protección de Rutas           | 90 min   | 315 min   |
+| 17:15-18:00 | Roles básicos y consolidación | 45 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ### **📖 Orden de Estudio Recomendado**
 
-1. **Leer teoría** (30 min) - Conceptos de autenticación
-2. **Práctica 15** (75 min) - JWT y hashing
-3. **Break** (30 min) - Descanso obligatorio
-4. **Práctica 16** (120 min) - Sistema de login
-5. **Práctica 17** (90 min) - Protección de endpoints
-6. **Práctica 18** (45 min) - Roles básicos
-7. **Ejercicios y proyecto** - Para reforzar conceptos
+1. **JWT y hashing** - Fundamentos de seguridad
+2. **Sistema de login** - Registro y autenticación
+3. **Protección de rutas** - Endpoints seguros
+4. **Roles básicos** - Control de acceso
+5. **Ejercicios y proyecto** - Para reforzar conceptos
 
 ---
 

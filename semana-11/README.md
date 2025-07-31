@@ -119,7 +119,20 @@ Una aplicación completa que integra:
 - ✅ **Explicación Arquitectural**: Comprensión de decisiones técnicas
 - ✅ **Manejo de Preguntas**: Respuestas técnicas precisas
 
-## 🚀 **Entregables de la Semana**
+## � Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                        | Duración | Acumulado |
+| ----------- | -------------------------------- | -------- | --------- |
+| 12:00-13:30 | Desarrollo del Proyecto Final    | 90 min   | 90 min    |
+| 13:30-14:00 | Frontend y Integración (parte 1) | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**         | 30 min   | 150 min   |
+| 14:30-15:30 | Frontend y Integración (parte 2) | 60 min   | 210 min   |
+| 15:30-17:00 | Testing y Deployment Final       | 90 min   | 300 min   |
+| 17:00-18:00 | Presentaciones y Evaluación      | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
+## �🚀 **Entregables de la Semana**
 
 ### **1. Proyecto Final Funcional**
 

@@ -115,6 +115,19 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - Health checks y monitoring
 - Preparación para CI/CD
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                         | Duración | Acumulado |
+| ----------- | --------------------------------- | -------- | --------- |
+| 12:00-13:30 | Docker Básico y Conceptos         | 90 min   | 90 min    |
+| 13:30-14:00 | Dockerfile para FastAPI (parte 1) | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**          | 30 min   | 150 min   |
+| 14:30-15:30 | Dockerfile para FastAPI (parte 2) | 60 min   | 210 min   |
+| 15:30-17:00 | Docker Compose y Servicios        | 90 min   | 300 min   |
+| 17:00-18:00 | Deployment y Producción           | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ---
 
 ## ⚡ Arquitectura de la Semana

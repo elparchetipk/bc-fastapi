@@ -64,6 +64,19 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - Inicio del proyecto integrador
 - Preparación de entregable
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                   | Duración | Acumulado |
+| ----------- | --------------------------- | -------- | --------- |
+| 12:00-13:15 | Validación con Pydantic     | 75 min   | 75 min    |
+| 13:15-14:00 | Manejo de Errores (parte 1) | 45 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**    | 30 min   | 150 min   |
+| 14:30-15:45 | Manejo de Errores (parte 2) | 75 min   | 225 min   |
+| 15:45-17:15 | Estructura REST y CRUD      | 90 min   | 315 min   |
+| 17:15-18:00 | Consolidación y proyecto    | 45 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ## 📚 Contenido de la Semana
 
 ### **📋 Navegación Ordenada (Seguir este orden)**

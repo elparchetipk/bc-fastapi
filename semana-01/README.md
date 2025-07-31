@@ -25,7 +25,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
-### **Bloque 1: Setup Esencial (75 min)**
+### **Bloque 1: Setup Esencial (120 min)**
 
 - **01-environment-setup.md**
 - Solo lo mínimo indispensable: FastAPI + Uvicorn
@@ -34,21 +34,24 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 ### **☕ BREAK OBLIGATORIO (30 min)**
 
 - Break de 30 min
-- Tiempo para resolver dudas técnicas menores
-- Preparación mental para el siguiente bloque
 
-### **Bloque 2: Primera API (120 min)**
+### **Bloque 2: Primera API (105 min)**
 
 - **02-hello-world-api.md** (solo lo esencial)
 - API básica con 2-3 endpoints simples
 - Introducción mínima a FastAPI
 - Documentación automática (Swagger)
 
-### **Bloque 3: Práctica Guiada (90 min)**
+### **Bloque 3: Práctica Guiada (75 min)**
 
 - 1-2 ejercicios fundamentales
 - Verificación de funcionamiento
 - Resolución de errores comunes
+
+### **Bloque 4: Consolidación (30 min)**
+
+- Entrega del proyecto
+- Revisión final
 
 ### **Bloque 4: Consolidación (45 min)**
 
@@ -80,7 +83,6 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 - 2 ejercicios básicos guiados
 - Enfoque en comprensión y consolidación
-
 
 ## 🎯 Criterios de Éxito de la Semana
 
@@ -155,11 +157,11 @@ La evaluación se enfoca únicamente en **funcionamiento básico**:
 
 | Tiempo      | Actividad                | Duración | Acumulado |
 | ----------- | ------------------------ | -------- | --------- |
-| 12:00-13:15  | Setup y configuración    | 75 min   | 75 min    |
-| 13:15-13:45 | **☕ BREAK OBLIGATORIO** | 30 min   | 105 min   |
-| 13:45-15:45 | Primera API básica       | 120 min  | 225 min   |
-| 15:45-16:15 | Práctica guiada          | 90 min   | 315 min   |
-| 16:15-18:00 | Consolidación y entrega  | 45 min   | 360 min   |
+| 12:00-14:00 | Setup y configuración    | 120 min  | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO** | 30 min   | 150 min   |
+| 14:30-16:15 | Primera API básica       | 105 min  | 255 min   |
+| 16:15-17:30 | Práctica guiada          | 75 min   | 330 min   |
+| 17:30-18:00 | Consolidación y entrega  | 30 min   | 360 min   |
 
 **Total**: Exactamente 6 horas (360 minutos)
 

@@ -182,15 +182,26 @@ touch tests/conftest.py
 # 4. ¡Listo para empezar con testing!
 ```
 
+## � Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                 | Duración | Acumulado |
+| ----------- | ------------------------- | -------- | --------- |
+| 12:00-13:15 | Pytest Básico             | 75 min   | 75 min    |
+| 13:15-14:00 | Testing de APIs (parte 1) | 45 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**  | 30 min   | 150 min   |
+| 14:30-15:45 | Testing de APIs (parte 2) | 75 min   | 225 min   |
+| 15:45-17:15 | Testing con Autenticación | 90 min   | 315 min   |
+| 17:15-18:00 | Cobertura y calidad       | 45 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ### **📖 Orden de Estudio Recomendado**
 
-1. **Leer teoría** (30 min) - Conceptos de testing
-2. **Práctica 19** (75 min) - Pytest setup
-3. **Break** (30 min) - Descanso obligatorio
-4. **Práctica 20** (120 min) - Testing de endpoints
-5. **Práctica 21** (90 min) - Testing con autenticación
-6. **Práctica 22** (45 min) - Cobertura y calidad
-7. **Ejercicios y proyecto** - Para reforzar conceptos
+1. **Pytest setup** - Fundamentos de testing
+2. **Testing de endpoints** - Validación de APIs
+3. **Testing con autenticación** - Seguridad en tests
+4. **Cobertura y calidad** - Métricas de calidad
+5. **Ejercicios y proyecto** - Para reforzar conceptos
 
 ---
 

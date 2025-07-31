@@ -212,6 +212,19 @@ Al finalizar esta semana, los estudiantes podrán:
 - **45-75 min**: Testing con BD de prueba
 - **75-90 min**: Review final y deployment
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                | Duración | Acumulado |
+| ----------- | ------------------------ | -------- | --------- |
+| 12:00-13:30 | SQLAlchemy Setup         | 90 min   | 90 min    |
+| 13:30-14:00 | CRUD con BD (parte 1)    | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO** | 30 min   | 150 min   |
+| 14:30-15:30 | CRUD con BD (parte 2)    | 60 min   | 210 min   |
+| 15:30-17:00 | Relaciones y Consultas   | 90 min   | 300 min   |
+| 17:00-18:00 | Migraciones y Testing    | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ## 🎉 Resultado Esperado
 
 Al completar esta semana, tendrás una **API REST completa** con:

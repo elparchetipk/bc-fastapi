@@ -224,6 +224,19 @@ Transformaremos nuestra API existente en una aplicación **lista para producció
 - Scripts de CI/CD básicos
 - Quality reports y metrics
 
+## 📅 Cronograma de la Jornada de 6 Horas
+
+| Tiempo      | Actividad                 | Duración | Acumulado |
+| ----------- | ------------------------- | -------- | --------- |
+| 12:00-13:30 | Pytest y Testing Básico   | 90 min   | 90 min    |
+| 13:30-14:00 | Testing de APIs (parte 1) | 30 min   | 120 min   |
+| 14:00-14:30 | **☕ BREAK OBLIGATORIO**  | 30 min   | 150 min   |
+| 14:30-15:30 | Testing de APIs (parte 2) | 60 min   | 210 min   |
+| 15:30-17:00 | Documentación Avanzada    | 90 min   | 300 min   |
+| 17:00-18:00 | Code Quality & CI Básico  | 60 min   | 360 min   |
+
+**Total**: Exactamente 6 horas (360 minutos)
+
 ---
 
 ## ⚡ Arquitectura de la Semana
