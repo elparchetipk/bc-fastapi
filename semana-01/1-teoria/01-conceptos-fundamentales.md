@@ -8,7 +8,7 @@ FastAPI es un framework web moderno y de alto rendimiento para construir APIs co
 
 #### Características Principales
 
-- **Alto rendimiento**: Comparable a NodeJS y Go
+- **Alto rendimiento**: Comparable a NodeJS
 - **Rápido de codificar**: Incrementa la velocidad de desarrollo de 200% a 300%
 - **Menos bugs**: Reduce errores humanos aproximadamente en 40%
 - **Intuitivo**: Excelente soporte del editor con autocompletado

@@ -23,19 +23,11 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 4. ✅ **Comprenderán QUÉ ES una API REST** (concepto básico)
 5. ✅ **Estarán preparados y motivados para continuar**
 
-### ❌ **Lo que NO se espera dominar esta semana**
-
-- Pydantic modelos complejos
-- Manejo avanzado de errores
-- Múltiples tipos de endpoints
-- Validación de datos compleja
-- Conceptos de async/await
-
 ## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
 ### **Bloque 1: Setup Esencial (75 min)**
 
-- **01-environment-setup.md** (ultra-simplificado)
+- **01-environment-setup.md**
 - Solo lo mínimo indispensable: FastAPI + Uvicorn
 - Verificación de funcionamiento básico
 
@@ -89,16 +81,6 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - 2 ejercicios básicos guiados
 - Enfoque en comprensión y consolidación
 
-## ❌ **LO QUE NO ESTÁ EN ESTA SEMANA**
-
-Para mantener expectativas realistas, los siguientes temas se han **movido a semanas posteriores**:
-
-- ❌ **Python fundamentals avanzados** → Semana 2
-- ❌ **Pydantic modelos complejos** → Semana 3
-- ❌ **Múltiples endpoints complejos** → Semana 4
-- ❌ **Proyecto de gestión completo** → Semanas 6-8
-- ❌ **Validación avanzada** → Semana 5
-- ❌ **Base de datos** → Semana 4+
 
 ## 🎯 Criterios de Éxito de la Semana
 
@@ -130,7 +112,7 @@ Para mantener expectativas realistas, los siguientes temas se han **movido a sem
 
 ### 📄 **Entregable de Documentación (Mínimo)**
 
-**README.md Ultra-Básico**
+**README.md**
 
 - ✅ Comandos para ejecutar la aplicación
 - ✅ 1 screenshot de la API funcionando
@@ -173,11 +155,11 @@ La evaluación se enfoca únicamente en **funcionamiento básico**:
 
 | Tiempo      | Actividad                | Duración | Acumulado |
 | ----------- | ------------------------ | -------- | --------- |
-| 9:00-10:15  | Setup y configuración    | 75 min   | 75 min    |
-| 10:15-10:45 | **☕ BREAK OBLIGATORIO** | 30 min   | 105 min   |
-| 10:45-12:45 | Primera API básica       | 120 min  | 225 min   |
-| 12:45-14:15 | Práctica guiada          | 90 min   | 315 min   |
-| 14:15-15:00 | Consolidación y entrega  | 45 min   | 360 min   |
+| 12:00-13:15  | Setup y configuración    | 75 min   | 75 min    |
+| 13:15-13:45 | **☕ BREAK OBLIGATORIO** | 30 min   | 105 min   |
+| 13:45-15:45 | Primera API básica       | 120 min  | 225 min   |
+| 15:45-16:15 | Práctica guiada          | 90 min   | 315 min   |
+| 16:15-18:00 | Consolidación y entrega  | 45 min   | 360 min   |
 
 **Total**: Exactamente 6 horas (360 minutos)
 
@@ -186,17 +168,17 @@ La evaluación se enfoca únicamente en **funcionamiento básico**:
 ### 📁 Estructura Mínima Requerida
 
 ```
-apellido-nombre-semana1/
+ficha-apellido-nombre-semana1/
 ├── README.md               # Básico (3-4 líneas)
 ├── requirements.txt        # Solo FastAPI + uvicorn
 └── main.py                # Un solo archivo
 ```
 
-### 🚀 Proceso de Entrega Ultra-Simple
+### 🚀 Proceso de Entrega
 
 1. **Repositorio GitHub**
 
-   - Crear repo público: `apellido-nombre-fastapi-semana1`
+   - Crear repo público: `ficha-apellido-nombre-fastapi-semana1`
    - Subir los 3 archivos mínimos
    - README con comandos básicos
 
