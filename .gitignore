@@ -1,5 +1,7 @@
 # Bootcamp bc-fastapi - Complete .gitignore
 # Created for FastAPI + React + Docker + PostgreSQL project
+.gitignore
+
 
 # ===== PYTHON =====
 # Byte-compiled / optimized / DLL files
@@ -9,6 +11,19 @@ __pycache__/
 
 # C extensions
 *.so
+
+# carpetas epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-01/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-02/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-03/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-04/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-05/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-06/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-07/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-08/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-09/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-10/0-epti
+/home/epti/Documentos/epti-dev/bc-fastapi/semana-11/0-epti
 
 # Distribution / packaging
 .Python
