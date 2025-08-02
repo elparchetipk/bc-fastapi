@@ -32,17 +32,17 @@ Un sistema integrado combina múltiples tecnologías de forma cohesiva para crea
 ```
 ┌─────────────────────────────────────────┐
 │               Frontend                  │
-│    React + Vite + Tailwind CSS         │
+│    React + Vite + Tailwind CSS          │
 └─────────────────┬───────────────────────┘
                   │ HTTP/WebSocket
 ┌─────────────────▼───────────────────────┐
 │               Backend                   │
-│      FastAPI + Pydantic + JWT          │
+│      FastAPI + Pydantic + JWT           │
 └─────────────────┬───────────────────────┘
                   │ SQLAlchemy ORM
 ┌─────────────────▼───────────────────────┐
 │             Base de Datos               │
-│          PostgreSQL + Redis            │
+│          PostgreSQL + Redis             │
 └─────────────────────────────────────────┘
 ```
 
@@ -63,17 +63,17 @@ Un sistema integrado combina múltiples tecnologías de forma cohesiva para crea
 ```
 ┌─────────────────────────────────────────┐
 │        Presentation Layer               │
-│     (React Components + Pages)         │
+│     (React Components + Pages)          │
 └─────────────────┬───────────────────────┘
                   │
 ┌─────────────────▼───────────────────────┐
 │         API Layer                       │
-│    (FastAPI Routes + Middleware)       │
+│    (FastAPI Routes + Middleware)        │
 └─────────────────┬───────────────────────┘
                   │
 ┌─────────────────▼───────────────────────┐
 │       Business Logic Layer              │
-│     (Services + Domain Logic)          │
+│     (Services + Domain Logic)           │
 └─────────────────┬───────────────────────┘
                   │
 ┌─────────────────▼───────────────────────┐
@@ -83,7 +83,7 @@ Un sistema integrado combina múltiples tecnologías de forma cohesiva para crea
                   │
 ┌─────────────────▼───────────────────────┐
 │         Data Layer                      │
-│      (PostgreSQL + Redis)              │
+│      (PostgreSQL + Redis)               │
 └─────────────────────────────────────────┘
 ```
 
