@@ -1,0 +1,422 @@
+# .github/workflows/bc-fastapi-evaluation.yml
+# GitHub Action optimizado para evaluación automática del bootcamp bc-fastapi
+# Versión corregida y mejorada
+
+name: 🎯 Evaluación Automática bc-fastapi
+
+on:
+  repository_dispatch:
+    types: [student-submission]
+  workflow_dispatch:
+    inputs:
+      student_repo:
+        description: 'Repositorio del estudiante (usuario/repo)'
+        required: true
+        type: string
+      pr_number:
+        description: 'Número del Pull Request'
+        required: true
+        type: string
+      week_number:
+        description: 'Número de semana (1-11)'
+        required: false
+        type: string
+        default: '1'
+
+env:
+  PYTHON_VERSION: "3.11"
+  EVALUATION_TIMEOUT: "15m"
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  # Job principal: Evaluación completa
+  evaluate-submission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    steps:
+    - name: 📥 Checkout repositorio bc-fastapi
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ github.repository }}
+        path: bc-fastapi-main
+        
+    - name: 🔍 Parsear contexto de evaluación
+      id: context
+      run: |
+        # Determina origen de la evaluación
+        if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+          STUDENT_REPO="${{ github.event.client_payload.repository }}"
+          PR_NUMBER="${{ github.event.client_payload.pr_number }}"
+          BRANCH_NAME="${{ github.event.client_payload.branch_name }}"
+          WEEK_NUMBER="${{ github.event.client_payload.week_number }}"
+        else
+          STUDENT_REPO="${{ github.event.inputs.student_repo }}"
+          PR_NUMBER="${{ github.event.inputs.pr_number }}"
+          BRANCH_NAME="semana-${{ github.event.inputs.week_number }}-entrega"
+          WEEK_NUMBER="${{ github.event.inputs.week_number }}"
+        fi
+        
+        STUDENT_NAME=$(echo "$STUDENT_REPO" | cut -d'/' -f1)
+        
+        echo "student_repo=$STUDENT_REPO" >> $GITHUB_OUTPUT
+        echo "student_name=$STUDENT_NAME" >> $GITHUB_OUTPUT
+        echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+        echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+        echo "week_number=${WEEK_NUMBER:-1}" >> $GITHUB_OUTPUT
+        
+        echo "📊 Contexto:"
+        echo "   👤 Estudiante: $STUDENT_NAME"
+        echo "   📁 Repo: $STUDENT_REPO"
+        echo "   🔀 PR: #$PR_NUMBER"
+        echo "   📅 Semana: ${WEEK_NUMBER:-1}"
+
+    - name: 📥 Clonar repositorio del estudiante
+      run: |
+        STUDENT_REPO="${{ steps.context.outputs.student_repo }}"
+        BRANCH_NAME="${{ steps.context.outputs.branch_name }}"
+        
+        echo "🔄 Clonando $STUDENT_REPO..."
+        git clone "https://github.com/$STUDENT_REPO.git" student-repo || {
+          echo "❌ Error: No se pudo clonar el repositorio"
+          exit 1
+        }
+        
+        cd student-repo
+        
+        # Intenta checkout a la rama específica
+        if git branch -r | grep -q "origin/$BRANCH_NAME"; then
+          git checkout "$BRANCH_NAME"
+          echo "✅ Rama $BRANCH_NAME activada"
+        else
+          echo "⚠️ Rama $BRANCH_NAME no encontrada, usando main/master"
+        fi
+        
+        echo "📊 Archivos Python encontrados:"
+        find . -name "*.py" -type f | head -5
+
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+
+    - name: 📦 Instalar dependencias básicas
+      run: |
+        pip install --upgrade pip
+        pip install requests pydantic fastapi
+        pip install flake8 radon
+        echo "✅ Dependencias instaladas"
+
+    - name: 🔍 Analizar código del estudiante
+      id: analysis
+      run: |
+        cd student-repo
+        
+        # Script de análisis de código
+        python << 'EOF'
+        import os
+        import json
+        import re
+        from pathlib import Path
+        
+        def analyze_student_code():
+            analysis = {
+                "files_analyzed": [],
+                "total_lines": 0,
+                "functions_count": 0,
+                "classes_count": 0,
+                "fastapi_usage": False,
+                "endpoints_found": [],
+                "test_files": [],
+                "has_main": False,
+                "syntax_errors": []
+            }
+            
+            for py_file in Path('.').rglob('*.py'):
+                if '.git' in str(py_file) or '__pycache__' in str(py_file):
+                    continue
+                    
+                try:
+                    with open(py_file, 'r', encoding='utf-8', errors='ignore') as f:
+                        content = f.read()
+                    
+                    analysis["files_analyzed"].append(str(py_file))
+                    lines = content.splitlines()
+                    analysis["total_lines"] += len([l for l in lines if l.strip()])
+                    
+                    # Análisis de patrones
+                    if 'fastapi' in content.lower() or 'FastAPI' in content:
+                        analysis["fastapi_usage"] = True
+                    
+                    if '__name__ == "__main__"' in content:
+                        analysis["has_main"] = True
+                    
+                    # Busca endpoints
+                    endpoint_patterns = [
+                        r'@app\.(get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']',
+                        r'@router\.(get|post|put|delete|patch)\s*\(\s*["\']([^"\']+)["\']'
+                    ]
+                    
+                    for pattern in endpoint_patterns:
+                        matches = re.finditer(pattern, content, re.IGNORECASE)
+                        for match in matches:
+                            method = match.group(1).upper()
+                            path = match.group(2)
+                            analysis["endpoints_found"].append(f"{method} {path}")
+                    
+                    # Cuenta funciones y clases
+                    analysis["functions_count"] += len(re.findall(r'^\s*def\s+\w+', content, re.MULTILINE))
+                    analysis["classes_count"] += len(re.findall(r'^\s*class\s+\w+', content, re.MULTILINE))
+                    
+                    # Identifica tests
+                    if 'test' in py_file.name.lower():
+                        analysis["test_files"].append(str(py_file))
+                        
+                except Exception as e:
+                    analysis["syntax_errors"].append(f"{py_file}: {str(e)}")
+            
+            return analysis
+        
+        analysis = analyze_student_code()
+        
+        # Guarda análisis
+        with open('../analysis_result.json', 'w') as f:
+            json.dump(analysis, f, indent=2)
+        
+        print(f"📊 Análisis completado:")
+        print(f"   📄 Archivos: {len(analysis['files_analyzed'])}")
+        print(f"   📏 Líneas: {analysis['total_lines']}")
+        print(f"   🚀 FastAPI: {'Sí' if analysis['fastapi_usage'] else 'No'}")
+        print(f"   🎯 Endpoints: {len(analysis['endpoints_found'])}")
+        EOF
+
+    - name: 📋 Generar evaluación básica
+      run: |
+        STUDENT_NAME="${{ steps.context.outputs.student_name }}"
+        WEEK_NUMBER="${{ steps.context.outputs.week_number }}"
+        
+        # Carga análisis
+        ANALYSIS=$(cat analysis_result.json)
+        
+        # Genera evaluación básica
+        python << 'EOF'
+        import json
+        import os
+        from datetime import datetime
+        
+        # Carga contexto
+        student_name = os.getenv('STUDENT_NAME', 'Estudiante')
+        week_number = int(os.getenv('WEEK_NUMBER', '1'))
+        
+        # Carga análisis
+        with open('analysis_result.json', 'r') as f:
+            analysis = json.load(f)
+        
+        # Genera evaluación
+        def generate_evaluation():
+            total_files = len(analysis['files_analyzed'])
+            total_lines = analysis['total_lines']
+            has_fastapi = analysis['fastapi_usage']
+            endpoints_count = len(analysis['endpoints_found'])
+            
+            # Lógica de evaluación básica
+            score = 0
+            feedback_points = []
+            improvements = []
+            
+            # Criterio 1: Entrega de código (20 pts)
+            if total_files > 0:
+                score += 20
+                feedback_points.append("✅ Código Python entregado correctamente")
+            else:
+                improvements.append("❌ No se encontraron archivos Python en la entrega")
+            
+            # Criterio 2: Uso de FastAPI (30 pts)
+            if has_fastapi:
+                score += 30
+                feedback_points.append("✅ FastAPI detectado en el código")
+            else:
+                score += 10  # Puntos parciales por intentar
+                improvements.append("⚠️ No se detectó uso de FastAPI - Revisa las importaciones")
+            
+            # Criterio 3: Implementación de endpoints (25 pts)
+            if endpoints_count >= 3:
+                score += 25
+                feedback_points.append(f"✅ {endpoints_count} endpoints implementados correctamente")
+            elif endpoints_count > 0:
+                score += 15
+                feedback_points.append(f"⚠️ {endpoints_count} endpoints encontrados - Se esperan al menos 3")
+                improvements.append("Implementa más endpoints según los requisitos de la semana")
+            else:
+                improvements.append("❌ No se encontraron endpoints - Revisa la implementación de rutas")
+            
+            # Criterio 4: Estructura y calidad (25 pts)
+            if total_lines >= 50:
+                score += 20
+                feedback_points.append("✅ Código con estructura adecuada")
+            elif total_lines >= 20:
+                score += 15
+                feedback_points.append("⚠️ Código básico implementado")
+            else:
+                improvements.append("❌ Código muy básico - Expande la implementación")
+            
+            if analysis['functions_count'] >= 3:
+                score += 5
+                feedback_points.append("✅ Buena modularización con funciones")
+            
+            # Determina categoría
+            if score >= 90:
+                category = "Excelente"
+                emoji = "🏆"
+            elif score >= 80:
+                category = "Satisfactorio"
+                emoji = "✅"
+            elif score >= 70:
+                category = "Necesita Mejora"
+                emoji = "⚠️"
+            else:
+                category = "Insuficiente"
+                emoji = "❌"
+            
+            return score, category, emoji, feedback_points, improvements
+        
+        score, category, emoji, feedback_points, improvements = generate_evaluation()
+        
+        # Genera reporte
+        report = f'''# 🎯 Evaluación Automática bc-fastapi
+
+**Estudiante:** {student_name}  
+**Semana:** {week_number}  
+**Fecha:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  
+
+---
+
+## {emoji} Calificación: {score}/100 puntos ({category})
+
+### ✅ Fortalezas Identificadas:
+'''
+        
+        for point in feedback_points:
+            report += f"- {point}\n"
+        
+        if improvements:
+            report += "\n### 🎯 Áreas de Mejora:\n"
+            for improvement in improvements:
+                report += f"- {improvement}\n"
+        
+        report += f'''
+
+### 📊 Análisis Técnico:
+- **Archivos analizados:** {len(analysis["files_analyzed"])}
+- **Líneas de código:** {analysis["total_lines"]}
+- **Funciones:** {analysis["functions_count"]}
+- **FastAPI detectado:** {"✅" if analysis["fastapi_usage"] else "❌"}
+- **Endpoints:** {len(analysis["endpoints_found"])}
+
+### 📚 Próximos Pasos para Semana {week_number + 1}:
+- Revisa el material de la siguiente semana en el repositorio principal
+- Implementa las mejoras sugeridas si las hay
+- Participa en las discusiones del curso para resolver dudas
+
+### 📞 Recursos de Apoyo:
+- **Repositorio principal:** https://github.com/elparchetipk/bc-fastapi
+- **Material de la semana:** `/semana-{week_number:02d}/`
+- **Documentación:** `/_docs/`
+
+---
+
+## 🤖 Información de la Evaluación
+
+- **Sistema:** Evaluación automática bc-fastapi v2.0
+- **Algoritmo:** Análisis estático de código + Validación de patrones
+- **Instructor:** Erick Granados Torres
+- **Institución:** SENA - CGMLTI Regional Distrito Capital
+
+---
+
+*Evaluación generada automáticamente el {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}*
+'''
+        
+        # Guarda reporte
+        with open('evaluation_report.md', 'w', encoding='utf-8') as f:
+            f.write(report)
+        
+        print("✅ Evaluación generada exitosamente")
+        print(f"📊 Puntuación: {score}/100 ({category})")
+        
+        EOF
+        
+        env:
+          STUDENT_NAME: ${{ steps.context.outputs.student_name }}
+          WEEK_NUMBER: ${{ steps.context.outputs.week_number }}
+
+    - name: 📤 Subir reporte de evaluación
+      uses: actions/upload-artifact@v4
+      with:
+        name: evaluation-report-${{ steps.context.outputs.student_name }}-week-${{ steps.context.outputs.week_number }}
+        path: |
+          evaluation_report.md
+          analysis_result.json
+        retention-days: 90
+
+    - name: 📝 Mostrar resumen de evaluación
+      run: |
+        echo "🎯 RESUMEN DE EVALUACIÓN"
+        echo "========================"
+        echo "👤 Estudiante: ${{ steps.context.outputs.student_name }}"
+        echo "📅 Semana: ${{ steps.context.outputs.week_number }}"
+        echo "📁 Repositorio: ${{ steps.context.outputs.student_repo }}"
+        echo ""
+        echo "📊 RESULTADO:"
+        if [ -f "evaluation_report.md" ]; then
+          echo "✅ Evaluación completada exitosamente"
+          # Extrae la puntuación del reporte
+          grep "Calificación:" evaluation_report.md || echo "📊 Ver artifact para detalles"
+        else
+          echo "❌ Error en la evaluación"
+        fi
+
+  # Job opcional: Notificación por issue (requiere token)
+  create-feedback-issue:
+    needs: evaluate-submission
+    if: ${{ success() && vars.ENABLE_ISSUE_FEEDBACK == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+    - name: ⬇️ Descargar reporte de evaluación
+      uses: actions/download-artifact@v4
+      with:
+        name: evaluation-report-${{ needs.evaluate-submission.steps.context.outputs.student_name }}-week-${{ needs.evaluate-submission.steps.context.outputs.week_number }}
+
+    - name: 📝 Crear issue de feedback (opcional)
+      if: ${{ secrets.STUDENT_REPOS_TOKEN != '' }}
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.STUDENT_REPOS_TOKEN }}
+        script: |
+          const fs = require('fs');
+          
+          try {
+            const evaluation = fs.readFileSync('evaluation_report.md', 'utf8');
+            const studentRepo = '${{ needs.evaluate-submission.steps.context.outputs.student_repo }}';
+            const weekNumber = '${{ needs.evaluate-submission.steps.context.outputs.week_number }}';
+            
+            const [owner, repo] = studentRepo.split('/');
+            
+            const issue = await github.rest.issues.create({
+              owner: owner,
+              repo: repo,
+              title: `📋 Evaluación Semana ${weekNumber} - Feedback Automatizado`,
+              body: evaluation + '\n\n---\n\n🤖 *Issue creado automáticamente por el sistema bc-fastapi*',
+              labels: ['evaluacion-automatica', `semana-${weekNumber}`, 'bc-fastapi']
+            });
+            
+            console.log(`✅ Issue creado: ${issue.data.html_url}`);
+          } catch (error) {
+            console.log(`⚠️ No se pudo crear issue: ${error.message}`);
+          }

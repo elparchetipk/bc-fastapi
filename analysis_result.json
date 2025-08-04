@@ -1,0 +1,31 @@
+{
+  "files_analyzed": [
+    "main.py",
+    "test_main.py"
+  ],
+  "total_lines": 26,
+  "functions_count": 6,
+  "classes_count": 1,
+  "fastapi_usage": true,
+  "endpoints_found": [
+    "GET /",
+    "GET /test",
+    "POST /items"
+  ],
+  "test_files": [
+    "test_main.py"
+  ],
+  "imports": [
+    "from fastapi import FastAPI",
+    "import pytest",
+    "from fastapi.testclient import TestClient",
+    "from main import app"
+  ],
+  "syntax_errors": [],
+  "evaluation_score": 80,
+  "evaluation_category": "Satisfactorio",
+  "has_code": true,
+  "timestamp": "2025-08-04T16:21:04.803523",
+  "student_name": "TestStudent",
+  "week_number": 5
+}

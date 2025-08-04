@@ -1,0 +1,212 @@
+# .github/workflows/bc-fastapi-evaluation.yml
+# Sistema de evaluación automática para el bootcamp bc-fastapi
+# Versión final optimizada
+
+name: 🎯 Evaluación bc-fastapi
+
+on:
+  repository_dispatch:
+    types: [student-submission]
+  workflow_dispatch:
+    inputs:
+      student_repo:
+        description: 'Repositorio del estudiante (usuario/repo)'
+        required: true
+        type: string
+      pr_number:
+        description: 'Número del Pull Request'
+        required: true
+        type: string
+      week_number:
+        description: 'Número de semana (1-11)'
+        required: false
+        type: string
+        default: '1'
+
+env:
+  PYTHON_VERSION: '3.11'
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  evaluate-submission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout repositorio bc-fastapi
+        uses: actions/checkout@v4
+        with:
+          path: bc-fastapi-main
+
+      - name: 🔍 Configurar contexto de evaluación
+        id: context
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            STUDENT_REPO="${{ github.event.client_payload.repository }}"
+            PR_NUMBER="${{ github.event.client_payload.pr_number }}"
+            WEEK_NUMBER="${{ github.event.client_payload.week_number }}"
+          else
+            STUDENT_REPO="${{ github.event.inputs.student_repo }}"
+            PR_NUMBER="${{ github.event.inputs.pr_number }}"
+            WEEK_NUMBER="${{ github.event.inputs.week_number }}"
+          fi
+
+          STUDENT_NAME=$(echo "$STUDENT_REPO" | cut -d'/' -f1)
+
+          echo "student_repo=$STUDENT_REPO" >> $GITHUB_OUTPUT
+          echo "student_name=$STUDENT_NAME" >> $GITHUB_OUTPUT
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "week_number=${WEEK_NUMBER:-1}" >> $GITHUB_OUTPUT
+
+          echo "📊 Evaluando: $STUDENT_NAME - Semana ${WEEK_NUMBER:-1}"
+
+      - name: 📥 Clonar repositorio del estudiante
+        run: |
+          STUDENT_REPO="${{ steps.context.outputs.student_repo }}"
+
+          echo "🔄 Clonando repositorio: $STUDENT_REPO"
+          git clone "https://github.com/$STUDENT_REPO.git" student-repo || {
+            echo "❌ Error al clonar repositorio"
+            exit 1
+          }
+
+          echo "✅ Repositorio clonado exitosamente"
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: 📦 Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install fastapi pydantic requests
+          echo "✅ Dependencias instaladas"
+
+      - name: 📝 Copiar script evaluador
+        run: |
+          cp bc-fastapi-main/_scripts/evaluation-system/bc_fastapi_evaluator.py ./
+          chmod +x bc_fastapi_evaluator.py
+          echo "✅ Script evaluador preparado"
+
+      - name: 🔍 Ejecutar evaluación
+        run: |
+          python bc_fastapi_evaluator.py
+        env:
+          STUDENT_NAME: ${{ steps.context.outputs.student_name }}
+          WEEK_NUMBER: ${{ steps.context.outputs.week_number }}
+
+      - name: 📊 Mostrar resumen de evaluación
+        run: |
+          echo "🎯 RESUMEN DE EVALUACIÓN"
+          echo "========================"
+          echo "👤 Estudiante: ${{ steps.context.outputs.student_name }}"
+          echo "📅 Semana: ${{ steps.context.outputs.week_number }}"
+          echo "🔗 Repositorio: ${{ steps.context.outputs.student_repo }}"
+          echo ""
+
+          if [ -f "evaluation_report.md" ]; then
+            echo "✅ Evaluación completada"
+            
+            if grep -q "Calificación:" evaluation_report.md; then
+              SCORE_LINE=$(grep "Calificación:" evaluation_report.md | head -1)
+              echo "📊 $SCORE_LINE"
+            fi
+            
+            echo ""
+            echo "📋 Ver detalles completos en los artifacts del workflow"
+          else
+            echo "❌ Error en la evaluación - No se generó reporte"
+            exit 1
+          fi
+
+      - name: 📤 Subir resultados como artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-results-${{ steps.context.outputs.student_name }}-week-${{ steps.context.outputs.week_number }}
+          path: |
+            evaluation_report.md
+            analysis_result.json
+          retention-days: 90
+
+      - name: ✅ Evaluación completada
+        run: |
+          echo "🎉 EVALUACIÓN FINALIZADA"
+          echo "========================"
+          echo "✅ Reporte generado: evaluation_report.md"
+          echo "✅ Análisis técnico: analysis_result.json" 
+          echo "✅ Artifacts subidos para revisión"
+          echo ""
+          echo "📞 Los resultados están disponibles en los artifacts de este workflow"
+          echo "🔗 URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+  # Job opcional para crear issue (requiere configuración adicional)
+  create-feedback-issue:
+    needs: evaluate-submission
+    if: ${{ success() && vars.CREATE_FEEDBACK_ISSUES == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: ⬇️ Descargar resultados de evaluación
+        uses: actions/download-artifact@v4
+        with:
+          name: evaluation-results-${{ needs.evaluate-submission.steps.context.outputs.student_name }}-week-${{ needs.evaluate-submission.steps.context.outputs.week_number }}
+
+      - name: 📝 Crear issue de feedback (opcional)
+        uses: actions/github-script@v7
+        env:
+          STUDENT_REPO: ${{ needs.evaluate-submission.steps.context.outputs.student_repo }}
+          WEEK_NUMBER: ${{ needs.evaluate-submission.steps.context.outputs.week_number }}
+        with:
+          github-token: ${{ secrets.STUDENT_REPOS_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+
+            try {
+              if (!fs.existsSync('evaluation_report.md')) {
+                console.log('❌ No se encontró el reporte de evaluación');
+                return;
+              }
+              
+              const evaluation = fs.readFileSync('evaluation_report.md', 'utf8');
+              const studentRepo = process.env.STUDENT_REPO;
+              const weekNumber = process.env.WEEK_NUMBER;
+              
+              if (!studentRepo || !studentRepo.includes('/')) {
+                console.log('⚠️ Formato de repositorio inválido');
+                return;
+              }
+              
+              const [owner, repo] = studentRepo.split('/');
+              
+              const issueTitle = `📋 Evaluación Semana ${weekNumber} - Feedback Automático`;
+              const issueBody = evaluation + '\n\n---\n\n' +
+                '## 🎯 Próximos Pasos\n\n' +
+                '### ✅ Si tu calificación fue satisfactoria:\n' +
+                '- 🎉 ¡Felicidades! Continúa con la siguiente semana\n' +
+                '- 📚 Revisa las sugerencias de mejora para optimizar tu código\n\n' +
+                '### 🔄 Si necesitas mejoras:\n' +
+                '- 📖 Implementa las correcciones sugeridas\n' +
+                '- 💻 Revisa el material de la semana en el repositorio principal\n' +
+                '- 💬 Comenta en este issue si tienes dudas específicas\n\n' +
+                '---\n\n' +
+                '🤖 *Issue creado automáticamente por el sistema bc-fastapi*';
+
+              const issue = await github.rest.issues.create({
+                owner: owner,
+                repo: repo,
+                title: issueTitle,
+                body: issueBody,
+                labels: ['evaluacion-automatica', `semana-${weekNumber}`, 'bc-fastapi']
+              });
+              
+              console.log(`✅ Issue de feedback creado: ${issue.data.html_url}`);
+              
+            } catch (error) {
+              console.log(`⚠️ No se pudo crear el issue: ${error.message}`);
+              console.log('Esto es normal si no tienes permisos configurados para el repositorio del estudiante');
+            }
