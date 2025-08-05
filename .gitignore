@@ -17,29 +17,16 @@ __pycache__/
 **/0-epti/
 semana-*/0-epti/
 
-# ===== VIDEO SCRIPTS Y CONTENIDO SENSIBLE =====
-# Scripts de video - Solo para desarrollo local, no para GitHub público
-_docs/video-scripts/
-**/video-scripts/
-# Alternativa más específica si solo quieres ocultar algunos archivos:
-# _docs/video-scripts/*-script-completo.md
-# _docs/video-scripts/*-notas-instructor.md
 
-# ===== CONFIGURACIÓN DE GRABACIÓN Y DEV CONTAINERS =====
-# Toda la configuración de grabación debe permanecer oculta en GitHub
+# ===== CONFIGURACIONES DE GRABACIÓN Y DEV CONTAINERS =====
+# Configuraciones exclusivas para grabación de videos - Solo local, no GitHub
 _docs/video-bc_channel/
 **/video-bc_channel/
 **/.devcontainer/
 **/devcontainer.json
-**/recording-mode.sh
-**/recording-mode.json
-**/.vscode/recording-mode.json
-**/.vscode/normal-mode.json
-
-# Scripts y configuraciones de grabación
-**/setup.sh
-**/*-recording-*.sh
-**/*-recording-*.json
+**/recording-*.sh
+**/recording-*.json
+**/.vscode/recording-*.json
 
 # Distribution / packaging
 .Python
@@ -439,10 +426,10 @@ dist/
 *.tar.gz
 *.zip
 
-# Deployment configs (keep templates)
-deploy/
-!deploy/*.template.*
-!deploy/README.md
+# Deployment configs (keep templates) - Actual deployment is in proyecto-final/deployment/
+# deploy/ - Removed as it doesn't exist, actual deployment folder is in proyecto-final/
+# !deploy/*.template.*
+# !deploy/README.md
 
 # ===== DOCUMENTATION =====
 # Generated docs (keep source)
@@ -450,8 +437,8 @@ docs/build/
 docs/_build/
 
 # ===== MONITORING =====
-# Logs and monitoring
-monitoring/logs/
+# Logs and monitoring - Currently no monitoring folder exists
+# monitoring/logs/ - Removed as folder doesn't exist
 *.log
 
 # ===== TEMPORARY FILES =====
@@ -480,9 +467,9 @@ sample-data/
 local_config.py
 local_settings.py
 
-# Performance test results
-performance-results/
-load-test-results/
+# Performance test results - Currently no performance testing folders exist
+# performance-results/ - Removed as folder doesn't exist  
+# load-test-results/ - Removed as folder doesn't exist
 
 # Certificates for development
 certs/
