@@ -17,6 +17,14 @@ __pycache__/
 **/0-epti/
 semana-*/0-epti/
 
+# ===== VIDEO SCRIPTS Y CONTENIDO SENSIBLE =====
+# Scripts de video - Solo para desarrollo local, no para GitHub público
+_docs/video-scripts/
+**/video-scripts/
+# Alternativa más específica si solo quieres ocultar algunos archivos:
+# _docs/video-scripts/*-script-completo.md
+# _docs/video-scripts/*-notas-instructor.md
+
 # Distribution / packaging
 .Python
 build/
