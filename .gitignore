@@ -25,6 +25,22 @@ _docs/video-scripts/
 # _docs/video-scripts/*-script-completo.md
 # _docs/video-scripts/*-notas-instructor.md
 
+# ===== CONFIGURACIÓN DE GRABACIÓN Y DEV CONTAINERS =====
+# Toda la configuración de grabación debe permanecer oculta en GitHub
+_docs/video-bc_channel/
+**/video-bc_channel/
+**/.devcontainer/
+**/devcontainer.json
+**/recording-mode.sh
+**/recording-mode.json
+**/.vscode/recording-mode.json
+**/.vscode/normal-mode.json
+
+# Scripts y configuraciones de grabación
+**/setup.sh
+**/*-recording-*.sh
+**/*-recording-*.json
+
 # Distribution / packaging
 .Python
 build/
