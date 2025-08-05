@@ -21,7 +21,9 @@ semana-*/0-epti/
 # ===== CONFIGURACIONES DE GRABACIÓN Y DEV CONTAINERS =====
 # Configuraciones exclusivas para grabación de videos - Solo local, no GitHub
 _docs/video-bc_channel/
+_docs/excalidraw-content/
 **/video-bc_channel/
+**/excalidraw-content/
 **/.devcontainer/
 **/devcontainer.json
 **/recording-*.sh
@@ -500,3 +502,4 @@ cache/
 !Dockerfile
 !.copilot-instructions.md
 !.gitignore
+_scripts/utilities/check-video-content.sh
