@@ -28,6 +28,16 @@ _docs/video-bc_channel/
 **/recording-*.json
 **/.vscode/recording-*.json
 
+# ===== SISTEMA DE BACKUP PRIVADO =====
+# Scripts y configuraciones de backup - Solo local, no GitHub
+_private/
+**/backup-system/
+**/backup-logs/
+**/.private/
+**/dropbox-backup-*
+**/backup-*.tar.gz
+**/backup-*.log
+
 # Distribution / packaging
 .Python
 build/
