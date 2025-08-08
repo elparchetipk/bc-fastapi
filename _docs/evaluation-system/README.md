@@ -230,5 +230,5 @@ Para problemas con el sistema de evaluación:
 
 **Desarrollado para:** bc-fastapi - Bootcamp FastAPI  
 **Institución:** SENA - CGMLTI Regional Distrito Capital  
-**Instructor:** Erick Granados Torres  
+**Instructor:** TTCO  
 **Versión:** 2.0 - Optimizada y Corregida

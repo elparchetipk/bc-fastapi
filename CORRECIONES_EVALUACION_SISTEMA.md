@@ -241,6 +241,6 @@ bc-fastapi/
 **Sistema desarrollado específicamente para el bootcamp bc-fastapi**  
 **SENA - Centro de Gestión de Mercados, Logística y TI**  
 **Regional Distrito Capital**  
-**Instructor: Erick Granados Torres**
+**Instructor: TTCO**
 
 _Versión: 2.0 - Optimizada y Completamente Funcional_

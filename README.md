@@ -467,9 +467,7 @@ Para más detalles, ver `_docs/setup/git-github-strategy.md` y `CONTRIBUTING.md`
 
 #### 👨‍🏫 Instructor Principal
 
-- **Nombre**: Erick Granados Torres
-- **Experiencia**: 18+ años en SENA - Instructor Especializado
-- **Institución**: CGMLTI Regional Distrito Capital
+- **Nombre**: TTCO
 - **GitHub**: @elparchetipk
 - **LinkedIn**: [linkedin.com/in/erickgranadostorres](https://linkedin.com/in/erickgranadostorres)
 

@@ -255,7 +255,7 @@ def generate_report(student_name, week_number, analysis, score, category, emoji,
 - **Material de la semana:** `/semana-{int(week_number):02d}/`
 - **Documentación:** `/_docs/`
 - **Guías de apoyo:** `/_docs/guides/`
-- **Instructor:** Erick Granados Torres
+- **Instructor:** TTCO
 - **Institución:** SENA - CGMLTI Regional Distrito Capital
 
 ### 💡 Consejos Generales:
