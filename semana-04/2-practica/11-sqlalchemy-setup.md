@@ -2,24 +2,35 @@
 
 ## 📋 Introducción
 
-SQLAlchemy es el ORM (Object-Relational Mapping) más popular de Python, que nos permite trabajar con bases de datos de manera pythónica. En esta práctica aprenderemos a configurar SQLAlchemy con FastAPI.
+SQLAlchemy es el ORM (Object-Relational Mapping) más popular de Python. En esta práctica configuraremos la base de datos para nuestro proyecto FastAPI.
+
+## ⏱️ Tiempo estimado: 30 minutos
 
 ## 🎯 Objetivos
 
-- Instalar y configurar SQLAlchemy
-- Crear modelos de base de datos
-- Configurar la conexión a la base de datos
-- Crear tablas automáticamente
-- Implementar operaciones CRUD básicas
+- Instalar SQLAlchemy y dependencias
+- Configurar la conexión a base de datos
+- Crear el primer modelo simple
+- Conectar FastAPI con la base de datos
 
 ## 📦 Instalación
 
 ```bash
 pip install sqlalchemy
-pip install alembic
-pip install psycopg2-binary  # Para PostgreSQL
-# o
-pip install sqlite3  # Para SQLite (incluido en Python)
+pip install python-dotenv
+```
+
+Para diferentes bases de datos:
+
+```bash
+# SQLite (ya incluido en Python)
+# No necesitas instalar nada adicional
+
+# PostgreSQL (si planeas usar PostgreSQL)
+pip install psycopg2-binary
+
+# MySQL (si planeas usar MySQL)
+pip install pymysql
 ```
 
 ## ⚙️ Configuración Básica
@@ -28,14 +39,23 @@ pip install sqlite3  # Para SQLite (incluido en Python)
 
 ```text
 proyecto/
+├── .env              # Variables de entorno
 ├── database.py       # Configuración de la base de datos
-├── models.py        # Modelos SQLAlchemy
-├── schemas.py       # Esquemas Pydantic
-├── crud.py          # Operaciones CRUD
+├── models.py        # Modelos SQLAlchemy (básicos)
 └── main.py          # Aplicación FastAPI
 ```
 
-### 2. Configuración de Base de Datos (`database.py`)
+### 2. Variables de Entorno (`.env`)
+
+```env
+# Para desarrollo local con SQLite
+DATABASE_URL=sqlite:///./fastapi_app.db
+
+# Para PostgreSQL (comentado por ahora)
+# DATABASE_URL=postgresql://username:password@localhost/dbname
+```
+
+### 3. Configuración de Base de Datos (`database.py`)
 
 ```python
 from sqlalchemy import create_engine
@@ -44,27 +64,25 @@ from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
 
+# Cargar variables de entorno
 load_dotenv()
 
-# Configuración de la base de datos
+# URL de la base de datos
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./test.db")
 
-# Para SQLite
+# Crear engine
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}  # Solo para SQLite
+    connect_args={"check_same_thread": False}  # Solo necesario para SQLite
 )
 
-# Para PostgreSQL
-# engine = create_engine(DATABASE_URL)
-
-# Sesión de base de datos
+# Crear sesión
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base para los modelos
 Base = declarative_base()
 
-# Dependencia para obtener la sesión de BD
+# Función para obtener la sesión de base de datos
 def get_db():
     db = SessionLocal()
     try:
@@ -72,6 +90,169 @@ def get_db():
     finally:
         db.close()
 ```
+
+### 4. Primer Modelo Simple (`models.py`)
+
+```python
+from sqlalchemy import Boolean, Column, Integer, String, DateTime
+from sqlalchemy.sql import func
+from database import Base
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True, nullable=False)
+    description = Column(String, nullable=True)
+    price = Column(Integer, nullable=False)  # Precio en centavos
+    is_available = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+```
+
+### 5. Integración Básica con FastAPI (`main.py`)
+
+```python
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+import models
+from database import engine, get_db
+
+# Crear las tablas en la base de datos
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI(
+    title="FastAPI con SQLAlchemy",
+    description="Setup básico de base de datos",
+    version="1.0.0"
+)
+
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI con SQLAlchemy funcionando!"}
+
+@app.get("/test-db")
+def test_database(db: Session = Depends(get_db)):
+    """Endpoint para probar la conexión a la base de datos"""
+    try:
+        # Realizar una consulta simple
+        result = db.execute("SELECT 1").fetchone()
+        return {"database": "connected", "test_query": result[0]}
+    except Exception as e:
+        return {"database": "error", "message": str(e)}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+## 🧪 Probar la Configuración
+
+1. **Ejecutar la aplicación:**
+
+```bash
+uvicorn main:app --reload
+```
+
+2. **Probar endpoints:**
+
+```bash
+# Endpoint básico
+curl http://localhost:8000/
+
+# Probar conexión a base de datos
+curl http://localhost:8000/test-db
+```
+
+3. **Verificar que se creó la base de datos:**
+   - Deberías ver un archivo `fastapi_app.db` en tu directorio
+   - El endpoint `/test-db` debería retornar `{"database": "connected", "test_query": 1}`
+
+## 📁 Estructura Final
+
+Al completar esta práctica tendrás:
+
+```text
+proyecto/
+├── .env              # ✅ Variables de entorno
+├── database.py       # ✅ Configuración de SQLAlchemy
+├── models.py         # ✅ Modelo Product básico
+├── main.py           # ✅ FastAPI con conexión a BD
+└── fastapi_app.db    # ✅ Base de datos SQLite (se crea automáticamente)
+```
+
+## ✅ Verificación
+
+Marca como completado cuando:
+
+- [ ] La aplicación inicia sin errores
+- [ ] El endpoint `/` responde correctamente
+- [ ] El endpoint `/test-db` muestra "connected"
+- [ ] Se creó el archivo de base de datos
+
+## 🔍 Troubleshooting
+
+**Error común 1:** `ImportError: No module named 'sqlalchemy'`
+
+```bash
+# Solución: Instalar SQLAlchemy
+pip install sqlalchemy
+```
+
+**Error común 2:** `RuntimeError: There is no current event loop`
+
+```bash
+# Solución: Usar uvicorn en lugar de python directamente
+uvicorn main:app --reload
+```
+
+**Error común 3:** No se encuentra el archivo `.env`
+
+```bash
+# Solución: Crear el archivo .env en el directorio raíz
+echo "DATABASE_URL=sqlite:///./fastapi_app.db" > .env
+```
+
+## 📚 Siguientes Pasos
+
+Una vez completado este setup básico, continuaremos con:
+
+- **Práctica 12:** Operaciones CRUD básicas
+- **Práctica 13:** Relaciones entre tablas
+- **Práctica 14:** Migraciones y testing
+
+---
+
+**💡 Nota:** Este setup está optimizado para desarrollo local con SQLite. En las siguientes prácticas aprenderemos operaciones CRUD y relaciones más complejas.
+
+# Para SQLite
+
+engine = create_engine(
+DATABASE_URL,
+connect_args={"check_same_thread": False} # Solo para SQLite
+)
+
+# Para PostgreSQL
+
+# engine = create_engine(DATABASE_URL)
+
+# Sesión de base de datos
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base para los modelos
+
+Base = declarative_base()
+
+# Dependencia para obtener la sesión de BD
+
+def get_db():
+db = SessionLocal()
+try:
+yield db
+finally:
+db.close()
+
+````
 
 ### 3. Variables de Entorno (`.env`)
 
@@ -84,7 +265,7 @@ DATABASE_URL=sqlite:///./fastapi_app.db
 
 # MySQL
 # DATABASE_URL=mysql+pymysql://username:password@localhost/dbname
-```
+````
 
 ## 📊 Modelos SQLAlchemy (`models.py`)
 
