@@ -1,250 +1,184 @@
-# Proyecto Semana 2: Sistema de Gestión de Tareas
+# Proyecto Semana 2: API de Biblioteca Personal
 
 ## 🎯 Objetivo del Proyecto
 
-Desarrollar una **API de gestión de tareas** que demuestre todos los conceptos aprendidos en la Semana 2: type hints, Pydantic, async/await, y endpoints FastAPI avanzados.
+Desarrollar una **API simple para gestión de libros** que demuestre los conceptos aprendidos en la Semana 2: type hints, Pydantic, async/await básico, y endpoints FastAPI con validaciones.
 
 ## 📋 Especificaciones Funcionales
 
-### **Entidades del Sistema:**
+### **Entidad Principal:**
 
-1. **User**: Gestión de usuarios del sistema
-2. **Project**: Agrupación de tareas relacionadas
-3. **Task**: Elementos de trabajo individuales
-4. **Comment**: Notas y actualizaciones en tareas
+- **Book**: Gestión de libros personales con información básica
 
 ### **Funcionalidades Requeridas:**
 
-- ✅ CRUD completo para todas las entidades
-- ✅ Búsqueda y filtros avanzados
-- ✅ Validación robusta de datos
-- ✅ Operaciones asíncronas donde corresponda
-- ✅ API REST siguiendo mejores prácticas
+- ✅ CRUD básico para libros (6 endpoints)
+- ✅ Búsqueda simple por título y autor
+- ✅ Validación de datos con Pydantic
+- ✅ 2-3 operaciones asíncronas simuladas
+- ✅ Almacenamiento en memoria (lista/diccionario)
 
 ## 🏗️ Especificación Técnica
 
-### **1. Modelos Pydantic Requeridos**
+### **1. Modelo Pydantic Requerido**
 
 ```python
-from pydantic import BaseModel, EmailStr, Field, validator
+from pydantic import BaseModel, Field, validator
 from datetime import datetime, date
 from enum import Enum
 from typing import Optional, List
 
-class TaskStatus(str, Enum):
-    pending = "pending"
-    in_progress = "in_progress"
-    completed = "completed"
-    cancelled = "cancelled"
+class BookStatus(str, Enum):
+    to_read = "to_read"
+    reading = "reading"
+    finished = "finished"
+    paused = "paused"
 
-class TaskPriority(str, Enum):
-    low = "low"
-    medium = "medium"
-    high = "high"
-    critical = "critical"
+class BookGenre(str, Enum):
+    fiction = "fiction"
+    non_fiction = "non_fiction"
+    science = "science"
+    biography = "biography"
+    history = "history"
+    technology = "technology"
+    other = "other"
 
-class UserType(str, Enum):
-    admin = "admin"
-    manager = "manager"
-    developer = "developer"
-    viewer = "viewer"
+# Modelo base para Book
+class BookBase(BaseModel):
+    title: str = Field(..., min_length=1, max_length=200, description="Título del libro")
+    author: str = Field(..., min_length=1, max_length=100, description="Autor del libro")
+    isbn: Optional[str] = Field(None, min_length=10, max_length=17, description="ISBN del libro")
+    genre: BookGenre = Field(default=BookGenre.other)
+    pages: Optional[int] = Field(None, ge=1, le=10000, description="Número de páginas")
+    publication_year: Optional[int] = Field(None, ge=1000, le=2024, description="Año de publicación")
+    status: BookStatus = Field(default=BookStatus.to_read)
+    rating: Optional[int] = Field(None, ge=1, le=5, description="Calificación de 1 a 5")
+    notes: Optional[str] = Field(None, max_length=1000, description="Notas personales")
 
-# Modelo base para User
-class UserBase(BaseModel):
-    name: str = Field(..., min_length=2, max_length=100)
-    email: EmailStr
-    type: UserType
-    active: bool = True
-
-class UserCreate(UserBase):
-    password: str = Field(..., min_length=8, description="Mínimo 8 caracteres")
-
-class UserResponse(UserBase):
-    id: int
-    registration_date: datetime
-    last_access: Optional[datetime] = None
-
-# Modelo base para Project
-class ProjectBase(BaseModel):
-    name: str = Field(..., min_length=3, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
-    start_date: date
-    due_date: Optional[date] = None
-    manager_id: int = Field(..., ge=1)
-
-    @validator('due_date')
-    def validate_due_date(cls, v, values):
-        if v and values.get('start_date'):
-            if v <= values['start_date']:
-                raise ValueError('Due date must be after start date')
+    @validator('isbn')
+    def validate_isbn(cls, v):
+        if v is not None:
+            # Remover guiones y espacios
+            clean_isbn = v.replace('-', '').replace(' ', '')
+            if len(clean_isbn) not in [10, 13]:
+                raise ValueError('ISBN debe tener 10 o 13 dígitos')
+            if not clean_isbn.isdigit():
+                raise ValueError('ISBN debe contener solo números')
         return v
 
-class ProjectCreate(ProjectBase):
+class BookCreate(BookBase):
     pass
 
-class ProjectResponse(ProjectBase):
+class BookUpdate(BaseModel):
+    title: Optional[str] = Field(None, min_length=1, max_length=200)
+    author: Optional[str] = Field(None, min_length=1, max_length=100)
+    isbn: Optional[str] = Field(None, min_length=10, max_length=17)
+    genre: Optional[BookGenre] = None
+    pages: Optional[int] = Field(None, ge=1, le=10000)
+    publication_year: Optional[int] = Field(None, ge=1000, le=2024)
+    status: Optional[BookStatus] = None
+    rating: Optional[int] = Field(None, ge=1, le=5)
+    notes: Optional[str] = Field(None, max_length=1000)
+
+class BookResponse(BookBase):
     id: int
-    creation_date: datetime
-    total_tasks: int = 0
-    completed_tasks: int = 0
+    created_at: datetime
+    updated_at: datetime
 
-# Modelo base para Task
-class TaskBase(BaseModel):
-    title: str = Field(..., min_length=5, max_length=200)
-    description: Optional[str] = Field(None, max_length=1000)
-    status: TaskStatus = TaskStatus.pending
-    priority: TaskPriority = TaskPriority.medium
-    due_date: Optional[date] = None
-    project_id: int = Field(..., ge=1)
-    assigned_to: Optional[int] = Field(None, ge=1)
-    estimated_hours: Optional[float] = Field(None, ge=0.1, le=1000)
-
-class TaskCreate(TaskBase):
-    pass
-
-class TaskResponse(TaskBase):
-    id: int
-    creation_date: datetime
-    update_date: datetime
-    created_by: int
-
-# Modelo para Comment
-class CommentBase(BaseModel):
-    content: str = Field(..., min_length=1, max_length=1000)
-    task_id: int = Field(..., ge=1)
-
-class CommentCreate(CommentBase):
-    pass
-
-class CommentResponse(CommentBase):
-    id: int
-    creation_date: datetime
-    author_id: int
-    author_name: str
+    class Config:
+        from_attributes = True
 ```
 
 ### **2. Endpoints Requeridos**
 
-#### **Users (`/users`)**
+#### **Books (`/books`)**
 
 ```python
-# CRUD básico
-POST   /users                    # Crear usuario
-GET    /users                    # Listar usuarios
-GET    /users/{user_id}          # Obtener usuario específico
-PUT    /users/{user_id}          # Actualizar usuario completo
-PATCH  /users/{user_id}          # Actualizar usuario parcial
-DELETE /users/{user_id}          # Desactivar usuario (soft delete)
+# CRUD básico (6 endpoints principales)
+POST   /books                    # Crear libro
+GET    /books                    # Listar todos los libros
+GET    /books/{book_id}          # Obtener libro específico
+PUT    /books/{book_id}          # Actualizar libro completo
+PATCH  /books/{book_id}          # Actualizar libro parcial
+DELETE /books/{book_id}          # Eliminar libro
 
-# Endpoints adicionales
-GET    /users/search            # Buscar por nombre/email
-GET    /users/{user_id}/tasks  # Tareas asignadas al usuario
-PATCH  /users/{user_id}/last-access  # Actualizar último acceso
+# Endpoints adicionales (2 endpoints de búsqueda)
+GET    /books/search/title       # Buscar por título
+GET    /books/search/author      # Buscar por autor
+
+# Total: 8 endpoints
 ```
 
-#### **Projects (`/projects`)**
-
-```python
-# CRUD básico
-POST   /projects                  # Crear proyecto
-GET    /projects                  # Listar proyectos
-GET    /projects/{project_id}    # Obtener proyecto específico
-PUT    /projects/{project_id}    # Actualizar proyecto completo
-DELETE /projects/{project_id}    # Eliminar proyecto
-
-# Endpoints adicionales
-GET    /projects/search          # Buscar proyectos
-GET    /projects/{project_id}/tasks    # Tareas del proyecto
-GET    /projects/{project_id}/statistics  # Stats del proyecto
-```
-
-#### **Tasks (`/tasks`)**
-
-```python
-# CRUD básico
-POST   /tasks                     # Crear tarea
-GET    /tasks                     # Listar tareas con filtros
-GET    /tasks/{task_id}          # Obtener tarea específica
-PUT    /tasks/{task_id}          # Actualizar tarea completa
-PATCH  /tasks/{task_id}          # Actualizar tarea parcial
-DELETE /tasks/{task_id}          # Eliminar tarea
-
-# Endpoints adicionales
-GET    /tasks/search             # Búsqueda avanzada
-PATCH  /tasks/{task_id}/status  # Cambiar solo estado
-PATCH  /tasks/{task_id}/assign # Asignar/reasignar tarea
-GET    /tasks/statistics       # Estadísticas generales
-```
-
-#### **Comments (`/comments`)**
-
-```python
-POST   /comments               # Crear comentario
-GET    /comments/task/{task_id}  # Comentarios de una tarea
-PUT    /comments/{comment_id}   # Actualizar comentario
-DELETE /comments/{comment_id}   # Eliminar comentario
-```
-
-### **3. Funcionalidades Async Requeridas**
+### **3. Funcionalidades Async Requeridas (2-3 operaciones)**
 
 Implementar estos endpoints como **async** para simular operaciones lentas:
 
 ```python
-# Simular validación externa de email
-async def validate_external_email(email: str) -> bool:
-    await asyncio.sleep(0.5)  # Simular latencia API externa
-    return "@" in email and "." in email
+import asyncio
+from datetime import datetime
 
-# Simular notificación por email
-async def send_notification(user_id: int, message: str) -> bool:
-    await asyncio.sleep(0.3)  # Simular envío
-    return True
+# Simular validación de ISBN en base de datos externa
+async def validate_isbn_external(isbn: str) -> bool:
+    await asyncio.sleep(0.5)  # Simular latencia de API externa
+    # Validación simple para demo
+    return len(isbn.replace('-', '').replace(' ', '')) in [10, 13]
 
-# Simular backup de datos
-async def backup_project(project_id: int) -> dict:
-    await asyncio.sleep(1)  # Simular proceso de backup
-    return {"backup_id": f"bk_{project_id}_{datetime.now().timestamp()}"}
+# Simular backup de datos cuando se crea un libro
+async def backup_book_data(book_data: dict) -> dict:
+    await asyncio.sleep(0.3)  # Simular proceso de backup
+    return {
+        "backup_id": f"bk_{datetime.now().timestamp()}",
+        "status": "success"
+    }
 
-# Endpoints async requeridos:
-@app.post("/users", response_model=UserResponse)
-async def create_user_async(user: UserCreate):
-    # Validar email externamente
-    email_valid = await validate_external_email(user.email)
-    # Crear usuario y enviar notificación en paralelo
+# Simular obtención de información adicional del libro
+async def get_book_metadata(title: str, author: str) -> dict:
+    await asyncio.sleep(0.4)  # Simular consulta a API externa
+    return {
+        "goodreads_rating": 4.2,
+        "amazon_price": 15.99,
+        "availability": "in_stock"
+    }
+
+# Endpoints async requeridos (2-3 endpoints):
+@app.post("/books", response_model=BookResponse)
+async def create_book_async(book: BookCreate):
+    # Validar ISBN externamente si está presente
+    if book.isbn:
+        isbn_valid = await validate_isbn_external(book.isbn)
+        if not isbn_valid:
+            raise HTTPException(status_code=400, detail="ISBN inválido")
+
+    # Crear libro y hacer backup en paralelo
     pass
 
-@app.patch("/tasks/{task_id}/status")
-async def change_task_status_async(task_id: int, new_status: TaskStatus):
-    # Cambiar estado y notificar a usuarios relevantes en paralelo
-    pass
-
-@app.delete("/projects/{project_id}")
-async def delete_project_async(project_id: int):
-    # Hacer backup antes de eliminar
+@app.get("/books/{book_id}/metadata")
+async def get_book_metadata_async(book_id: int):
+    # Obtener metadata adicional del libro
     pass
 ```
 
-### **4. Filtros y Búsquedas Avanzadas**
+### **4. Búsquedas Simples**
 
 ```python
-# Ejemplo para tasks
-@app.get("/tasks/search", response_model=List[TaskResponse])
-async def search_tasks(
-    title: Optional[str] = Query(None, min_length=1),
-    status: Optional[TaskStatus] = None,
-    priority: Optional[TaskPriority] = None,
-    project_id: Optional[int] = Query(None, ge=1),
-    assigned_to: Optional[int] = Query(None, ge=1),
-    due_date_from: Optional[date] = None,
-    due_date_to: Optional[date] = None,
-    # Paginación
-    page: int = Query(1, ge=1),
-    size: int = Query(10, ge=1, le=100),
-    # Ordenamiento
-    order_by: str = Query("creation_date", regex="^(title|creation_date|due_date|priority)$"),
-    order_dir: str = Query("desc", regex="^(asc|desc)$")
+from fastapi import Query
+
+# Búsqueda por título
+@app.get("/books/search/title", response_model=List[BookResponse])
+def search_books_by_title(
+    title: str = Query(..., min_length=1, description="Título a buscar"),
+    limit: int = Query(10, ge=1, le=50, description="Número máximo de resultados")
 ):
-    # Implementar lógica de filtrado, ordenamiento y paginación
+    # Buscar libros que contengan el título (case insensitive)
+    pass
+
+# Búsqueda por autor
+@app.get("/books/search/author", response_model=List[BookResponse])
+def search_books_by_author(
+    author: str = Query(..., min_length=1, description="Autor a buscar"),
+    limit: int = Query(10, ge=1, le=50, description="Número máximo de resultados")
+):
+    # Buscar libros por autor (case insensitive)
     pass
 ```
 
@@ -252,40 +186,39 @@ async def search_tasks(
 
 ### **1. Funcionalidad (40 puntos)**
 
-- ✅ Todos los endpoints implementados y funcionando
+- ✅ Todos los endpoints implementados y funcionando (8 endpoints)
 - ✅ Validación correcta con Pydantic
-- ✅ Filtros y búsquedas operativas
-- ✅ Operaciones CRUD completas
+- ✅ Búsquedas básicas operativas
+- ✅ Operaciones CRUD funcionando
 
 ### **2. Implementación Técnica (30 puntos)**
 
 - ✅ Type hints en 95% del código
-- ✅ Uso correcto de async/await (mínimo 3 endpoints)
+- ✅ Uso correcto de async/await (mínimo 2 endpoints)
 - ✅ Modelos Pydantic bien diseñados
-- ✅ Status codes HTTP apropiados
+- ✅ Status codes HTTP apropiados (200, 201, 404, 422)
 
 ### **3. Calidad del Código (20 puntos)**
 
 - ✅ Código limpio y bien estructurado
 - ✅ Nombres de variables descriptivos
 - ✅ Comentarios donde sea necesario
-- ✅ Separación de responsabilidades
+- ✅ Manejo básico de errores
 
 ### **4. Documentación (10 puntos)**
 
 - ✅ README con instrucciones claras
 - ✅ Documentación automática rica en `/docs`
 - ✅ Ejemplos de uso básicos
-- ✅ Descripción de decisiones técnicas
 
 ## 🚀 Guía de Implementación
 
-### **Paso 1: Setup del Proyecto (30 min)**
+### **Paso 1: Setup del Proyecto (20 min)**
 
 ```bash
 # Crear estructura
-mkdir task-management-week2
-cd task-management-week2
+mkdir library-api-week2
+cd library-api-week2
 
 # Crear entorno virtual
 python -m venv venv
@@ -293,69 +226,82 @@ source venv/bin/activate  # Linux/macOS
 # venv\Scripts\activate   # Windows
 
 # Instalar dependencias
-pip install "fastapi[all]" uvicorn python-multipart
+pip install "fastapi[all]" uvicorn
 
 # Crear archivos base
-touch main.py models.py README.md
+touch main.py README.md requirements.txt
 ```
 
 ### **Paso 2: Modelos Pydantic (45 min)**
 
-- Implementar todos los modelos base
-- Agregar validaciones custom
+- Implementar modelo Book con todos los campos
+- Agregar validaciones custom (ISBN, años, rating)
 - Probar modelos con datos de ejemplo
+- Crear esquemas Create, Update y Response
 
-### **Paso 3: Endpoints Básicos (60 min)**
+### **Paso 3: Endpoints Básicos CRUD (90 min)**
 
-- Implementar CRUD para users
-- Implementar CRUD para projects
-- Implementar CRUD para tasks
-- Probar con datos básicos
+- Implementar estructura básica de datos en memoria
+- POST /books - Crear libro
+- GET /books - Listar todos
+- GET /books/{id} - Obtener uno específico
+- PUT /books/{id} - Actualizar completo
+- PATCH /books/{id} - Actualizar parcial
+- DELETE /books/{id} - Eliminar
 
-### **Paso 4: Funcionalidades Avanzadas (45 min)**
+### **Paso 4: Búsquedas y Async (60 min)**
 
-- Agregar filtros y búsquedas
-- Implementar endpoints async
-- Agregar validaciones cruzadas
-- Implementar comentarios
+- GET /books/search/title - Búsqueda por título
+- GET /books/search/author - Búsqueda por autor
+- Implementar 2 operaciones async (validación ISBN + metadata)
+- Probar todas las funcionalidades
 
-### **Paso 5: Testing y Documentación (30 min)**
+### **Paso 5: Testing y Documentación (40 min)**
 
-- Probar todos los endpoints
-- Crear README completo
+- Probar todos los endpoints manualmente
+- Crear README completo con ejemplos
 - Verificar documentación automática
-- Testing básico (opcional)
+- Crear requirements.txt
+
+### **Cronograma Detallado (5.5 horas total):**
+
+- **0:00-0:20** → Setup inicial y estructura
+- **0:20-1:05** → Modelos Pydantic y validaciones
+- **1:05-2:35** → Endpoints CRUD básicos
+- **2:35-3:35** → Búsquedas y funciones async
+- **3:35-4:15** → Testing y debugging
+- **4:15-4:55** → Documentación y pulido
+- **4:55-5:30** → Review final y entrega
 
 ## 📝 Entregables
 
 ### **Archivos Requeridos:**
 
 1. **`main.py`** - API principal con todos los endpoints
-2. **`models.py`** - Modelos Pydantic separados (opcional)
-3. **`README.md`** - Documentación del proyecto
-4. **`requirements.txt`** - Dependencias del proyecto
+2. **`README.md`** - Documentación del proyecto
+3. **`requirements.txt`** - Dependencias del proyecto
 
 ### **Formato de Entrega:**
 
 - **Repositorio GitHub** con código fuente
-- **Video demo** (5-7 minutos) mostrando funcionalidades
-- **Archivo de pruebas** (Postman collection o script Python)
+- **Video demo** (3-5 minutos) mostrando funcionalidades básicas
+- **Archivo de pruebas** (collection de requests básicos)
 
 ### **Ejemplo de README:**
 
 ```markdown
-# Sistema de Gestión de Tareas - Semana 2
+# API de Biblioteca Personal - Semana 2
 
 ## Descripción
 
-API REST para gestión de tareas, proyectos y usuarios desarrollada con FastAPI.
+API REST simple para gestión de libros personales desarrollada con FastAPI.
 
 ## Características
 
-- ✅ CRUD completo para usuarios, proyectos y tareas
+- ✅ CRUD completo para libros (8 endpoints)
 - ✅ Validación robusta con Pydantic
-- ✅ Operaciones asíncronas
-- ✅ Búsqueda y filtros avanzados
+- ✅ 2 operaciones asíncronas
+- ✅ Búsqueda por título y autor
 
 ## Instalación
 
@@ -366,44 +312,53 @@ uvicorn main:app --reload
 
 ## Endpoints Principales
 
-- GET /users - Listar usuarios
-- POST /tasks - Crear tarea
-- GET /tasks/search - Búsqueda avanzada
+- GET /books - Listar libros
+- POST /books - Crear libro
+- GET /books/search/title - Búsqueda por título
 
 ## Ejemplos de Uso
 
 \`\`\`bash
 
-# Crear usuario
+# Crear libro
 
-curl -X POST "http://localhost:8000/users" \
+curl -X POST "http://localhost:8000/books" \
  -H "Content-Type: application/json" \
- -d '{"name": "Juan", "email": "juan@example.com", "type": "developer", "password": "12345678"}'
+ -d '{
+"title": "El Quijote",
+"author": "Miguel de Cervantes",
+"genre": "fiction",
+"pages": 863,
+"publication_year": 1605
+}'
+
+# Buscar por título
+
+curl "http://localhost:8000/books/search/title?title=quijote"
 \`\`\`
 
 ## Decisiones Técnicas
 
-- Async/await para operaciones que simulan I/O
-- Soft delete para usuarios (mantener integridad referencial)
-- Paginación por defecto en listados
+- Async/await para validación de ISBN y obtención de metadata
+- Almacenamiento en memoria con diccionario para simplicidad
+- Validación personalizada de ISBN con Pydantic validators
 ```
 
 ## 🎯 Consejos para el Éxito
 
-1. **Empieza simple**: Implementa un endpoint a la vez
-2. **Prueba constantemente**: Usa `/docs` para verificar funcionalidad
-3. **Organiza el código**: Separa modelos si el archivo crece mucho
-4. **Documenta decisiones**: Explica por qué elegiste async vs sync
-5. **Valida datos**: Usa Pydantic al máximo para validación robusta
+1. **Empieza simple**: Implementa CRUD básico primero
+2. **Usa /docs**: Aprovecha la documentación automática para probar
+3. **Valida datos**: Usa las validaciones de Pydantic al máximo
+4. **Organiza el código**: Mantén todo en main.py pero bien estructurado
+5. **Prueba constantemente**: Cada endpoint debe funcionar antes de seguir
 
 ## 🏆 Oportunidades de Bonus
 
-- **+5 puntos**: Implementar soft delete consistente
-- **+5 puntos**: Middleware para logging de requests
-- **+5 puntos**: Validación de permisos básica (admin puede todo, developer solo sus tareas)
-- **+10 puntos**: Testing automatizado con pytest
-- **+10 puntos**: Exportación de datos (CSV, JSON)
+- **+5 puntos**: Implementar endpoint para estadísticas básicas (/books/stats)
+- **+5 puntos**: Agregar filtro por género en listado general
+- **+5 puntos**: Validación avanzada de año (no futuro)
+- **+10 puntos**: Export de biblioteca a JSON
 
 ---
 
-**🎯 Objetivo**: Demostrar dominio de todos los conceptos de la Semana 2 en un proyecto práctico y realista.
+**🎯 Objetivo**: Consolidar conceptos de Pydantic, async/await y FastAPI en un proyecto manejable y realista.
