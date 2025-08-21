@@ -1,27 +1,26 @@
-# Proyecto Semana 3: API de Inventario Simple
+# Proyecto Semana 3: API de Productos con Validaciones
 
 ## 🎯 Objetivo del Proyecto
 
-Desarrollar una **API REST** que demuestre los conceptos aprendidos en la Semana 3: validación de datos, manejo de errores, y estructura REST básica.
+Desarrollar una **API REST simple** que demuestre los conceptos aprendidos en la Semana 3: validación de datos con Pydantic, manejo básico de errores, y organización de código.
 
 ## 📋 Especificaciones Funcionales
 
-### **Entidades del Sistema:**
+### **Entidad Principal:**
 
-1. **Product**: Productos del inventario
-2. **Category**: Categorías de productos
+- **Product**: Gestión de productos de una tienda simple
 
 ### **Funcionalidades Requeridas:**
 
-- ✅ CRUD completo para productos
-- ✅ Gestión básica de categorías
+- ✅ CRUD básico para productos (5 endpoints)
 - ✅ Validación de datos con Pydantic
-- ✅ Manejo básico de errores
-- ✅ Filtros de búsqueda simple
+- ✅ Manejo básico de errores con HTTPException
+- ✅ Filtros simples por precio
+- ✅ Organización básica del código
 
 ## 🏗️ Especificación Técnica
 
-### **1. Modelos Pydantic Requeridos**
+### **1. Modelo Pydantic Requerido**
 
 ```python
 from pydantic import BaseModel, Field, validator
@@ -29,171 +28,250 @@ from datetime import datetime
 from typing import Optional
 from enum import Enum
 
-# Modelo para Categoría
-class CategoryBase(BaseModel):
-    name: str = Field(..., min_length=2, max_length=50)
-    description: Optional[str] = Field(None, max_length=200)
+class ProductStatus(str, Enum):
+    active = "active"
+    inactive = "inactive"
+    out_of_stock = "out_of_stock"
 
-class CategoryCreate(CategoryBase):
-    pass
+class ProductCategory(str, Enum):
+    electronics = "electronics"
+    clothing = "clothing"
+    books = "books"
+    home = "home"
+    sports = "sports"
+    other = "other"
 
-class CategoryResponse(CategoryBase):
-    id: int
-    created_at: datetime
-
-# Modelo para Producto
 class ProductBase(BaseModel):
-    name: str = Field(..., min_length=2, max_length=100)
-    description: Optional[str] = Field(None, max_length=300)
-    price: float = Field(..., gt=0)
-    stock: int = Field(0, ge=0)
-    category_id: int = Field(..., gt=0)
+    name: str = Field(..., min_length=2, max_length=100, description="Nombre del producto")
+    description: Optional[str] = Field(None, max_length=500, description="Descripción del producto")
+    price: float = Field(..., gt=0, description="Precio debe ser mayor que 0")
+    stock: int = Field(..., ge=0, description="Stock no puede ser negativo")
+    category: ProductCategory = Field(default=ProductCategory.other)
+    status: ProductStatus = Field(default=ProductStatus.active)
 
     @validator('name')
     def validate_name(cls, v):
-        return v.strip().title()
+        # Capitalizar y limpiar espacios
+        cleaned = v.strip().title()
+        if len(cleaned) < 2:
+            raise ValueError('Nombre debe tener al menos 2 caracteres después de limpiar')
+        return cleaned
+
+    @validator('price')
+    def validate_price(cls, v):
+        # Redondear a 2 decimales
+        return round(v, 2)
 
 class ProductCreate(ProductBase):
     pass
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=2, max_length=100)
-    description: Optional[str] = Field(None, max_length=300)
+    description: Optional[str] = Field(None, max_length=500)
     price: Optional[float] = Field(None, gt=0)
     stock: Optional[int] = Field(None, ge=0)
-    category_id: Optional[int] = Field(None, gt=0)
+    category: Optional[ProductCategory] = None
+    status: Optional[ProductStatus] = None
+
+    @validator('name')
+    def validate_name(cls, v):
+        if v is not None:
+            cleaned = v.strip().title()
+            if len(cleaned) < 2:
+                raise ValueError('Nombre debe tener al menos 2 caracteres')
+            return cleaned
+        return v
 
 class ProductResponse(ProductBase):
     id: int
     created_at: datetime
-    category_name: Optional[str] = None
+    updated_at: datetime
 ```
 
-### **2. Endpoints Requeridos**
+### **2. Endpoints Requeridos (5 endpoints principales)**
 
-#### **Productos**
-
-| Método | Endpoint         | Descripción         |
-| ------ | ---------------- | ------------------- |
-| GET    | `/products`      | Listar productos    |
-| GET    | `/products/{id}` | Obtener producto    |
-| POST   | `/products`      | Crear producto      |
-| PUT    | `/products/{id}` | Actualizar producto |
-| DELETE | `/products/{id}` | Eliminar producto   |
-
-#### **Categorías**
-
-| Método | Endpoint                    | Descripción             |
-| ------ | --------------------------- | ----------------------- |
-| GET    | `/categories`               | Listar categorías       |
-| POST   | `/categories`               | Crear categoría         |
-| GET    | `/categories/{id}/products` | Productos por categoría |
-
-#### **Búsqueda y Filtros**
+#### **Productos CRUD**
 
 ```python
-GET /products?name=laptop&min_price=100&max_price=500&category_id=1
+# CRUD básico (5 endpoints principales)
+POST   /products                    # Crear producto
+GET    /products                    # Listar productos
+GET    /products/{product_id}       # Obtener producto específico
+PUT    /products/{product_id}       # Actualizar producto completo
+DELETE /products/{product_id}       # Eliminar producto
+
+# Filtros simples (dentro del GET /products)
+GET    /products?min_price=10&max_price=100&category=electronics&status=active
 ```
 
-### **3. Validaciones Básicas**
+### **3. Validaciones y Manejo de Errores**
 
-#### **Reglas de Negocio**
+#### **Validaciones Automáticas con Pydantic**
 
-1. **Nombre único**: No puede haber productos con el mismo nombre en la misma categoría
-2. **Stock válido**: El stock no puede ser negativo
-3. **Precio válido**: El precio debe ser mayor que 0
-4. **Categoría válida**: El producto debe tener una categoría existente
+- Nombre: mínimo 2 caracteres, máximo 100, se capitaliza automáticamente
+- Precio: mayor que 0, se redondea a 2 decimales
+- Stock: no negativo
+- Descripción: máximo 500 caracteres
 
-### **4. Manejo de Errores**
-
-#### **Excepciones Custom**
+#### **Manejo de Errores Básico**
 
 ```python
-class ProductNotFound(HTTPException):
-    def __init__(self, product_id: int):
-        super().__init__(
-            status_code=404,
-            detail=f"Producto con ID {product_id} no encontrado"
-        )
+from fastapi import HTTPException
 
-class CategoryNotFound(HTTPException):
-    def __init__(self, category_id: int):
-        super().__init__(
-            status_code=404,
-            detail=f"Categoría con ID {category_id} no encontrada"
-        )
+# Funciones helper para errores comunes
+def product_not_found(product_id: int):
+    raise HTTPException(
+        status_code=404,
+        detail=f"Producto con ID {product_id} no encontrado"
+    )
+
+def validation_error(message: str):
+    raise HTTPException(
+        status_code=400,
+        detail=message
+    )
+
+# Ejemplo de uso en endpoints
+@app.get("/products/{product_id}", response_model=ProductResponse)
+def get_product(product_id: int):
+    if product_id not in products_db:
+        product_not_found(product_id)
+    return ProductResponse(**products_db[product_id])
+```
+
+### **4. Filtros Simples**
+
+```python
+from fastapi import Query
+
+@app.get("/products", response_model=List[ProductResponse])
+def get_products(
+    min_price: Optional[float] = Query(None, ge=0, description="Precio mínimo"),
+    max_price: Optional[float] = Query(None, ge=0, description="Precio máximo"),
+    category: Optional[ProductCategory] = Query(None, description="Filtrar por categoría"),
+    status: Optional[ProductStatus] = Query(None, description="Filtrar por estado"),
+    limit: int = Query(20, ge=1, le=100, description="Límite de resultados")
+):
+    # Implementar lógica de filtrado simple
+    pass
 ```
 
 ## 📊 Datos de Ejemplo
 
-### **Categorías Iniciales**
+### **Productos Iniciales**
 
 ```python
-categories = [
-    {"id": 1, "name": "Electrónicos", "description": "Dispositivos electrónicos"},
-    {"id": 2, "name": "Ropa", "description": "Vestimenta y accesorios"},
-    {"id": 3, "name": "Libros", "description": "Literatura y textos"},
-]
-```
-
-### **Productos de Ejemplo**
-
-```python
-products = [
+sample_products = [
     {
         "id": 1,
-        "name": "Laptop HP",
-        "description": "Laptop para oficina",
-        "price": 799.99,
-        "stock": 10,
-        "category_id": 1
+        "name": "Laptop Gamer",
+        "description": "Laptop para gaming con RTX 4060",
+        "price": 899.99,
+        "stock": 5,
+        "category": "electronics",
+        "status": "active"
     },
     {
         "id": 2,
-        "name": "Camiseta Polo",
-        "description": "Camiseta casual",
-        "price": 25.99,
-        "stock": 50,
-        "category_id": 2
+        "name": "Camiseta Básica",
+        "description": "Camiseta de algodón 100%",
+        "price": 19.99,
+        "stock": 25,
+        "category": "clothing",
+        "status": "active"
+    },
+    {
+        "id": 3,
+        "name": "Python Cookbook",
+        "description": "Recetas de programación en Python",
+        "price": 45.50,
+        "stock": 0,
+        "category": "books",
+        "status": "out_of_stock"
     }
 ]
 ```
 
-## 🛠️ Estructura del Proyecto
+## 🛠️ Estructura Simplificada del Proyecto
 
-### **Estructura Recomendada**
+### **Un solo archivo: main.py**
 
-```text
-inventory-api/
-├── app/
-│   ├── main.py
-│   ├── models.py
-│   ├── database.py
-│   └── routers/
-│       ├── products.py
-│       └── categories.py
-├── requirements.txt
-└── README.md
+```python
+# main.py - Todo en un archivo para simplificar
+from fastapi import FastAPI, HTTPException, Query
+from pydantic import BaseModel, Field, validator
+from datetime import datetime
+from typing import Optional, List, Dict
+from enum import Enum
+
+# ... modelos y lógica aquí ...
+
+app = FastAPI(title="API de Productos - Semana 3")
+
+# Base de datos en memoria
+products_db: Dict[int, dict] = {}
+next_id: int = 1
+
+# ... endpoints aquí ...
 ```
 
-## 📋 Criterios de Entrega
+## 📋 Criterios de Evaluación
 
-### **Funcionalidades Mínimas**
+### **Funcionalidades Mínimas (Total: 100 puntos)**
 
-- ✅ **CRUD completo** para productos
-- ✅ **Gestión básica** de categorías
-- ✅ **Validación** con Pydantic
-- ✅ **Manejo de errores** básico
-- ✅ **Filtros** de búsqueda simple
+#### **Funcionalidad CRUD (40 puntos)**
 
-### **Requisitos Técnicos**
+- ✅ POST /products - Crear producto (10 pts)
+- ✅ GET /products - Listar productos (10 pts)
+- ✅ GET /products/{id} - Obtener producto (10 pts)
+- ✅ PUT /products/{id} - Actualizar producto (10 pts)
 
-- ✅ **API ejecutable** con `uvicorn`
-- ✅ **Documentación** automática en `/docs`
-- ✅ **Código organizado** y limpio
-- ✅ **README** con instrucciones
+#### **Validación con Pydantic (30 puntos)**
 
-## 🎯 Casos de Prueba
+- ✅ Validaciones de campos con Field (10 pts)
+- ✅ Validators personalizados (10 pts)
+- ✅ Enums funcionando (10 pts)
+
+#### **Manejo de Errores (20 puntos)**
+
+- ✅ HTTPException para 404 (10 pts)
+- ✅ Responses de error apropiados (10 pts)
+
+#### **Filtros y Calidad (10 puntos)**
+
+- ✅ Filtros básicos por precio (5 pts)
+- ✅ Código limpio y organizado (5 pts)
+
+## ⏰ Cronograma Realista (5.5 horas)
+
+### **Paso 1: Setup y Modelos (90 min)**
+
+- Crear estructura básica del proyecto
+- Implementar modelos Pydantic con validaciones
+- Probar modelos con datos de ejemplo
+
+### **Paso 2: CRUD Básico (120 min)**
+
+- POST /products - Crear producto
+- GET /products - Listar productos
+- GET /products/{id} - Obtener producto específico
+- PUT /products/{id} - Actualizar producto
+
+### **Paso 3: Manejo de Errores (60 min)**
+
+- Implementar HTTPException para casos básicos
+- Manejar errores de validación
+- Probar casos de error
+
+### **Paso 4: Filtros y Pulido (60 min)**
+
+- Agregar filtros simples por precio y categoría
+- Testing manual de todos los endpoints
+- Documentación básica
+
+### **Total: 5.5 horas (330 minutos)**
+
+## 🎯 Casos de Prueba Básicos
 
 ### **Casos de Éxito**
 
@@ -201,67 +279,103 @@ inventory-api/
 # 1. Crear producto
 curl -X POST "http://localhost:8000/products" \
   -H "Content-Type: application/json" \
-  -d '{"name": "Laptop", "price": 799.99, "stock": 10, "category_id": 1}'
+  -d '{
+    "name": "laptop gaming",
+    "description": "Laptop para juegos",
+    "price": 899.99,
+    "stock": 5,
+    "category": "electronics"
+  }'
 
-# 2. Buscar productos
-curl -X GET "http://localhost:8000/products?min_price=100&max_price=500"
+# 2. Listar productos con filtros
+curl "http://localhost:8000/products?min_price=100&max_price=500&category=electronics"
 
-# 3. Obtener producto por ID
-curl -X GET "http://localhost:8000/products/1"
+# 3. Obtener producto específico
+curl "http://localhost:8000/products/1"
+
+# 4. Actualizar producto
+curl -X PUT "http://localhost:8000/products/1" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Laptop Gaming Pro",
+    "price": 999.99,
+    "stock": 3
+  }'
 ```
 
 ### **Casos de Error**
 
 ```bash
 # 1. Producto no encontrado
-curl -X GET "http://localhost:8000/products/999"
+curl "http://localhost:8000/products/999"
+# Esperado: 404 Not Found
 
 # 2. Precio inválido
 curl -X POST "http://localhost:8000/products" \
-  -d '{"name": "Test", "price": -10, "category_id": 1}'
+  -H "Content-Type: application/json" \
+  -d '{"name": "Test", "price": -10, "stock": 5}'
+# Esperado: 422 Validation Error
+
+# 3. Nombre muy corto
+curl -X POST "http://localhost:8000/products" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "A", "price": 10, "stock": 5}'
+# Esperado: 422 Validation Error
 ```
-
-## 📊 Evaluación
-
-| Criterio               | Peso | Descripción                   |
-| ---------------------- | ---- | ----------------------------- |
-| **Funcionalidad CRUD** | 40%  | Operaciones básicas completas |
-| **Validación**         | 25%  | Validaciones con Pydantic     |
-| **Manejo de Errores**  | 20%  | Excepciones básicas           |
-| **Documentación**      | 15%  | README y docs automáticas     |
-
-## ⏰ Tiempo Estimado
-
-### Total: 4-6 horas
-
-### **Día 1 (2-3h)**: Estructura y Modelos
-
-- Configurar proyecto
-- Crear modelos Pydantic
-- Implementar endpoints básicos
-
-### **Día 2 (2-3h)**: Validación y Errores
-
-- Agregar validaciones
-- Implementar manejo de errores
-- Crear filtros básicos
-- Testing y documentación
 
 ## 📝 Entregables
 
-1. **Código fuente** completo
-2. **API funcionando**
-3. **README.md** con instrucciones
-4. **Documentación** automática accesible
+### **Archivos Requeridos:**
+
+1. **`main.py`** - API principal con todos los endpoints
+2. **`requirements.txt`** - Dependencias del proyecto
+3. **`README.md`** - Documentación básica
+
+### **README Ejemplo:**
+
+```markdown
+# API de Productos - Semana 3
+
+## Descripción
+
+API REST para gestión de productos con validaciones Pydantic.
+
+## Instalación
+
+\`\`\`bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+\`\`\`
+
+## Endpoints
+
+- POST /products - Crear producto
+- GET /products - Listar productos
+- GET /products/{id} - Obtener producto
+- PUT /products/{id} - Actualizar producto
+
+## Validaciones Implementadas
+
+- Nombre: se capitaliza automáticamente
+- Precio: debe ser positivo, se redondea a 2 decimales
+- Stock: no puede ser negativo
+```
+
+## 🎯 Consejos para el Éxito
+
+1. **Empieza simple**: Implementa CRUD básico primero
+2. **Prueba constantemente**: Usa /docs para verificar endpoints
+3. **Validaciones graduales**: Agrega una validación a la vez
+4. **Manejo de errores básico**: Solo 404 y 422 son suficientes
+5. **Un archivo es suficiente**: No compliques la estructura
+
+## 🏆 Oportunidades de Bonus
+
+- **+5 puntos**: Endpoint DELETE /products/{id}
+- **+5 puntos**: Filtro adicional por status
+- **+5 puntos**: Contador de productos por categoría
+- **+10 puntos**: Validación de nombre único (no duplicados)
 
 ---
 
-## 💡 Consejos
-
-- ⏰ **Enfócate en lo básico** antes que en características avanzadas
-- 🔄 **Prueba cada endpoint** mientras desarrollas
-- 📝 **Documenta el proceso** en el README
-
----
-
-_Proyecto Semana 3 - Bootcamp FastAPI - EPTI Development_
+**🎯 Objetivo**: Consolidar validaciones Pydantic y manejo básico de errores en un proyecto práctico y realista.
