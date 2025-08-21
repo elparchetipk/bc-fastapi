@@ -127,12 +127,14 @@ curl -X PATCH "http://localhost:8000/books/1" \
 ## Modelos de Datos
 
 ### BookStatus (Enum)
+
 - `to_read` - Por leer
 - `reading` - Leyendo
 - `finished` - Terminado
 - `paused` - Pausado
 
 ### BookGenre (Enum)
+
 - `fiction` - Ficción
 - `non_fiction` - No ficción
 - `science` - Ciencia
@@ -142,6 +144,7 @@ curl -X PATCH "http://localhost:8000/books/1" \
 - `other` - Otro
 
 ### Campos del Libro
+
 - `title` (obligatorio): Título del libro
 - `author` (obligatorio): Autor del libro
 - `isbn` (opcional): ISBN de 10 o 13 dígitos
@@ -163,6 +166,7 @@ curl -X PATCH "http://localhost:8000/books/1" \
 ## Datos de Ejemplo
 
 La aplicación viene con 3 libros de ejemplo:
+
 1. Don Quijote de la Mancha (Cervantes)
 2. Sapiens (Yuval Noah Harari)
 3. Clean Code (Robert C. Martin)
