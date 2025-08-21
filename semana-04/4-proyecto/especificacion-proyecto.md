@@ -1,10 +1,10 @@
-# Proyecto Final Semana 4: API E-commerce con Base de Datos
+# Proyecto Final Semana 4: API de Biblioteca con Base de Datos
 
 ## 🎯 Objetivo del Proyecto
 
-Crear una API REST completa para un sistema de e-commerce que integre todos los conceptos aprendidos en la Semana 4: bases de datos, relaciones, migraciones y testing.
+Crear una API REST para un sistema de gestión de biblioteca que integre los conceptos fundamentales de la Semana 4: bases de datos, relaciones básicas, CRUD y testing.
 
-**⏱️ Tiempo estimado:** 4-6 horas  
+**⏱️ Tiempo estimado:** 5.5 horas  
 **📅 Fecha de entrega:** Final de la Semana 4  
 **🏆 Peso en la evaluación:** 40% de la calificación semanal
 
@@ -14,158 +14,109 @@ Crear una API REST completa para un sistema de e-commerce que integre todos los 
 
 ### Contexto del Negocio
 
-Desarrollar el backend para una plataforma de e-commerce que permita:
+Desarrollar el backend para un sistema de biblioteca que permita:
 
-- Gestión de productos con categorías
-- Sistema de usuarios y autenticación básica
-- Carrito de compras y órdenes
-- Sistema de reseñas y calificaciones
-- Reportes de ventas y estadísticas
+- Gestión de libros (CRUD completo)
+- Registro de usuarios de la biblioteca
+- Sistema de préstamos y devoluciones
+- Consultas básicas con relaciones entre entidades
+- Validaciones de reglas de negocio simples
 
 ### Tecnologías Requeridas
 
 - **Framework:** FastAPI
 - **Base de Datos:** SQLite con SQLAlchemy ORM
-- **Migraciones:** Alembic
-- **Testing:** pytest
+- **Testing:** pytest básico
 - **Validación:** Pydantic v2
 
 ---
 
 ## 🏗️ Arquitectura del Sistema
 
-### Estructura del Proyecto
+### Estructura del Proyecto (Simplificada)
 
 ```text
-ecommerce_api/
+library_api/
 ├── app/
 │   ├── __init__.py
 │   ├── main.py                 # Aplicación principal
 │   ├── database.py             # Configuración BD
-│   ├── dependencies.py         # Dependencias compartidas
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── crud/
-│   │   ├── __init__.py
-│   │   ├── base.py
-│   │   ├── user.py
-│   │   ├── category.py
-│   │   ├── product.py
-│   │   ├── cart.py
-│   │   ├── order.py
-│   │   └── review.py
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── endpoints/
-│   │   │   ├── users.py
-│   │   │   ├── categories.py
-│   │   │   ├── products.py
-│   │   │   ├── cart.py
-│   │   │   ├── orders.py
-│   │   │   ├── reviews.py
-│   │   │   └── reports.py
-│   │   └── api.py              # Router principal
-│   └── core/
-│       ├── __init__.py
-│       ├── config.py
-│       └── security.py         # Hash de passwords
-├── alembic/
-│   ├── versions/
-│   ├── env.py
-│   └── script.py.mako
+│   ├── models.py               # Todos los modelos SQLAlchemy
+│   ├── schemas.py              # Todos los schemas Pydantic
+│   ├── crud.py                 # Operaciones CRUD
+│   └── dependencies.py         # Dependencias compartidas
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
+│   ├── test_books.py
 │   ├── test_users.py
-│   ├── test_products.py
-│   ├── test_orders.py
-│   ├── test_cart.py
-│   └── test_integration.py
-├── scripts/
-│   ├── init_db.py
-│   ├── seed_data.py
-│   └── migrate.py
-├── alembic.ini
+│   └── test_loans.py
 ├── requirements.txt
 ├── README.md
 └── .env.example
 ```
 
-### Modelo de Datos
+### Modelo de Datos (Simplificado)
 
 #### Entidades Principales
 
-1. **User** (Usuario)
+1. **Book** (Libro)
 
-   - id, username, email, hashed_password
-   - full_name, phone, is_active
-   - created_at, updated_at
+   - id (Primary Key)
+   - title (string, required)
+   - author (string, required)
+   - isbn (string, unique, optional)
+   - publication_year (integer, optional)
+   - is_available (boolean, default=True)
+   - created_at (datetime)
 
-2. **Category** (Categoría)
+2. **User** (Usuario)
 
-   - id, name, description, slug
-   - is_active, created_at
+   - id (Primary Key)
+   - name (string, required)
+   - email (string, unique, required)
+   - phone (string, optional)
+   - is_active (boolean, default=True)
+   - created_at (datetime)
 
-3. **Product** (Producto)
+3. **Loan** (Préstamo)
+   - id (Primary Key)
+   - user_id (Foreign Key → User)
+   - book_id (Foreign Key → Book)
+   - loan_date (datetime, required)
+   - return_date (datetime, optional)
+   - is_returned (boolean, default=False)
+   - created_at (datetime)
 
-   - id, name, description, sku
-   - price, cost, stock, is_active
-   - category_id (FK), created_at, updated_at
+#### Relaciones Simples
 
-4. **Cart** (Carrito)
-
-   - id, user_id (FK), created_at, updated_at
-
-5. **CartItem** (Item del Carrito)
-
-   - id, cart_id (FK), product_id (FK)
-   - quantity, unit_price, created_at
-
-6. **Order** (Orden)
-
-   - id, order_number, user_id (FK)
-   - total_amount, status, shipping_address
-   - created_at, updated_at
-
-7. **OrderItem** (Item de Orden)
-
-   - id, order_id (FK), product_id (FK)
-   - quantity, unit_price, subtotal
-
-8. **Review** (Reseña)
-   - id, user_id (FK), product_id (FK)
-   - rating, comment, is_verified
-   - created_at, updated_at
-
-#### Relaciones
-
-- User 1:1 Cart (un usuario, un carrito activo)
-- User 1:N Orders (un usuario, muchas órdenes)
-- User 1:N Reviews (un usuario, muchas reseñas)
-- Category 1:N Products (una categoría, muchos productos)
-- Cart 1:N CartItems (un carrito, muchos items)
-- Order 1:N OrderItems (una orden, muchos items)
-- Product 1:N CartItems (un producto en muchos carritos)
-- Product 1:N OrderItems (un producto en muchas órdenes)
-- Product 1:N Reviews (un producto, muchas reseñas)
+- User 1:N Loans (un usuario puede tener múltiples préstamos)
+- Book 1:N Loans (un libro puede ser prestado múltiples veces)
+- Constraint: Un libro solo puede ser prestado si está disponible
 
 ---
 
 ## 🎯 Funcionalidades Requeridas
+
+### Módulo de Libros
+
+#### Endpoints Mínimos
+
+```python
+POST   /api/v1/books/                    # Crear libro
+GET    /api/v1/books/                    # Listar libros (con paginación)
+GET    /api/v1/books/{book_id}           # Obtener libro por ID
+PUT    /api/v1/books/{book_id}           # Actualizar libro
+DELETE /api/v1/books/{book_id}           # Eliminar libro
+GET    /api/v1/books/search/{title}      # Buscar por título
+```
+
+#### Validaciones
+
+- Título requerido (máximo 200 caracteres)
+- Autor requerido (máximo 100 caracteres)
+- ISBN único si se proporciona (formato básico)
+- Año de publicación debe ser razonable (1500-2025)
 
 ### Módulo de Usuarios
 
@@ -174,30 +125,46 @@ ecommerce_api/
 ```python
 POST   /api/v1/users/                    # Crear usuario
 GET    /api/v1/users/                    # Listar usuarios
-GET    /api/v1/users/{user_id}           # Obtener usuario
+GET    /api/v1/users/{user_id}           # Obtener usuario por ID
 PUT    /api/v1/users/{user_id}           # Actualizar usuario
-DELETE /api/v1/users/{user_id}           # Eliminar usuario
-POST   /api/v1/users/login               # Login (retorna token simple)
+DELETE /api/v1/users/{user_id}           # Eliminar usuario (solo si no tiene préstamos activos)
 ```
 
 #### Validaciones
 
 - Email único y válido
-- Username único, 3-20 caracteres
-- Password mínimo 8 caracteres
-- Teléfono formato válido (opcional)
+- Nombre requerido (máximo 100 caracteres)
+- No se puede eliminar usuario con préstamos activos
 
-### Módulo de Categorías
+### Módulo de Préstamos
 
 #### Endpoints Mínimos
 
 ```python
-POST   /api/v1/categories/               # Crear categoría
-GET    /api/v1/categories/               # Listar categorías
-GET    /api/v1/categories/{category_id}  # Obtener categoría
-PUT    /api/v1/categories/{category_id}  # Actualizar categoría
-DELETE /api/v1/categories/{category_id}  # Eliminar categoría
-GET    /api/v1/categories/{category_id}/products  # Productos de categoría
+POST   /api/v1/loans/                    # Crear préstamo
+GET    /api/v1/loans/                    # Listar préstamos
+GET    /api/v1/loans/{loan_id}           # Obtener préstamo por ID
+PUT    /api/v1/loans/{loan_id}/return    # Marcar préstamo como devuelto
+GET    /api/v1/loans/user/{user_id}      # Préstamos de un usuario
+GET    /api/v1/loans/book/{book_id}      # Historial de préstamos de un libro
+GET    /api/v1/loans/active             # Préstamos activos
+```
+
+#### Reglas de Negocio
+
+- Solo se puede prestar un libro si está disponible (`is_available = True`)
+- Al crear un préstamo, el libro debe marcarse como no disponible
+- Al devolver un libro, debe marcarse como disponible nuevamente
+- Un usuario no puede tener más de 3 préstamos activos simultáneamente
+
+### Endpoints de Consultas
+
+#### Reportes Básicos
+
+```python
+GET    /api/v1/stats/books              # Estadísticas de libros
+GET    /api/v1/stats/users              # Estadísticas de usuarios
+GET    /api/v1/stats/loans              # Estadísticas de préstamos
 ```
 
 #### Validaciones
@@ -316,38 +283,59 @@ GET    /api/v1/reports/users/stats       # Estadísticas de usuarios
 
 ### Cobertura Mínima
 
-- **Coverage general:** > 80%
-- **Tests unitarios:** CRUD operations
-- **Tests de integración:** Endpoints principales
-- **Tests de validación:** Reglas de negocio
+- **Coverage general:** > 60%
+- **Tests unitarios:** CRUD operations básicas
+- **Tests de validación:** Reglas de negocio principales
 
-### Casos de Prueba Críticos
+### Casos de Prueba Básicos
 
-1. **Creación de orden completa:**
+1. **CRUD de Libros:**
 
-   - Agregar productos al carrito
-   - Verificar cálculos
-   - Crear orden
-   - Verificar reducción de stock
+   - Crear, leer, actualizar, eliminar libros
+   - Validaciones de campos requeridos
 
-2. **Validaciones de negocio:**
+2. **CRUD de Usuarios:**
 
-   - Stock insuficiente
-   - Duplicación de reseñas
-   - Eliminación con restricciones
+   - Crear, leer, actualizar, eliminar usuarios
+   - Validación de email único
 
-3. **Consultas complejas:**
-   - Búsqueda con múltiples filtros
-   - Reportes con agregaciones
-   - Relaciones correctas
+3. **Sistema de Préstamos:**
+
+   - Crear préstamo (libro disponible)
+   - Rechazar préstamo (libro no disponible)
+   - Devolver libro y marcar como disponible
+
+4. **Validaciones de Negocio:**
+   - Máximo 3 préstamos por usuario
+   - No eliminar usuario con préstamos activos
 
 ---
 
-## 📊 Datos de Prueba
+## ⏱️ Cronograma Detallado (5.5 horas)
 
-### Script de Inicialización
+### Sesión 1: Setup y Modelos (90 minutos)
 
-Crear `scripts/seed_data.py`:
+- **[0-30 min]** Configuración inicial del proyecto
+- **[30-60 min]** Modelos SQLAlchemy básicos (Book, User, Loan)
+- **[60-90 min]** Configuración de base de datos y conexión
+
+### Sesión 2: CRUD Básico (90 minutos)
+
+- **[90-120 min]** CRUD completo para libros
+- **[120-150 min]** CRUD completo para usuarios
+- **[150-180 min]** Testing básico de CRUD
+
+### Sesión 3: Sistema de Préstamos (90 minutos)
+
+- **[180-210 min]** Modelos y endpoints de préstamos
+- **[210-240 min]** Lógica de negocio (disponibilidad)
+- **[240-270 min]** Validaciones y reglas
+
+### Sesión 4: Testing y Finalización (90 minutos)
+
+- **[270-300 min]** Tests de integración
+- **[300-320 min]** Documentación y README
+- **[320-330 min]** Buffer y ajustes finales
 
 ```python
 def create_sample_data():
@@ -397,60 +385,109 @@ def create_sample_data():
 - [ ] Relaciones implementadas correctamente
 - [ ] Datos de prueba cargados
 
-### 3. Testing
+---
 
-- [ ] Suite de tests completa
-- [ ] Coverage > 80%
-- [ ] Tests de integración funcionando
-- [ ] Casos edge cubiertos
+## 📋 Entregables
 
-### 4. Documentación
+### Código Requerido
 
-- [ ] README.md con instrucciones de instalación
-- [ ] Documentación de API (automática con FastAPI)
-- [ ] Comentarios en código complejo
-- [ ] Archivo de configuración de ejemplo
+- [ ] **Archivo principal:** `app/main.py`
+- [ ] **Modelos:** `app/models.py` con las 3 entidades
+- [ ] **Schemas:** `app/schemas.py` con validaciones Pydantic
+- [ ] **CRUD:** `app/crud.py` con operaciones básicas
+- [ ] **Base de datos:** `app/database.py` con configuración SQLAlchemy
+- [ ] **Dependencias:** `requirements.txt` actualizado
 
-### 5. Scripts y Utilidades
+### Testing
 
-- [ ] Script de inicialización de BD
-- [ ] Script de datos de prueba
-- [ ] Script de migraciones
-- [ ] Archivo de dependencias actualizado
+- [ ] **Tests básicos:** Al menos 10 tests que pasen
+- [ ] **Test CRUD:** Para cada entidad (libros, usuarios, préstamos)
+- [ ] **Test validaciones:** Reglas de negocio principales
+- [ ] **Coverage:** Mínimo 60%
+
+### Documentación
+
+- [ ] **README.md** con instrucciones de instalación y uso
+- [ ] **Comentarios** en funciones complejas
+- [ ] **Documentación automática** de FastAPI funcionando
 
 ---
 
-## 📏 Criterios de Evaluación
+## 📏 Criterios de Evaluación (Simplificados)
 
-### Funcionalidad (40%)
+### Funcionalidad (50%)
 
-| Aspecto           | Puntos | Criterios                                   |
-| ----------------- | ------ | ------------------------------------------- |
-| **CRUD Completo** | 15     | Todas las operaciones funcionando           |
-| **Relaciones BD** | 15     | Relaciones correctas y consultas eficientes |
-| **Validaciones**  | 10     | Reglas de negocio implementadas             |
+| Aspecto               | Puntos | Criterios                              |
+| --------------------- | ------ | -------------------------------------- |
+| **CRUD Libros**       | 15     | Create, Read, Update, Delete funcional |
+| **CRUD Usuarios**     | 15     | Create, Read, Update, Delete funcional |
+| **Sistema Préstamos** | 20     | Lógica de préstamo/devolución correcta |
 
 ### Calidad de Código (30%)
 
-| Aspecto               | Puntos | Criterios                                |
-| --------------------- | ------ | ---------------------------------------- |
-| **Estructura**        | 10     | Organización clara y consistente         |
-| **Buenas Prácticas**  | 10     | PEP 8, naming conventions, DRY           |
-| **Manejo de Errores** | 10     | Excepciones apropiadas y mensajes claros |
+| Aspecto              | Puntos | Criterios                            |
+| -------------------- | ------ | ------------------------------------ |
+| **Estructura**       | 15     | Archivos organizados según plantilla |
+| **Buenas Prácticas** | 15     | Código limpio, nombres descriptivos  |
 
 ### Testing (20%)
 
-| Aspecto              | Puntos | Criterios                               |
-| -------------------- | ------ | --------------------------------------- |
-| **Cobertura**        | 10     | Coverage > 80%                          |
-| **Calidad de Tests** | 10     | Casos relevantes y assertions correctas |
+| Aspecto           | Puntos | Criterios                                 |
+| ----------------- | ------ | ----------------------------------------- |
+| **Tests Básicos** | 20     | Al menos 10 tests que pasen correctamente |
 
-### Documentación (10%)
+---
 
-| Aspecto         | Puntos | Criterios                                 |
+## 📚 Recursos de Apoyo
+
+### Documentación Oficial
+
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [SQLAlchemy ORM Tutorial](https://docs.sqlalchemy.org/en/20/orm/tutorial.html)
+- [Pydantic v2 Documentation](https://docs.pydantic.dev/latest/)
+- [pytest Getting Started](https://docs.pytest.org/en/stable/getting-started.html)
+
+### Ejemplos de Referencia
+
+- Prácticas de la Semana 4
+- [FastAPI SQL Databases Tutorial](https://fastapi.tiangolo.com/tutorial/sql-databases/)
+- Semanas anteriores del bootcamp (1-3)
+
+---
+
+## 💡 Tips para el Éxito
+
+1. **Sigue el cronograma:** 90 minutos por sesión, respeta los tiempos
+2. **Desarrolla incrementalmente:** Una entidad completa antes de seguir
+3. **Prueba frecuentemente:** Usa la documentación automática de FastAPI
+4. **Simplifica:** Enfócate en que funcione, no en optimizaciones
+5. **Usa los ejemplos:** Basate en las prácticas de la semana
+
+---
+
+## 🎯 Funcionalidades Mínimas vs Opcionales
+
+### ✅ **Mínimo Viable (Para aprobar)**
+
+- CRUD completo de libros y usuarios
+- Sistema básico de préstamos
+- Al menos 8 tests que pasen
+- README con instrucciones
+
+### 🌟 **Extensiones Opcionales (Bonus)**
+
+- [ ] Búsqueda avanzada de libros
+- [ ] Estadísticas y reportes
+- [ ] Validaciones adicionales (ISBN, fechas)
+- [ ] API de renovación de préstamos
+- [ ] Sistema de multas por retraso
+
+---
+
+¡Enfócate en completar el MVP primero, luego agrega las extensiones si tienes tiempo! 🚀
 | --------------- | ------ | ----------------------------------------- |
-| **README**      | 5      | Instrucciones claras de instalación y uso |
-| **Comentarios** | 5      | Código documentado apropiadamente         |
+| **README** | 5 | Instrucciones claras de instalación y uso |
+| **Comentarios** | 5 | Código documentado apropiadamente |
 
 ---
 

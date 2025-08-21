@@ -1,23 +1,23 @@
-# Semana 4: Bases de Datos con FastAPI
+# Semana 4: Bases de Datos con FastAPI (Ajustado)
 
 ## 🎯 Objetivos de la Semana
 
 Al finalizar esta semana, los estudiantes podrán:
 
-- **Integrar SQLAlchemy** con FastAPI para persistencia de datos
-- **Diseñar modelos de base de datos** relacionales básicos
-- **Implementar CRUD completo** con persistencia real
-- **Manejar migraciones** básicas con Alembic
-- **Aplicar testing** con bases de datos de prueba
+- **Integrar SQLAlchemy** con FastAPI para persistencia básica
+- **Diseñar modelos de base de datos** relacionales simples
+- **Implementar CRUD completo** con base de datos SQLite
+- **Aplicar validaciones** de reglas de negocio básicas
+- **Realizar testing** básico con bases de datos
 
 ## ⏱️ Distribución de Tiempo (6 horas total)
 
-| Bloque | Actividad                     | Tiempo | Descripción                  |
-| ------ | ----------------------------- | ------ | ---------------------------- |
-| **1**  | Configuración BD + SQLAlchemy | 90 min | Setup, modelos, conexión     |
-| **2**  | CRUD con Base de Datos        | 90 min | Create, Read, Update, Delete |
-| **3**  | Relaciones y Consultas        | 90 min | Foreign keys, joins básicos  |
-| **4**  | Migraciones y Testing         | 90 min | Alembic + pytest database    |
+| Bloque | Actividad                  | Tiempo | Descripción                              |
+| ------ | -------------------------- | ------ | ---------------------------------------- |
+| **1**  | Configuración BD + Modelos | 90 min | SQLAlchemy setup, modelos básicos        |
+| **2**  | CRUD Básico                | 90 min | Operaciones Create, Read, Update, Delete |
+| **3**  | Relaciones Simples         | 90 min | Foreign keys, consultas básicas          |
+| **4**  | Testing y Validaciones     | 90 min | pytest básico, reglas de negocio         |
 
 ## 📚 Contenido de la Semana
 
@@ -46,7 +46,9 @@ Al finalizar esta semana, los estudiantes podrán:
 
 ### **🚀 Proyecto**
 
-- [📋 API E-commerce con BD](./4-proyecto/especificacion-proyecto.md)
+- [📋 API de Biblioteca con BD](./4-proyecto/especificacion-proyecto.md) ⭐ **AJUSTADO**
+
+**Proyecto Simplificado:** Sistema de gestión de biblioteca con 3 entidades (Book, User, Loan), CRUD completo y reglas de negocio básicas. Tiempo estimado: 5.5 horas.
 
 ### **📚 Recursos**
 
