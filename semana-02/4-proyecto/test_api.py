@@ -3,11 +3,24 @@
 Script de pruebas básicas para la API de Biblioteca Personal
 Ejecutar: python test_api.py
 Asegúrate de que la API esté corriendo en http://localhost:8000
+
+Dependencias requeridas:
+- pip install requests
+
+O instalar todas las dependencias:
+- pip install -r requirements.txt
 """
 
-import requests
 import json
 from datetime import datetime
+
+# Verificar que requests esté instalado
+try:
+    import requests
+except ImportError:
+    print("❌ Error: La biblioteca 'requests' no está instalada.")
+    print("🔧 Solución: Ejecuta 'pip install requests' o 'pip install -r requirements.txt'")
+    exit(1)
 
 BASE_URL = "http://localhost:8000"
 
