@@ -1,27 +1,27 @@
-# FastAPI Bootcamp - Semana 4: Versiones LTS Estables
-# Compatible con Python 3.8+ y garantizadas para funcionar juntas
+# FastAPI Bootcamp - Semana 4: Versiones Más Recientes
+# Compatible con Python 3.9+ y versiones actuales estables
 
-# Core FastAPI (LTS)
-fastapi==0.103.1
-uvicorn[standard]==0.23.2
+# Core FastAPI (Latest)
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
 
-# Base de Datos (LTS)
-sqlalchemy==1.4.53
-alembic==1.12.1
+# Base de Datos (Latest)
+sqlalchemy>=2.0.35
+alembic>=1.14.0
 
-# Validación de Datos (Stable)
-pydantic[email]==1.10.13
+# Validación de Datos (Latest)
+pydantic>=2.9.0
 
 # Utilidades
-python-multipart==0.0.6
+python-multipart>=0.0.12
 
-# Testing (Stable)
-pytest==7.4.3
-httpx==0.25.0
+# Testing (Latest)
+pytest>=8.3.0
+httpx>=0.28.0
 
-# Requests (LTS)
-requests==2.31.0
-types-requests==2.31.0.20240125
+# Requests (Latest)
+requests>=2.32.0
+types-requests>=2.32.0
 
 # Desarrollo
-python-dotenv==1.0.0
+python-dotenv>=1.0.1

@@ -1,12 +1,11 @@
-# API de Biblioteca - Ejemplo Funcional LTS
+# API de Biblioteca - Versiones Modernas
 # Semana 4: Bases de Datos con FastAPI
-# Compatible con Python 3.8+ y versiones LTS estables
+# Compatible con Python 3.9+ y versiones actuales
 
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, DateTime, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session, relationship
-from pydantic import BaseModel, validator
+from sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship
+from pydantic import BaseModel, field_validator
 from typing import List, Optional
 from datetime import datetime
 import re
@@ -24,7 +23,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 # ============================
-# MODELOS SQLAlchemy (LTS Compatible)
+# MODELOS SQLAlchemy (Moderno)
 # ============================
 
 class User(Base):
@@ -73,7 +72,7 @@ class Loan(Base):
 Base.metadata.create_all(bind=engine)
 
 # ============================
-# SCHEMAS PYDANTIC (v1.x Compatible)
+# SCHEMAS PYDANTIC (v2.x Compatible)
 # ============================
 
 class UserBase(BaseModel):
@@ -81,16 +80,18 @@ class UserBase(BaseModel):
     email: str
     phone: Optional[str] = None
     
-    @validator('email')
-    def validate_email(cls, v):
-        # Validación básica de email compatible con Pydantic 1.x
+    @field_validator('email')
+    @classmethod
+    def validate_email(cls, v: str) -> str:
+        # Validación básica de email compatible con Pydantic 2.x
         pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         if not re.match(pattern, v):
             raise ValueError('Formato de email inválido')
         return v
     
-    @validator('name')
-    def validate_name(cls, v):
+    @field_validator('name')
+    @classmethod
+    def validate_name(cls, v: str) -> str:
         if len(v.strip()) < 2:
             raise ValueError('El nombre debe tener al menos 2 caracteres')
         return v.strip()
@@ -103,8 +104,7 @@ class UserResponse(UserBase):
     is_active: bool
     created_at: datetime
     
-    class Config:
-        orm_mode = True  # Pydantic 1.x compatible
+    model_config = {"from_attributes": True}  # Pydantic 2.x
 
 class BookBase(BaseModel):
     title: str
@@ -112,20 +112,23 @@ class BookBase(BaseModel):
     isbn: Optional[str] = None
     publication_year: Optional[int] = None
     
-    @validator('title')
-    def validate_title(cls, v):
+    @field_validator('title')
+    @classmethod
+    def validate_title(cls, v: str) -> str:
         if len(v.strip()) < 1:
             raise ValueError('El título es requerido')
         return v.strip()
     
-    @validator('author')
-    def validate_author(cls, v):
+    @field_validator('author')
+    @classmethod
+    def validate_author(cls, v: str) -> str:
         if len(v.strip()) < 1:
             raise ValueError('El autor es requerido')
         return v.strip()
     
-    @validator('publication_year')
-    def validate_year(cls, v):
+    @field_validator('publication_year')
+    @classmethod
+    def validate_year(cls, v: Optional[int]) -> Optional[int]:
         if v is not None and (v < 1000 or v > datetime.now().year + 1):
             raise ValueError(f'Año debe estar entre 1000 y {datetime.now().year + 1}')
         return v
@@ -138,8 +141,7 @@ class BookResponse(BookBase):
     is_available: bool
     created_at: datetime
     
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
 
 class LoanBase(BaseModel):
     user_id: int
@@ -155,8 +157,7 @@ class LoanResponse(LoanBase):
     is_returned: bool
     created_at: datetime
     
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
 
 # ============================
 # DEPENDENCIAS
@@ -176,7 +177,7 @@ def get_db():
 app = FastAPI(
     title="API de Biblioteca",
     description="Sistema de gestión de biblioteca con FastAPI y SQLAlchemy",
-    version="1.0.0"
+    version="2.0.0"
 )
 
 # ============================
@@ -194,7 +195,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
             detail="El email ya está registrado"
         )
     
-    db_user = User(**user.dict())
+    db_user = User(**user.model_dump())
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -227,7 +228,7 @@ def update_user(user_id: int, user_update: UserCreate, db: Session = Depends(get
         if existing_user:
             raise HTTPException(status_code=400, detail="El email ya está registrado")
     
-    for key, value in user_update.dict().items():
+    for key, value in user_update.model_dump().items():
         setattr(user, key, value)
     
     db.commit()
@@ -272,7 +273,7 @@ def create_book(book: BookCreate, db: Session = Depends(get_db)):
                 detail="ISBN ya registrado"
             )
     
-    db_book = Book(**book.dict())
+    db_book = Book(**book.model_dump())
     db.add(db_book)
     db.commit()
     db.refresh(db_book)
@@ -311,7 +312,7 @@ def update_book(book_id: int, book_update: BookCreate, db: Session = Depends(get
         if existing_book:
             raise HTTPException(status_code=400, detail="ISBN ya registrado")
     
-    for key, value in book_update.dict().items():
+    for key, value in book_update.model_dump().items():
         setattr(book, key, value)
     
     db.commit()
@@ -360,7 +361,7 @@ def create_loan(loan: LoanCreate, db: Session = Depends(get_db)):
         )
     
     # Crear préstamo
-    db_loan = Loan(**loan.dict())
+    db_loan = Loan(**loan.model_dump())
     db.add(db_loan)
     
     # Marcar libro como no disponible
@@ -471,7 +472,7 @@ def read_root():
         "message": "API de Biblioteca - Semana 4",
         "documentation": "/docs",
         "status": "running",
-        "version": "1.0.0 LTS"
+        "version": "2.0.0 - Versiones Modernas"
     }
 
 # ============================
@@ -481,7 +482,7 @@ def read_root():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        app, 
+        "ejemplo_main:app", 
         host="0.0.0.0", 
         port=8000,
         reload=True
