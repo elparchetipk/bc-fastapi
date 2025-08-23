@@ -1,42 +1,53 @@
-# Semana 7: Optimización y Performance
+# Semana 7: Testing Avanzado y Performance Básica
 
 ⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
 📚 **NIVEL: Intermedio-Avanzado (construye sobre Semanas 1-6)**
 
-## 🚨 **IMPORTANTE: Optimizando para Producción**
+## 🚨 **IMPORTANTE: Testing + Performance Básica**
 
-Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación y testing** (Semanas 1-6). Implementaremos técnicas de optimización y monitoring para preparar la aplicación para producción.
+Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación, roles y testing básico** (Semanas 1-6). Implementaremos testing avanzado con coverage y optimizaciones básicas de performance.
 
 - ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en performance real**
-- ✅ **Preparación para deployment en producción**
+- ✅ **Enfoque práctico en testing robusto + performance**
+- ✅ **Preparación para CI/CD y producción básica**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (Fundamentales)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
-1. ✅ **Implementarán caching** con Redis para optimización de consultas
-2. ✅ **Configurarán monitoring** básico de performance y logs
-3. ✅ **Optimizarán consultas** de base de datos con técnicas avanzadas
-4. ✅ **Aplicarán middleware** para rate limiting y compresión
-5. ✅ **Medirán performance** con herramientas de profiling
+1. ✅ **Implementarán coverage avanzado** con reportes detallados
+2. ✅ **Configurarán CI/CD básico** con GitHub Actions
+3. ✅ **Aplicarán caching básico** con Redis para consultas frecuentes
+4. ✅ **Optimizarán consultas** de base de datos con índices básicos
+5. ✅ **Consolidarán sistema completo** con testing y performance
 
-### ❌ **Lo que NO se espera dominar esta semana**
+### ❌ **Lo que NO se espera dominar esta semana** (MOVIDO A SEMANA 8)
 
+- ~~Middleware personalizado avanzado~~ → **Semana 8**
+- ~~Rate limiting complejo~~ → **Semana 8**
+- ~~Monitoring avanzado con métricas~~ → **Semana 8**
+- ~~Profiling de performance complejo~~ → **Semana 8**
 - Microservicios y arquitectura distribuida
 - Clusters de Redis y alta disponibilidad
-- Monitoring avanzado con Prometheus/Grafana completo
-- Load balancing y auto-scaling
-- CDN y optimización de red avanzada
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
 | Bloque | Actividad                  | Tiempo | Descripción                                   |
 | ------ | -------------------------- | ------ | --------------------------------------------- |
-| **1**  | Caching con Redis          | 90 min | Redis setup, cache patterns, invalidation     |
-| **2**  | Database Optimization      | 90 min | Query optimization, indexes, connections      |
-| **3**  | Middleware y Rate Limiting | 90 min | Custom middleware, rate limiting, compression |
-| **4**  | Monitoring y Profiling     | 90 min | Logs, metrics, performance monitoring         |
+| **1**  | Coverage y Testing Avanzado| 90 min | Coverage reports, mocks, fixtures avanzadas  |
+| **2**  | Redis y Caching Básico     | 60 min | Redis setup, cache patterns básicos          |
+| **3**  | Database Optimization      | 60 min | Índices básicos, EXPLAIN, connection pool    |
+| **4**  | CI/CD Introducción         | 75 min | GitHub Actions, testing automático           |
+| **5**  | Consolidación Final        | 45 min | Testing completo, debugging, documentación   |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **Agregado**: Coverage avanzado y testing con mocks (desde Semana 6)
+- ✅ **Agregado**: CI/CD básico con GitHub Actions
+- ⬇️ **Reducido**: Redis de 90 a 60 minutos (solo básico)
+- ⬇️ **Reducido**: Database optimization de 90 a 60 minutos
+- ❌ **Eliminado**: Middleware avanzado (se mueve a Semana 8)
+- ❌ **Eliminado**: Monitoring complejo (se mueve a Semana 8)
 
 ## 📚 Contenido de la Semana
 
@@ -54,10 +65,16 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 ### **💻 Prácticas**
 
-1. [🔴 Redis y Caching Strategies](./2-practica/23-redis-caching.md) _(90 min)_
-2. [🗃️ Database Performance Optimization](./2-practica/24-database-optimization.md) _(90 min)_
-3. [🛠️ Middleware y Rate Limiting](./2-practica/25-middleware-rate-limiting.md) _(90 min)_
-4. [📊 Monitoring y Performance Analysis](./2-practica/26-monitoring-profiling.md) _(90 min)_
+1. [� Coverage Avanzado y Testing con Mocks](./2-practica/25-coverage-advanced.md) _(90 min)_
+2. [�🔴 Redis y Caching Básico](./2-practica/26-redis-basic.md) _(60 min)_
+3. [🗃️ Database Optimization Básica](./2-practica/27-database-basic.md) _(60 min)_
+4. [� CI/CD con GitHub Actions](./2-practica/28-cicd-basic.md) _(75 min)_
+5. [� Consolidación y Testing Final](./2-practica/29-final-integration.md) _(45 min)_
+
+**ELIMINADO/MOVIDO A SEMANA 8:**
+- ~~Middleware personalizado~~ → **Semana 8**
+- ~~Rate limiting avanzado~~ → **Semana 8**
+- ~~Monitoring y profiling~~ → **Semana 8**
 
 ### **💪 Ejercicios**
 
@@ -162,18 +179,18 @@ python -c "import redis; r=redis.Redis(); print('Redis OK:', r.ping())"
 cd 2-practica && cat 23-redis-caching.md
 ```
 
-## 📅 Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                       | Duración | Acumulado |
-| ----------- | ------------------------------- | -------- | --------- |
-| 12:00-13:30 | Redis y Caching                 | 90 min   | 90 min    |
-| 13:30-14:00 | Database Optimization (parte 1) | 30 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**        | 30 min   | 150 min   |
-| 14:30-15:30 | Database Optimization (parte 2) | 60 min   | 210 min   |
-| 15:30-17:00 | Middleware y Rate Limiting      | 90 min   | 300 min   |
-| 17:00-18:00 | Monitoring y Profiling          | 60 min   | 360 min   |
+| Tiempo      | Actividad                   | Duración | Acumulado |
+| ----------- | --------------------------- | -------- | --------- |
+| 12:00-13:30 | Coverage y Testing Avanzado | 90 min   | 90 min    |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO**    | 30 min   | 120 min   |
+| 14:00-15:00 | Redis y Caching Básico      | 60 min   | 180 min   |
+| 15:00-16:00 | Database Optimization       | 60 min   | 240 min   |
+| 16:00-17:15 | CI/CD con GitHub Actions    | 75 min   | 315 min   |
+| 17:15-18:00 | Consolidación Final         | 45 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ---
 
