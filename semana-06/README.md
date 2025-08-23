@@ -1,42 +1,51 @@
-# Semana 6: Testing y Calidad de Código
+# Semana 6: Testing y Roles de Usuario
 
 ⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
 📚 **NIVEL: Intermedio (construye sobre Semanas 1-5)**
 
-## 🚨 **IMPORTANTE: Consolidando Conocimientos**
+## 🚨 **IMPORTANTE: Testing + Roles Básicos**
 
-Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación** (Semanas 1-5). Implementaremos testing automatizado y mejorará la calidad del código.
+Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación** (Semanas 1-5). Implementaremos testing automatizado y sistema básico de roles.
 
 - ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en testing de APIs**
+- ✅ **Enfoque práctico en testing de APIs + roles**
 - ✅ **Preparación para desarrollo profesional**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (Fundamentales)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
 1. ✅ **Implementarán testing automatizado** con pytest básico
 2. ✅ **Crearán tests para endpoints** de autenticación y CRUD
-3. ✅ **Medirán cobertura de código** con coverage básico
-4. ✅ **Aplicarán buenas prácticas** de testing en APIs
+3. ✅ **Implementarán sistema de roles** admin/user básico
+4. ✅ **Testing de autorización** con roles y permisos
 5. ✅ **Organizarán código** con estructura profesional
 
-### ❌ **Lo que NO se espera dominar esta semana**
+### ❌ **Lo que NO se espera dominar esta semana** (MOVIDO A SEMANA 7)
 
-- Testing avanzado con mocks complejos
-- Integración con CI/CD completa
+- ~~Cobertura avanzada con coverage~~ → **Semana 7**
+- ~~Testing avanzado con mocks complejos~~ → **Semana 7**
 - Performance testing avanzado
 - Security testing automatizado
 - Análisis de código con SonarQube completo
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
 | Bloque | Actividad                 | Tiempo | Descripción                       |
 | ------ | ------------------------- | ------ | --------------------------------- |
-| **1**  | Pytest Básico             | 90 min | Setup, fixtures, tests básicos    |
-| **2**  | Testing de APIs           | 90 min | TestClient, endpoints testing     |
-| **3**  | Testing con Autenticación | 90 min | Mocks, usuarios, tokens           |
-| **4**  | Cobertura y Calidad       | 90 min | Coverage, organización, documenta |
+| **1**  | Pytest Básico             | 75 min | Setup, fixtures, tests básicos    |
+| **2**  | Testing de APIs           | 45 min | TestClient, endpoints testing     |
+| **3**  | Testing con Autenticación | 60 min | Mocks, usuarios, tokens           |
+| **4**  | Roles y Autorización      | 105 min| Sistema roles, admin, testing     |
+| **5**  | Consolidación            | 45 min | Testing completo, debugging       |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **Agregado**: Sistema completo de roles (desde Semana 5)
+- ⬇️ **Reducido**: Testing de APIs de 90 a 45 minutos
+- ⬇️ **Reducido**: Testing con Auth de 90 a 60 minutos
+- ❌ **Eliminado**: Coverage avanzado (se mueve a Semana 7)
+- ✅ **Enfocado**: Testing funcional + roles operativos
 
 ## 📚 Contenido de la Semana
 
