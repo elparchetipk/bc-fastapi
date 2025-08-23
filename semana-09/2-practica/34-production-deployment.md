@@ -16,6 +16,7 @@ Al final de esta práctica habrás:
 - ✅ Creado setup básico para cualquier entorno
 
 **OPTIMIZADO PARA 75MIN:**
+
 - ✅ Enfoque en configuración práctica
 - ✅ Security basics sin complexity excess
 - ⬇️ Hardening simplificado pero efectivo

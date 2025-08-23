@@ -16,7 +16,7 @@ Esta semana está diseñada para estudiantes que **ya tienen una API completa co
 Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
 1. ✅ **Dominarán conceptos básicos** de containerización con Docker
-2. ✅ **Crearán Dockerfile optimizado** para aplicaciones FastAPI  
+2. ✅ **Crearán Dockerfile optimizado** para aplicaciones FastAPI
 3. ✅ **Configurarán Docker Compose esencial** para multi-servicios
 4. ✅ **Aplicarán configuración básica** para producción
 5. ✅ **Prepararán deployment** con documentation completa
@@ -31,12 +31,12 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                  | Tiempo | Descripción                                   |
-| ------ | -------------------------- | ------ | --------------------------------------------- |
-| **1**  | Docker Básico y Conceptos  | 90 min | Instalación, conceptos, primeros containers   |
-| **2**  | Dockerfile para FastAPI    | 90 min | Optimización de imagen, multi-stage builds    |
-| **3**  | Docker Compose Esencial    | 75 min | Orquestación básica, servicios principales    |
-| **4**  | Production Deployment      | 75 min | Configuración básica, variables, health checks |
+| Bloque | Actividad                 | Tiempo | Descripción                                    |
+| ------ | ------------------------- | ------ | ---------------------------------------------- |
+| **1**  | Docker Básico y Conceptos | 90 min | Instalación, conceptos, primeros containers    |
+| **2**  | Dockerfile para FastAPI   | 90 min | Optimización de imagen, multi-stage builds     |
+| **3**  | Docker Compose Esencial   | 75 min | Orquestación básica, servicios principales     |
+| **4**  | Production Deployment     | 75 min | Configuración básica, variables, health checks |
 
 **CAMBIOS PRINCIPALES:**
 
@@ -64,6 +64,7 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 4. [🚀 Production Deployment](./2-practica/34-production-deployment.md) _(75 min)_
 
 **OPTIMIZADO PARA 5H 30MIN:**
+
 - ✅ **Práctica 31-32**: Tiempo completo para fundamentos sólidos
 - ⬇️ **Práctica 33**: Compose esencial, configuración funcional
 - ⬇️ **Práctica 34**: Production basics, deployment preparation
@@ -130,10 +131,10 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                  | Duración | Acumulado |
-| ----------- | -------------------------- | -------- | --------- |
-| 12:00-13:30 | Docker Básico y Conceptos  | 90 min   | 90 min    |
-| 13:30-14:00 | **☕ BREAK OBLIGATORIO**   | 30 min   | 120 min   |
+| Tiempo      | Actividad                 | Duración | Acumulado |
+| ----------- | ------------------------- | -------- | --------- |
+| 12:00-13:30 | Docker Básico y Conceptos | 90 min   | 90 min    |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO**  | 30 min   | 120 min   |
 | 14:00-15:30 | Dockerfile para FastAPI   | 90 min   | 210 min   |
 | 15:30-16:45 | Docker Compose Esencial   | 75 min   | 285 min   |
 | 16:45-18:00 | Production Deployment     | 75 min   | 360 min   |

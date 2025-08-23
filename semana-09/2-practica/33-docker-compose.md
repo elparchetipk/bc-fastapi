@@ -16,6 +16,7 @@ Al final de esta práctica habrás:
 - ✅ Aplicado variables de entorno básicas
 
 **OPTIMIZADO PARA 75MIN:**
+
 - ✅ Enfoque en configuración funcional
 - ✅ Setup más directo y práctico
 - ⬇️ Menos configuraciones complejas
