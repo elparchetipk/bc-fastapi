@@ -7,36 +7,44 @@
 
 Esta semana está diseñada para estudiantes que **ya tienen una API completa containerizada con testing y deployment** (Semanas 1-9). Implementaremos funcionalidades avanzadas de tiempo real y procesamiento en background para crear aplicaciones más robustas y escalables.
 
-- ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en funcionalidades modernas**
-- ✅ **Preparación para aplicaciones de alto rendimiento**
+- ✅ **Completamente realizable en 5h 30min efectivos**
+- ✅ **Enfoque práctico en funcionalidades modernas esenciales**
+- ✅ **Preparación sólida para aplicaciones de alto rendimiento**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (API Avanzada Básica)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
-1. ✅ **Implementarán WebSockets** para comunicación en tiempo real
-2. ✅ **Configurarán Background Tasks** para procesamiento asíncrono
-3. ✅ **Integrarán Server-Sent Events (SSE)** para actualizaciones en vivo
-4. ✅ **Aplicarán caching avanzado** con Redis y técnicas de optimización
-5. ✅ **Crearán aplicaciones interactivas** con funcionalidades de tiempo real
+1. ✅ **Implementarán WebSockets básicos** para comunicación en tiempo real
+2. ✅ **Configurarán Background Tasks esenciales** para procesamiento asíncrono
+3. ✅ **Integrarán Server-Sent Events básicos** para actualizaciones en vivo
+4. ✅ **Aplicarán integración práctica** de las tres tecnologías
+5. ✅ **Crearán MVP funcional** con funcionalidades de tiempo real
 
 ### ❌ **Lo que NO se espera dominar esta semana**
 
+- WebSockets clustering y scaling horizontal avanzado
+- Background processing distribuido con Celery completo  
+- SSE optimization y streaming de datos masivos
 - Microservicios complejos con message brokers
-- WebSockets clustering y scaling horizontal
-- Background processing distribuido con Celery
-- Streaming de datos masivos
 - Implementación completa de GraphQL subscriptions
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
 | Bloque | Actividad                    | Tiempo | Descripción                                  |
 | ------ | ---------------------------- | ------ | -------------------------------------------- |
-| **1**  | WebSockets y Tiempo Real     | 90 min | Implementación de comunicación bidireccional |
-| **2**  | Background Tasks y Jobs      | 90 min | Procesamiento asíncrono y tareas programadas |
-| **3**  | Server-Sent Events y Caching | 90 min | Eventos en tiempo real y optimización        |
-| **4**  | Aplicación Integrada         | 90 min | Chat en tiempo real con notificaciones       |
+| **1**  | WebSockets y Tiempo Real     | 75 min | Implementación de comunicación bidireccional básica |
+| **2**  | Background Tasks y Jobs      | 75 min | Procesamiento asíncrono esencial |
+| **3**  | Server-Sent Events y Caching | 75 min | Eventos en tiempo real básicos        |
+| **4**  | Aplicación Integrada         | 75 min | Chat funcional con notificaciones básicas       |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **WebSockets fundamentals**: Base sólida en comunicación bidireccional
+- ✅ **Background Tasks esenciales**: Procesamiento async aplicable
+- ⬇️ **SSE simplificado**: Dashboard funcional (75min vs 90min)
+- ⬇️ **Integración práctica**: MVP funcional (75min vs 120min original)
+- ❌ **Eliminado**: Configuraciones avanzadas, optimization compleja
 
 ## 📚 Contenido de la Semana
 
@@ -75,46 +83,45 @@ semana-10/
 
 ## 🔧 Prácticas de la Semana
 
-### **📋 Práctica 35: WebSockets y Tiempo Real (90 min)**
+### **📋 Práctica 35: WebSockets y Tiempo Real (75 min)**
 
-- Configuración de WebSockets en FastAPI
-- Gestión de conexiones y salas
-- Implementación de chat básico
-- Manejo de errores y desconexiones
+- Configuración básica de WebSockets en FastAPI
+- Gestión de conexiones básicas
+- Implementación de chat funcional
+- Integración con autenticación
 
-### **📋 Práctica 36: Background Tasks (90 min)**
+### **📋 Práctica 36: Background Tasks (75 min)**
 
-- Tasks síncronos y asíncronos
-- Procesamiento de emails y notificaciones
-- Integración con Redis para queues
-- Monitoring y logs de tasks
+- FastAPI Background Tasks básicos
+- Procesamiento de emails y notificaciones esenciales
+- Redis setup básico para queues
+- Testing y logs básicos
 
-### **📋 Práctica 37: Server-Sent Events (90 min)**
+### **📋 Práctica 37: Server-Sent Events (75 min)**
 
-- SSE para actualizaciones en vivo
-- Streaming de datos en tiempo real
-- Caching inteligente con Redis
-- Optimización de performance
+- SSE implementación básica
+- Dashboard funcional en tiempo real
+- Updates automáticos básicos
+- Integration testing
 
-### **📋 Práctica 38: Aplicación Integrada (90 min)**
+### **📋 Práctica 38: Aplicación Integrada (75 min)**
 
 - Chat completo con WebSockets
 - Notificaciones con Background Tasks
 - Dashboard de actividad con SSE
 - Deployment con Docker
 
-## 📅 Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
 | Tiempo      | Actividad                  | Duración | Acumulado |
 | ----------- | -------------------------- | -------- | --------- |
-| 12:00-13:30 | WebSockets y Tiempo Real   | 90 min   | 90 min    |
-| 13:30-14:00 | Background Tasks (parte 1) | 30 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**   | 30 min   | 150 min   |
-| 14:30-15:30 | Background Tasks (parte 2) | 60 min   | 210 min   |
-| 15:30-17:00 | Server-Sent Events         | 90 min   | 300 min   |
-| 17:00-18:00 | Aplicación Integrada       | 60 min   | 360 min   |
+| 12:00-13:15 | WebSockets y Tiempo Real   | 75 min   | 75 min    |
+| 13:15-14:30 | Background Tasks           | 75 min   | 150 min   |
+| 14:30-15:00 | **☕ BREAK OBLIGATORIO**   | 30 min   | 180 min   |
+| 15:00-16:15 | Server-Sent Events         | 75 min   | 255 min   |
+| 16:15-17:30 | Aplicación Integrada       | 75 min   | 330 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ## 🎯 Ejercicios Prácticos
 
