@@ -32,12 +32,12 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                   | Tiempo | Descripción                     |
-| ------ | --------------------------- | ------ | ------------------------------- |
-| **1**  | JWT y Hashing Básico        | 90 min | JWT, passwords, setup inicial   |
-| **2**  | Sistema de Login            | 75 min | Endpoints de autenticación      |
-| **3**  | Protección de Endpoints     | 90 min | Dependencies, rutas protegidas  |
-| **4**  | Consolidación y Testing     | 75 min | Testing, debugging, ejercicios  |
+| Bloque | Actividad               | Tiempo | Descripción                    |
+| ------ | ----------------------- | ------ | ------------------------------ |
+| **1**  | JWT y Hashing Básico    | 90 min | JWT, passwords, setup inicial  |
+| **2**  | Sistema de Login        | 75 min | Endpoints de autenticación     |
+| **3**  | Protección de Endpoints | 90 min | Dependencies, rutas protegidas |
+| **4**  | Consolidación y Testing | 75 min | Testing, debugging, ejercicios |
 
 **CAMBIOS PRINCIPALES:**
 
@@ -191,13 +191,13 @@ echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
 
 ## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                     | Duración | Acumulado |
-| ----------- | ----------------------------- | -------- | --------- |
-| 12:00-13:30 | JWT y Hashing                 | 90 min   | 90 min    |
-| 13:30-14:00 | **☕ BREAK OBLIGATORIO**      | 30 min   | 120 min   |
-| 14:00-15:15 | Sistema de Login              | 75 min   | 195 min   |
-| 15:15-16:45 | Protección de Endpoints       | 90 min   | 285 min   |
-| 16:45-18:00 | Consolidación y Testing       | 75 min   | 360 min   |
+| Tiempo      | Actividad                | Duración | Acumulado |
+| ----------- | ------------------------ | -------- | --------- |
+| 12:00-13:30 | JWT y Hashing            | 90 min   | 90 min    |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO** | 30 min   | 120 min   |
+| 14:00-15:15 | Sistema de Login         | 75 min   | 195 min   |
+| 15:15-16:45 | Protección de Endpoints  | 90 min   | 285 min   |
+| 16:45-18:00 | Consolidación y Testing  | 75 min   | 360 min   |
 
 **Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 

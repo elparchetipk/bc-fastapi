@@ -135,6 +135,7 @@ Authorization: Bearer token-invalido
 **Síntoma**: `JWTError` o token no válido
 
 **Solución**:
+
 ```python
 # Verificar que SECRET_KEY y ALGORITHM estén bien
 SECRET_KEY = "tu-clave-secreta-muy-larga-y-segura-aqui"
@@ -157,17 +158,18 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 **Síntoma**: Passwords en texto plano en la base de datos
 
 **Solución**:
+
 ```python
 # En el endpoint de registro
 @app.post("/auth/register")
 async def register(user: UserCreate, db: Session = Depends(get_db)):
     # ❌ MALO: password en texto plano
     # db_user = User(email=user.email, password=user.password)
-    
+
     # ✅ BUENO: password hasheado
     hashed_password = get_password_hash(user.password)
     db_user = User(email=user.email, hashed_password=hashed_password)
-    
+
     db.add(db_user)
     db.commit()
     return db_user
@@ -178,6 +180,7 @@ async def register(user: UserCreate, db: Session = Depends(get_db)):
 **Síntoma**: `get_current_user` no funciona
 
 **Solución**:
+
 ```python
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -197,7 +200,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    
+
     # Buscar usuario en la base de datos
     user = db.query(User).filter(User.email == email).first()
     if user is None:
@@ -214,17 +217,20 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 1. **Abrir**: `http://127.0.0.1:8000/docs`
 
 2. **Probar registro**:
+
    - Expandir `POST /auth/register`
    - Click "Try it out"
    - Agregar datos de usuario
    - Click "Execute"
 
 3. **Probar login**:
+
    - Expandir `POST /auth/login`
    - Usar `username` (no email) y `password`
    - Copiar el `access_token`
 
 4. **Autorizar**:
+
    - Click botón "Authorize" (🔐) arriba
    - Pegar token: `Bearer tu-token-aqui`
    - Click "Authorize"
@@ -249,6 +255,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 - [ ] Documentación clara de endpoints
 
 **Si algún item no funciona:**
+
 1. Revisar logs de errores
 2. Verificar configuración de variables
 3. Comprobar imports y dependencies
@@ -259,6 +266,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 ## 🎯 Resultado Esperado
 
 **API de autenticación básica pero completa:**
+
 - Registro seguro de usuarios
 - Login con JWT tokens
 - Protección de endpoints
@@ -268,6 +276,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 ## 📚 Próximos Pasos
 
 **En la siguiente semana agregarás:**
+
 - Sistema de roles (admin/user)
 - Permisos granulares
 - Refresh tokens
