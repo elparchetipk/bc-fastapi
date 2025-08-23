@@ -210,7 +210,7 @@ cd 2-practica && cat 25-coverage-advanced.md
 ### **Monitoring Básico**
 
 - ✅ **Coverage Reports**: HTML/XML reports generándose
-- ✅ **Health Checks**: Endpoints de monitoreo funcionando  
+- ✅ **Health Checks**: Endpoints de monitoreo funcionando
 - ✅ **Cache Status**: Redis conectividad verificada
 - ✅ **Database Health**: Connection pooling básico
 - ✅ **CI/CD Status**: Pipeline status visible
