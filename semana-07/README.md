@@ -1,7 +1,13 @@
 # Semana 7: Testing Avanzado y Performance Básica
 
-⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
-📚 **NIVEL: Intermedio-Avanzado (construye sobre Semanas 1-6)**
+⏰ **DURACIÓN T### **💻 Prácticas\*\*
+
+1. [🔍 Coverage Avanzado y Testing con Mocks](./2-practica/25-coverage-advanced.md) _(90 min)_
+2. [🔴 Redis y Caching Básico](./2-practica/26-redis-basic.md) _(60 min)_
+3. [🗃️ Database Optimization Básica](./2-practica/27-database-basic.md) _(60 min)_
+4. [🔧 CI/CD con GitHub Actions](./2-practica/28-cicd-basic.md) _(75 min)_
+5. [✅ Consolidación y Testing Final](./2-practica/29-final-integration.md) _(45 min)_ HORAS EXACTAS**  
+   📚 **NIVEL: Intermedio-Avanzado (construye sobre Semanas 1-6)\*\*
 
 ## 🚨 **IMPORTANTE: Testing + Performance Básica**
 
@@ -32,13 +38,13 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                  | Tiempo | Descripción                                   |
-| ------ | -------------------------- | ------ | --------------------------------------------- |
-| **1**  | Coverage y Testing Avanzado| 90 min | Coverage reports, mocks, fixtures avanzadas  |
-| **2**  | Redis y Caching Básico     | 60 min | Redis setup, cache patterns básicos          |
-| **3**  | Database Optimization      | 60 min | Índices básicos, EXPLAIN, connection pool    |
-| **4**  | CI/CD Introducción         | 75 min | GitHub Actions, testing automático           |
-| **5**  | Consolidación Final        | 45 min | Testing completo, debugging, documentación   |
+| Bloque | Actividad                   | Tiempo | Descripción                                 |
+| ------ | --------------------------- | ------ | ------------------------------------------- |
+| **1**  | Coverage y Testing Avanzado | 90 min | Coverage reports, mocks, fixtures avanzadas |
+| **2**  | Redis y Caching Básico      | 60 min | Redis setup, cache patterns básicos         |
+| **3**  | Database Optimization       | 60 min | Índices básicos, EXPLAIN, connection pool   |
+| **4**  | CI/CD Introducción          | 75 min | GitHub Actions, testing automático          |
+| **5**  | Consolidación Final         | 45 min | Testing completo, debugging, documentación  |
 
 **CAMBIOS PRINCIPALES:**
 
@@ -72,6 +78,7 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 5. [� Consolidación y Testing Final](./2-practica/29-final-integration.md) _(45 min)_
 
 **ELIMINADO/MOVIDO A SEMANA 8:**
+
 - ~~Middleware personalizado~~ → **Semana 8**
 - ~~Rate limiting avanzado~~ → **Semana 8**
 - ~~Monitoring y profiling~~ → **Semana 8**
@@ -117,37 +124,33 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ **Estructura de 6 Horas (Incluye Break de 30 min)**
 
-### **Bloque 1: Redis y Caching (90 min)**
+### **Bloque 1: Coverage y Testing Avanzado (90 min)**
 
-- **23-redis-caching.md**
+- **25-coverage-advanced.md**
+- Coverage reports con HTML/XML
+- Testing con mocks y fixtures avanzadas
+- Integración con herramientas de CI
+
+### **Bloque 2: Redis y Caching Básico (60 min)**
+
+- **26-redis-basic.md** _(simplificado)_
 - Instalación y configuración de Redis
-- Patrones de cache (Cache-Aside, Write-Through)
-- Implementación de cache en endpoints críticos
-- Cache invalidation strategies
+- Cache básico para endpoints críticos
+- Invalidación simple de cache
 
-### **Bloque 2: Database Optimization (90 min)**
+### **Bloque 3: Database Optimization Básica (60 min)**
 
-- **24-database-optimization.md**
-- Análisis de queries lentas con EXPLAIN
-- Creación de índices estratégicos
-- Connection pooling avanzado
-- Lazy loading vs eager loading
+- **27-database-basic.md** _(simplificado)_
+- Análisis básico con EXPLAIN
+- Creación de índices estratégicos básicos
+- Connection pooling simple
 
-### **Bloque 3: Middleware y Rate Limiting (90 min)**
+### **Bloque 4: CI/CD Introducción (75 min)**
 
-- **25-middleware-rate-limiting.md**
-- Custom middleware para métricas
-- Rate limiting por usuario/IP
-- Compresión de respuestas
-- Request/Response logging
-
-### **Bloque 4: Monitoring y Profiling (90 min)**
-
-- **26-monitoring-profiling.md**
-- Structured logging implementation
-- Performance profiling con py-spy
-- Memory usage analysis
-- Métricas de aplicación básicas
+- **28-cicd-basic.md** _(nuevo)_
+- GitHub Actions workflow básico
+- Testing automático en CI
+- Deploy concepts fundamentales
 
 ---
 

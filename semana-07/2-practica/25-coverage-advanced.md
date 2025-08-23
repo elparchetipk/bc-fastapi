@@ -69,7 +69,7 @@ testpaths = tests
 python_files = test_*.py
 python_functions = test_*
 python_classes = Test*
-addopts = 
+addopts =
     --strict-markers
     --disable-warnings
     --cov=app
@@ -123,23 +123,23 @@ from app.models.user import User
 
 def test_external_service_mock(client, mocker):
     """Test con mock de servicio externo"""
-    
+
     # Mock de Redis
     mock_redis = mocker.patch('app.cache.redis_client')
     mock_redis.get.return_value = None
     mock_redis.set.return_value = True
-    
+
     response = client.get("/some-cached-endpoint")
-    
+
     assert response.status_code == 200
     mock_redis.get.assert_called_once()
 
 def test_database_operation_mock(client, mocker):
     """Test con mock de operación de base de datos"""
-    
+
     # Mock de función de base de datos
     mock_db_operation = mocker.patch('app.crud.get_user_by_email')
-    
+
     # Configurar el mock
     mock_user = User(
         id=1,
@@ -148,17 +148,17 @@ def test_database_operation_mock(client, mocker):
         role="user"
     )
     mock_db_operation.return_value = mock_user
-    
+
     # Ejecutar test
     response = client.get("/users/test@example.com")
-    
+
     assert response.status_code == 200
     assert response.json()["email"] == "test@example.com"
     mock_db_operation.assert_called_once_with("test@example.com")
 
 def test_authentication_dependency_mock(client, mocker):
     """Test con mock de dependencia de autenticación"""
-    
+
     # Mock del usuario actual
     mock_user = User(
         id=1,
@@ -166,12 +166,12 @@ def test_authentication_dependency_mock(client, mocker):
         full_name="Admin User",
         role="admin"
     )
-    
+
     # Mock de la dependencia
     mocker.patch('app.auth.dependencies.get_current_user', return_value=mock_user)
-    
+
     response = client.get("/admin/users")
-    
+
     assert response.status_code == 200
     users = response.json()
     assert isinstance(users, list)
@@ -179,15 +179,15 @@ def test_authentication_dependency_mock(client, mocker):
 @pytest.mark.asyncio
 async def test_async_operation_mock(mocker):
     """Test con mock de operación asíncrona"""
-    
+
     # Mock de operación async
     mock_async_func = mocker.patch('app.services.send_email', new_callable=mocker.AsyncMock)
     mock_async_func.return_value = {"status": "sent", "id": "email-123"}
-    
+
     from app.services import send_email
-    
+
     result = await send_email("test@example.com", "Subject", "Body")
-    
+
     assert result["status"] == "sent"
     mock_async_func.assert_called_once_with("test@example.com", "Subject", "Body")
 ```
@@ -197,27 +197,27 @@ async def test_async_operation_mock(mocker):
 ```python
 def test_redis_connection_error_handling(client, mocker):
     """Test manejo de errores cuando Redis falla"""
-    
+
     # Mock que simula error de conexión
     mock_redis = mocker.patch('app.cache.redis_client')
     mock_redis.get.side_effect = redis.ConnectionError("Redis unavailable")
-    
+
     # La aplicación debe funcionar sin cache
     response = client.get("/cached-endpoint")
-    
+
     assert response.status_code == 200
     # Verificar que se manejó el error correctamente
 
 def test_database_timeout_mock(client, mocker):
     """Test manejo de timeout de base de datos"""
-    
+
     # Mock que simula timeout
     from sqlalchemy.exc import TimeoutError
     mock_db = mocker.patch('app.database.get_db')
     mock_db.side_effect = TimeoutError("statement timeout")
-    
+
     response = client.get("/users")
-    
+
     assert response.status_code == 503  # Service Unavailable
 ```
 
@@ -236,10 +236,10 @@ from app.auth.password import get_password_hash
 
 class UserFactory(factory.Factory):
     """Factory para crear usuarios de testing"""
-    
+
     class Meta:
         model = User
-    
+
     email = factory.Sequence(lambda n: f"user{n}@example.com")
     full_name = factory.Faker('name')
     hashed_password = factory.LazyFunction(lambda: get_password_hash("testpass123"))
@@ -248,7 +248,7 @@ class UserFactory(factory.Factory):
 
 class AdminUserFactory(UserFactory):
     """Factory para crear administradores"""
-    
+
     email = factory.Sequence(lambda n: f"admin{n}@example.com")
     role = "admin"
 
@@ -270,7 +270,7 @@ def bulk_users(db, user_factory):
         user = user_factory.create()
         db.add(user)
         users.append(user)
-    
+
     db.commit()
     return users
 
@@ -278,7 +278,7 @@ def bulk_users(db, user_factory):
 def authenticated_client(client, test_user):
     """Cliente autenticado para tests"""
     from app.auth.jwt_handler import create_access_token
-    
+
     token = create_access_token({"sub": test_user.email})
     client.headers = {"Authorization": f"Bearer {token}"}
     return client
@@ -287,7 +287,7 @@ def authenticated_client(client, test_user):
 def admin_client(client, admin_user):
     """Cliente con permisos de admin"""
     from app.auth.jwt_handler import create_access_token
-    
+
     token = create_access_token({"sub": admin_user.email})
     client.headers = {"Authorization": f"Bearer {token}"}
     return client
@@ -298,20 +298,20 @@ def admin_client(client, admin_user):
 ```python
 def test_bulk_user_operations(bulk_users, admin_client):
     """Test operaciones con múltiples usuarios"""
-    
+
     response = admin_client.get("/admin/users")
-    
+
     assert response.status_code == 200
     users = response.json()
     assert len(users) >= 10  # Al menos los 10 creados por bulk_users
 
 def test_user_creation_with_factory(db, user_factory):
     """Test creación de usuario usando factory"""
-    
+
     user = user_factory.create(email="specific@example.com")
     db.add(user)
     db.commit()
-    
+
     assert user.email == "specific@example.com"
     assert user.role == "user"
     assert user.is_active is True
@@ -339,7 +339,7 @@ coverage html
 
 def test_invalid_token_formats(client):
     """Test diferentes formatos de token inválidos"""
-    
+
     invalid_tokens = [
         "",
         "Bearer",
@@ -348,7 +348,7 @@ def test_invalid_token_formats(client):
         "InvalidScheme token",
         "Bearer " + "x" * 1000,  # Token muy largo
     ]
-    
+
     for token in invalid_tokens:
         response = client.get(
             "/auth/me",
@@ -358,7 +358,7 @@ def test_invalid_token_formats(client):
 
 def test_password_edge_cases(client):
     """Test casos edge de passwords"""
-    
+
     edge_passwords = [
         "",  # Vacío
         "x",  # Muy corto
@@ -367,14 +367,14 @@ def test_password_edge_cases(client):
         "P@ssw0rd!",  # Complejo
         "😀🔐🚀",  # Emojis
     ]
-    
+
     for password in edge_passwords:
         response = client.post("/auth/register", json={
             "email": f"test+{len(password)}@example.com",
             "full_name": "Test User",
             "password": password
         })
-        
+
         # Verificar validación de password
         if len(password) < 8:
             assert response.status_code == 422
@@ -383,7 +383,7 @@ def test_password_edge_cases(client):
 
 def test_database_constraint_violations(client, db):
     """Test violaciones de constraints de base de datos"""
-    
+
     # Crear usuario inicial
     response1 = client.post("/auth/register", json={
         "email": "unique@example.com",
@@ -391,7 +391,7 @@ def test_database_constraint_violations(client, db):
         "password": "password123"
     })
     assert response1.status_code == 201
-    
+
     # Intentar crear usuario con mismo email
     response2 = client.post("/auth/register", json={
         "email": "unique@example.com",

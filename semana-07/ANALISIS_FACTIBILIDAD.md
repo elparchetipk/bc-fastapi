@@ -11,18 +11,21 @@
 ## ⚠️ PROBLEMA CRÍTICO IDENTIFICADO
 
 ### Contenido Original Semana 7:
+
 1. **Redis y Caching** - 90min
-2. **Database Optimization** - 90min 
+2. **Database Optimization** - 90min
 3. **Middleware y Rate Limiting** - 90min
 4. **Monitoring y Profiling** - 90min
 
 ### Contenido Adicional desde Semana 6:
+
 - **Coverage avanzado y reportes** - 60min
 - **Testing con mocks complejos** - 90min
 - **Roles avanzados y permisos** - 90min
 - **CI/CD básico** - 90min
 
 ### Análisis de Sobrecarga:
+
 ```
 Contenido original: 360min (6h)
 Contenido adicional: 330min (5h 30min)
@@ -42,13 +45,15 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ### **OPCIÓN 1: REDISTRIBUCIÓN RADICAL (RECOMENDADA)**
 
 #### Semana 7 - Performance Básico:
-- ✅ **Redis Básico** (60min) *-30min*
-- ✅ **Database Optimization** (75min) *-15min*
-- ✅ **Coverage y Testing** (90min) *desde Semana 6*
-- ✅ **Consolidación** (75min) *nuevo*
+
+- ✅ **Redis Básico** (60min) _-30min_
+- ✅ **Database Optimization** (75min) _-15min_
+- ✅ **Coverage y Testing** (90min) _desde Semana 6_
+- ✅ **Consolidación** (75min) _nuevo_
 - ❌ **Eliminado**: Middleware avanzado, Monitoring complejo
 
 #### Semana 8 - Performance y CI/CD:
+
 - 🆕 **Middleware y Rate Limiting** (90min)
 - 🆕 **Monitoring y Profiling** (90min)
 - 🆕 **CI/CD Básico** (90min)
@@ -57,22 +62,25 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ### **OPCIÓN 2: SIMPLIFICACIÓN MASIVA**
 
 #### Contenido Ultra-Reducido (5h 30min):
-- **Performance Básico** (120min) *Redis + DB optimization simplificado*
-- **Testing Avanzado** (90min) *Coverage desde Semana 6*
-- **CI/CD Introducción** (60min) *muy básico*
-- **Consolidación** (60min) *testing + debugging*
+
+- **Performance Básico** (120min) _Redis + DB optimization simplificado_
+- **Testing Avanzado** (90min) _Coverage desde Semana 6_
+- **CI/CD Introducción** (60min) _muy básico_
+- **Consolidación** (60min) _testing + debugging_
 
 ### **OPCIÓN 3: ELIMINAR CONTENIDO AVANZADO**
 
 #### Enfoque Minimalista:
+
 - **Redis Básico** (90min)
-- **Testing con Coverage** (90min) *desde Semana 6*
+- **Testing con Coverage** (90min) _desde Semana 6_
 - **Database Optimization** (90min)
 - **Consolidación y Testing** (60min)
 
 ## ✅ RECOMENDACIÓN: OPCIÓN 1 MODIFICADA
 
 ### Justificación:
+
 1. **No es realista** intentar 11h 30min de contenido en 5h 30min
 2. **Coverage y testing** son más importantes que performance avanzada
 3. **CI/CD básico** puede ser introducción simple
@@ -84,7 +92,7 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 
 ```
 12:00-13:00  Redis y Caching Básico (60min)      ⬇️ -30min
-13:00-14:00  Database Optimization (60min)       ⬇️ -30min  
+13:00-14:00  Database Optimization (60min)       ⬇️ -30min
 14:00-14:30  ☕ BREAK (30min)
 14:30-16:00  Coverage y Testing Avanzado (90min) 🆕 desde S6
 16:00-17:15  CI/CD Introducción (75min)          🆕 básico
@@ -94,24 +102,28 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 #### **CONTENIDO ESPECÍFICO SEMANA 7:**
 
 **Eliminado/Movido a Semana 8:**
+
 - ❌ Middleware complejo → **Semana 8**
 - ❌ Monitoring avanzado → **Semana 8**
 - ❌ Rate limiting avanzado → **Semana 8**
 - ❌ Profiling complejo → **Semana 8**
 
 **Agregado desde Semana 6:**
+
 - ✅ Coverage con reportes HTML
 - ✅ Testing con mocks básicos
 - ✅ CI/CD con GitHub Actions básico
 - ✅ Consolidación integral
 
 **Simplificado del original:**
+
 - ⬇️ Redis: Solo cache básico, no patterns complejos
 - ⬇️ Database: Índices básicos, no optimization avanzada
 
 ## 📅 CRONOGRAMA DETALLADO AJUSTADO
 
 ### **Bloque 1: Redis Básico (60min)**
+
 - Docker setup y conexión
 - Cache simple para endpoints frecuentes
 - Invalidación básica
@@ -119,22 +131,26 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ### **☕ BREAK (30min)**
 
 ### **Bloque 2: Database Optimization (60min)**
+
 - Índices básicos para queries comunes
 - EXPLAIN básico
 - Connection pool simple
 
 ### **Bloque 3: Coverage y Testing (90min)**
+
 - Coverage con pytest-cov
 - Reportes HTML
 - Testing con mocks básicos
 - Fixtures avanzadas
 
 ### **Bloque 4: CI/CD Introducción (75min)**
+
 - GitHub Actions workflow básico
 - Testing automatizado en CI
 - Deploy conceptos básicos
 
 ### **Bloque 5: Consolidación (45min)**
+
 - Testing completo del sistema
 - Performance básica verificada
 - Documentación y debugging
@@ -150,6 +166,7 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 5. ✅ **Consolidación completa** del sistema
 
 ### **Lo que se mueve a Semana 8:**
+
 - Middleware personalizado avanzado
 - Rate limiting por usuario/IP
 - Monitoring con métricas
@@ -159,12 +176,14 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ## 🚨 RIESGOS MITIGADOS
 
 ### **Antes del ajuste:**
+
 - ⚠️ 6 horas de sobrecarga (imposible de completar)
 - ⚠️ Contenido superficial por falta de tiempo
 - ⚠️ Frustración extrema de estudiantes
 - ⚠️ Performance mal implementada
 
 ### **Después del ajuste:**
+
 - ✅ Tiempo realista y manejable
 - ✅ Coverage sólido antes que performance
 - ✅ CI/CD básico pero funcional
@@ -173,16 +192,19 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ## 📈 MÉTRICAS DE ÉXITO ESPERADAS
 
 ### **Completitud:**
+
 - 85%+ estudiantes completan objetivos básicos
 - 70%+ estudiantes implementan cache básico
 - 90%+ estudiantes logran coverage >80%
 
 ### **Calidad:**
+
 - APIs con performance básica mejorada
 - Testing robusto con coverage
 - Pipeline CI/CD básico funcionando
 
 ### **Satisfacción:**
+
 - Progresión natural sin sobrecarga
 - Aprendizaje sólido y aplicable
 - Preparación adecuada para Semana 8
@@ -190,6 +212,7 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ## 🔄 IMPACTO EN SEMANA 8
 
 **Contenido que se agrega a Semana 8:**
+
 - Middleware personalizado (90min)
 - Rate limiting avanzado (60min)
 - Monitoring y métricas (90min)
@@ -200,12 +223,14 @@ Esto representa una **sobrecarga del 109%** - es decir, se necesita más del **d
 ## ✅ PLAN DE ACCIÓN INMEDIATO
 
 1. **Reestructurar Semana 7:**
+
    - Simplificar Redis a cache básico
-   - Reducir database optimization 
+   - Reducir database optimization
    - Integrar coverage desde Semana 6
    - Crear CI/CD básico
 
 2. **Planificar Semana 8:**
+
    - Mover performance avanzada
    - Diseñar middleware personalizado
    - Estructurar monitoring básico

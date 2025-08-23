@@ -1,28 +1,27 @@
-# Práctica 23: Redis y Caching Strategies
+# Práctica 26: Redis y Caching Básico
 
-⏰ **Tiempo:** 90 minutos  
+⏰ **Tiempo:** 60 minutos _(simplificado)_  
 📚 **Prerequisito:** Semanas 1-6 completadas  
-🎯 **Objetivo:** Implementar caching con Redis para optimizar performance de la API
+🎯 **Objetivo:** Implementar caching básico con Redis para optimizar performance de endpoints críticos
 
-## 📋 Contenido de la Práctica
+## 📋 Contenido de la Práctica _(simplificado)_
 
-### **Parte 1: Setup de Redis (25 min)**
+### **Parte 1: Setup de Redis (20 min)**
 
 1. **Instalación y configuración**
 2. **Conexión desde FastAPI**
 3. **Operaciones básicas**
 
-### **Parte 2: Cache Patterns (40 min)**
+### **Parte 2: Cache Básico (30 min)**
 
-1. **Cache-Aside Implementation**
-2. **Write-Through Pattern**
-3. **Cache Invalidation**
+1. **Cache simple para endpoints frecuentes**
+2. **Invalidación básica**
+3. **Error handling sin Redis**
 
-### **Parte 3: Performance Testing (25 min)**
+### **Parte 3: Testing de Performance (10 min)**
 
-1. **Benchmarking sin cache**
-2. **Benchmarking con cache**
-3. **Análisis de resultados**
+1. **Comparación básica con/sin cache**
+2. **Verificación de funcionamiento**
 
 ---
 

@@ -1,28 +1,28 @@
-# Práctica 24: Database Performance Optimization
+# Práctica 27: Database Optimization Básica
 
-⏰ **Tiempo:** 90 minutos  
-📚 **Prerequisito:** Práctica 23 completada  
-🎯 **Objetivo:** Optimizar performance de base de datos con índices, connection pooling y query optimization
+⏰ **Tiempo:** 60 minutos _(simplificado)_  
+📚 **Prerequisito:** Práctica 26 completada  
+🎯 **Objetivo:** Implementar optimizaciones básicas de base de datos con índices y connection pooling simple
 
-## 📋 Contenido de la Práctica
+## 📋 Contenido de la Práctica _(simplificado)_
 
-### **Parte 1: Query Analysis y Optimization (30 min)**
+### **Parte 1: Query Analysis Básico (20 min)**
 
-1. **EXPLAIN y análisis de queries**
-2. **Identificación de queries lentas**
-3. **Query optimization techniques**
+1. **EXPLAIN básico para queries principales**
+2. **Identificación de queries más lentas**
+3. **Medición simple de performance**
 
-### **Parte 2: Database Indexing (35 min)**
+### **Parte 2: Database Indexing Básico (25 min)**
 
-1. **Tipos de índices y cuándo usarlos**
-2. **Creación de índices estratégicos**
-3. **Índices compuestos y parciales**
+1. **Índices básicos para campos comunes**
+2. **Creación de índices para foreign keys**
+3. **Verificación de mejoras**
 
-### **Parte 3: Connection Pooling y Async (25 min)**
+### **Parte 3: Connection Pooling Simple (15 min)**
 
-1. **Configuración de connection pooling**
-2. **Operaciones asíncronas**
-3. **Monitoring de conexiones**
+1. **Configuración básica de connection pool**
+2. **Verificación de funcionamiento**
+3. **Monitoring básico de conexiones**
 
 ---
 
