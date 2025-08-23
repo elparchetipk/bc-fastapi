@@ -16,7 +16,7 @@ from datetime import datetime
 
 # Verificar que requests esté instalado
 try:
-    import requests
+    import requests  # type: ignore
 except ImportError:
     print("❌ Error: La biblioteca 'requests' no está instalada.")
     print("🔧 Solución: Ejecuta 'pip install requests' o 'pip install -r requirements.txt'")
@@ -28,14 +28,14 @@ def test_connection():
     """Probar conexión básica"""
     print("🔍 Probando conexión...")
     try:
-        response = requests.get(f"{BASE_URL}/")
+        response = requests.get(f"{BASE_URL}/")  # type: ignore
         if response.status_code == 200:
             print("✅ Conexión exitosa")
             return True
         else:
             print(f"❌ Error de conexión: {response.status_code}")
             return False
-    except requests.exceptions.ConnectionError:
+    except requests.exceptions.ConnectionError:  # type: ignore
         print("❌ No se puede conectar a la API. ¿Está ejecutándose?")
         return False
 
@@ -55,7 +55,7 @@ def test_create_book():
     }
     
     try:
-        response = requests.post(f"{BASE_URL}/books", json=book_data)
+        response = requests.post(f"{BASE_URL}/books", json=book_data)  # type: ignore
         if response.status_code in [200, 201]:
             print("✅ Libro creado exitosamente")
             print(f"   Respuesta: {response.json()}")
@@ -72,7 +72,7 @@ def test_get_books():
     """Probar listado de libros"""
     print("\n📋 Probando listar libros...")
     try:
-        response = requests.get(f"{BASE_URL}/books")
+        response = requests.get(f"{BASE_URL}/books")  # type: ignore
         if response.status_code == 200:
             books = response.json()
             print(f"✅ Se obtuvieron {len(books)} libros")
@@ -163,8 +163,7 @@ def run_all_tests():
 def main():
     """Función principal"""
     print("API de Biblioteca Personal - Script de Pruebas")
-    print("Asegúrate de que tu API esté ejecutándose en http://localhost:8000")
-    input("Presiona Enter para continuar...")
+    print("Verificando si la API está ejecutándose en http://localhost:8000")
     
     run_all_tests()
 

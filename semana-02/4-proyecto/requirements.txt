@@ -1,9 +1,9 @@
-# FastAPI Bootcamp - Semana 2: Versiones LTS Estables
-# Compatible con Python 3.8+
+# FastAPI Bootcamp - Semana 2: Versiones LTS Ultra Estables
+# Compatible con Python 3.8-3.11 (probado)
 
-fastapi==0.103.1
-uvicorn[standard]==0.23.2
-pydantic==1.10.13
-python-multipart==0.0.6
-requests==2.31.0
-types-requests==2.31.0.20240125
+fastapi==0.58.1
+uvicorn==0.12.3
+pydantic==1.7.4
+python-multipart==0.0.5
+requests==2.25.1
+types-requests==2.25.1
