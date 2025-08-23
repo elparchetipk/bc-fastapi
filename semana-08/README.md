@@ -30,18 +30,18 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                    | Tiempo | Descripción                               |
-| ------ | ---------------------------- | ------ | ----------------------------------------- |
-| **1**  | Pytest y Testing Básico     | 90 min | Setup pytest, fixtures, tests unitarios  |
-| **2**  | Testing de APIs Completo    | 90 min | TestClient, auth, CRUD testing completo  |
-| **3**  | Code Quality & Linting      | 60 min | Black, isort, flake8, pre-commit setup   |
-| **4**  | Documentation & CI Básico   | 60 min | OpenAPI avanzado, GitHub Actions básico  |
-| **5**  | Consolidación Testing       | 30 min | Testing completo, quality verification   |
+| Bloque | Actividad                 | Tiempo | Descripción                             |
+| ------ | ------------------------- | ------ | --------------------------------------- |
+| **1**  | Pytest y Testing Básico   | 90 min | Setup pytest, fixtures, tests unitarios |
+| **2**  | Testing de APIs Completo  | 90 min | TestClient, auth, CRUD testing completo |
+| **3**  | Code Quality & Linting    | 60 min | Black, isort, flake8, pre-commit setup  |
+| **4**  | Documentation & CI Básico | 60 min | OpenAPI avanzado, GitHub Actions básico |
+| **5**  | Consolidación Testing     | 30 min | Testing completo, quality verification  |
 
 **CAMBIOS PRINCIPALES:**
 
 - ✅ **Enfoque total en testing**: Pytest mastery y API testing completo
-- ✅ **Quality tools esenciales**: Solo las herramientas fundamentales  
+- ✅ **Quality tools esenciales**: Solo las herramientas fundamentales
 - ⬇️ **Documentation simplificada**: OpenAPI + docstrings, no MkDocs
 - ⬇️ **CI básico**: GitHub Actions para testing, no deployment
 - ❌ **Eliminado**: Performance avanzada (se mueve a Proyecto Final)
@@ -64,8 +64,15 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 1. [🧪 Pytest y Testing Básico](./2-practica/27-pytest-basics.md) _(90 min)_
 2. [🔍 Testing de APIs Completo](./2-practica/28-api-testing.md) _(90 min)_
-3. [� Documentación Avanzada](./2-practica/29-advanced-docs.md) _(90 min)_
-4. [⚙️ Code Quality & CI Básico](./2-practica/30-code-quality.md) _(90 min)_
+3. [⚙️ Code Quality & Linting](./2-practica/29-code-quality.md) _(60 min)_
+4. [📚 Documentation & CI Básico](./2-practica/30-docs-ci-basic.md) _(60 min)_
+5. [✅ Consolidación Testing](./2-practica/31-testing-consolidation.md) _(30 min)_
+
+**ELIMINADO/MOVIDO AL PROYECTO FINAL:**
+
+- ~~Middleware personalizado avanzado~~ → **Proyecto Final**
+- ~~Rate limiting complejo~~ → **Proyecto Final**
+- ~~Monitoring y profiling~~ → **Proyecto Final**
 
 ### **💪 Ejercicios**
 
@@ -203,47 +210,55 @@ Transformaremos nuestra API existente en una aplicación **lista para producció
 ### **Bloque 1: Pytest y Testing Básico (90 min)**
 
 - **27-pytest-basics.md**
-- Setup de pytest y configuración
-- Primeros tests de endpoints básicos
-- Fixtures para datos de prueba
-- Assertions y test structure
+- Setup completo de pytest y configuración
+- Fixtures avanzadas y mocks básicos
+- Tests unitarios de modelos y funciones
+- Assertions y estructura de tests profesional
 
 ### **Bloque 2: Testing de APIs Completo (90 min)**
 
 - **28-api-testing.md**
-- Testing con autenticación JWT
-- Tests de CRUD completo
-- Mocking de dependencias
-- Testing de errores y edge cases
+- TestClient y testing de endpoints completos
+- Testing con autenticación JWT y roles
+- Tests de CRUD exhaustivos
+- Error testing y edge cases
 
-### **Bloque 3: Documentación Avanzada (90 min)**
+### **Bloque 3: Code Quality & Linting (60 min)**
 
-- **29-advanced-docs.md**
+- **29-code-quality.md** _(simplificado)_
+- Black + isort + flake8 setup
+- pre-commit hooks esenciales
+- Quality metrics básicos
+- Integration con IDE
+
+### **Bloque 4: Documentation & CI Básico (60 min)**
+
+- **30-docs-ci-basic.md** _(nuevo, simplificado)_
 - OpenAPI customization avanzada
-- Examples en request/response models
-- Tags y categorización de endpoints
-- Generación de documentación estática
+- Docstrings y examples
+- GitHub Actions para testing
+- CI pipeline básico
 
-### **Bloque 4: Code Quality & CI Básico (90 min)**
+### **Bloque 5: Consolidación Testing (30 min)**
 
-- **30-code-quality.md**
-- Configuración de Black, isort, flake8
-- Setup de pre-commit hooks
-- Scripts de CI/CD básicos
-- Quality reports y metrics
+- **31-testing-consolidation.md** _(nuevo)_
+- Testing completo del sistema
+- Coverage verification >85%
+- Quality checks finales
+- Preparación para Proyecto Final
 
-## 📅 Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
 | Tiempo      | Actividad                 | Duración | Acumulado |
 | ----------- | ------------------------- | -------- | --------- |
 | 12:00-13:30 | Pytest y Testing Básico   | 90 min   | 90 min    |
-| 13:30-14:00 | Testing de APIs (parte 1) | 30 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**  | 30 min   | 150 min   |
-| 14:30-15:30 | Testing de APIs (parte 2) | 60 min   | 210 min   |
-| 15:30-17:00 | Documentación Avanzada    | 90 min   | 300 min   |
-| 17:00-18:00 | Code Quality & CI Básico  | 60 min   | 360 min   |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO**  | 30 min   | 120 min   |
+| 14:00-15:30 | Testing de APIs Completo  | 90 min   | 210 min   |
+| 15:30-16:30 | Code Quality & Linting    | 60 min   | 270 min   |
+| 16:30-17:30 | Documentation & CI Básico | 60 min   | 330 min   |
+| 17:30-18:00 | Consolidación Testing     | 30 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ---
 

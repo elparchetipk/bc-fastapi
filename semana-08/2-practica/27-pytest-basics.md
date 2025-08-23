@@ -1,24 +1,28 @@
-# Práctica 27: Fundamentos de Pytest en FastAPI
+# Práctica 27: Pytest y Testing Básico - Enfoque Intensivo
 
-## 🎯 Objetivo
+⏰ **Tiempo:** 90 minutos  
+📚 **Prerequisito:** Semanas 1-7 completadas con API funcionando  
+🎯 **Objetivo:** Configurar pytest y crear suite de testing básico pero completo
 
-Configurar **pytest** desde cero y crear los primeros tests básicos para APIs FastAPI en 90 minutos, estableciendo una base sólida para testing automatizado.
+## 📋 Contenido de la Práctica
 
-## ⏱️ Tiempo: 90 minutos
+### **Parte 1: Setup Rápido de Pytest (25 min)**
 
-### 📋 Distribución del tiempo:
+1. **Instalación y configuración**
+2. **Estructura de testing**
+3. **Configuración inicial**
 
-- **Instalación y configuración** (15 min)
-- **Primeros tests básicos** (25 min)
-- **Testing de endpoints** (35 min)
-- **Práctica y troubleshooting** (15 min)
+### **Parte 2: Tests Unitarios Básicos (35 min)**
 
-## 📋 Pre-requisitos
+1. **Tests de modelos y funciones**
+2. **Fixtures básicas**
+3. **Assertions fundamentales**
 
-- ✅ Proyecto FastAPI funcionando (Semanas 1-7 completadas)
-- ✅ API con endpoints básicos implementados
-- ✅ Conocimientos básicos de Python y FastAPI
-- ✅ Entorno virtual activado
+### **Parte 3: Tests de Endpoints Básicos (30 min)**
+
+1. **TestClient setup**
+2. **Tests de endpoints sin autenticación**
+3. **Verificación de estructura de respuesta**
 
 ## 🚀 Desarrollo Paso a Paso
 
