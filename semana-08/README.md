@@ -1,42 +1,50 @@
-# Semana 8: Testing y Calidad de Código
+# Semana 8: Testing y Quality Code - Enfoque Profundo
 
 ⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
-📚 **NIVEL: Intermedio (construye sobre Semanas 1-7)**
+📚 **NIVEL: Intermedio-Avanzado (construye sobre Semanas 1-7)**
 
-## 🚨 **IMPORTANTE: Consolidando el Desarrollo con Calidad**
+## 🚨 **IMPORTANTE: Testing y Quality como Base Profesional**
 
-Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación y CRUD avanzado** (Semanas 1-7). Implementaremos testing automatizado, documentación y prácticas de calidad de código para preparar la aplicación para producción.
+Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación, roles, y optimizaciones básicas** (Semanas 1-7). Implementaremos testing profesional y quality practices para código production-ready.
 
-- ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en testing real**
-- ✅ **Preparación para desarrollo profesional**
+- ✅ **Completamente realizable en 5h 30min efectivos**
+- ✅ **Enfoque específico en testing exhaustivo**
+- ✅ **Quality practices para desarrollo profesional**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (Testing-Focused)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
-1. ✅ **Implementarán testing automatizado** con pytest y coverage
-2. ✅ **Crearán tests de endpoints** completos con autenticación
-3. ✅ **Aplicarán documentación** automática y manual avanzada
-4. ✅ **Configurarán linting** y formateo de código
-5. ✅ **Medirán calidad** con métricas y reports
+1. ✅ **Dominarán pytest** con fixtures y mocks avanzados
+2. ✅ **Implementarán testing completo** de APIs con autenticación
+3. ✅ **Configurarán quality tools** (Black, isort, flake8, pre-commit)
+4. ✅ **Crearán documentación profesional** con OpenAPI avanzado
+5. ✅ **Establecerán CI básico** para testing automático
 
-### ❌ **Lo que NO se espera dominar esta semana**
+### ❌ **Lo que se mueve al Proyecto Final**
 
-- Testing avanzado con mocks complejos
-- Integración con CI/CD completa
-- Performance testing automatizado
-- Security testing avanzado
-- Análisis estático complejo con SonarQube
+- ~~Middleware personalizado avanzado~~ → **Proyecto Final**
+- ~~Rate limiting complejo~~ → **Proyecto Final**
+- ~~Monitoring y profiling avanzado~~ → **Proyecto Final**
+- ~~Performance optimization avanzada~~ → **Proyecto Final**
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                | Tiempo | Descripción                           |
-| ------ | ------------------------ | ------ | ------------------------------------- |
-| **1**  | Pytest y Testing Básico  | 90 min | Setup pytest, fixtures, tests básicos |
-| **2**  | Testing de APIs Completo | 90 min | TestClient, auth, CRUD testing        |
-| **3**  | Documentación Avanzada   | 90 min | OpenAPI, docstrings, guides           |
-| **4**  | Code Quality & CI Básico | 90 min | Linting, formatting, pre-commit       |
+| Bloque | Actividad                    | Tiempo | Descripción                               |
+| ------ | ---------------------------- | ------ | ----------------------------------------- |
+| **1**  | Pytest y Testing Básico     | 90 min | Setup pytest, fixtures, tests unitarios  |
+| **2**  | Testing de APIs Completo    | 90 min | TestClient, auth, CRUD testing completo  |
+| **3**  | Code Quality & Linting      | 60 min | Black, isort, flake8, pre-commit setup   |
+| **4**  | Documentation & CI Básico   | 60 min | OpenAPI avanzado, GitHub Actions básico  |
+| **5**  | Consolidación Testing       | 30 min | Testing completo, quality verification   |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **Enfoque total en testing**: Pytest mastery y API testing completo
+- ✅ **Quality tools esenciales**: Solo las herramientas fundamentales  
+- ⬇️ **Documentation simplificada**: OpenAPI + docstrings, no MkDocs
+- ⬇️ **CI básico**: GitHub Actions para testing, no deployment
+- ❌ **Eliminado**: Performance avanzada (se mueve a Proyecto Final)
 
 ## 📚 Contenido de la Semana
 
