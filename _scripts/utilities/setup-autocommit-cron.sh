@@ -3,7 +3,7 @@
 # Configura una tarea cron para ejecutar autocommit automáticamente
 
 SCRIPT_PATH="/home/epti/Documentos/epti-dev/bc-channel/bc-fastapi/_scripts/utilities/autocommit.sh"
-CRON_SCHEDULE="0 */2 * * *"  # Cada 2 horas
+CRON_SCHEDULE="*/5 * * * *"  # Cada 5 minutos
 LOG_FILE="/home/epti/Documentos/epti-dev/bc-channel/bc-fastapi/_scripts/utilities/autocommit.log"
 
 echo "🔧 Configurando autocommit automático para bc-fastapi..."
@@ -26,7 +26,7 @@ CRON_ENTRY="$CRON_SCHEDULE $SCRIPT_PATH >> $LOG_FILE 2>&1"
 
 echo ""
 echo "📅 Configuración de cron:"
-echo "   Frecuencia: Cada 2 horas"
+echo "   Frecuencia: Cada 5 minutos"
 echo "   Comando: $SCRIPT_PATH"
 echo "   Log: $LOG_FILE"
 echo ""
@@ -59,7 +59,7 @@ if crontab -l 2>/dev/null | grep -q "$SCRIPT_PATH"; then
     crontab -l 2>/dev/null | grep "$SCRIPT_PATH"
     echo ""
     echo "🎯 El autocommit se ejecutará:"
-    echo "   - Cada 2 horas automáticamente"
+    echo "   - Cada 5 minutos automáticamente"
     echo "   - Logs en: $LOG_FILE"
     echo "   - Para ejecutar manualmente: $SCRIPT_PATH"
     echo ""
