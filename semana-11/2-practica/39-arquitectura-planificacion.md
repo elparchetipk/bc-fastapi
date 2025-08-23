@@ -1,6 +1,6 @@
 # Práctica 39: Arquitectura y Planificación del Proyecto Final
 
-⏰ **Tiempo estimado:** 90 minutos  
+⏰ **Tiempo estimado:** 90 minutos _(mantenido completo)_  
 🎯 **Dificultad:** Integrador  
 📋 **Prerrequisitos:** Conocimiento completo de semanas 1-10
 
@@ -13,6 +13,12 @@ Al finalizar esta práctica, los estudiantes:
 3. ✅ **Crearán la estructura** del proyecto con mejores prácticas
 4. ✅ **Planificarán el desarrollo** con tareas específicas
 5. ✅ **Configurarán el entorno** de desarrollo integrado
+
+**MANTENIDO EN 90MIN:**
+
+- ✅ Tiempo completo para arquitectura sólida
+- ✅ Base fundamental para proyecto exitoso
+- ✅ Especificaciones completas sin comprometer calidad
 
 ## 📋 Proyecto a Desarrollar: TaskFlow - Sistema de Gestión de Tareas
 

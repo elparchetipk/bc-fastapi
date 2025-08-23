@@ -7,35 +7,43 @@
 
 Esta semana está diseñada para estudiantes que **ya dominan todas las tecnologías del stack** (Semanas 1-10). Es el momento de integrar todo el conocimiento adquirido en un proyecto final profesional que servirá como portfolio para su carrera.
 
-- ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en integración completa**
+- ✅ **Completamente realizable en 5h 30min efectivos**
+- ✅ **Enfoque práctico en integración completa aplicable**
 - ✅ **Proyecto portfolio-ready para el mercado laboral**
 
-## 🎯 Objetivos de la Semana (Integradores)
+## 🎯 Objetivos de la Semana AJUSTADOS (Proyecto Integrador)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
 1. ✅ **Integrarán todos los conceptos** aprendidos en las 10 semanas anteriores
-2. ✅ **Desarrollarán un proyecto completo** con arquitectura profesional
-3. ✅ **Crearán documentación técnica** completa y profesional
-4. ✅ **Presentarán su trabajo** de forma efectiva y técnica
-5. ✅ **Tendrán un portfolio** listo para el mercado laboral
+2. ✅ **Desarrollarán un proyecto completo** con arquitectura sólida
+3. ✅ **Crearán documentación técnica** profesional y efectiva
+4. ✅ **Presentarán su trabajo** de forma técnica y clara
+5. ✅ **Tendrán un portfolio** completamente listo para el mercado laboral
 
 ### ❌ **Lo que NO se espera esta semana**
 
-- Aprender nuevas tecnologías (solo integración)
-- Proyectos excesivamente complejos
-- Funcionalidades que requieran más de 6 horas
-- Perfección absoluta (enfoque en funcionalidad)
+- Aprender nuevas tecnologías (solo integración aplicada)
+- Proyectos excesivamente complejos con over-engineering
+- Funcionalidades que requieran más de 5h 30min
+- Perfección absoluta (enfoque en funcionalidad y aplicabilidad)
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                    | Tiempo | Descripción                                  |
-| ------ | ---------------------------- | ------ | -------------------------------------------- |
-| **1**  | Arquitectura y Planificación | 90 min | Diseño del proyecto final y especificaciones |
-| **2**  | Desarrollo Backend Completo  | 90 min | API con todas las funcionalidades integradas |
-| **3**  | Frontend y Integración       | 90 min | Interfaz de usuario y conexión con backend   |
-| **4**  | Documentación y Presentación | 90 min | Documentación técnica y demo del proyecto    |
+| Bloque | Actividad                    | Tiempo | Descripción                                            |
+| ------ | ---------------------------- | ------ | ------------------------------------------------------ |
+| **1**  | Arquitectura y Planificación | 90 min | Diseño del proyecto final y especificaciones completas |
+| **2**  | Desarrollo Backend Completo  | 90 min | API con todas las funcionalidades integradas           |
+| **3**  | Frontend y Integración       | 75 min | Interfaz funcional y conexión con backend              |
+| **4**  | Documentación y Presentación | 75 min | Documentación profesional y demo del proyecto          |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **Arquitectura completa**: Base sólida para proyecto profesional
+- ✅ **Backend completo**: Core del portfolio sin comprometer calidad
+- ⬇️ **Frontend esencial**: UI funcional (75min vs 90min)
+- ⬇️ **Documentación práctica**: Portfolio-ready (75min vs 90min)
+- ❌ **Eliminado**: Over-engineering, features no-esenciales
 
 ## 📚 Contenido de la Semana
 
@@ -119,18 +127,17 @@ Una aplicación completa que integra:
 - ✅ **Explicación Arquitectural**: Comprensión de decisiones técnicas
 - ✅ **Manejo de Preguntas**: Respuestas técnicas precisas
 
-## � Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                        | Duración | Acumulado |
-| ----------- | -------------------------------- | -------- | --------- |
-| 12:00-13:30 | Desarrollo del Proyecto Final    | 90 min   | 90 min    |
-| 13:30-14:00 | Frontend y Integración (parte 1) | 30 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**         | 30 min   | 150 min   |
-| 14:30-15:30 | Frontend y Integración (parte 2) | 60 min   | 210 min   |
-| 15:30-17:00 | Testing y Deployment Final       | 90 min   | 300 min   |
-| 17:00-18:00 | Presentaciones y Evaluación      | 60 min   | 360 min   |
+| Tiempo      | Actividad                    | Duración | Acumulado |
+| ----------- | ---------------------------- | -------- | --------- |
+| 12:00-13:30 | Arquitectura y Planificación | 90 min   | 90 min    |
+| 13:30-15:00 | Desarrollo Backend Completo  | 90 min   | 180 min   |
+| 15:00-15:30 | **☕ BREAK OBLIGATORIO**     | 30 min   | 210 min   |
+| 15:30-16:45 | Frontend y Integración       | 75 min   | 285 min   |
+| 16:45-18:00 | Documentación y Presentación | 75 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ## �🚀 **Entregables de la Semana**
 

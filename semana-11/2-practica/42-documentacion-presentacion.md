@@ -1,6 +1,6 @@
 # Práctica 42: Documentación y Presentación
 
-⏰ **Tiempo estimado:** 90 minutos  
+⏰ **Tiempo estimado:** 75 minutos _(optimizado)_  
 🎯 **Dificultad:** Profesional  
 📋 **Prerrequisitos:** Prácticas 40-41 completadas
 
@@ -8,11 +8,18 @@
 
 Al finalizar esta práctica, los estudiantes:
 
-1. ✅ **Completarán el testing** de la aplicación
+1. ✅ **Completarán el testing** esencial de la aplicación
 2. ✅ **Crearán documentación** técnica profesional
 3. ✅ **Prepararán el deployment** para producción
-4. ✅ **Desarrollarán la presentación** técnica
+4. ✅ **Desarrollarán la presentación** técnica efectiva
 5. ✅ **Finalizarán el portfolio** para el mercado laboral
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ Testing esencial funcionando
+- ✅ Documentación profesional completa
+- ✅ Portfolio completamente ready
+- ⬇️ Simplificado: Testing exhaustivo, documentación excesiva
 
 ## 📋 Testing Completo de la Aplicación
 

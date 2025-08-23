@@ -1,6 +1,6 @@
 # Práctica 40: Desarrollo Backend Completo
 
-⏰ **Tiempo estimado:** 90 minutos  
+⏰ **Tiempo estimado:** 90 minutos _(mantenido completo)_  
 🎯 **Dificultad:** Integrador  
 📋 **Prerrequisitos:** Práctica 39 completada
 
@@ -13,6 +13,12 @@ Al finalizar esta práctica, los estudiantes:
 3. ✅ **Desarrollarán servicios** de lógica de negocio
 4. ✅ **Configurarán autenticación** JWT completa
 5. ✅ **Implementarán endpoints** API REST funcionales
+
+**MANTENIDO EN 90MIN:**
+
+- ✅ Backend es el core del portfolio
+- ✅ Tiempo completo para API completa y robusta
+- ✅ Calidad no comprometida en funcionalidades principales
 
 ## 📋 Desarrollo Backend TaskFlow
 

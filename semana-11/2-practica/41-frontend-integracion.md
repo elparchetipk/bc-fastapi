@@ -1,6 +1,6 @@
 # Práctica 41: Frontend e Integración
 
-⏰ **Tiempo estimado:** 90 minutos  
+⏰ **Tiempo estimado:** 75 minutos _(optimizado)_  
 🎯 **Dificultad:** Integrador  
 📋 **Prerrequisitos:** Práctica 40 completada
 
@@ -8,11 +8,18 @@
 
 Al finalizar esta práctica, los estudiantes:
 
-1. ✅ **Crearán la interfaz** de usuario con React y Tailwind CSS
-2. ✅ **Implementarán navegación** con React Router
-3. ✅ **Conectarán con la API** backend
-4. ✅ **Configurarán WebSockets** para tiempo real
+1. ✅ **Crearán la interfaz** de usuario funcional con React y Tailwind CSS
+2. ✅ **Implementarán navegación** básica con React Router
+3. ✅ **Conectarán con la API** backend efectivamente
+4. ✅ **Configurarán WebSockets** para tiempo real básico
 5. ✅ **Desplegarán la aplicación** con Docker
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ UI funcional sin over-engineering
+- ✅ Integración completa con backend
+- ✅ Features esenciales operativas
+- ⬇️ Simplificado: Optimización avanzada de UI, features adicionales
 
 ## 📋 Desarrollo Frontend TaskFlow
 
