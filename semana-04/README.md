@@ -19,6 +19,10 @@ Al finalizar esta semana, los estudiantes podrán:
 | **3**  | Relaciones Simples         | 90 min | Foreign keys, consultas básicas          |
 | **4**  | Testing y Validaciones     | 90 min | pytest básico, reglas de negocio         |
 
+## ⚙️ Configuración Previa
+
+> **🔧 VS Code Setup**: Para evitar errores de importación con SQLAlchemy, FastAPI y Pydantic, consulta la [Guía de Configuración de VS Code](../recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md) y la [Configuración Rápida](./CONFIGURACION_VSCODE.md)
+
 ## 📚 Contenido de la Semana
 
 ### **📋 Navegación Ordenada (Seguir este orden)**

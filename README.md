@@ -259,6 +259,8 @@ El bootcamp incluye un **sistema completo de gamificación** diseñado para mant
 - Git
 - Editor de código (recomendado: VS Code con extensiones Python y Docker)
 
+> 💡 **Configuración de VS Code**: Para evitar errores de importación y tener la mejor experiencia de desarrollo, consulta la [Guía de Configuración de VS Code](recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md)
+
 ### Configuración del Entorno
 
 ```bash
@@ -448,6 +450,10 @@ Para más detalles, ver `_docs/setup/git-github-strategy.md` y `CONTRIBUTING.md`
 ### 🔧 Setup y Configuración
 
 - **`_docs/setup/environment-setup.md`** - Configuración entorno desarrollo
+- **`recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md`** - Configuración de VS Code para el bootcamp
+- **`_docs/setup/git-github-strategy.md`** - Estrategias Git/GitHub y flujos de trabajo
+- **`_docs/setup/entrega-guidelines.md`** - Guías para entregas y evaluaciones
+- **`_docs/setup/automation-roadmap.md`** - Roadmap de automatización y CI/CD
 - **`_docs/setup/git-github-strategy.md`** - Estrategias Git/GitHub
 - **`_docs/setup/entrega-guidelines.md`** - Guías de entrega
 

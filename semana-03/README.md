@@ -97,6 +97,8 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 2. [⚠️ Manejo de Errores Básico](./2-practica/09-manejo-errores.md) _(120 min)_
 3. [🏗️ Estructura REST](./2-practica/10-estructura-rest.md) _(90 min)_
 
+> 💡 **Configuración de VS Code**: Para trabajar eficientemente con validaciones y errores de FastAPI, consulta la [Guía de Configuración de VS Code](../recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md)
+
 ### **💪 Ejercicios**
 
 - [🎯 Ejercicios de Refuerzo](./3-ejercicios/ejercicios-practica.md)

@@ -74,6 +74,8 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 1. **[01-environment-setup.md](./2-practica/01-environment-setup.md)** - Configuración mínima esencial
 2. **[02-hello-world-api.md](./2-practica/02-hello-world-api.md)** - Primera API funcional
 
+> 💡 **Configuración de VS Code**: Para evitar errores de importación y tener una mejor experiencia de desarrollo, consulta la [Guía de Configuración de VS Code](../recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md)
+
 ### 📖 **Teoría (Básica)**
 
 - Conceptos fundamentales de APIs REST

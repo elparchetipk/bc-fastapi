@@ -78,7 +78,8 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 1. **[03-python-type-hints.md](./2-practica/03-python-type-hints.md)** - Tipos básicos
 2. **[04-pydantic-models.md](./2-practica/04-pydantic-models.md)** - Modelos simples
-3. **[05-post-endpoints.md](./2-practica/05-post-endpoints.md)** - Endpoints con datos
+
+> 💡 **Configuración de VS Code**: Para mejor autocompletado y detección de errores con Pydantic, consulta la [Guía de Configuración de VS Code](../recursos-compartidos/GUIA_CONFIGURACION_VSCODE.md) 3. **[05-post-endpoints.md](./2-practica/05-post-endpoints.md)** - Endpoints con datos
 
 ### 📖 **Teoría (Práctica)**
 

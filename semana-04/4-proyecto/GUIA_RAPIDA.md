@@ -4,7 +4,7 @@
 
 ### 1. Prerrequisitos
 
-- ✅ Python 3.9+ instalado
+- ✅ Python 3.8+ instalado
 - ✅ VS Code con extensión Python
 - ✅ Conocimientos de FastAPI básico (Semanas 1-3)
 
@@ -24,9 +24,10 @@ python ejemplo_main.py
 ### 3. Primer Test
 
 ```bash
-# Abrir en el navegador
-# http://localhost:8000 - Página principal
-# http://localhost:8000/docs - Documentación interactiva
+# En otra terminal, probar la API
+python test_api.py
+
+# Resultado esperado:
 # ✅ Servidor funcionando
 # ✅ Tests básicos pasando
 ```

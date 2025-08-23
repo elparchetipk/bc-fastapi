@@ -1,27 +1,22 @@
-# FastAPI Bootcamp - Semana 4: Versiones Más Recientes
-# Compatible con Python 3.9+ y versiones actuales estables
+# FastAPI Bootcamp - Semana 4: Versiones Estables y Compatibles
+# Usar con entorno virtual: recursos-compartidos/venv/semana-04
+# Activar con: source ../../recursos-compartidos/venv/activate-semana.sh 4
 
-# Core FastAPI (Latest)
-fastapi>=0.115.0
-uvicorn[standard]>=0.32.0
+# Core FastAPI (Estable)
+fastapi==0.115.0
+uvicorn==0.32.0
 
-# Base de Datos (Latest)
-sqlalchemy>=2.0.35
-alembic>=1.14.0
+# Base de Datos (Estable)
+sqlalchemy==2.0.35
 
-# Validación de Datos (Latest)
-pydantic>=2.9.0
+# Validación de Datos (Estable)
+pydantic==2.9.0
 
 # Utilidades
-python-multipart>=0.0.12
+python-multipart==0.0.12
 
-# Testing (Latest)
-pytest>=8.3.0
-httpx>=0.28.0
+# Testing (Estable)
+pytest==8.3.0
 
-# Requests (Latest)
-requests>=2.32.0
-types-requests>=2.32.0
-
-# Desarrollo
-python-dotenv>=1.0.1
+# Requests (Estable)
+requests==2.32.0
