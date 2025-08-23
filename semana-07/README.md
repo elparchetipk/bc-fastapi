@@ -178,8 +178,8 @@ docker run -d --name redis-cache -p 6379:6379 redis:alpine
 # 4. Verificar conexión Redis
 python -c "import redis; r=redis.Redis(); print('Redis OK:', r.ping())"
 
-# 5. Empezar con práctica 23
-cd 2-practica && cat 23-redis-caching.md
+# 5. Empezar con práctica 25 (Coverage)
+cd 2-practica && cat 25-coverage-advanced.md
 ```
 
 ## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
@@ -202,18 +202,18 @@ cd 2-practica && cat 23-redis-caching.md
 ### **Performance Targets**
 
 - 🎯 **Response Time**: <200ms para endpoints CRUD básicos
-- 🎯 **Cache Hit Ratio**: >80% en endpoints frecuentes
-- 🎯 **Memory Usage**: <512MB para aplicación completa
-- 🎯 **Database Connections**: Pool eficiente <20 conexiones
-- 🎯 **Rate Limiting**: 100 requests/min por usuario
+- 🎯 **Cache Hit Ratio**: Redis funcionando correctamente
+- 🎯 **Test Coverage**: >80% del código base
+- 🎯 **Database Performance**: Índices básicos implementados
+- 🎯 **CI/CD Pipeline**: Tests automáticos funcionando
 
 ### **Monitoring Básico**
 
-- ✅ **Request/Response Logging**: Todas las operaciones
-- ✅ **Error Tracking**: 4xx y 5xx responses
-- ✅ **Performance Metrics**: Response times por endpoint
-- ✅ **Resource Usage**: CPU, Memory, Database connections
-- ✅ **Cache Metrics**: Hit ratio, miss ratio, invalidations
+- ✅ **Coverage Reports**: HTML/XML reports generándose
+- ✅ **Health Checks**: Endpoints de monitoreo funcionando  
+- ✅ **Cache Status**: Redis conectividad verificada
+- ✅ **Database Health**: Connection pooling básico
+- ✅ **CI/CD Status**: Pipeline status visible
 
 ---
 
@@ -228,17 +228,17 @@ cd 2-practica && cat 23-redis-caching.md
 
 ### **Mejores Prácticas**
 
-1. **Graceful Degradation** - App funciona sin cache/Redis
-2. **Cache Invalidation** - Estrategia clara para mantener consistencia
-3. **Rate Limiting Justo** - No bloquear usuarios legítimos
-4. **Logging Estructurado** - JSON logs para análisis posterior
+1. **Testing First** - Coverage antes que performance avanzada
+2. **Cache Simple** - Redis básico, invalidación manual por ahora
+3. **CI/CD Básico** - Testing automático es prioridad
+4. **Monitoreo Simple** - Health checks funcionando correctamente
 
 ### **Evitar Sobre-optimización**
 
-1. **Optimizar solo bottlenecks reales** identificados por profiling
-2. **Mantener código legible** - Performance no debe sacrificar claridad
-3. **Testing de performance** - Verificar mejoras con datos
-4. **Documentar optimizaciones** - Explicar por qué y cómo
+1. **Enfoque básico esta semana** - Performance avanzada en Semana 8
+2. **Mantener funcionalidad** - No romper lo que ya funciona
+3. **Testing continuo** - Verificar que optimizaciones no rompen tests
+4. **Documentar cambios** - Explicar qué se implementó y por qué
 
 ---
 
