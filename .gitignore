@@ -20,8 +20,10 @@ semana-*/0-epti/
 
 # ===== CONFIGURACIONES DE GRABACIÓN Y DEV CONTAINERS =====
 # Configuraciones exclusivas para grabación de videos - Solo local, no GitHub
+_docs/*
 _docs/video-bc_channel/
 _docs/excalidraw-content/
+_docs/CANDIDATES.md
 **/video-bc_channel/
 **/excalidraw-content/
 **/.devcontainer/

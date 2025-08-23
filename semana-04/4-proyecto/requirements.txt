@@ -1,7 +1,27 @@
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-sqlalchemy==2.0.23
-pydantic[email]==2.5.0
+# FastAPI Bootcamp - Semana 4: Versiones LTS Estables
+# Compatible con Python 3.8+ y garantizadas para funcionar juntas
+
+# Core FastAPI (LTS)
+fastapi==0.103.1
+uvicorn[standard]==0.23.2
+
+# Base de Datos (LTS)
+sqlalchemy==1.4.53
+alembic==1.12.1
+
+# Validación de Datos (Stable)
+pydantic[email]==1.10.13
+
+# Utilidades
 python-multipart==0.0.6
+
+# Testing (Stable)
 pytest==7.4.3
+httpx==0.25.0
+
+# Requests (LTS)
 requests==2.31.0
+types-requests==2.31.0.20240125
+
+# Desarrollo
+python-dotenv==1.0.0

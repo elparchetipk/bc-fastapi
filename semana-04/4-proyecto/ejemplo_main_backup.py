@@ -1,6 +1,27 @@
 # API de Biblioteca - Ejemplo Funcional LTS
-# Semana 4: Bases de Datos con FastAPI
-# Compatible con Python 3.8+ y versiones LTS estables
+# Semana 4: Bases de Datos con class UserBase(BaseModel):
+    name: str
+    email: str
+    phone: Optional[str] = None
+    
+    @validator('email')
+    def validate_email(cls, v):
+        # Validación básica de email compatible con Pydantic 1.x
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if not re.match(pattern, v):
+            raise ValueError('Email format is invalid')
+        return v
+
+class UserCreate(UserBase):
+    pass
+
+class UserResponse(UserBase):
+    id: int
+    is_active: bool
+    created_at: datetime
+    
+    class Config:
+        orm_mode = True  # Pydantic 1.x compatibletible con Python 3.8+ y versiones LTS
 
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, DateTime, ForeignKey
@@ -16,15 +37,12 @@ import re
 # ============================
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./library.db"
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, 
-    connect_args={"check_same_thread": False}
-)
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 # ============================
-# MODELOS SQLAlchemy (LTS Compatible)
+# MODELOS SQLAlchemy
 # ============================
 
 class User(Base):
@@ -73,27 +91,13 @@ class Loan(Base):
 Base.metadata.create_all(bind=engine)
 
 # ============================
-# SCHEMAS PYDANTIC (v1.x Compatible)
+# SCHEMAS PYDANTIC
 # ============================
 
 class UserBase(BaseModel):
     name: str
-    email: str
+    email: EmailStr
     phone: Optional[str] = None
-    
-    @validator('email')
-    def validate_email(cls, v):
-        # Validación básica de email compatible con Pydantic 1.x
-        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        if not re.match(pattern, v):
-            raise ValueError('Formato de email inválido')
-        return v
-    
-    @validator('name')
-    def validate_name(cls, v):
-        if len(v.strip()) < 2:
-            raise ValueError('El nombre debe tener al menos 2 caracteres')
-        return v.strip()
 
 class UserCreate(UserBase):
     pass
@@ -104,31 +108,13 @@ class UserResponse(UserBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True  # Pydantic 1.x compatible
+        orm_mode = True
 
 class BookBase(BaseModel):
     title: str
     author: str
     isbn: Optional[str] = None
     publication_year: Optional[int] = None
-    
-    @validator('title')
-    def validate_title(cls, v):
-        if len(v.strip()) < 1:
-            raise ValueError('El título es requerido')
-        return v.strip()
-    
-    @validator('author')
-    def validate_author(cls, v):
-        if len(v.strip()) < 1:
-            raise ValueError('El autor es requerido')
-        return v.strip()
-    
-    @validator('publication_year')
-    def validate_year(cls, v):
-        if v is not None and (v < 1000 or v > datetime.now().year + 1):
-            raise ValueError(f'Año debe estar entre 1000 y {datetime.now().year + 1}')
-        return v
 
 class BookCreate(BookBase):
     pass
@@ -139,7 +125,7 @@ class BookResponse(BookBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class LoanBase(BaseModel):
     user_id: int
@@ -156,7 +142,7 @@ class LoanResponse(LoanBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # ============================
 # DEPENDENCIAS
@@ -185,16 +171,15 @@ app = FastAPI(
 
 @app.post("/api/v1/users/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    """Crear un nuevo usuario"""
     # Verificar email único
     db_user = db.query(User).filter(User.email == user.email).first()
     if db_user:
         raise HTTPException(
             status_code=400,
-            detail="El email ya está registrado"
+            detail="Email ya registrado"
         )
     
-    db_user = User(**user.dict())
+    db_user = User(**user.model_dump())
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -202,13 +187,11 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 
 @app.get("/api/v1/users/", response_model=List[UserResponse])
 def list_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    """Listar usuarios con paginación"""
     users = db.query(User).offset(skip).limit(limit).all()
     return users
 
 @app.get("/api/v1/users/{user_id}", response_model=UserResponse)
 def get_user(user_id: int, db: Session = Depends(get_db)):
-    """Obtener usuario por ID"""
     user = db.query(User).filter(User.id == user_id).first()
     if user is None:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
@@ -216,18 +199,11 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
 @app.put("/api/v1/users/{user_id}", response_model=UserResponse)
 def update_user(user_id: int, user_update: UserCreate, db: Session = Depends(get_db)):
-    """Actualizar usuario existente"""
     user = db.query(User).filter(User.id == user_id).first()
     if user is None:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     
-    # Verificar email único si ha cambiado
-    if user_update.email != user.email:
-        existing_user = db.query(User).filter(User.email == user_update.email).first()
-        if existing_user:
-            raise HTTPException(status_code=400, detail="El email ya está registrado")
-    
-    for key, value in user_update.dict().items():
+    for key, value in user_update.model_dump().items():
         setattr(user, key, value)
     
     db.commit()
@@ -236,16 +212,12 @@ def update_user(user_id: int, user_update: UserCreate, db: Session = Depends(get
 
 @app.delete("/api/v1/users/{user_id}")
 def delete_user(user_id: int, db: Session = Depends(get_db)):
-    """Eliminar usuario (solo si no tiene préstamos activos)"""
     user = db.query(User).filter(User.id == user_id).first()
     if user is None:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
     
     # Verificar que no tenga préstamos activos
-    active_loans = db.query(Loan).filter(
-        Loan.user_id == user_id, 
-        Loan.is_returned == False
-    ).count()
+    active_loans = db.query(Loan).filter(Loan.user_id == user_id, Loan.is_returned == False).count()
     if active_loans > 0:
         raise HTTPException(
             status_code=400,
@@ -262,7 +234,6 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
 
 @app.post("/api/v1/books/", response_model=BookResponse, status_code=status.HTTP_201_CREATED)
 def create_book(book: BookCreate, db: Session = Depends(get_db)):
-    """Crear un nuevo libro"""
     # Verificar ISBN único si se proporciona
     if book.isbn:
         db_book = db.query(Book).filter(Book.isbn == book.isbn).first()
@@ -272,7 +243,7 @@ def create_book(book: BookCreate, db: Session = Depends(get_db)):
                 detail="ISBN ya registrado"
             )
     
-    db_book = Book(**book.dict())
+    db_book = Book(**book.model_dump())
     db.add(db_book)
     db.commit()
     db.refresh(db_book)
@@ -280,13 +251,11 @@ def create_book(book: BookCreate, db: Session = Depends(get_db)):
 
 @app.get("/api/v1/books/", response_model=List[BookResponse])
 def list_books(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    """Listar libros con paginación"""
     books = db.query(Book).offset(skip).limit(limit).all()
     return books
 
 @app.get("/api/v1/books/{book_id}", response_model=BookResponse)
 def get_book(book_id: int, db: Session = Depends(get_db)):
-    """Obtener libro por ID"""
     book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Libro no encontrado")
@@ -294,24 +263,16 @@ def get_book(book_id: int, db: Session = Depends(get_db)):
 
 @app.get("/api/v1/books/search/{title}", response_model=List[BookResponse])
 def search_books(title: str, db: Session = Depends(get_db)):
-    """Buscar libros por título"""
     books = db.query(Book).filter(Book.title.contains(title)).all()
     return books
 
 @app.put("/api/v1/books/{book_id}", response_model=BookResponse)
 def update_book(book_id: int, book_update: BookCreate, db: Session = Depends(get_db)):
-    """Actualizar libro existente"""
     book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Libro no encontrado")
     
-    # Verificar ISBN único si ha cambiado
-    if book_update.isbn and book_update.isbn != book.isbn:
-        existing_book = db.query(Book).filter(Book.isbn == book_update.isbn).first()
-        if existing_book:
-            raise HTTPException(status_code=400, detail="ISBN ya registrado")
-    
-    for key, value in book_update.dict().items():
+    for key, value in book_update.model_dump().items():
         setattr(book, key, value)
     
     db.commit()
@@ -320,7 +281,6 @@ def update_book(book_id: int, book_update: BookCreate, db: Session = Depends(get
 
 @app.delete("/api/v1/books/{book_id}")
 def delete_book(book_id: int, db: Session = Depends(get_db)):
-    """Eliminar libro"""
     book = db.query(Book).filter(Book.id == book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Libro no encontrado")
@@ -335,12 +295,11 @@ def delete_book(book_id: int, db: Session = Depends(get_db)):
 
 @app.post("/api/v1/loans/", response_model=LoanResponse, status_code=status.HTTP_201_CREATED)
 def create_loan(loan: LoanCreate, db: Session = Depends(get_db)):
-    """Crear un nuevo préstamo"""
     # Verificar que el libro existe y está disponible
     book = db.query(Book).filter(Book.id == loan.book_id).first()
     if book is None:
         raise HTTPException(status_code=404, detail="Libro no encontrado")
-    if not book.is_available:
+    if book.is_available == False:
         raise HTTPException(status_code=400, detail="Libro no disponible")
     
     # Verificar que el usuario existe
@@ -360,11 +319,11 @@ def create_loan(loan: LoanCreate, db: Session = Depends(get_db)):
         )
     
     # Crear préstamo
-    db_loan = Loan(**loan.dict())
+    db_loan = Loan(**loan.model_dump())
     db.add(db_loan)
     
-    # Marcar libro como no disponible
-    book.is_available = False
+    # Marcar libro como no disponible usando update
+    db.query(Book).filter(Book.id == loan.book_id).update({"is_available": False})
     
     db.commit()
     db.refresh(db_loan)
@@ -372,13 +331,11 @@ def create_loan(loan: LoanCreate, db: Session = Depends(get_db)):
 
 @app.get("/api/v1/loans/", response_model=List[LoanResponse])
 def list_loans(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    """Listar préstamos con paginación"""
     loans = db.query(Loan).offset(skip).limit(limit).all()
     return loans
 
 @app.get("/api/v1/loans/{loan_id}", response_model=LoanResponse)
 def get_loan(loan_id: int, db: Session = Depends(get_db)):
-    """Obtener préstamo por ID"""
     loan = db.query(Loan).filter(Loan.id == loan_id).first()
     if loan is None:
         raise HTTPException(status_code=404, detail="Préstamo no encontrado")
@@ -386,22 +343,21 @@ def get_loan(loan_id: int, db: Session = Depends(get_db)):
 
 @app.put("/api/v1/loans/{loan_id}/return", response_model=LoanResponse)
 def return_book(loan_id: int, db: Session = Depends(get_db)):
-    """Devolver un libro prestado"""
     loan = db.query(Loan).filter(Loan.id == loan_id).first()
     if loan is None:
         raise HTTPException(status_code=404, detail="Préstamo no encontrado")
     
-    if loan.is_returned:
+    if loan.is_returned == True:
         raise HTTPException(status_code=400, detail="Libro ya fue devuelto")
     
-    # Marcar préstamo como devuelto
-    loan.is_returned = True
-    loan.return_date = datetime.utcnow()
+    # Marcar préstamo como devuelto usando update
+    db.query(Loan).filter(Loan.id == loan_id).update({
+        "is_returned": True,
+        "return_date": datetime.utcnow()
+    })
     
-    # Marcar libro como disponible
-    book = db.query(Book).filter(Book.id == loan.book_id).first()
-    if book:
-        book.is_available = True
+    # Marcar libro como disponible usando update
+    db.query(Book).filter(Book.id == loan.book_id).update({"is_available": True})
     
     db.commit()
     db.refresh(loan)
@@ -409,13 +365,11 @@ def return_book(loan_id: int, db: Session = Depends(get_db)):
 
 @app.get("/api/v1/loans/user/{user_id}", response_model=List[LoanResponse])
 def get_user_loans(user_id: int, db: Session = Depends(get_db)):
-    """Obtener préstamos de un usuario específico"""
     loans = db.query(Loan).filter(Loan.user_id == user_id).all()
     return loans
 
 @app.get("/api/v1/loans/active", response_model=List[LoanResponse])
 def get_active_loans(db: Session = Depends(get_db)):
-    """Obtener todos los préstamos activos"""
     loans = db.query(Loan).filter(Loan.is_returned == False).all()
     return loans
 
@@ -425,7 +379,6 @@ def get_active_loans(db: Session = Depends(get_db)):
 
 @app.get("/api/v1/stats/books")
 def get_books_stats(db: Session = Depends(get_db)):
-    """Obtener estadísticas de libros"""
     total_books = db.query(Book).count()
     available_books = db.query(Book).filter(Book.is_available == True).count()
     borrowed_books = total_books - available_books
@@ -438,7 +391,6 @@ def get_books_stats(db: Session = Depends(get_db)):
 
 @app.get("/api/v1/stats/users")
 def get_users_stats(db: Session = Depends(get_db)):
-    """Obtener estadísticas de usuarios"""
     total_users = db.query(User).count()
     active_users = db.query(User).filter(User.is_active == True).count()
     
@@ -449,7 +401,6 @@ def get_users_stats(db: Session = Depends(get_db)):
 
 @app.get("/api/v1/stats/loans")
 def get_loans_stats(db: Session = Depends(get_db)):
-    """Obtener estadísticas de préstamos"""
     total_loans = db.query(Loan).count()
     active_loans = db.query(Loan).filter(Loan.is_returned == False).count()
     returned_loans = db.query(Loan).filter(Loan.is_returned == True).count()
@@ -466,23 +417,12 @@ def get_loans_stats(db: Session = Depends(get_db)):
 
 @app.get("/")
 def read_root():
-    """Endpoint raíz con información de la API"""
     return {
         "message": "API de Biblioteca - Semana 4",
         "documentation": "/docs",
-        "status": "running",
-        "version": "1.0.0 LTS"
+        "status": "running"
     }
-
-# ============================
-# CONFIGURACIÓN DE SERVIDOR
-# ============================
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(
-        app, 
-        host="0.0.0.0", 
-        port=8000,
-        reload=True
-    )
+    uvicorn.run(app, host="0.0.0.0", port=8000)

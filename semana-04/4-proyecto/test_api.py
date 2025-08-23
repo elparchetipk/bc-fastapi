@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Script de testing básico para API de Biblioteca - Semana 4
-Prueba las funcionalidades principales de la API
+Script de testing LTS para API de Biblioteca - Semana 4
+Compatible con versiones estables de FastAPI y Python 3.8+
 """
 
 import requests
 import json
 import time
 import sys
+from typing import Optional
 
 BASE_URL = "http://localhost:8000"
 
