@@ -31,13 +31,13 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                 | Tiempo | Descripción                       |
-| ------ | ------------------------- | ------ | --------------------------------- |
-| **1**  | Pytest Básico             | 75 min | Setup, fixtures, tests básicos    |
-| **2**  | Testing de APIs           | 45 min | TestClient, endpoints testing     |
-| **3**  | Testing con Autenticación | 60 min | Mocks, usuarios, tokens           |
-| **4**  | Roles y Autorización      | 105 min| Sistema roles, admin, testing     |
-| **5**  | Consolidación            | 45 min | Testing completo, debugging       |
+| Bloque | Actividad                 | Tiempo  | Descripción                    |
+| ------ | ------------------------- | ------- | ------------------------------ |
+| **1**  | Pytest Básico             | 75 min  | Setup, fixtures, tests básicos |
+| **2**  | Testing de APIs           | 45 min  | TestClient, endpoints testing  |
+| **3**  | Testing con Autenticación | 60 min  | Mocks, usuarios, tokens        |
+| **4**  | Roles y Autorización      | 105 min | Sistema roles, admin, testing  |
+| **5**  | Consolidación             | 45 min  | Testing completo, debugging    |
 
 **CAMBIOS PRINCIPALES:**
 
@@ -63,10 +63,15 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 
 ### **💻 Prácticas**
 
-1. [🔧 Pytest Setup y Configuración](./2-practica/19-pytest-setup.md) _(90 min)_
-2. [🧪 Testing de Endpoints](./2-practica/20-endpoint-testing.md) _(90 min)_
-3. [🔐 Testing con Autenticación](./2-practica/21-auth-testing.md) _(90 min)_
-4. [📊 Coverage y Calidad de Código](./2-practica/22-coverage-quality.md) _(90 min)_
+1. [🔧 Pytest Setup y Configuración](./2-practica/19-pytest-setup.md) _(75 min)_
+2. [🧪 Testing de Endpoints](./2-practica/20-endpoint-testing.md) _(45 min)_
+3. [🔐 Testing con Autenticación](./2-practica/21-auth-testing.md) _(60 min)_
+4. [� Roles y Autorización](./2-practica/23-roles-implementation.md) _(105 min)_
+5. [🔄 Consolidación y Testing Completo](./2-practica/24-consolidation.md) _(45 min)_
+
+**ELIMINADO/MOVIDO A SEMANA 7:**
+
+- ~~Coverage y Calidad de Código~~ → **Semana 7**
 
 ### **💪 Ejercicios**
 
@@ -169,8 +174,14 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 - ✅ **Testing automatizado** - Pytest y fixtures básicas
 - ✅ **Testing de APIs** - TestClient y validaciones
 - ✅ **Testing con autenticación** - Mocks y tokens
-- ✅ **Cobertura de código** - Coverage y reportes
-- ✅ **Calidad de código** - Organización y documentación
+- ✅ **Sistema de roles** - Admin/user con autorización
+- ✅ **Organización de código** - Estructura profesional
+
+### **ELIMINADO/MOVIDO A SEMANA 7:**
+
+- ~~Cobertura avanzada~~ → **Semana 7**
+- ~~Testing avanzado con mocks complejos~~ → **Semana 7**
+- ~~Análisis de calidad completo~~ → **Semana 7**
 
 ---
 
@@ -191,18 +202,18 @@ touch tests/conftest.py
 # 4. ¡Listo para empezar con testing!
 ```
 
-## � Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
 | Tiempo      | Actividad                 | Duración | Acumulado |
 | ----------- | ------------------------- | -------- | --------- |
 | 12:00-13:15 | Pytest Básico             | 75 min   | 75 min    |
-| 13:15-14:00 | Testing de APIs (parte 1) | 45 min   | 120 min   |
+| 13:15-14:00 | Testing de APIs           | 45 min   | 120 min   |
 | 14:00-14:30 | **☕ BREAK OBLIGATORIO**  | 30 min   | 150 min   |
-| 14:30-15:45 | Testing de APIs (parte 2) | 75 min   | 225 min   |
-| 15:45-17:15 | Testing con Autenticación | 90 min   | 315 min   |
-| 17:15-18:00 | Cobertura y calidad       | 45 min   | 360 min   |
+| 14:30-15:30 | Testing con Autenticación | 60 min   | 210 min   |
+| 15:30-17:15 | Roles y Autorización      | 105 min  | 315 min   |
+| 17:15-18:00 | Consolidación y Testing   | 45 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ### **📖 Orden de Estudio Recomendado**
 

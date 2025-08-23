@@ -11,15 +11,18 @@
 ## ⚠️ PROBLEMA CRÍTICO IDENTIFICADO
 
 ### Contenido Original Semana 6:
+
 1. **Pytest Setup** - 90min
-2. **Testing de Endpoints** - 90min 
+2. **Testing de Endpoints** - 90min
 3. **Testing con Autenticación** - 90min
 4. **Coverage y Calidad** - 90min
 
 ### Contenido Adicional desde Semana 5:
+
 - **Sistema de Roles** - 90min (movido de Semana 5)
 
 ### Análisis de Sobrecarga:
+
 ```
 Contenido total: 450min (7h 30min)
 Tiempo disponible: 330min (5h 30min)
@@ -31,19 +34,22 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ### **OPCIÓN 1: REDISTRIBUIR ROLES EN MÚLTIPLES SEMANAS (RECOMENDADA)**
 
 #### Semana 5 (ya ajustada):
+
 - ✅ JWT + Hashing (90min)
 - ✅ Login System (75min)
 - ✅ Protección Endpoints (90min)
 - ✅ Consolidación (75min)
 
 #### Semana 6 - Testing y Roles Básicos:
-- ✅ Pytest Setup (75min) *-15min*
-- ✅ Testing de Endpoints (75min) *-15min*
-- ✅ Testing con Auth (60min) *-30min*
-- 🆕 **Roles Básicos** (75min) *del contenido de Semana 5*
+
+- ✅ Pytest Setup (75min) _-15min_
+- ✅ Testing de Endpoints (75min) _-15min_
+- ✅ Testing con Auth (60min) _-30min_
+- 🆕 **Roles Básicos** (75min) _del contenido de Semana 5_
 - ❌ Eliminado: Coverage avanzado
 
 #### Semana 7 - Calidad y Roles Avanzados:
+
 - 🆕 Coverage y Calidad (90min)
 - 🆕 Roles Avanzados y Permisos (90min)
 - 🆕 Testing de Roles (90min)
@@ -52,14 +58,16 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ### **OPCIÓN 2: COMPACTAR AGRESIVAMENTE SEMANA 6**
 
 #### Contenido Reducido (5h 30min):
+
 - **Bloque 1**: Pytest + Testing Básico (90min)
-- **Bloque 2**: Testing Auth + Roles (90min) *combinado*
+- **Bloque 2**: Testing Auth + Roles (90min) _combinado_
 - **Bloque 3**: Roles Implementación (90min)
-- **Bloque 4**: Coverage Básico (60min) *reducido*
+- **Bloque 4**: Coverage Básico (60min) _reducido_
 
 ### **OPCIÓN 3: ELIMINAR TESTING AVANZADO**
 
 #### Enfoque Minimalista:
+
 - **Bloque 1**: Testing Básico (75min)
 - **Bloque 2**: Testing con Auth (75min)
 - **Bloque 3**: Roles Completos (90min)
@@ -68,6 +76,7 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## ✅ RECOMENDACIÓN: OPCIÓN 1
 
 ### Justificación:
+
 1. **Progresión natural** del aprendizaje
 2. **Sin sobrecarga** de ninguna semana
 3. **Contenido balanceado** entre teoría y práctica
@@ -89,11 +98,13 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 #### **CONTENIDO ESPECÍFICO SEMANA 6:**
 
 **Eliminado/Reducido:**
+
 - ❌ Coverage avanzado → Semana 7
 - ⬇️ Testing exhaustivo → Testing funcional
 - ⬇️ Calidad avanzada → Básicos
 
 **Agregado desde Semana 5:**
+
 - ✅ Roles admin/user básicos
 - ✅ Endpoints administrativos
 - ✅ Autorización por roles
@@ -102,11 +113,13 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## 📅 CRONOGRAMA DETALLADO AJUSTADO
 
 ### **Bloque 1: Pytest Setup (75min)**
+
 - Instalación pytest, httpx, fixtures básicas
 - Primer test simple
 - Estructura de testing
 
 ### **Bloque 2: Testing Endpoints (45min)**
+
 - TestClient básico
 - Tests CRUD fundamentales
 - Validaciones básicas
@@ -114,17 +127,20 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ### **☕ BREAK (30min)**
 
 ### **Bloque 3: Testing con Auth (60min)**
+
 - Headers de autorización
 - Tests de login/registro
 - Fixtures de autenticación
 
 ### **Bloque 4: Roles Básicos (105min)**
+
 - Campo role en User model
 - Funciones require_admin
 - Endpoints administrativos
 - Testing manual de roles
 
 ### **Bloque 5: Consolidación (45min)**
+
 - Testing completo del sistema
 - Debugging de problemas
 - Documentación básica
@@ -140,6 +156,7 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 5. ✅ **Testing manual** de todo el sistema
 
 ### **Lo que se mueve a Semana 7:**
+
 - Coverage detallado y reportes
 - Testing avanzado con mocks
 - Calidad de código avanzada
@@ -148,11 +165,13 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## 🚨 RIESGOS MITIGADOS
 
 ### **Antes del ajuste:**
+
 - ⚠️ 2 horas de sobrecarga (imposible de completar)
 - ⚠️ Testing superficial por falta de tiempo
 - ⚠️ Roles mal implementados o sin testing
 
 ### **Después del ajuste:**
+
 - ✅ Tiempo realista y manejable
 - ✅ Testing funcional y útil
 - ✅ Roles bien implementados y probados
@@ -161,15 +180,18 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## 📈 MÉTRICAS DE ÉXITO ESPERADAS
 
 ### **Completitud:**
+
 - 90%+ estudiantes completan objetivos básicos
 - 70%+ estudiantes implementan roles correctamente
 
 ### **Calidad:**
+
 - APIs con testing funcional
 - Sistema de roles operativo
 - Autenticación completa y probada
 
 ### **Satisfacción:**
+
 - Reducción de estrés vs plan original
 - Progresión natural de complejidad
 - Aprendizaje sólido y aplicable
@@ -177,6 +199,7 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## 🔄 IMPACTO EN SEMANA 7
 
 **Contenido que se agrega a Semana 7:**
+
 - Coverage avanzado y reportes (60min)
 - Testing con mocks complejos (90min)
 - Roles avanzados y permisos (90min)
@@ -187,11 +210,13 @@ SOBRECARGA: 120min (33% más tiempo del disponible)
 ## ✅ PLAN DE ACCIÓN INMEDIATO
 
 1. **Actualizar Semana 6:**
+
    - Reducir contenido de testing avanzado
    - Integrar sistema de roles desde Semana 5
    - Crear cronograma ajustado
 
 2. **Preparar Semana 7:**
+
    - Diseñar contenido de coverage avanzado
    - Planificar roles avanzados
    - Estructurar CI/CD básico
