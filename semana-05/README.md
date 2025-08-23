@@ -11,32 +11,40 @@ Esta semana está diseñada para estudiantes que **ya tienen una API completa co
 - ✅ **Enfoque práctico en seguridad básica**
 - ✅ **Preparación para APIs con usuarios**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (Fundamentales)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
 1. ✅ **Implementarán autenticación JWT básica** con FastAPI
 2. ✅ **Crearán endpoints de login/registro** seguros
 3. ✅ **Protegerán rutas** con dependencias de autenticación
-4. ✅ **Manejarán roles básicos** de usuario
-5. ✅ **Aplicarán buenas prácticas** de seguridad en APIs
+4. ✅ **Aplicarán buenas prácticas** de seguridad en APIs
+5. ✅ **Realizarán testing manual** completo del sistema
 
-### ❌ **Lo que NO se espera dominar esta semana**
+### ❌ **Lo que NO se espera dominar esta semana** (MOVIDO A SEMANA 6)
 
+- ~~Roles básicos de usuario~~ → **Semana 6**
 - OAuth2 con proveedores externos
 - Sistemas de permisos complejos
 - Refresh tokens avanzados
 - Middleware personalizado complejo
 - Audit logs y monitoring
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
 | Bloque | Actividad                   | Tiempo | Descripción                     |
 | ------ | --------------------------- | ------ | ------------------------------- |
 | **1**  | JWT y Hashing Básico        | 90 min | JWT, passwords, setup inicial   |
-| **2**  | Sistema de Login            | 90 min | Endpoints de autenticación      |
+| **2**  | Sistema de Login            | 75 min | Endpoints de autenticación      |
 | **3**  | Protección de Endpoints     | 90 min | Dependencies, rutas protegidas  |
-| **4**  | Roles y Autorización Básica | 90 min | Permisos simples, admin vs user |
+| **4**  | Consolidación y Testing     | 75 min | Testing, debugging, ejercicios  |
+
+**CAMBIOS PRINCIPALES:**
+
+- ❌ **Eliminado**: Sistema complejo de roles (se mueve a Semana 6)
+- ✅ **Agregado**: Bloque de consolidación y debugging
+- ✅ **Reducido**: Login system de 90 a 75 minutos
+- ✅ **Enfocado**: Solo autenticación básica JWT + protección
 
 ## 📚 Contenido de la Semana
 
@@ -55,9 +63,9 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 ### **💻 Prácticas**
 
 1. [🔧 JWT y Hashing de Passwords](./2-practica/15-jwt-setup.md) _(90 min)_
-2. [🚪 Sistema de Login y Registro](./2-practica/16-login-system.md) _(90 min)_
+2. [🚪 Sistema de Login y Registro](./2-practica/16-login-system.md) _(75 min)_
 3. [🛡️ Protección de Endpoints](./2-practica/17-endpoint-protection.md) _(90 min)_
-4. [👥 Roles y Autorización](./2-practica/18-roles-authorization.md) _(90 min)_
+4. [🔄 Consolidación y Testing](./2-practica/19-testing-debugging.md) _(75 min)_
 
 ### **💪 Ejercicios**
 
@@ -105,7 +113,7 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - Tiempo para resolver dudas sobre JWT
 - Preparación mental para sistema de login
 
-### **Bloque 2: Sistema de Login (120 min)**
+### **Bloque 2: Sistema de Login (75 min)**
 
 - **16-login-system.md**
 - Endpoints de registro y login
@@ -119,12 +127,12 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - Protección de endpoints sensibles
 - Manejo de usuarios autenticados
 
-### **Bloque 4: Roles Básicos (45 min)**
+### **Bloque 4: Consolidación y Testing (75 min)**
 
-- **18-roles-authorization.md**
-- Sistema básico de roles (admin/user)
-- Restricciones por rol
-- Endpoints administrativos
+- **19-testing-debugging.md**
+- Ejercicios prácticos de autenticación
+- Testing manual con Postman
+- Resolución de problemas comunes
 
 ---
 
@@ -181,25 +189,24 @@ echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
 # 4. ¡Listo para empezar con autenticación!
 ```
 
-## � Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
 | Tiempo      | Actividad                     | Duración | Acumulado |
 | ----------- | ----------------------------- | -------- | --------- |
-| 12:00-13:15 | JWT y Hashing                 | 75 min   | 75 min    |
-| 13:15-14:00 | Sistema de Login (parte 1)    | 45 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**      | 30 min   | 150 min   |
-| 14:30-15:45 | Sistema de Login (parte 2)    | 75 min   | 225 min   |
-| 15:45-17:15 | Protección de Rutas           | 90 min   | 315 min   |
-| 17:15-18:00 | Roles básicos y consolidación | 45 min   | 360 min   |
+| 12:00-13:30 | JWT y Hashing                 | 90 min   | 90 min    |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO**      | 30 min   | 120 min   |
+| 14:00-15:15 | Sistema de Login              | 75 min   | 195 min   |
+| 15:15-16:45 | Protección de Endpoints       | 90 min   | 285 min   |
+| 16:45-18:00 | Consolidación y Testing       | 75 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ### **📖 Orden de Estudio Recomendado**
 
 1. **JWT y hashing** - Fundamentos de seguridad
 2. **Sistema de login** - Registro y autenticación
 3. **Protección de rutas** - Endpoints seguros
-4. **Roles básicos** - Control de acceso
+4. **Consolidación y testing** - Ejercicios prácticos
 5. **Ejercicios y proyecto** - Para reforzar conceptos
 
 ---
