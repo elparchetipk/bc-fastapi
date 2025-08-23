@@ -1,7 +1,7 @@
 # Práctica 35: WebSockets y Comunicación en Tiempo Real
 
-⏰ **Tiempo estimado**: 90 minutos  
-🎯 **Objetivo**: Implementar WebSockets para comunicación bidireccional en tiempo real
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Implementar WebSockets básicos para comunicación bidireccional en tiempo real
 
 ---
 
@@ -9,15 +9,21 @@
 
 Al final de esta práctica habrás:
 
-- ✅ Configurado WebSockets en FastAPI
-- ✅ Implementado un chat básico en tiempo real
-- ✅ Gestionado conexiones y desconexiones
+- ✅ Configurado WebSockets básicos en FastAPI
+- ✅ Implementado un chat funcional en tiempo real
+- ✅ Gestionado conexiones y desconexiones básicas
 - ✅ Integrado autenticación con WebSockets
-- ✅ Creado un sistema de salas/rooms
+- ✅ Creado un sistema de salas básico
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ Enfoque en implementación funcional vs configuraciones complejas
+- ✅ Chat operativo con features esenciales
+- ⬇️ Simplificado: Error handling avanzado, optimizaciones complejas
 
 ---
 
-## 🛠️ Paso 1: Setup y Dependencias (15 min)
+## 🛠️ Paso 1: Setup y Dependencias (10 min)
 
 ### **Instalar dependencias adicionales**
 

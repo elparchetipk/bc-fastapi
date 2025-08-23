@@ -1,13 +1,23 @@
 # Práctica 37: Server-Sent Events (SSE) y Streaming de Datos
 
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Implementar SSE básicos para actualizaciones en tiempo real
+
 ## Objetivos
 
-- Implementar Server-Sent Events con FastAPI
-- Crear streams de datos en tiempo real
-- Desarrollar dashboard con actualizaciones automáticas
-- Integrar SSE con WebSockets y Background Tasks
+- Implementar Server-Sent Events básicos con FastAPI
+- Crear dashboard funcional con actualizaciones automáticas
+- Desarrollar streaming de datos esencial
+- Integrar SSE con WebSockets y Background Tasks básicos
 
-## Duración: 90 minutos
+## Duración: 75 minutos
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ SSE implementation básica pero sólida
+- ✅ Dashboard en tiempo real funcional
+- ✅ Integration práctica con otras tecnologías
+- ⬇️ Simplificado: Streaming avanzado, optimización compleja
 
 ## Prerrequisitos
 

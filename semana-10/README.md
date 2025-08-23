@@ -24,19 +24,19 @@ Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los es
 ### ❌ **Lo que NO se espera dominar esta semana**
 
 - WebSockets clustering y scaling horizontal avanzado
-- Background processing distribuido con Celery completo  
+- Background processing distribuido con Celery completo
 - SSE optimization y streaming de datos masivos
 - Microservicios complejos con message brokers
 - Implementación completa de GraphQL subscriptions
 
 ## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
-| Bloque | Actividad                    | Tiempo | Descripción                                  |
-| ------ | ---------------------------- | ------ | -------------------------------------------- |
+| Bloque | Actividad                    | Tiempo | Descripción                                         |
+| ------ | ---------------------------- | ------ | --------------------------------------------------- |
 | **1**  | WebSockets y Tiempo Real     | 75 min | Implementación de comunicación bidireccional básica |
-| **2**  | Background Tasks y Jobs      | 75 min | Procesamiento asíncrono esencial |
-| **3**  | Server-Sent Events y Caching | 75 min | Eventos en tiempo real básicos        |
-| **4**  | Aplicación Integrada         | 75 min | Chat funcional con notificaciones básicas       |
+| **2**  | Background Tasks y Jobs      | 75 min | Procesamiento asíncrono esencial                    |
+| **3**  | Server-Sent Events y Caching | 75 min | Eventos en tiempo real básicos                      |
+| **4**  | Aplicación Integrada         | 75 min | Chat funcional con notificaciones básicas           |
 
 **CAMBIOS PRINCIPALES:**
 
@@ -113,13 +113,13 @@ semana-10/
 
 ## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                  | Duración | Acumulado |
-| ----------- | -------------------------- | -------- | --------- |
-| 12:00-13:15 | WebSockets y Tiempo Real   | 75 min   | 75 min    |
-| 13:15-14:30 | Background Tasks           | 75 min   | 150 min   |
-| 14:30-15:00 | **☕ BREAK OBLIGATORIO**   | 30 min   | 180 min   |
-| 15:00-16:15 | Server-Sent Events         | 75 min   | 255 min   |
-| 16:15-17:30 | Aplicación Integrada       | 75 min   | 330 min   |
+| Tiempo      | Actividad                | Duración | Acumulado |
+| ----------- | ------------------------ | -------- | --------- |
+| 12:00-13:15 | WebSockets y Tiempo Real | 75 min   | 75 min    |
+| 13:15-14:30 | Background Tasks         | 75 min   | 150 min   |
+| 14:30-15:00 | **☕ BREAK OBLIGATORIO** | 30 min   | 180 min   |
+| 15:00-16:15 | Server-Sent Events       | 75 min   | 255 min   |
+| 16:15-17:30 | Aplicación Integrada     | 75 min   | 330 min   |
 
 **Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 

@@ -1,7 +1,7 @@
 # Práctica 38: Aplicación Integrada - Chat Completo
 
-⏰ **Tiempo estimado**: 120 minutos  
-🎯 **Objetivo**: Integrar WebSockets, Background Tasks y SSE en una aplicación completa
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Integrar WebSockets, Background Tasks y SSE en MVP funcional
 
 ---
 
@@ -9,15 +9,22 @@
 
 Al final de esta práctica habrás:
 
-- ✅ Creado un chat completo con múltiples salas
-- ✅ Integrado notificaciones con Background Tasks
-- ✅ Implementado dashboard en tiempo real con SSE
-- ✅ Agregado sistema de presencia (usuarios online)
-- ✅ Configurado logging y monitoreo avanzado
+- ✅ Creado un chat funcional con las tres tecnologías
+- ✅ Integrado notificaciones básicas con Background Tasks
+- ✅ Implementado dashboard básico con SSE
+- ✅ Agregado sistema de presencia simple
+- ✅ Configurado logging básico y testing
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ MVP funcional con todas las tecnologías integradas
+- ✅ Chat operativo con notificaciones
+- ✅ Dashboard básico actualizable
+- ⬇️ Simplificado: Features avanzadas, UI compleja, testing exhaustivo
 
 ---
 
-## 🛠️ Paso 1: Arquitectura Integrada (20 min)
+## 🛠️ Paso 1: Arquitectura Simplificada (15 min)
 
 ### **Estructura del proyecto**
 

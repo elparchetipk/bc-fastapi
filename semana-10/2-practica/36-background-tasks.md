@@ -1,13 +1,23 @@
 # Práctica 36: Background Tasks y Procesamiento Asíncrono
 
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Implementar Background Tasks esenciales para procesamiento asíncrono
+
 ## Objetivos
 
-- Implementar tareas en segundo plano con FastAPI
-- Configurar y utilizar Redis para colas de tareas
-- Crear sistemas de notificaciones asíncronas
-- Implementar monitoreo y logging de tareas
+- Implementar tareas en segundo plano básicas con FastAPI
+- Configurar Redis básico para colas de tareas
+- Crear sistema de notificaciones esencial
+- Implementar logging básico de tareas
 
-## Duración: 90 minutos
+## Duración: 75 minutos
+
+**OPTIMIZADO PARA 75MIN:**
+
+- ✅ FastAPI Background Tasks fundamentals
+- ✅ Redis integration esencial
+- ✅ Email notifications básico pero funcional
+- ⬇️ Simplificado: Celery setup, monitoring avanzado
 
 ## Prerrequisitos
 
