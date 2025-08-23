@@ -1,7 +1,7 @@
-# Práctica 34: Deployment y Producción
+# Práctica 34: Production Deployment Básico
 
-⏰ **Tiempo estimado**: 90 minutos  
-🎯 **Objetivo**: Preparar y optimizar containers para producción
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Preparar containers para deployment básico en producción
 
 ---
 
@@ -9,45 +9,49 @@
 
 Al final de esta práctica habrás:
 
-- ✅ Optimizado containers para producción
-- ✅ Implementado seguridad avanzada
-- ✅ Configurado monitoring y logging
-- ✅ Preparado CI/CD básico
-- ✅ Deployado en entorno cloud simulado
+- ✅ Configurado containers básicos para producción
+- ✅ Implementado variables de entorno seguras
+- ✅ Configurado health checks esenciales
+- ✅ Preparado documentation para deployment
+- ✅ Creado setup básico para cualquier entorno
+
+**OPTIMIZADO PARA 75MIN:**
+- ✅ Enfoque en configuración práctica
+- ✅ Security basics sin complexity excess
+- ⬇️ Hardening simplificado pero efectivo
+- ⬇️ Deployment preparation sin cloud setup
 
 ---
 
-## 🔒 Paso 1: Hardening de Seguridad (20 min)
+## 🔒 Paso 1: Production Configuration Básica (20 min)
 
-### **Dockerfile de producción con seguridad mejorada**
+### **Dockerfile para producción optimizado**
 
 ```dockerfile
 # Dockerfile.production
-# Multi-stage build para producción con máxima seguridad
+# Multi-stage build optimizado para producción
 
 # Build stage
-FROM python:3.13-alpine AS builder
+FROM python:3.11-slim AS builder
 
-# Instalar dependencias de build con versiones específicas
-RUN apk add --no-cache \
-    gcc=12.2.1_git20220924-r10 \
-    musl-dev=1.2.4-r2 \
-    linux-headers=6.0-r1 \
-    postgresql-dev=15.5-r0 \
-    build-base=0.5-r3
+# Instalar dependencias de build esenciales
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Crear directorio para dependencias
 WORKDIR /install
 
-# Copiar requirements con hash verification
+# Copiar requirements
 COPY requirements.txt .
 
-# Instalar dependencias con verificación de integridad
-RUN pip install --no-cache-dir --upgrade pip==23.3.1 && \
-    pip install --prefix=/install --no-cache-dir --require-hashes -r requirements.txt
+# Instalar dependencias
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --prefix=/install --no-cache-dir -r requirements.txt
 
 # Production stage
-FROM python:3.13-alpine AS production
+FROM python:3.11-slim AS production
 
 # Instalar solo runtime dependencies
 RUN apk add --no-cache \

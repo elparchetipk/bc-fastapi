@@ -1,4 +1,4 @@
-# Semana 9: Containerización con Docker
+# Semana 9: Containerización con Docker - Optimizada
 
 ⏰ **DURACIÓN TOTAL: 6 HORAS EXACTAS**  
 📚 **NIVEL: Intermedio-Avanzado (construye sobre Semanas 1-8)**
@@ -7,19 +7,19 @@
 
 Esta semana está diseñada para estudiantes que **ya tienen una API completa con autenticación, testing y optimización** (Semanas 1-8). Implementaremos containerización con Docker para preparar la aplicación para deployment en cualquier entorno.
 
-- ✅ **Completamente realizable en 6 horas**
-- ✅ **Enfoque práctico en containerización real**
-- ✅ **Preparación para deployment profesional**
+- ✅ **Completamente realizable en 5h 30min efectivos**
+- ✅ **Enfoque práctico en containerización esencial**
+- ✅ **Preparación sólida para deployment profesional**
 
-## 🎯 Objetivos de la Semana (Fundamentales)
+## 🎯 Objetivos de la Semana AJUSTADOS (Docker-Focused)
 
-Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
+Al finalizar esta semana de 5h 30min efectivos (incluye break de 30 min), los estudiantes:
 
-1. ✅ **Comprenderán conceptos básicos** de containerización con Docker
-2. ✅ **Crearán Dockerfile optimizado** para aplicaciones FastAPI
-3. ✅ **Configurarán Docker Compose** para desarrollo local
-4. ✅ **Aplicarán buenas prácticas** de seguridad en containers
-5. ✅ **Prepararán la aplicación** para deployment en producción
+1. ✅ **Dominarán conceptos básicos** de containerización con Docker
+2. ✅ **Crearán Dockerfile optimizado** para aplicaciones FastAPI  
+3. ✅ **Configurarán Docker Compose esencial** para multi-servicios
+4. ✅ **Aplicarán configuración básica** para producción
+5. ✅ **Prepararán deployment** con documentation completa
 
 ### ❌ **Lo que NO se espera dominar esta semana**
 
@@ -29,14 +29,22 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - CI/CD completo con Docker
 - Seguridad avanzada en containers
 
-## ⏱️ Distribución de Tiempo (6 horas total)
+## ⏱️ Distribución de Tiempo AJUSTADA (5h 30min efectivos)
 
 | Bloque | Actividad                  | Tiempo | Descripción                                   |
 | ------ | -------------------------- | ------ | --------------------------------------------- |
 | **1**  | Docker Básico y Conceptos  | 90 min | Instalación, conceptos, primeros containers   |
 | **2**  | Dockerfile para FastAPI    | 90 min | Optimización de imagen, multi-stage builds    |
-| **3**  | Docker Compose y Servicios | 90 min | Orquestación local, bases de datos, Redis     |
-| **4**  | Producción y Deployment    | 90 min | Optimización, seguridad, variables de entorno |
+| **3**  | Docker Compose Esencial    | 75 min | Orquestación básica, servicios principales    |
+| **4**  | Production Deployment      | 75 min | Configuración básica, variables, health checks |
+
+**CAMBIOS PRINCIPALES:**
+
+- ✅ **Docker fundamentals completo**: Base sólida en 90min
+- ✅ **Dockerfile mastery**: Optimización y best practices completas
+- ⬇️ **Compose simplificado**: Enfoque en setup funcional (75min vs 90min)
+- ⬇️ **Production básico**: Configuración esencial (75min vs 90min)
+- ❌ **Eliminado**: Configuraciones avanzadas, security scanning complejo
 
 ## 📚 Contenido de la Semana
 
@@ -52,8 +60,13 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 
 1. [🐳 Docker Básico y Setup](./2-practica/31-docker-basics.md) _(90 min)_
 2. [📦 Dockerfile para FastAPI](./2-practica/32-dockerfile-fastapi.md) _(90 min)_
-3. [🔧 Docker Compose y Servicios](./2-practica/33-docker-compose.md) _(90 min)_
-4. [🚀 Deployment y Producción](./2-practica/34-production-deployment.md) _(90 min)_
+3. [🔧 Docker Compose Esencial](./2-practica/33-docker-compose.md) _(75 min)_
+4. [🚀 Production Deployment](./2-practica/34-production-deployment.md) _(75 min)_
+
+**OPTIMIZADO PARA 5H 30MIN:**
+- ✅ **Práctica 31-32**: Tiempo completo para fundamentos sólidos
+- ⬇️ **Práctica 33**: Compose esencial, configuración funcional
+- ⬇️ **Práctica 34**: Production basics, deployment preparation
 
 ### **💪 Ejercicios**
 
@@ -99,34 +112,33 @@ Al finalizar esta semana de 6 horas (incluye break de 30 min), los estudiantes:
 - Gestión de dependencias y requirements
 - Variables de entorno y configuración
 
-### **Bloque 3: Docker Compose y Servicios (90 min)**
+### **Bloque 3: Docker Compose Esencial (75 min)**
 
-- **33-docker-compose.md**
-- Configuración de docker-compose.yml
-- Orquestación de múltiples servicios
-- Networking entre containers
-- Volúmenes y persistencia de datos
+- **33-docker-compose.md** _(optimizado)_
+- Configuración esencial de docker-compose.yml
+- FastAPI + PostgreSQL + Redis setup
+- Networking básico entre containers
+- Testing y troubleshooting básico
 
-### **Bloque 4: Deployment y Producción (90 min)**
+### **Bloque 4: Production Deployment (75 min)**
 
-- **34-production-deployment.md**
-- Optimización para producción
-- Configuración de seguridad básica
-- Health checks y monitoring
-- Preparación para CI/CD
+- **34-production-deployment.md** _(optimizado)_
+- Configuración básica para producción
+- Variables de entorno management
+- Health checks esenciales
+- Deployment preparation y documentation
 
-## 📅 Cronograma de la Jornada de 6 Horas
+## 📅 Cronograma AJUSTADO de la Jornada (5h 30min efectivos)
 
-| Tiempo      | Actividad                         | Duración | Acumulado |
-| ----------- | --------------------------------- | -------- | --------- |
-| 12:00-13:30 | Docker Básico y Conceptos         | 90 min   | 90 min    |
-| 13:30-14:00 | Dockerfile para FastAPI (parte 1) | 30 min   | 120 min   |
-| 14:00-14:30 | **☕ BREAK OBLIGATORIO**          | 30 min   | 150 min   |
-| 14:30-15:30 | Dockerfile para FastAPI (parte 2) | 60 min   | 210 min   |
-| 15:30-17:00 | Docker Compose y Servicios        | 90 min   | 300 min   |
-| 17:00-18:00 | Deployment y Producción           | 60 min   | 360 min   |
+| Tiempo      | Actividad                  | Duración | Acumulado |
+| ----------- | -------------------------- | -------- | --------- |
+| 12:00-13:30 | Docker Básico y Conceptos  | 90 min   | 90 min    |
+| 13:30-14:00 | **☕ BREAK OBLIGATORIO**   | 30 min   | 120 min   |
+| 14:00-15:30 | Dockerfile para FastAPI   | 90 min   | 210 min   |
+| 15:30-16:45 | Docker Compose Esencial   | 75 min   | 285 min   |
+| 16:45-18:00 | Production Deployment     | 75 min   | 360 min   |
 
-**Total**: Exactamente 6 horas (360 minutos)
+**Total**: Exactamente 5h 30min efectivos (330 minutos + 30min break)
 
 ---
 

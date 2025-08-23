@@ -1,7 +1,7 @@
-# Práctica 33: Docker Compose y Servicios
+# Práctica 33: Docker Compose Esencial
 
-⏰ **Tiempo estimado**: 90 minutos  
-🎯 **Objetivo**: Orquestar múltiples servicios con Docker Compose
+⏰ **Tiempo estimado**: 75 minutos _(optimizado)_  
+🎯 **Objetivo**: Orquestar servicios esenciales con Docker Compose para FastAPI
 
 ---
 
@@ -9,31 +9,37 @@
 
 Al final de esta práctica habrás:
 
-- ✅ Configurado Docker Compose para multiple servicios
+- ✅ Configurado Docker Compose esencial para FastAPI stack
 - ✅ Orquestado FastAPI + PostgreSQL + Redis
-- ✅ Implementado networking entre containers
-- ✅ Configurado volumes persistentes
-- ✅ Aplicado variables de entorno por servicio
+- ✅ Implementado networking básico automático
+- ✅ Configurado volumes esenciales para persistencia
+- ✅ Aplicado variables de entorno básicas
+
+**OPTIMIZADO PARA 75MIN:**
+- ✅ Enfoque en configuración funcional
+- ✅ Setup más directo y práctico
+- ⬇️ Menos configuraciones complejas
+- ⬇️ Troubleshooting básico incluido
 
 ---
 
-## 🏗️ Paso 1: Preparación del Proyecto Completo (15 min)
+## 🏗️ Paso 1: Setup Rápido del Proyecto (10 min)
 
-### **Estructura del proyecto**
+### **Estructura simplificada**
 
 ```bash
 # 1. Crear directorio principal
 mkdir fastapi-compose-stack
 cd fastapi-compose-stack
 
-# 2. Crear estructura completa
-mkdir -p {app,database,scripts,config,logs}
+# 2. Crear estructura esencial
+mkdir -p {app,config}
 
 # 3. Verificar estructura
-tree . || ls -la
+ls -la
 ```
 
-### **Aplicación FastAPI con base de datos**
+### **FastAPI app simplificada para testing**
 
 ```python
 # app/main.py
